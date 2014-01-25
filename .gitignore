@@ -1,0 +1,14 @@
+engine/bin/
+*.xls
+*.ico
+engine/obj/
+gmotor/bin/
+gvisu/Resources/
+gvisu/bin/
+gvisu/obj/
+gvisu/publish/
+*.resx
+*.suo
+*.sln
+gmotor/obj/
+*.pfx

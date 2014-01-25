@@ -1,0 +1,2 @@
+vyzkoušet v Sorting
+LinkedList ,potom ArrayList
