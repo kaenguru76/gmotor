@@ -9,6 +9,5 @@ gvisu/obj/
 gvisu/publish/
 *.resx
 *.suo
-*.sln
 gmotor/obj/
 *.pfx
