@@ -87,6 +87,7 @@ namespace GomokuEngine
 
                 //generate moves
                 searchInfo.possibleMoves = gameBoard.GeneratePossibleMoves();
+                if (searchInfo.possibleMoves.Count == 0 && playedMoves.Count > 0) break;
 
                 foreach (ABMove move in searchInfo.possibleMoves)
                 {
@@ -162,8 +163,6 @@ namespace GomokuEngine
                     }
                 }
 
-                if (searchInfo.possibleMoves.Count == 0) break;
-
                 searchInfo.possibleMoves = gameBoard.GeneratePossibleMoves();//to get values from TT
                 searchInfo.reachedDepth = depth;
                 searchInfo.evaluation = bestValue;
@@ -176,6 +175,7 @@ namespace GomokuEngine
                     gameBoard.VctActive = false;
                 }
 
+                if (playedMoves.Count == 0 && bestMove != null) break;
                 if ((depth > 0 && bestValue == -int.MaxValue) || bestValue == int.MaxValue) break;
             } 
 L1:
