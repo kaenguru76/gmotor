@@ -1,6 +1,5 @@
 engine/bin/
 *.xls
-*.ico
 engine/obj/
 gmotor/bin/
 gvisu/Resources/
