@@ -1,0 +1,14 @@
+c:\Piskvorky\gmotor\gmotor\obj\Debug\gmotor.exe
+c:\Piskvorky\gmotor\gmotor\obj\Debug\gmotor.pdb
+c:\Piskvorky\gmotor\gmotor\bin\Debug\gmotor.exe
+c:\Piskvorky\gmotor\gmotor\bin\Debug\gmotor.pdb
+c:\Piskvorky\gmotor\gmotor\bin\Debug\Engine.dll
+c:\Piskvorky\gmotor\gmotor\bin\Debug\Engine.pdb
+c:\Piskvorky\gmotor\gmotor\obj\Debug\ResolveAssemblyReference.cache
+C:\Piskvorky\gmotor\gmotor\obj\Release\gmotor.exe
+C:\Piskvorky\gmotor\gmotor\obj\Release\gmotor.pdb
+C:\Piskvorky\gmotor\gmotor\bin\Release\gmotor.exe
+C:\Piskvorky\gmotor\gmotor\bin\Release\gmotor.pdb
+C:\Piskvorky\gmotor\gmotor\bin\Release\Engine.dll
+C:\Piskvorky\gmotor\gmotor\bin\Release\Engine.pdb
+C:\Piskvorky\gmotor\gmotor\obj\Release\ResolveAssemblyReference.cache

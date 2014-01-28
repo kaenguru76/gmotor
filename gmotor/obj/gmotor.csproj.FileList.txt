@@ -1,0 +1,14 @@
+bin\Release\gmotor.exe
+bin\Release\gmotor.pdb
+obj\Release\ResolveAssemblyReference.cache
+obj\Release\gmotor.exe
+obj\Release\gmotor.pdb
+bin\Release\Engine.dll
+bin\Release\Engine.pdb
+bin\Debug\gmotor.exe
+bin\Debug\gmotor.pdb
+bin\Debug\Engine.dll
+bin\Debug\Engine.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\gmotor.exe
+obj\Debug\gmotor.pdb

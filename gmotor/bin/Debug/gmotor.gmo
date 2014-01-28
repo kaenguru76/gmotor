@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FileParameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BoardSize>20</BoardSize>
+  <BlackPlayerName>Black Player</BlackPlayerName>
+  <WhitePlayerName>White Player</WhitePlayerName>
+  <MoveList>
+    <ABMove>
+      <square>210</square>
+      <player>BlackPlayer</player>
+      <moveType>unknown</moveType>
+      <value>0</value>
+      <valueType>Unknown</valueType>
+      <examinedMoves>0</examinedMoves>
+      <depth>-1</depth>
+      <vctPlayer>None</vctPlayer>
+    </ABMove>
+  </MoveList>
+</FileParameters>

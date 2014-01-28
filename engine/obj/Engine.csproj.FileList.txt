@@ -1,0 +1,10 @@
+bin\Release\Engine.dll
+bin\Release\Engine.pdb
+obj\Release\ResolveAssemblyReference.cache
+obj\Release\Engine.dll
+obj\Release\Engine.pdb
+bin\Debug\Engine.dll
+bin\Debug\Engine.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Engine.dll
+obj\Debug\Engine.pdb

@@ -1,0 +1,6 @@
+c:\Piskvorky\gmotor\engine\bin\Release\Engine.dll
+c:\Piskvorky\gmotor\engine\bin\Release\Engine.pdb
+c:\Piskvorky\gmotor\engine\obj\Release\ResolveAssemblyReference.cache
+c:\Piskvorky\gmotor\engine\obj\Release\Engine.dll
+c:\Piskvorky\gmotor\engine\obj\Release\Engine.pdb
+C:\Piskvorky\gmotor\engine\bin\Release\Engine.dll.config
