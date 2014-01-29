@@ -15,5 +15,5 @@
 *.exe
 *.cache
 *.application
-*.manifest
+#*.manifest
 
