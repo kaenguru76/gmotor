@@ -10,3 +10,10 @@
 #*.suo
 #gmotor/obj/
 #*.pfx
+*.dll
+*.pdb
+*.exe
+*.cache
+*.application
+*.manifest
+
