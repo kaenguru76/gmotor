@@ -16,4 +16,7 @@
 *.cache
 *.application
 *gvisu.exe.manifest
+*FileListAbsolute.txt
+*.tlog
+*TrustInfo.xml
 

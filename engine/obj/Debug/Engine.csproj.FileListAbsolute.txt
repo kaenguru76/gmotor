@@ -1,6 +1,0 @@
-c:\Piskvorky\gmotor\engine\bin\Debug\Engine.dll
-c:\Piskvorky\gmotor\engine\bin\Debug\Engine.pdb
-c:\Piskvorky\gmotor\engine\obj\Debug\ResolveAssemblyReference.cache
-c:\Piskvorky\gmotor\engine\obj\Debug\Engine.dll
-c:\Piskvorky\gmotor\engine\obj\Debug\Engine.pdb
-C:\Piskvorky\gmotor\engine\bin\Debug\Engine.dll.config
