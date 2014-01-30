@@ -342,9 +342,15 @@ namespace GomokuEngine
         public Player GetWinner()
         {
             if (winner != Player.None) return winner;
+     
             if (playerOnMove == Player.BlackPlayer && sortingBlack.IsWinner()) return Player.BlackPlayer;
-            if (playerOnMove == Player.WhitePlayer && sortingWhite.IsWinner()) return Player.WhitePlayer;
-            return Player.None;
+			if (playerOnMove == Player.WhitePlayer && sortingWhite.IsWinner()) return Player.WhitePlayer;
+			return Player.None;
+	 
+			//when following lines are uncommented, the evaluation is correct, but gmotor loses again Yixin
+            /*if (playerOnMove == Player.BlackPlayer && sortingBlack.IsWinner()) winner = Player.BlackPlayer;
+            if (playerOnMove == Player.WhitePlayer && sortingWhite.IsWinner()) winner = Player.WhitePlayer;
+            return winner;*/
         }
 
         public void GetSquareInfo(int square, out SquareInfo squareInfo)

@@ -1,0 +1,20 @@
+-------------------------------------
+30.1.2014  21:46 - 21:46
+Èas na tah: 3 s,   Èas na partii: 120 s
+Tolerance: 1 s,   Pamì: 300 MB
+Zahájení: ne
+Pravidlo: pøesnì pìt vyhrává
+CRC zahájení: 0
+Poèet her: 1
+-------------------------------------
+
+gmotor2012
+vıhry: 1=1+0,  prohry: 0=0+0
+èas/tah: 213 ms (max: 1.8 s),  èas/partii: 4 s
+tahù/partii: 20,  CRC: 7dc0056a,   pamì: 33.57 MB
+
+Yixin13
+vıhry: 0=0+0,  prohry: 1=0+1
+èas/tah: 753 ms (max: 3.0 s),  èas/partii: 14 s
+tahù/partii: 19,  CRC: 7f473b87,   pamì: 169.39 MB
+
