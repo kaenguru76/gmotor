@@ -1,2 +1,1 @@
-vyzkoušet v Sorting
-LinkedList ,potom ArrayList
+move order changes

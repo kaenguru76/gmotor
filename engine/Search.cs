@@ -143,7 +143,19 @@ namespace GomokuEngine
                     beta = int.MaxValue;
 
                     gameBoard.MakeABMove(move);
+    
                     move.value = -AlphaBeta(depth, -beta, -alpha);
+
+					//move.vctPlayer = gameBoard.VctPlayer;					
+                    //get some data from TT
+                    TranspositionTableItem ttItem = transpositionTable.Lookup(gameBoard.VctPlayer);
+                    if (ttItem != null)
+                    {
+	                    //move.moveType = ttItem.type;
+    	                move.examinedMoves = ttItem.examinedMoves;
+						move.depth = ttItem.depth;
+                    }
+                    
                     gameBoard.UndoABMove();
 
                     searchInfo.examinedMoves++;
@@ -164,7 +176,7 @@ namespace GomokuEngine
                     }
                 }
 
-                searchInfo.possibleMoves = gameBoard.GeneratePossibleMoves();//to get values from TT
+               // searchInfo.possibleMoves = gameBoard.GeneratePossibleMoves();//to get values from TT
                 searchInfo.reachedDepth = depth;
                 searchInfo.evaluation = bestValue;
                 searchInfo.bestMove = bestMove;
