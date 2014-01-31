@@ -102,45 +102,42 @@ namespace GomokuEngine
 		
         public TranspositionTableItem Lookup(Player vctPlayer)
         {
-            if (tableItems != 0)
-            {
-            	ulong tmpZobristKey = GetZobristKey(vctPlayer);
-            	TranspositionTableItem tableItem;
+            if (tableItems == 0) return null;
 
-            	if (useDictionary)
-            	{
-            		if (dictionary.TryGetValue(tmpZobristKey, out tableItem))
-            		{
-            			successfulHits++;
-                    	return tableItem;            			
-            		}
-        			else
-        			{
-            			failureHits++;
-            			return null;
-            				
-        			}
-            	}
-            	else
-            	{
-	                /* get access to item */
-	                int index = (int)(tmpZobristKey % (ulong)tableItems);
-	                tableItem = items[index];
-            	
-	                /* key must be the same */
-	                if (tableItem.key == tmpZobristKey)
-	                {
-	                    successfulHits++;
-	                    return tableItem;
-	                }
-	                else
-	                {
-	                    failureHits++;
-	                    return null;
-	                }
-            	}
-            }
-            return null;
+            ulong tmpZobristKey = GetZobristKey(vctPlayer);
+        	TranspositionTableItem tableItem;
+
+        	if (useDictionary)
+        	{
+        		if (dictionary.TryGetValue(tmpZobristKey, out tableItem))
+        		{
+        			successfulHits++;
+                	return tableItem;            			
+        		}
+    			else
+    			{
+        			failureHits++;
+        			return null;      				
+    			}
+        	}
+        	else
+        	{
+                /* get access to item */
+                int index = (int)(tmpZobristKey % (ulong)tableItems);
+                tableItem = items[index];
+        	
+                /* key must be the same */
+                if (tableItem.key == tmpZobristKey)
+                {
+                    successfulHits++;
+                    return tableItem;
+                }
+                else
+                {
+                    failureHits++;
+                    return null;
+                }
+        	}
         }
 
 		public void Store(int value, Player vctPlayer, TTEvaluationType type, int depth, int bestMove, int examinedMoves)
