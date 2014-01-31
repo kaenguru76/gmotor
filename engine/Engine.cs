@@ -329,11 +329,11 @@ namespace GomokuEngine
             }
         }
 
-        public void ResetTtTable()
+        public void ResetTtTable(bool useDictionary)
         {
             while (thinking) ;
             if (search == null) return;
-            transpositionTable.ResetTable();
+            transpositionTable.ResetTable(useDictionary);
         }
 
         public Player GetSymbol(int row, int column)
@@ -386,7 +386,7 @@ namespace GomokuEngine
                 gameBoard.MakeABMove(playedMoves[i]);
             }
             
-            ResetTtTable();
+            ResetTtTable(false);
 
         }
 

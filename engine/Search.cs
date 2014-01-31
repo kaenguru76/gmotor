@@ -20,7 +20,7 @@ namespace GomokuEngine
         bool iterativeDeepening;
 		bool stopThinking;
         SearchInformation searchInfo;
-        List<ABMove> playedMoves;
+        //List<ABMove> playedMoves;
         GameBoard gameBoard;
         TranspositionTable transpositionTable;
 
@@ -33,7 +33,7 @@ namespace GomokuEngine
             maxThinkingTime = new TimeSpan(0, 0, 5);
             iterativeDeepening = true;
             maxSearchDepth = 30;
-            playedMoves = new List<ABMove>();
+            //playedMoves = new List<ABMove>();
         }
 
         public void RootSearch()
@@ -64,6 +64,7 @@ namespace GomokuEngine
             //searchInfo.evaluation = -int.MaxValue;
 
             searchInfo.evaluation = gameBoard.GetEvaluation();
+            
 
             if (iterativeDeepening)
             {
@@ -87,7 +88,7 @@ namespace GomokuEngine
 
                 //generate moves
                 searchInfo.possibleMoves = gameBoard.GeneratePossibleMoves();
-                if (searchInfo.possibleMoves.Count == 0 && playedMoves.Count > 0) break;
+                if (searchInfo.possibleMoves.Count == 0 && depth > 0 && gameBoard.GetPlayedMoves().Count > 0) break;
 
                 foreach (ABMove move in searchInfo.possibleMoves)
                 {
@@ -175,7 +176,7 @@ namespace GomokuEngine
                     gameBoard.VctActive = false;
                 }
 
-                if (playedMoves.Count == 0 && bestMove != null) break;
+                if (gameBoard.GetPlayedMoves().Count == 0 && bestMove != null) break;
                 if ((depth > 0 && bestValue == -int.MaxValue) || bestValue == int.MaxValue) break;
             } 
 L1:

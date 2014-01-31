@@ -57,6 +57,11 @@ namespace GomokuEngine
         ulong hashVctBlack;
         ulong hashVctWhite;
 
+		//dictionary remembers everythink, not like hash table        
+        Dictionary<ulong,TranspositionTableItem> dictionary;
+        bool useDictionary;
+
+
 		public TranspositionTable(int boardSize)
         {
             this.boardSize = boardSize;
@@ -76,43 +81,64 @@ namespace GomokuEngine
             hashVctBlack = rand64();
             hashVctWhite = rand64();
 
-            ResetTable();
+          	dictionary = new Dictionary<ulong,TranspositionTableItem>();
+
+          	useDictionary = false;
+            ResetTable(useDictionary);
 		}
 
+		public ulong GetZobristKey(Player vctPlayer)
+		{
+            switch (vctPlayer)
+            {
+            	case Player.BlackPlayer:
+                	return zobristKey ^ hashVctBlack;
+                case Player.WhitePlayer:
+                	return zobristKey ^ hashVctWhite;
+                default:
+                	return zobristKey;
+        	}			
+		}
+		
         public TranspositionTableItem Lookup(Player vctPlayer)
         {
             if (tableItems != 0)
             {
-                ulong tmpZobristKey;
+            	ulong tmpZobristKey = GetZobristKey(vctPlayer);
+            	TranspositionTableItem tableItem;
 
-                switch (vctPlayer)
-                {
-                    case Player.BlackPlayer:
-                        tmpZobristKey = zobristKey ^ hashVctBlack;
-                        break;
-                    case Player.WhitePlayer:
-                        tmpZobristKey = zobristKey ^ hashVctWhite;
-                        break;
-                    default:
-                        tmpZobristKey = zobristKey;
-                        break;
-                }
-
-                /* get access to item */
-                int index = (int)(tmpZobristKey % (ulong)tableItems);
-                TranspositionTableItem tableItem = items[index];
-
-                /* key must be the same */
-                if (tableItem.key == tmpZobristKey)
-                {
-                    successfulHits++;
-                    return tableItem;
-                }
-                else
-                {
-                    failureHits++;
-                    return null;
-                }
+            	if (useDictionary)
+            	{
+            		if (dictionary.TryGetValue(tmpZobristKey, out tableItem))
+            		{
+            			successfulHits++;
+                    	return tableItem;            			
+            		}
+        			else
+        			{
+            			failureHits++;
+            			return null;
+            				
+        			}
+            	}
+            	else
+            	{
+	                /* get access to item */
+	                int index = (int)(tmpZobristKey % (ulong)tableItems);
+	                tableItem = items[index];
+            	
+	                /* key must be the same */
+	                if (tableItem.key == tmpZobristKey)
+	                {
+	                    successfulHits++;
+	                    return tableItem;
+	                }
+	                else
+	                {
+	                    failureHits++;
+	                    return null;
+	                }
+            	}
             }
             return null;
         }
@@ -121,22 +147,9 @@ namespace GomokuEngine
         {
             if (tableItems != 0)
             {
-                ulong tmpZobristKey;
+	          	ulong tmpZobristKey = GetZobristKey(vctPlayer);;
 
-                switch (vctPlayer)
-                {
-                    case Player.BlackPlayer:
-                        tmpZobristKey = zobristKey ^ hashVctBlack;
-                        break;
-                    case Player.WhitePlayer:
-                        tmpZobristKey = zobristKey ^ hashVctWhite;
-                        break;
-                    default:
-                        tmpZobristKey = zobristKey;
-                        break;
-                }
-
-                /* get access to item */
+	          	/* get access to item */
                 int index = (int)(tmpZobristKey % (ulong)tableItems);
                 TranspositionTableItem tableItem = items[index];
 
@@ -147,7 +160,16 @@ namespace GomokuEngine
                 tableItem.depth = depth;
                 tableItem.bestMove = bestMove;
                 tableItem.examinedMoves = examinedMoves;
+
+                //store the same data also into dictionary
+                if (useDictionary)
+                {
+                	//add key if it does not exist yet
+                	if (!dictionary.ContainsKey(tmpZobristKey))
+                		dictionary.Add(tmpZobristKey, tableItem);
+                }
             }
+            
         }
 
         public int TableSize
@@ -156,8 +178,10 @@ namespace GomokuEngine
             set{ tableSize = value;}
         }
 
-		public void ResetTable()
+		public void ResetTable(bool useDictionary)
         {
+			this.useDictionary = useDictionary;
+			
 			tableItems = tableSize / 30;
 
             successfulHits = 0;
@@ -169,6 +193,10 @@ namespace GomokuEngine
             {
                 items[index] = new TranspositionTableItem();
             }
+
+            //clear dictionary
+            if (useDictionary)
+            	dictionary.Clear();
         }
 
         /* returns 64-bit random number */

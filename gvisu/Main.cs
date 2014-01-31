@@ -669,7 +669,7 @@ namespace gvisu
 
         private void butResetTtable_Click(object sender, EventArgs e)
         {
-			engine.ResetTtTable();
+			engine.ResetTtTable(checkBoxUseDictionary.Checked);
         }
 
 		private void btnStop_Click(object sender, EventArgs e)
