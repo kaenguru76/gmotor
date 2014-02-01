@@ -19,17 +19,21 @@ namespace GomokuEngine
         int maxSearchDepth;
         bool iterativeDeepening;
 		bool stopThinking;
-        SearchInformation searchInfo;
+        //SearchInformation searchInfo;
         //List<ABMove> playedMoves;
         GameBoard gameBoard;
         TranspositionTable transpositionTable;
+        //int examinedMoves;
+        //int nbCutoffs;
+        //int nbVCTCutoffs;
+        SearchInformation sInfo;
 
 		public Search(GameBoard gameBoard, TranspositionTable transpositionTable)
 		{
             this.gameBoard = gameBoard;
             this.transpositionTable = transpositionTable;
 
-            searchInfo = new SearchInformation();
+            //searchInfo = new SearchInformation();
             maxThinkingTime = new TimeSpan(0, 0, 5);
             iterativeDeepening = true;
             maxSearchDepth = 30;
@@ -38,12 +42,6 @@ namespace GomokuEngine
 
         public void RootSearch()
         {
-            //gameBoard.NewSearch();
-
-            //reset number of alpha-beta cutoffs
-            searchInfo.nbCutoffs = 0;
-            searchInfo.nbVCTCutoffs = 0;
-
             startTime = DateTime.Now;
 
             //initialize counter
@@ -51,21 +49,14 @@ namespace GomokuEngine
             
             //initialize time measurement
 			stopThinking = false;
+			
+			sInfo = new SearchInformation();
 
-            searchInfo.examinedMoves = 0;
-            //start time
-			searchInfo.elapsedTime = new TimeSpan(0);
-
-			searchInfo.winner = Player.None;
-            searchInfo.bestMove = null;
-            searchInfo.reachedDepth = 0;
-
+			SearchInformation sInfoTmp = new SearchInformation();
+			
             int startingDepth;
-            //searchInfo.evaluation = -int.MaxValue;
 
-            searchInfo.evaluation = gameBoard.GetEvaluation();
-            
-
+			//iterative search or fix search?
             if (iterativeDeepening)
             {
                 startingDepth = 0;
@@ -75,22 +66,23 @@ namespace GomokuEngine
                 startingDepth = maxSearchDepth;
             }
 
-            for (int depth = startingDepth; depth <= maxSearchDepth; depth++)
+            //start iterative search
+            for (sInfoTmp.depth = startingDepth; sInfoTmp.depth <= maxSearchDepth; sInfoTmp.depth++)
             {
-                int bestValue = -int.MaxValue;
-                ABMove bestMove = null;
+                sInfoTmp.evaluation = -int.MaxValue;
+                //ABMove bestMove = null;
 
-                if (depth == 0)
+                if (sInfoTmp.depth == 0)
                 {
                     // start VCT
                     gameBoard.VctActive = true;
                 }
 
                 //generate moves
-                searchInfo.possibleMoves = gameBoard.GeneratePossibleMoves();
-                if (searchInfo.possibleMoves.Count == 0 && depth > 0 && gameBoard.GetPlayedMoves().Count > 0) break;
+                sInfoTmp.possibleMoves = gameBoard.GeneratePossibleMoves();
+                if (sInfoTmp.possibleMoves.Count == 0 && sInfoTmp.depth > 0 && gameBoard.GetPlayedMoves().Count > 0) break;
 
-                foreach (ABMove move in searchInfo.possibleMoves)
+                foreach (ABMove move in sInfoTmp.possibleMoves)
                 {
                     int beta;
                     int alpha;
@@ -144,7 +136,7 @@ namespace GomokuEngine
 
                     gameBoard.MakeABMove(move);
     
-                    move.value = -AlphaBeta(depth, -beta, -alpha);
+                    move.value = -AlphaBeta(sInfoTmp.depth, -beta, -alpha);
 
 					//move.vctPlayer = gameBoard.VctPlayer;					
                     //get some data from TT
@@ -158,59 +150,59 @@ namespace GomokuEngine
                     
                     gameBoard.UndoABMove();
 
-                    searchInfo.examinedMoves++;
+                    sInfo.examinedMoves++;
 
                     if (TimeoutReached())
                     {
-                        if (searchInfo.bestMove == null) searchInfo.bestMove = move;
+                        if (sInfoTmp.bestMove == null) sInfoTmp.bestMove = move;
                         goto L1;
                     }
                     #endregion
 
-                    if (move.value > bestValue || bestMove == null)
+                    if (move.value > sInfoTmp.evaluation || sInfoTmp.bestMove == null)
                     {
-                        bestValue = move.value;
-                        bestMove = move;
+                        sInfoTmp.evaluation = move.value;
+                        sInfoTmp.bestMove = move;
 
-                        if (bestValue == int.MaxValue) break;
+                        if (sInfoTmp.evaluation == int.MaxValue) break;
                     }
                 }
 
-               // searchInfo.possibleMoves = gameBoard.GeneratePossibleMoves();//to get values from TT
-                searchInfo.reachedDepth = depth;
-                searchInfo.evaluation = bestValue;
-                searchInfo.bestMove = bestMove;
-                searchInfo.vctActive = gameBoard.VctActive;
+                //depth search finished->store results
+                sInfo.depth = sInfoTmp.depth;
+                sInfo.evaluation = sInfoTmp.evaluation;
+                sInfo.bestMove = sInfoTmp.bestMove;
+                sInfo.possibleMoves = new List<ABMove>(sInfoTmp.possibleMoves);
 
-                if (depth == 0)
+                if (sInfo.depth == 0)
                 {
                     //end VCT
                     gameBoard.VctActive = false;
                 }
 
-                if (gameBoard.GetPlayedMoves().Count == 0 && bestMove != null) break;
-                if ((depth > 0 && bestValue == -int.MaxValue) || bestValue == int.MaxValue) break;
+                if (gameBoard.GetPlayedMoves().Count == 0 && sInfoTmp.bestMove != null) break;
+                if ((sInfo.depth > 0 && sInfoTmp.evaluation == -int.MaxValue) || sInfoTmp.evaluation == int.MaxValue) break;
             } 
 L1:
 
             //end VCT
             gameBoard.VctActive = false;
- 
-            if (searchInfo.evaluation == int.MaxValue)
+            
+            if (sInfo.evaluation == int.MaxValue)
             {
-                searchInfo.winner = (gameBoard.GetPlayerOnMove() == Player.BlackPlayer) ? Player.BlackPlayer : Player.WhitePlayer;
+                sInfo.winner = (gameBoard.GetPlayerOnMove() == Player.BlackPlayer) ? Player.BlackPlayer : Player.WhitePlayer;
             }
 
-            if (searchInfo.evaluation == -int.MaxValue)
+            if (sInfo.evaluation == -int.MaxValue)
             {
-                searchInfo.winner = (gameBoard.GetPlayerOnMove() == Player.BlackPlayer) ? Player.WhitePlayer : Player.BlackPlayer;
+                sInfo.winner = (gameBoard.GetPlayerOnMove() == Player.BlackPlayer) ? Player.WhitePlayer : Player.BlackPlayer;
             }
 
             //searchInfo.possibleMoves = gameBoard.GeneratePossibleMoves();
             //searchInfo.examinedMoves = gameBoard.ExaminedMoves;
 
-            //raise event with copy of search information
-            ThinkingFinished(new SearchInformation(searchInfo));
+            //raise event with search information
+            ThinkingFinished(sInfo);
         }
 
         int AlphaBeta(int depth, int alpha, int beta)
@@ -252,13 +244,13 @@ L1:
                 }
             }
             
-            int examinedMoves = searchInfo.examinedMoves;
+            int examinedMoves = sInfo.examinedMoves;
 
             int bestMove = -1;
             int bestValue = -int.MaxValue;
             List<int> moves;
 
-            //#region VCT search
+            #region VCT search
             //    bestScore = AlphaBetaVCT(1);
 
             //    if (beta == int.MaxValue)
@@ -299,12 +291,13 @@ L1:
             //            return bestScore;
             //        }
             //    }
-            //#endregion
+            #endregion
 
             if (depth == 1)
             {
                 bestValue = gameBoard.GetEvaluation();
-                transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.Exact, depth, bestMove, searchInfo.examinedMoves - examinedMoves);
+                transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.Exact, depth, bestMove, 
+                                         sInfo.examinedMoves - examinedMoves);
                 return bestValue;
             }
 
@@ -320,8 +313,8 @@ L1:
                 int value = -AlphaBeta(depth - 1, -beta, -alpha);
 
                 gameBoard.UndoMove();
-
-                searchInfo.examinedMoves++;
+                
+                sInfo.examinedMoves++;
 
                 if (TimeoutReached()) return bestValue;
 
@@ -335,7 +328,7 @@ L1:
                         alpha = value;
                         if (value >= beta)
                         {
-                            searchInfo.nbCutoffs++;
+                            sInfo.nbCutoffs++;
                             break;
                         }
                     }
@@ -344,11 +337,11 @@ L1:
 
 //L1:
             if (bestValue <= alpha)  // an upper bound value
-                transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.UpperBound, depth, bestMove, searchInfo.examinedMoves - examinedMoves);
+                transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.UpperBound, depth, bestMove, sInfo.examinedMoves - examinedMoves);
             else if (bestValue >= beta)  // lower bound value
-                transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.LowerBound, depth, bestMove, searchInfo.examinedMoves - examinedMoves);
+                transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.LowerBound, depth, bestMove, sInfo.examinedMoves - examinedMoves);
             else // a true minimax value
-                transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.Exact, depth, bestMove, searchInfo.examinedMoves - examinedMoves);
+                transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.Exact, depth, bestMove, sInfo.examinedMoves - examinedMoves);
 
             return bestValue;
         }
@@ -385,7 +378,7 @@ L1:
 
                 gameBoard.UndoMove();
 
-                searchInfo.examinedMoves++;
+                sInfo.examinedMoves++;
 
                 if (TimeoutReached()) return bestValue;
 
@@ -399,7 +392,7 @@ L1:
                         alpha = value;
                         if (value >= beta)
                         {
-                            searchInfo.nbVCTCutoffs++;
+                            sInfo.nbVCTCutoffs++;
                             break;
                         }
                     }
@@ -413,24 +406,21 @@ L1:
 
 		bool TimeoutReached()
         {
+	        //TimeSpan elapsedTime;
+			//float TThits;
+
 			if (!stopThinking)
             {
-                if (timeoutCounter % 1000 == 999)
-				{
-					//refresh timeout reached
-                    searchInfo.elapsedTime = DateTime.Now - startTime;
-                    searchInfo.TThits = transpositionTable.SuccessfulHits;
-                    //searchInfo.examinedMoves = gameBoard.ExaminedMoves;
-				}
-
                 if (timeoutCounter % 10000 == 9999)
                 {
-                    //raise event with copy of search information
-                    ThinkingProgress(new SearchInformation(searchInfo));
+                    sInfo.elapsedTime = DateTime.Now - startTime;;
+                    sInfo.TThits = transpositionTable.SuccessfulHits;
+                    	
+                    ThinkingProgress(sInfo);
                 }
                 timeoutCounter++;
 
-                if (searchInfo.elapsedTime > maxThinkingTime)
+                if (sInfo.elapsedTime > maxThinkingTime)
 				{
 					stopThinking = true;
 				}

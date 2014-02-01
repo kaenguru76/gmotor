@@ -622,7 +622,7 @@ namespace gvisu
 
             listBox2.Items.Add("TT hits = " + info.TThits.ToString("f1") + "%");
             listBox2.Items.Add("evaluation = " + info.evaluation.ToString());
-            listBox2.Items.Add("reached depth = " + info.reachedDepth.ToString());
+            listBox2.Items.Add("reached depth = " + info.depth.ToString());
 
             if (info.nbCutoffs > 2000)
             {

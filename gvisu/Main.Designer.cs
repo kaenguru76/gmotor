@@ -567,10 +567,10 @@
 									this.vg2,
 									this.vg3});
 			this.listViewGame.FullRowSelect = true;
-			this.listViewGame.Location = new System.Drawing.Point(12, 117);
+			this.listViewGame.Location = new System.Drawing.Point(12, 115);
 			this.listViewGame.MultiSelect = false;
 			this.listViewGame.Name = "listViewGame";
-			this.listViewGame.Size = new System.Drawing.Size(358, 252);
+			this.listViewGame.Size = new System.Drawing.Size(358, 254);
 			this.listViewGame.TabIndex = 35;
 			this.listViewGame.UseCompatibleStateImageBehavior = false;
 			this.listViewGame.View = System.Windows.Forms.View.Details;

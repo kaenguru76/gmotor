@@ -50,6 +50,18 @@ namespace GomokuEngine
             this.time = time;
         }
 
+        public ABMove(int square, Player player, int boardSize)
+        {
+            this.square = square;
+            this.player = player;
+            this.boardSize = boardSize;
+            this.moveType = BothPlayerEvaluation.unknown;
+            this.value = 0;
+            this.valueType = TTEvaluationType.Unknown;
+            this.depth = -1;
+            //this.time = time;
+        }
+
         public override string ToString()
         {
             Conversions conversions = new Conversions(boardSize);

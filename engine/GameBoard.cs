@@ -42,7 +42,6 @@ namespace GomokuEngine
         VCT vct;
 
         TranspositionTable transpositionTable;
-//        int examinedMoves;
 
         BothPlayerEvaluation[] backupEvaluationBlack;
         BothPlayerEvaluation[] backupEvaluationWhite;
@@ -149,9 +148,6 @@ namespace GomokuEngine
             //update zobrist key
             transpositionTable.MakeMove(square, playerOnMove);
 
-            //increase counter
-            //examinedMoves++;
-
             //toggle playerOnMove
             playerOnMove = (playerOnMove == Player.BlackPlayer) ? Player.WhitePlayer : Player.BlackPlayer;
 
@@ -233,14 +229,24 @@ namespace GomokuEngine
             List<ABMove> movesC = new List<ABMove>();
 
             List<int> possibleSquares = GeneratePossibleSquares();
-            ABMove newMove;
+            
+            foreach (int square in possibleSquares)
+            {
+            	ABMove move = new ABMove(square,playerOnMove,boardSize);
+            	movesC.Add(move);
+                BothPlayerEvaluation bothPlayerEvaluation = (playerOnMove == Player.BlackPlayer)? sortingBlack.GetEvaluation(square):
+                    sortingWhite.GetEvaluation(square);
+            	move.moveType = bothPlayerEvaluation;
+            	move.vctPlayer = vct.VctPlayer;
+            }
+            return movesC;
+        }
+/*            ABMove newMove;
 
             for (int i = 0; i < possibleSquares.Count; i++)
             {
                 int square = possibleSquares[i];
                 
-                BothPlayerEvaluation bothPlayerEvaluation = (playerOnMove == Player.BlackPlayer)? sortingBlack.GetEvaluation(square):
-                    sortingWhite.GetEvaluation(square);
 
                 //get information from transposition table
                 transpositionTable.MakeMove(square, playerOnMove);
@@ -260,7 +266,7 @@ namespace GomokuEngine
                 movesC.Add(newMove);
             }
             return movesC;
-        }
+        }*/
 
         public List<int> GeneratePossibleSquares()
         {
