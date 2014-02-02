@@ -621,7 +621,22 @@ namespace gvisu
             }
 
             listBox2.Items.Add("TT hits = " + info.TThits.ToString("f1") + "%");
-            listBox2.Items.Add("evaluation = " + info.evaluation.ToString());
+            
+            string s1;
+            switch (info.evaluation)
+            {
+                case int.MaxValue:
+                    s1 = "INF";
+                    break;
+                case -int.MaxValue:
+                    s1 = "-INF";
+                    break;
+                default:
+                    s1 = info.evaluation.ToString();
+                    break;
+            }
+
+            listBox2.Items.Add("evaluation = " + s1);
             listBox2.Items.Add("reached depth = " + info.depth.ToString());
 
             if (info.nbCutoffs > 2000)

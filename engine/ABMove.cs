@@ -22,7 +22,7 @@ namespace GomokuEngine
         public ABMove()
         {
         }
-
+/*
         public ABMove(int square, Player player, int boardSize, BothPlayerEvaluation moveType, 
             int value, TTEvaluationType valueType, int examinedMoves, int depth, Player vctPlayer, TimeSpan time)
         {
@@ -36,17 +36,13 @@ namespace GomokuEngine
             this.depth = depth;
             this.vctPlayer = vctPlayer;
             this.time = time;
-        }
+        }*/
 
         public ABMove(int square, Player player, int boardSize, TimeSpan time)
         {
             this.square = square;
             this.player = player;
             this.boardSize = boardSize;
-            this.moveType = BothPlayerEvaluation.unknown;
-            this.value = 0;
-            this.valueType = TTEvaluationType.Unknown;
-            this.depth = -1;
             this.time = time;
         }
 
@@ -55,11 +51,6 @@ namespace GomokuEngine
             this.square = square;
             this.player = player;
             this.boardSize = boardSize;
-            this.moveType = BothPlayerEvaluation.unknown;
-            this.value = 0;
-            this.valueType = TTEvaluationType.Unknown;
-            this.depth = -1;
-            //this.time = time;
         }
 
         public override string ToString()
@@ -97,7 +88,7 @@ namespace GomokuEngine
                     s2 = ">= " + s1;
                     break;
                 default:
-                    s2 = "? " + s1;
+                    s2 = "?";
                     break;
             }
 

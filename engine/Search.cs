@@ -143,7 +143,7 @@ namespace GomokuEngine
                     TranspositionTableItem ttItem = transpositionTable.Lookup(gameBoard.VctPlayer);
                     if (ttItem != null)
                     {
-	                    //move.moveType = ttItem.type;
+	                    move.valueType = ttItem.type;
     	                move.examinedMoves = ttItem.examinedMoves;
 						move.depth = ttItem.depth;
                     }
@@ -244,11 +244,8 @@ L1:
                 }
             }
             
-            int examinedMoves = sInfo.examinedMoves;
-
             int bestMove = -1;
             int bestValue = -int.MaxValue;
-            List<int> moves;
 
             #region VCT search
             //    bestScore = AlphaBetaVCT(1);
@@ -297,14 +294,14 @@ L1:
             {
                 bestValue = gameBoard.GetEvaluation();
                 transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.Exact, depth, bestMove, 
-                                         sInfo.examinedMoves - examinedMoves);
+                                         0);
                 return bestValue;
             }
 
-            bestValue = -int.MaxValue;
+            int examinedMoves = sInfo.examinedMoves;
 
             //do normal search
-            moves = gameBoard.GeneratePossibleSquares();
+            List<int> moves = gameBoard.GeneratePossibleSquares();
 
             foreach (int move in moves)
             {
@@ -363,12 +360,17 @@ L1:
             int bestValue = -int.MaxValue;
             int bestMove = -1;
 
-            //Terminal node?
-            if (gameBoard.GetWinner() != Player.None) return gameBoard.GetEvaluation();
+            //Terminal node or max depth reached
+            if ((gameBoard.GetWinner() != Player.None) || (depth == -17))
+            {
+                bestValue = gameBoard.GetEvaluation();
+                transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.Exact, depth, bestMove, 
+                                         0);
+                return bestValue;
+            }
 
-            //maximal depth reached
-            if (depth == -17) return gameBoard.GetEvaluation();
-
+            int examinedMoves = sInfo.examinedMoves;
+            
             List<int> moves = gameBoard.GeneratePossibleSquares();
             foreach (int move in moves)
             {
@@ -400,7 +402,7 @@ L1:
             }
 
      //L1:
-            //transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.Exact, depth, bestMove, gameBoard.ExaminedMoves - examinedMoves);
+            transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.Exact, depth, bestMove, sInfo.examinedMoves - examinedMoves);
             return bestValue;
         }
 

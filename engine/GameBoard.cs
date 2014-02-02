@@ -238,6 +238,18 @@ namespace GomokuEngine
                     sortingWhite.GetEvaluation(square);
             	move.moveType = bothPlayerEvaluation;
             	move.vctPlayer = vct.VctPlayer;
+
+            	//get information from transposition table
+                transpositionTable.MakeMove(square, playerOnMove);
+                TranspositionTableItem ttItem = transpositionTable.Lookup(vct.VctPlayer);
+                if (ttItem != null)
+                {
+                	move.valueType = ttItem.type;
+                	move.examinedMoves = ttItem.examinedMoves;
+                	move.depth = ttItem.depth;
+                	move.value = -ttItem.value;
+                }
+                transpositionTable.UndoMove(square, playerOnMove);
             }
             return movesC;
         }
@@ -348,15 +360,15 @@ namespace GomokuEngine
         public Player GetWinner()
         {
             if (winner != Player.None) return winner;
-     
+     /*
             if (playerOnMove == Player.BlackPlayer && sortingBlack.IsWinner()) return Player.BlackPlayer;
 			if (playerOnMove == Player.WhitePlayer && sortingWhite.IsWinner()) return Player.WhitePlayer;
-			return Player.None;
+			return Player.None;*/
 	 
 			//when following lines are uncommented, the evaluation is correct, but gmotor loses again Yixin
-            /*if (playerOnMove == Player.BlackPlayer && sortingBlack.IsWinner()) winner = Player.BlackPlayer;
+            if (playerOnMove == Player.BlackPlayer && sortingBlack.IsWinner()) winner = Player.BlackPlayer;
             if (playerOnMove == Player.WhitePlayer && sortingWhite.IsWinner()) winner = Player.WhitePlayer;
-            return winner;*/
+            return winner;
         }
 
         public void GetSquareInfo(int square, out SquareInfo squareInfo)
