@@ -52,7 +52,7 @@ namespace GomokuEngine
 			
 			sInfo = new SearchInformation();
 
-			SearchInformation sInfoTmp = new SearchInformation();
+			//SearchInformation sInfoTmp = new SearchInformation();
 			
             int startingDepth;
 
@@ -67,22 +67,22 @@ namespace GomokuEngine
             }
 
             //start iterative search
-            for (sInfoTmp.depth = startingDepth; sInfoTmp.depth <= maxSearchDepth; sInfoTmp.depth++)
+            for (int depth = startingDepth; depth <= maxSearchDepth; depth++)
             {
-                sInfoTmp.evaluation = -int.MaxValue;
-                //ABMove bestMove = null;
+                int evaluation = -int.MaxValue;
+                ABMove bestMove = null;
 
-                if (sInfoTmp.depth == 0)
+                if (depth == 0)
                 {
                     // start VCT
                     gameBoard.VctActive = true;
                 }
 
                 //generate moves
-                sInfoTmp.possibleMoves = gameBoard.GeneratePossibleMoves();
-                if (sInfoTmp.possibleMoves.Count == 0 && sInfoTmp.depth > 0 && gameBoard.GetPlayedMoves().Count > 0) break;
+                List<ABMove> possibleMoves = gameBoard.GeneratePossibleMoves();
+                if (possibleMoves.Count == 0 && depth > 0 && gameBoard.GetPlayedMoves().Count > 0) break;
 
-                foreach (ABMove move in sInfoTmp.possibleMoves)
+                foreach (ABMove move in possibleMoves)
                 {
                     int beta;
                     int alpha;
@@ -136,7 +136,7 @@ namespace GomokuEngine
 
                     gameBoard.MakeABMove(move);
     
-                    move.value = -AlphaBeta(sInfoTmp.depth, -beta, -alpha);
+                    move.value = -AlphaBeta(depth, -beta, -alpha);
 
 					//move.vctPlayer = gameBoard.VctPlayer;					
                     //get some data from TT
@@ -154,25 +154,25 @@ namespace GomokuEngine
 
                     if (TimeoutReached())
                     {
-                        if (sInfoTmp.bestMove == null) sInfoTmp.bestMove = move;
+                        if (bestMove == null) bestMove = move;
                         goto L1;
                     }
                     #endregion
 
-                    if (move.value > sInfoTmp.evaluation || sInfoTmp.bestMove == null)
+                    if (move.value > evaluation || bestMove == null)
                     {
-                        sInfoTmp.evaluation = move.value;
-                        sInfoTmp.bestMove = move;
+                        evaluation = move.value;
+                        bestMove = move;
 
-                        if (sInfoTmp.evaluation == int.MaxValue) break;
+                        if (evaluation == int.MaxValue) break;
                     }
                 }
 
                 //depth search finished->store results
-                sInfo.depth = sInfoTmp.depth;
-                sInfo.evaluation = sInfoTmp.evaluation;
-                sInfo.bestMove = sInfoTmp.bestMove;
-                sInfo.possibleMoves = new List<ABMove>(sInfoTmp.possibleMoves);
+                sInfo.depth = depth;
+                sInfo.evaluation = evaluation;
+                sInfo.bestMove = bestMove;
+                sInfo.possibleMoves = new List<ABMove>(possibleMoves);
 
                 if (sInfo.depth == 0)
                 {
@@ -180,8 +180,8 @@ namespace GomokuEngine
                     gameBoard.VctActive = false;
                 }
 
-                if (gameBoard.GetPlayedMoves().Count == 0 && sInfoTmp.bestMove != null) break;
-                if ((sInfo.depth > 0 && sInfoTmp.evaluation == -int.MaxValue) || sInfoTmp.evaluation == int.MaxValue) break;
+                if (gameBoard.GetPlayedMoves().Count == 0 && bestMove != null) break;
+                if ((sInfo.depth > 0 && evaluation == -int.MaxValue) || evaluation == int.MaxValue) break;
             } 
 L1:
 
