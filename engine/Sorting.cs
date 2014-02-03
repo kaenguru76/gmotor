@@ -40,8 +40,8 @@ namespace GomokuEngine
             scoreTable[(byte)BothPlayerEvaluation.s3_defending] = -57;
             scoreTable[(byte)BothPlayerEvaluation.c3xc3_attacking] = 80;
             scoreTable[(byte)BothPlayerEvaluation.c3xc3_defending] = -80;
-            scoreTable[(byte)BothPlayerEvaluation.vcf_attacking] = 70;
-            scoreTable[(byte)BothPlayerEvaluation.vcf_defending] = -52;
+            scoreTable[(byte)BothPlayerEvaluation.c3xo1_attacking] = 70;
+            scoreTable[(byte)BothPlayerEvaluation.c3xo1_defending] = -52;
             scoreTable[(byte)BothPlayerEvaluation.c3_attacking] = 66;
             scoreTable[(byte)BothPlayerEvaluation.c3_defending] = -66;
             scoreTable[(byte)BothPlayerEvaluation.o2xo2_attacking] = 30;
