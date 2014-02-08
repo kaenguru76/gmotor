@@ -66,7 +66,7 @@ namespace GomokuEngine
                 startingDepth = maxSearchDepth;
             }
 
-            //start iterative search
+            //start iterative deepening search
             for (int depth = startingDepth; depth <= maxSearchDepth; depth++)
             {
                 int evaluation = -int.MaxValue;
@@ -86,49 +86,6 @@ namespace GomokuEngine
                 {
                     int beta;
                     int alpha;
-
-                    #region MDT search
-                    //int upperbound = int.MaxValue;
-                    //int lowerbound = -int.MaxValue;
-                    //do
-                    //{
-                    //    if (move.value == lowerbound)
-                    //    {
-                    //        beta = move.value + 1;
-                    //    }
-                    //    else
-                    //    {
-                    //        beta = move.value;
-                    //    }
-                    //    alpha = beta - 1;
-
-                    //    gameBoard.MakeABMove(move);
-                    //    if (depth == 0)
-                    //    {
-                    //        move.value = -AlphaBetaVCT(depth);
-                    //    }
-                    //    else
-                    //    {
-                    //        move.value = -AlphaBeta(depth, -beta, -alpha);
-                    //    }
-                    //    gameBoard.UndoABMove();
-
-                    //    if (TimeoutReached())
-                    //    {
-                    //        if (searchInfo.bestMove == null) searchInfo.bestMove = move;
-                    //        goto L1;
-                    //    }
-
-                    //    if (move.value < beta)
-                    //    {
-                    //        upperbound = move.value;
-                    //    }
-                    //    else
-                    //    {
-                    //        lowerbound = move.value;
-                    //    }
-                    //} while (lowerbound < upperbound);
-                    #endregion
 
                     #region AB search
                     alpha = -int.MaxValue;
@@ -215,7 +172,8 @@ L1:
                 int score = AlphaBetaVCT(0, alpha, beta);
                 //stop VCT
                 gameBoard.VctActive = false;
-                return score;
+                if (score == int.MaxValue) return score;
+				else return gameBoard.GetEvaluation();       
             }
 
             //Debug.Assert(gameBoard.VctPlayer == Player.None);
@@ -289,7 +247,7 @@ L1:
             //        }
             //    }
             #endregion
-
+/*
             if (depth == 1)
             {
                 bestValue = gameBoard.GetEvaluation();
@@ -297,7 +255,7 @@ L1:
                                          0);
                 return bestValue;
             }
-
+*/
             int examinedMoves = sInfo.examinedMoves;
 
             //do normal search
