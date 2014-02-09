@@ -145,16 +145,40 @@ L1:
             //end VCT
             gameBoard.VctActive = false;
             
-            if (sInfo.evaluation == int.MaxValue)
+            if (gameBoard.GetPlayerOnMove() == Player.WhitePlayer)
             {
-                sInfo.winner = (gameBoard.GetPlayerOnMove() == Player.BlackPlayer) ? Player.BlackPlayer : Player.WhitePlayer;
+            	//toggle evaluation for white on move - due to negamax
+				sInfo.evaluation = -sInfo.evaluation;
+				
+				//and also for all possible moves
+				foreach(ABMove move in sInfo.possibleMoves)
+				{
+					//toggle value
+					move.value = -move.value;
+					//and toggle bounds
+					/*switch (move.valueType)
+					{
+						case TTEvaluationType.LowerBound:
+							move.valueType = TTEvaluationType.UpperBound;
+							break;
+						case TTEvaluationType.UpperBound:
+							move.valueType = TTEvaluationType.LowerBound;
+							break;
+					}*/
+				}
             }
 
-            if (sInfo.evaluation == -int.MaxValue)
-            {
-                sInfo.winner = (gameBoard.GetPlayerOnMove() == Player.BlackPlayer) ? Player.WhitePlayer : Player.BlackPlayer;
-            }
-
+            //get winner if any
+        	switch (sInfo.evaluation)
+        	{
+            	case int.MaxValue:
+            		sInfo.winner = Player.BlackPlayer;
+            		break;
+            	case -int.MaxValue:
+            		sInfo.winner = Player.WhitePlayer;
+            		break;
+        	}
+                        
             //searchInfo.possibleMoves = gameBoard.GeneratePossibleMoves();
             //searchInfo.examinedMoves = gameBoard.ExaminedMoves;
 
@@ -172,8 +196,7 @@ L1:
                 int score = AlphaBetaVCT(0, alpha, beta);
                 //stop VCT
                 gameBoard.VctActive = false;
-                if (score == int.MaxValue) return score;
-				else return gameBoard.GetEvaluation();       
+                return score;
             }
 
             //Debug.Assert(gameBoard.VctPlayer == Player.None);

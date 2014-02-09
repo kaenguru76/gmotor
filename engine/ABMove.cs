@@ -82,10 +82,10 @@ namespace GomokuEngine
                     s2 = "= " + s1;
                     break;
                 case TTEvaluationType.LowerBound:
-                    s2 = "<= " + s1;
+                    s2 = ">= " + s1;
                     break;
                 case TTEvaluationType.UpperBound:
-                    s2 = ">= " + s1;
+                    s2 = "<= " + s1;
                     break;
                 default:
                     s2 = "?";

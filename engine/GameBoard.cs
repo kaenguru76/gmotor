@@ -396,25 +396,26 @@ namespace GomokuEngine
 
         public int GetEvaluation()
         {
+            //since negamax is used, both players are maximizing their scores
             switch (winner)
             {
-                case Player.None:
-                    if (playerOnMove == Player.BlackPlayer)
-                    {
-                        return sortingBlack.Score;
-                    }
-                    else
-                    {
-                        return sortingWhite.Score;
-                    }
-
                 case Player.BlackPlayer:
                     return (playerOnMove == Player.BlackPlayer) ? int.MaxValue : -int.MaxValue;
 
                 case Player.WhitePlayer:
                     return (playerOnMove == Player.WhitePlayer) ? int.MaxValue : -int.MaxValue;
+                
+                case Player.None:
+                default:
+                    if (playerOnMove == Player.BlackPlayer)
+                    {
+                        return sortingBlack.Score; //black tries to maximize
+                    }
+                    else
+                    {
+                        return sortingWhite.Score; //white tries to maximize
+                    }
             }
-            return 0;
         }
 
         public void GetEvaluationDetail(out int blackScore, out int whiteScore)
