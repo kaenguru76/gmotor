@@ -247,38 +247,21 @@ namespace GomokuEngine
                 	move.valueType = ttItem.type;
                 	move.examinedMoves = ttItem.examinedMoves;
                 	move.depth = ttItem.depth;
-                	move.value = -ttItem.value;
+                	if (playerOnMove == Player.WhitePlayer)
+                	{
+                		//toggle evaluation for white
+                		move.value = ttItem.value;
+                	}
+                	else
+                	{
+                		//correct evaluation is with "-" 
+                		move.value = -ttItem.value;                		
+                	}
                 }
                 transpositionTable.UndoMove(square, playerOnMove);
             }
             return movesC;
         }
-/*            ABMove newMove;
-
-            for (int i = 0; i < possibleSquares.Count; i++)
-            {
-                int square = possibleSquares[i];
-                
-
-                //get information from transposition table
-                transpositionTable.MakeMove(square, playerOnMove);
-                TranspositionTableItem ttItem = transpositionTable.Lookup(vct.VctPlayer);
-                transpositionTable.UndoMove(square, playerOnMove);
-                if (ttItem != null)
-                {
-                    newMove = new ABMove(square, playerOnMove, boardSize, bothPlayerEvaluation, -ttItem.value, ttItem.type, 
-                        ttItem.examinedMoves, ttItem.depth, vct.VctPlayer, new TimeSpan());
-                }
-                else
-                {
-                    newMove = new ABMove(square, playerOnMove, boardSize, bothPlayerEvaluation, 0, TTEvaluationType.Unknown,
-                        0,-1,vct.VctPlayer, new TimeSpan());
-                }
-
-                movesC.Add(newMove);
-            }
-            return movesC;
-        }*/
 
         public List<int> GeneratePossibleSquares()
         {

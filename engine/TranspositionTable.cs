@@ -6,7 +6,7 @@ namespace GomokuEngine
 {
     public enum TTEvaluationType 
     { 
-        Unknown,
+        //Unknown,
         Exact,
         UpperBound, 
         LowerBound,

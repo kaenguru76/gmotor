@@ -52,19 +52,8 @@ namespace GomokuEngine
 			
 			sInfo = new SearchInformation();
 
-			//SearchInformation sInfoTmp = new SearchInformation();
-			
-            int startingDepth;
-
 			//iterative search or fix search?
-            if (iterativeDeepening)
-            {
-                startingDepth = 0;
-            }
-            else
-            {
-                startingDepth = maxSearchDepth;
-            }
+			int startingDepth = (iterativeDeepening) ? 0 : maxSearchDepth;
 
             //start iterative deepening search
             for (int depth = startingDepth; depth <= maxSearchDepth; depth++)
@@ -95,7 +84,6 @@ namespace GomokuEngine
     
                     move.value = -AlphaBeta(depth, -beta, -alpha);
 
-					//move.vctPlayer = gameBoard.VctPlayer;					
                     //get some data from TT
                     TranspositionTableItem ttItem = transpositionTable.Lookup(gameBoard.VctPlayer);
                     if (ttItem != null)
@@ -130,6 +118,7 @@ namespace GomokuEngine
                 sInfo.evaluation = evaluation;
                 sInfo.bestMove = bestMove;
                 sInfo.possibleMoves = new List<ABMove>(possibleMoves);
+                sInfo.vctActive = gameBoard.VctActive;
 
                 if (sInfo.depth == 0)
                 {
@@ -179,9 +168,6 @@ L1:
             		break;
         	}
                         
-            //searchInfo.possibleMoves = gameBoard.GeneratePossibleMoves();
-            //searchInfo.examinedMoves = gameBoard.ExaminedMoves;
-
             //raise event with search information
             ThinkingFinished(sInfo);
         }
@@ -196,7 +182,17 @@ L1:
                 int score = AlphaBetaVCT(0, alpha, beta);
                 //stop VCT
                 gameBoard.VctActive = false;
-                return score;
+                
+                if (score == -int.MaxValue) // VCT was not succesfull
+                	return gameBoard.GetEvaluation();
+				else
+					return score;
+            }
+
+            //game finished
+        	if (gameBoard.GetWinner() != Player.None)
+            {
+                return gameBoard.GetEvaluation();
             }
 
             //Debug.Assert(gameBoard.VctPlayer == Player.None);
@@ -227,16 +223,6 @@ L1:
             
             int bestMove = -1;
             int bestValue = -int.MaxValue;
-
-/*
-            if (depth == 1)
-            {
-                bestValue = gameBoard.GetEvaluation();
-                transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.Exact, depth, bestMove, 
-                                         0);
-                return bestValue;
-            }
-*/
             int examinedMoves = sInfo.examinedMoves;
 
             //do normal search
@@ -271,8 +257,7 @@ L1:
                 }
             }
 
-//L1:
-            if (bestValue <= alpha)  // an upper bound value
+            if (bestValue < alpha)  // an upper bound value
                 transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.UpperBound, depth, bestMove, sInfo.examinedMoves - examinedMoves);
             else if (bestValue >= beta)  // lower bound value
                 transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.LowerBound, depth, bestMove, sInfo.examinedMoves - examinedMoves);
@@ -284,8 +269,8 @@ L1:
 
         int AlphaBetaVCT(int depth, int alpha, int beta)
         {
-        	//max depth reached
-            if (depth == -17)
+        	//max depth reached or game finished
+        	if (depth == -17 || gameBoard.GetWinner() != Player.None)
             {
                 return gameBoard.GetEvaluation();
             }
@@ -350,8 +335,7 @@ L1:
                 }
             }
 
-     //L1:
-            if (bestValue <= alpha)  // an upper bound value
+            if (bestValue < alpha)  // an upper bound value
                 transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.UpperBound, depth, bestMove, sInfo.examinedMoves - examinedMoves);
             else if (bestValue >= beta)  // lower bound value
                 transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.LowerBound, depth, bestMove, sInfo.examinedMoves - examinedMoves);

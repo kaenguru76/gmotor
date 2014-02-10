@@ -78,9 +78,6 @@ namespace GomokuEngine
             string s2;
             switch (valueType)
             {
-                case TTEvaluationType.Exact:
-                    s2 = "= " + s1;
-                    break;
                 case TTEvaluationType.LowerBound:
                     s2 = ">= " + s1;
                     break;
@@ -88,7 +85,7 @@ namespace GomokuEngine
                     s2 = "<= " + s1;
                     break;
                 default:
-                    s2 = "?";
+                    s2 = s1;
                     break;
             }
 
