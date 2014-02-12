@@ -401,11 +401,11 @@ namespace GomokuEngine
             }
         }
 
-        public void GetEvaluationDetail(out int blackScore, out int whiteScore)
-        {
-            blackScore = sortingBlack.Score;
-            whiteScore = sortingWhite.Score;
-        }
+//        public void GetEvaluationDetail(out int blackScore, out int whiteScore)
+//        {
+//            blackScore = sortingBlack.Score;
+//            whiteScore = sortingWhite.Score;
+//        }
 
         //public int ExaminedMoves
         //{

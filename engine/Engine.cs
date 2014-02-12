@@ -297,8 +297,9 @@ namespace GomokuEngine
             }
 
             gameInformation.possibleMoves = gameBoard.GeneratePossibleMoves();
-            gameInformation.EvaluationTotal = gameBoard.GetEvaluation();
-            gameBoard.GetEvaluationDetail(out gameInformation.BlackScore, out gameInformation.WhiteScore);
+            
+            gameInformation.Evaluation = (gameBoard.GetPlayerOnMove() == Player.BlackPlayer) ? gameBoard.GetEvaluation():-gameBoard.GetEvaluation();
+            //gameBoard.GetEvaluationDetail(out gameInformation.BlackScore, out gameInformation.WhiteScore);
 
             MovesChangedE(gameInformation);
         }

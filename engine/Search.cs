@@ -82,7 +82,7 @@ namespace GomokuEngine
 
                     gameBoard.MakeABMove(move);
     
-                    move.value = -AlphaBeta(depth, -beta, -alpha);
+                    move.value = -AlphaBeta(depth-1, -beta, -alpha);
 
                     //get some data from TT
                     TranspositionTableItem ttItem = transpositionTable.Lookup(gameBoard.VctPlayer);
@@ -175,7 +175,7 @@ L1:
         int AlphaBeta(int depth, int alpha, int beta)
         {
             //quiescence search
-            if (depth == 0)
+            if (depth <= 0)
             {
                 // start VCT
                 gameBoard.VctActive = true;

@@ -313,8 +313,7 @@ namespace gvisu
 				}
 			}
 
-            statusStrip1.Items[1].Text = "Evaluation = " + gameInformation.EvaluationTotal.ToString() + " (black:" +
-                gameInformation.BlackScore + ", white:" + gameInformation.WhiteScore + ")";
+            statusStrip1.Items[1].Text = "Evaluation = " + gameInformation.Evaluation.ToString();
             statusStrip1.Items[1].Visible = true;
 
         }
@@ -603,7 +602,7 @@ namespace gvisu
             listBox2.Items.Clear();
             listBox2.Items.Add("elapsed time = " + String.Format("{0:f1}s", info.elapsedTime.TotalSeconds));
             //  show number of evaluated moves
-            if (info.examinedMoves >= 10000)
+            if (info.examinedMoves >= 2000)
             {
                 listBox2.Items.Add("moves = " + String.Format("{0}kN ({1:f1}kN/s)", info.examinedMoves / 1000, info.MovesPerSecond / 1000));
             }
