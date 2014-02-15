@@ -1,3 +1,5 @@
+//#define CHECK 
+
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -27,44 +29,27 @@ namespace GomokuEngine
                 evaluation[square] = BothPlayerEvaluation.unknown;
             }
 
-            scoreTable = new int[Enum.GetValues(typeof(BothPlayerEvaluation)).Length];
 
             score = 0;
 
             #region initialize score table
-            scoreTable[(byte)BothPlayerEvaluation.four_attacking] = 100;
-            scoreTable[(byte)BothPlayerEvaluation.four_defending] = -121;
-            scoreTable[(byte)BothPlayerEvaluation.o3_attacking] = 100;
-            scoreTable[(byte)BothPlayerEvaluation.o3_defending] = -100;
-            scoreTable[(byte)BothPlayerEvaluation.s3_attacking] = 70;
-            scoreTable[(byte)BothPlayerEvaluation.s3_defending] = -57;
-            scoreTable[(byte)BothPlayerEvaluation.c3xc3_attacking] = 80;
-            scoreTable[(byte)BothPlayerEvaluation.c3xc3_defending] = -80;
-            scoreTable[(byte)BothPlayerEvaluation.c3xo1_attacking] = 70;
-            scoreTable[(byte)BothPlayerEvaluation.c3xo1_defending] = -52;
-            scoreTable[(byte)BothPlayerEvaluation.c3_attacking] = 66;
-            scoreTable[(byte)BothPlayerEvaluation.c3_defending] = -66;
-            scoreTable[(byte)BothPlayerEvaluation.o2xo2_attacking] = 30;
-            scoreTable[(byte)BothPlayerEvaluation.o2xo2_defending] = -30;
-            scoreTable[(byte)BothPlayerEvaluation.vct_attacking] = 30;
-            scoreTable[(byte)BothPlayerEvaluation.vct_defending] = -30;
-            scoreTable[(byte)BothPlayerEvaluation.o2p_attacking] = 10;
-            scoreTable[(byte)BothPlayerEvaluation.o2_attacking] = 10;
-            scoreTable[(byte)BothPlayerEvaluation.o2p_defending] = -10;
-            scoreTable[(byte)BothPlayerEvaluation.o2_defending] = -10;
-            scoreTable[(byte)BothPlayerEvaluation.tripple1_attacking] = 5;
-            scoreTable[(byte)BothPlayerEvaluation.tripple1_defending] = -5;
-            scoreTable[(byte)BothPlayerEvaluation.double1_attacking] = 5;
-            scoreTable[(byte)BothPlayerEvaluation.double1_defending] = -5;
-            scoreTable[(byte)BothPlayerEvaluation.o1_both] = 5;
-            scoreTable[(byte)BothPlayerEvaluation.o1p_attacking] = 5;
-            scoreTable[(byte)BothPlayerEvaluation.o1_attacking] = 5;
-            scoreTable[(byte)BothPlayerEvaluation.o1p_defending] = -5;
-            scoreTable[(byte)BothPlayerEvaluation.o1_defending] = -5;
-            scoreTable[(byte)BothPlayerEvaluation.rest] = 0;
-            scoreTable[(byte)BothPlayerEvaluation.forbidden] = 0;
-            scoreTable[(byte)BothPlayerEvaluation.occupied] = 0;
-            scoreTable[(byte)BothPlayerEvaluation.unknown] = 0;
+		    scoreTable = new int[Enum.GetValues(typeof(BothPlayerEvaluation)).Length];
+            
+            for (int index1 = 0; index1 < scoreTable.Length; index1++)
+            {
+            	int opositeIndex = scoreTable.Length - index1 - 1;
+            	
+            	int score1 = opositeIndex*opositeIndex/**opositeIndex*/;
+
+				//toggle score1 for defending moves            	
+            	BothPlayerEvaluation eval = (BothPlayerEvaluation)index1;
+            	string str1 = eval.ToString();
+            	if (str1.Contains("defending"))
+           	    {
+					score1 = -score1;            			
+            	}
+            	scoreTable[index1] = score1; 
+            }
             #endregion
 
             #region initialize sorting
@@ -158,7 +143,9 @@ namespace GomokuEngine
             List<int> list1 = new List<int>();
             for (BothPlayerEvaluation eval = BothPlayerEvaluation.four_attacking; eval < BothPlayerEvaluation.unknown; eval++)
             {
-                score1 += sorting.AddMovesToList(eval, list1) * scoreEvaluation[(byte)eval];
+                int nbMoves = AddMovesToList(eval, list1); 
+                int score2 = scoreTable[(byte)eval];
+            	score1 += nbMoves * score2;
             }
             System.Diagnostics.Debug.Assert(score == score1,"Score value is wrong!");
 #endif

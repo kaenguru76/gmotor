@@ -207,7 +207,7 @@ namespace gmotor
 
 			Console.WriteLine(String.Format("MESSAGE time={0:f2}s, depth={1}, nodes={2} ({3:f1}kN/s), evaluation={4}, best={5}",
                 searchInfo.elapsedTime.TotalMilliseconds / 1000, searchInfo.depth, 
-                (searchInfo.examinedMoves >= 10000) ? (searchInfo.examinedMoves / 1000).ToString()+"kN" : searchInfo.examinedMoves.ToString()+"N",
+                (searchInfo.examinedMoves >= 2000) ? (searchInfo.examinedMoves / 1000).ToString()+"kN" : searchInfo.examinedMoves.ToString()+"N",
                 searchInfo.MovesPerSecond / 1000, searchInfo.evaluation, searchInfo.bestMove));
 
             string outputString = String.Format("{0},{1}", searchInfo.bestMove.Row, searchInfo.bestMove.Column);

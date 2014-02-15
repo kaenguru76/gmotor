@@ -69,7 +69,8 @@ namespace GomokuEngine
                 }
 
                 evaluation = AlphaBeta(depth, -int.MaxValue, int.MaxValue, out principalVariation);
-
+ 				if (TimeoutReached()) break;
+ 
                 //generate moves
                 List<ABMove> possibleMoves = gameBoard.GeneratePossibleMoves();
                 if (possibleMoves.Count == 0 && depth > 0 && gameBoard.GetPlayedMoves().Count > 0) break;
@@ -83,12 +84,19 @@ namespace GomokuEngine
                 sInfo.principalVariation = principalVariation;
                 
                 //get best move
-                foreach(ABMove move in sInfo.possibleMoves)
+                if (principalVariation.Count > 0)
                 {
-                	if (move.square == sInfo.principalVariation[0])
-                	{
-                		sInfo.bestMove = move;
-                	}
+	                foreach(ABMove move in sInfo.possibleMoves)
+    	            {
+    	            	if (move.square == sInfo.principalVariation[0])
+    	            	{
+    	            		sInfo.bestMove = move;
+    	            	}
+	                }
+                }
+                else
+                {
+                	sInfo.bestMove = sInfo.possibleMoves[0];
                 }
 
                 if (sInfo.depth == 0)
@@ -97,7 +105,7 @@ namespace GomokuEngine
                     gameBoard.VctActive = false;
                 }
 
-                //if (gameBoard.GetPlayedMoves().Count == 0 && bestMove != null) break;
+                if (gameBoard.GetPlayedMoves().Count == 0) break; //completely first move
                 if ((sInfo.depth > 0 && evaluation == -int.MaxValue) || evaluation == int.MaxValue) break;
             } 
 //L1:
@@ -152,15 +160,17 @@ namespace GomokuEngine
             //quiescence search
             if (depth == 0)
             {
-                // start VCT
-                gameBoard.VctActive = true;
-                bestValue = AlphaBetaVCT(0, alpha, beta, out principalVariation);
-                //stop VCT
-                gameBoard.VctActive = false;
+            	if (beta == int.MaxValue)
+            	{
+	                // start VCT
+    	            gameBoard.VctActive = true;
+    	            bestValue = AlphaBetaVCT(0, beta-1, beta, out principalVariation);
+    	            //stop VCT
+    	            gameBoard.VctActive = false;
                 
-                if (bestValue == -int.MaxValue) // VCT was not succesfull
-                	bestValue = gameBoard.GetEvaluation();
-				
+    	            if (bestValue == int.MaxValue) goto L1;// VCT was succesfull
+            	}
+            	bestValue = gameBoard.GetEvaluation();
 				goto L1;
             }
 
