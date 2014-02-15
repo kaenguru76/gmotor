@@ -18,6 +18,7 @@ namespace GomokuEngine
         //public int reachedDepth;
         public bool vctActive;
         public int depth;
+        public List<int> principalVariation;
 
         public SearchInformation()
         {
