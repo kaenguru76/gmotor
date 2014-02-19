@@ -4,6 +4,30 @@ using System.Threading;
 
 namespace GomokuEngine
 {
+	public static class ScoreConstants
+	{
+    	public const int win = 1000000;
+	    public const int loss = -1000000; 
+	    
+	    static public string Score2Text(int score)
+	    {
+	   		string s1;
+            switch (score)
+            {
+            	case ScoreConstants.win:
+                	s1 = "Black wins";
+                	break;
+                case ScoreConstants.loss:
+                    s1 = "White wins";
+                    break;
+	            default:
+    	            s1 = score.ToString();
+    	            break;
+    	    }	
+            return s1;
+	    }
+	}
+	
     public class Engine
 	{
 		public delegate void NewGameEvent();

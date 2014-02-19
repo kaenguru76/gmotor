@@ -265,8 +265,8 @@ namespace GomokuEngine
 
         public List<int> GeneratePossibleSquares()
         {
-            //if (winner == Player.None)
-            //{
+            if (winner == Player.None)
+            {
                 if (vct.VctActive)
                 {
                     if (playerOnMove == Player.BlackPlayer)
@@ -304,12 +304,12 @@ namespace GomokuEngine
                         return moveGenerator.GeneratePossibleMoves(sortingWhite);
                     }
                 }
-           // }
-           // else
-           // {
+            }
+            else
+            {
                 //game already finished->return no moves
-           //     return new List<int>();
-          //  }
+                return new List<int>();
+            }
         }
 
         public int GetBoardSize()
@@ -383,10 +383,10 @@ namespace GomokuEngine
             switch (winner)
             {
                 case Player.BlackPlayer:
-                    return (playerOnMove == Player.BlackPlayer) ? int.MaxValue : -int.MaxValue;
+                    return (playerOnMove == Player.BlackPlayer) ? ScoreConstants.win : ScoreConstants.loss;
 
                 case Player.WhitePlayer:
-                    return (playerOnMove == Player.WhitePlayer) ? int.MaxValue : -int.MaxValue;
+                    return (playerOnMove == Player.WhitePlayer) ? ScoreConstants.win : ScoreConstants.loss;
                 
                 case Player.None:
                 default:

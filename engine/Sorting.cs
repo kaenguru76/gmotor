@@ -18,6 +18,7 @@ namespace GomokuEngine
         int[] nextItem;
         VCT threats;
 
+
         public Sorting(int boardSize, VCT threats)
 		{
 			//compute number of squares of board

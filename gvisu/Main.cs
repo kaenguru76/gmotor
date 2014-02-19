@@ -612,33 +612,13 @@ namespace gvisu
             }
             // search result
             listBox2.Items.Add("winner = " + info.winner.ToString());
-
-            // best move
-            if (info.bestMove != null)
-            {
-                listBox2.Items.Add("best move = " + info.bestMove.ToString());
-            }
-
-            listBox2.Items.Add("TT hits = " + info.TThits.ToString("f1") + "%");
-            
-            string s1;
-            switch (info.evaluation)
-            {
-                case int.MaxValue:
-                    s1 = "INF";
-                    break;
-                case -int.MaxValue:
-                    s1 = "-INF";
-                    break;
-                default:
-                    s1 = info.evaluation.ToString();
-                    break;
-            }
-
-            listBox2.Items.Add("evaluation = " + s1);
+            listBox2.Items.Add("evaluation = " +  ScoreConstants.Score2Text(info.evaluation));
             listBox2.Items.Add("reached depth = " + info.depth.ToString());
 
-            if (info.nbCutoffs > 2000)
+
+          	listBox2.Items.Add("PV="+info.PrincipalVariationText);
+
+          	if (info.nbCutoffs > 2000)
             {
                 listBox2.Items.Add("cutoffs = " + String.Format("{0}k", info.nbCutoffs / 1000));
             }
@@ -654,7 +634,9 @@ namespace gvisu
             else
             {
                 listBox2.Items.Add("VCT cutoffs = " + String.Format("{0}", info.nbVCTCutoffs));
-            }
+            }            
+
+            listBox2.Items.Add("TT hits = " + info.TThits.ToString("f1") + "%");
         }
 
         void ThinkingFinished(SearchInformation info)

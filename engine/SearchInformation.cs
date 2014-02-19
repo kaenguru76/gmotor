@@ -9,7 +9,6 @@ namespace GomokuEngine
         public TimeSpan elapsedTime;
         public int examinedMoves;
         public List<ABMove> possibleMoves;
-        public ABMove bestMove;
         public float TThits;
         public Player winner;
         public int evaluation;
@@ -18,7 +17,7 @@ namespace GomokuEngine
         //public int reachedDepth;
         public bool vctActive;
         public int depth;
-        public List<int> principalVariation;
+        public List<ABMove> principalVariation;
 
         public SearchInformation()
         {
@@ -27,7 +26,6 @@ namespace GomokuEngine
             examinedMoves = 0;
 			elapsedTime = new TimeSpan(0);
 			winner = Player.None;
-            bestMove = null;
             depth = 0;
         }
 
@@ -40,7 +38,10 @@ namespace GomokuEngine
             {
                 this.possibleMoves = new List<ABMove>(searchInfo.possibleMoves);
             }
-            this.bestMove = searchInfo.bestMove;
+            if (searchInfo.principalVariation != null)
+            {
+                this.principalVariation = new List<ABMove>(searchInfo.principalVariation);
+            }
             this.TThits = searchInfo.TThits;
             this.winner = searchInfo.winner;
             this.evaluation = searchInfo.evaluation;
@@ -64,6 +65,22 @@ namespace GomokuEngine
                 }
             }
         }
+        
+        public string PrincipalVariationText
+        {
+        	get
+        	{
+		    	string pv = "";
+		    	if (principalVariation != null)
+		    	{
+		        	foreach (ABMove move in this.principalVariation)
+		        	{
+		        		pv = pv + move + "/";
+		        	}
+		    	}
+		        return pv;
+        	}
+        }        	
 
     }
 

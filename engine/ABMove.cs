@@ -64,10 +64,10 @@ namespace GomokuEngine
             string s1;
             switch (value)
             {
-                case int.MaxValue:
+                case ScoreConstants.win:
                     s1 = "INF";
                     break;
-                case -int.MaxValue:
+                case ScoreConstants.loss:
                     s1 = "-INF";
                     break;
                 default:

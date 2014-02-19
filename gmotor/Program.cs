@@ -203,14 +203,14 @@ namespace gmotor
         static void ThinkingFinished()
         {
             engine.VctActive = false;
-            engine.MakeMove(searchInfo.bestMove);
+            engine.MakeMove(searchInfo.principalVariation[0]);
 
-			Console.WriteLine(String.Format("MESSAGE time={0:f2}s, depth={1}, nodes={2} ({3:f1}kN/s), evaluation={4}, best={5}",
+			Console.WriteLine(String.Format("MESSAGE time={0:f2}s, depth={1}, nodes={2} ({3:f1}kN/s), evaluation={4}, pv={5}",
                 searchInfo.elapsedTime.TotalMilliseconds / 1000, searchInfo.depth, 
                 (searchInfo.examinedMoves >= 2000) ? (searchInfo.examinedMoves / 1000).ToString()+"kN" : searchInfo.examinedMoves.ToString()+"N",
-                searchInfo.MovesPerSecond / 1000, searchInfo.evaluation, searchInfo.bestMove));
+                searchInfo.MovesPerSecond / 1000, searchInfo.evaluation, searchInfo.PrincipalVariationText));
 
-            string outputString = String.Format("{0},{1}", searchInfo.bestMove.Row, searchInfo.bestMove.Column);
+            string outputString = String.Format("{0},{1}", searchInfo.principalVariation[0].Row, searchInfo.principalVariation[0].Column);
             Console.WriteLine(outputString);
         }
     }
