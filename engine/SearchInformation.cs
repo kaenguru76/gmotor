@@ -10,7 +10,7 @@ namespace GomokuEngine
         public int examinedMoves;
         public List<ABMove> possibleMoves;
         public float TThits;
-        public Player winner;
+        //public Player winner;
         public int evaluation;
         public int nbCutoffs;
         public int nbVCTCutoffs;
@@ -25,7 +25,7 @@ namespace GomokuEngine
             nbVCTCutoffs = 0;
             examinedMoves = 0;
 			elapsedTime = new TimeSpan(0);
-			winner = Player.None;
+			//winner = Player.None;
             depth = 0;
         }
 
@@ -43,7 +43,7 @@ namespace GomokuEngine
                 this.principalVariation = new List<ABMove>(searchInfo.principalVariation);
             }
             this.TThits = searchInfo.TThits;
-            this.winner = searchInfo.winner;
+            //this.winner = searchInfo.winner;
             this.evaluation = searchInfo.evaluation;
             this.nbCutoffs = searchInfo.nbCutoffs;
             this.nbVCTCutoffs = searchInfo.nbVCTCutoffs;
@@ -75,7 +75,14 @@ namespace GomokuEngine
 		    	{
 		        	foreach (ABMove move in this.principalVariation)
 		        	{
-		        		pv = pv + move + "/";
+		        		if (pv == "")
+		        		{
+		        			pv = move.ToString();
+		        		}
+		        		else
+		        		{
+		        			pv = pv + "/" + move;
+		        		}
 		        	}
 		    	}
 		        return pv;

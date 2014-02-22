@@ -61,19 +61,7 @@ namespace GomokuEngine
 
         public string[] ToStringArray(int index)
         {
-            string s1;
-            switch (value)
-            {
-                case ScoreConstants.win:
-                    s1 = "INF";
-                    break;
-                case ScoreConstants.loss:
-                    s1 = "-INF";
-                    break;
-                default:
-                    s1 = value.ToString();
-                    break;
-            }
+            string s1 = EvaluationConstants.Score2Text(value);
 
             string s2;
             switch (valueType)

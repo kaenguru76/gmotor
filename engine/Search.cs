@@ -102,7 +102,7 @@ namespace GomokuEngine
                 }
 
                 if (gameBoard.GetPlayedMoves().Count == 0) break; //completely first move
-                if ((sInfo.depth > 0 && evaluation == ScoreConstants.loss) || evaluation == ScoreConstants.win) break;
+                if ((sInfo.depth > 0 && evaluation == EvaluationConstants.min) || evaluation == EvaluationConstants.max) break;
             } 
 //L1:
 
@@ -133,15 +133,15 @@ namespace GomokuEngine
             }
 
             //get winner if any
-        	switch (sInfo.evaluation)
-        	{
-            	case ScoreConstants.win:
-            		sInfo.winner = Player.BlackPlayer;
-            		break;
-            	case ScoreConstants.loss:
-            		sInfo.winner = Player.WhitePlayer;
-            		break;
-        	}
+//        	switch (sInfo.evaluation)
+//        	{
+//            	case ScoreConstants.max:
+//            		sInfo.winner = Player.BlackPlayer;
+//            		break;
+//            	case ScoreConstants.min:
+//            		sInfo.winner = Player.WhitePlayer;
+//            		break;
+//        	}
                         
             //raise event with search information
             ThinkingFinished(sInfo);
@@ -164,14 +164,14 @@ namespace GomokuEngine
     	            //stop VCT
     	            gameBoard.VctActive = false;
                 
-    	            if (bestValue == ScoreConstants.win) goto L1;// VCT was succesfull
+    	            if (bestValue == EvaluationConstants.max) goto L1;// VCT was succesfull
             	}
             	bestValue = gameBoard.GetEvaluation();
 				goto L1;
             }
 
             //game finished
-        	if (gameBoard.GetWinner() != Player.None)
+        	if (gameBoard.GameFinished)
             {
         		return gameBoard.GetEvaluation(); 
             }
@@ -180,7 +180,7 @@ namespace GomokuEngine
             TranspositionTableItem ttItem = transpositionTable.Lookup(gameBoard.VctPlayer);
             if (ttItem != null)
             {
-                if (ttItem.depth == depth || ttItem.value == ScoreConstants.win)
+                if (ttItem.depth == depth || ttItem.value == EvaluationConstants.max)
                 {
                     switch (ttItem.type)
                     {
@@ -250,7 +250,7 @@ namespace GomokuEngine
 			principalVariation = new List<int>();
 
 			//max depth reached or game finished
-        	if (depth == -17 || gameBoard.GetWinner() != Player.None)
+        	if (depth == -17 || gameBoard.GameFinished)
             {
                 return gameBoard.GetEvaluation();
             }
@@ -259,7 +259,7 @@ namespace GomokuEngine
             TranspositionTableItem ttItem = transpositionTable.Lookup(gameBoard.VctPlayer);
             if (ttItem != null)
             {
-                if (ttItem.depth == depth || ttItem.value == ScoreConstants.win)
+                if (ttItem.depth == depth || ttItem.value == EvaluationConstants.max)
                 {
                     switch (ttItem.type)
                     {

@@ -611,8 +611,8 @@ namespace gvisu
                 listBox2.Items.Add("moves = " + String.Format("{0}N ({1:f1}kN/s)", info.examinedMoves, info.MovesPerSecond / 1000));
             }
             // search result
-            listBox2.Items.Add("winner = " + info.winner.ToString());
-            listBox2.Items.Add("evaluation = " +  ScoreConstants.Score2Text(info.evaluation));
+            //listBox2.Items.Add("winner = " + info.winner.ToString());
+            listBox2.Items.Add("evaluation = " +  EvaluationConstants.Score2Text(info.evaluation));
             listBox2.Items.Add("reached depth = " + info.depth.ToString());
 
 

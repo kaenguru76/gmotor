@@ -196,14 +196,14 @@ namespace GomokuEngine
             return addedMoves;
         }
         
-        public bool IsWinner()
-        {
-            if (firstItem[(int)BothPlayerEvaluation.four_attacking] >= 0) return true;
-            if (firstItem[(int)BothPlayerEvaluation.four_defending] >= 0) return false;
-            if (firstItem[(int)BothPlayerEvaluation.o3_attacking] >= 0) return true;
-
-            return false;
-        }
+//        public bool IsWinner()
+//        {
+//            if (firstItem[(int)BothPlayerEvaluation.four_attacking] >= 0) return true;
+//            if (firstItem[(int)BothPlayerEvaluation.four_defending] >= 0) return false;
+//            if (firstItem[(int)BothPlayerEvaluation.o3_attacking] >= 0) return true;
+//
+//            return false;
+//        }
 
         public bool Exists(BothPlayerEvaluation evaluation)
         {

@@ -4,24 +4,24 @@ using System.Threading;
 
 namespace GomokuEngine
 {
-	public static class ScoreConstants
+	public static class EvaluationConstants
 	{
-    	public const int win = 1000000;
-	    public const int loss = -1000000; 
+    	public const int max = 1000000;
+	    public const int min = -1000000; 
 	    
-	    static public string Score2Text(int score)
+	    static public string Score2Text(int evaluation)
 	    {
 	   		string s1;
-            switch (score)
+            switch (evaluation)
             {
-            	case ScoreConstants.win:
+            	case EvaluationConstants.max:
                 	s1 = "Black wins";
                 	break;
-                case ScoreConstants.loss:
+                case EvaluationConstants.min:
                     s1 = "White wins";
                     break;
 	            default:
-    	            s1 = score.ToString();
+    	            s1 = evaluation.ToString();
     	            break;
     	    }	
             return s1;

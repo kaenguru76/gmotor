@@ -33,7 +33,7 @@ namespace GomokuEngine
         List<int> playedSquares;
         List<ABMove> playedMoves;
 
-        Player winner;
+        bool gameFinished;
         int numberOfSquares;
 
         Sorting sortingBlack;
@@ -91,7 +91,7 @@ namespace GomokuEngine
                 EvaluateConnectedSquares(square, Player.None);
             }
 
-            winner = Player.None;
+            gameFinished = false;
 
             backupEvaluationBlack = new BothPlayerEvaluation[numberOfSquares];
             for (int index = 0; index < numberOfSquares; index++)
@@ -117,7 +117,7 @@ namespace GomokuEngine
 
         public void MakeMove(int square)
         {
-            if (winner != Player.None) return;
+        	if (gameFinished) return;
 
             //add square to list
             playedSquares.Add(square);
@@ -125,14 +125,10 @@ namespace GomokuEngine
             //place symbol on board
             symbol[square] = playerOnMove;
 
-            if (playerOnMove == Player.BlackPlayer && sortingBlack.IsWinningMove(square))
+            if ((playerOnMove == Player.BlackPlayer && sortingBlack.IsWinningMove(square) ||
+                 (playerOnMove == Player.WhitePlayer && sortingWhite.IsWinningMove(square))))
             {
-                winner = Player.BlackPlayer;
-            }
-
-            if (playerOnMove == Player.WhitePlayer && sortingWhite.IsWinningMove(square))
-            {
-                winner = Player.WhitePlayer;
+                gameFinished = true;
             }
 
             backupEvaluationBlack[square] = sortingBlack.GetEvaluation(square);
@@ -182,7 +178,7 @@ namespace GomokuEngine
             //remove symbol from board
             symbol[square] = Player.None;
 
-            winner = Player.None;
+            gameFinished = false;
 
             //remove last move from list
             playedSquares.RemoveAt(playedSquares.Count - 1);
@@ -265,7 +261,7 @@ namespace GomokuEngine
 
         public List<int> GeneratePossibleSquares()
         {
-            if (winner == Player.None)
+            if (gameFinished == false)
             {
                 if (vct.VctActive)
                 {
@@ -340,18 +336,12 @@ namespace GomokuEngine
                 return null;
         }
 
-        public Player GetWinner()
+        public bool GameFinished
         {
-            if (winner != Player.None) return winner;
-     /*
-            if (playerOnMove == Player.BlackPlayer && sortingBlack.IsWinner()) return Player.BlackPlayer;
-			if (playerOnMove == Player.WhitePlayer && sortingWhite.IsWinner()) return Player.WhitePlayer;
-			return Player.None;*/
-	 
-			//when following lines are uncommented, the evaluation is correct, but gmotor loses again Yixin
-            if (playerOnMove == Player.BlackPlayer && sortingBlack.IsWinner()) winner = Player.BlackPlayer;
-            if (playerOnMove == Player.WhitePlayer && sortingWhite.IsWinner()) winner = Player.WhitePlayer;
-            return winner;
+        	get
+        	{
+        		return gameFinished;
+        	}
         }
 
         public void GetSquareInfo(int square, out SquareInfo squareInfo)
@@ -380,24 +370,33 @@ namespace GomokuEngine
         public int GetEvaluation()
         {
             //since negamax is used, both players are maximizing their scores
-            switch (winner)
+            if (gameFinished)
             {
-                case Player.BlackPlayer:
-                    return (playerOnMove == Player.BlackPlayer) ? ScoreConstants.win : ScoreConstants.loss;
+            	if (playerOnMove == Player.BlackPlayer)
+            	{
+            		return EvaluationConstants.min;
+            	}
+            	else
+            	{
+            		return EvaluationConstants.max;
+            	}
+            }
+            else
+            {
+            	if (playerOnMove == Player.BlackPlayer)
+                {
+            		//if (sortingBlack.IsWinner()) return ScoreConstants.max;
+            		//if (sortingBlack.IsWinner()) return ScoreConstants.min;
+            		
+                	return sortingBlack.Score; //black tries to maximize
+                }
+                else
+                {
+            		//if (sortingBlack.IsWinner()) return ScoreConstants.min;
+            		//if (sortingBlack.IsWinner()) return ScoreConstants.max;
 
-                case Player.WhitePlayer:
-                    return (playerOnMove == Player.WhitePlayer) ? ScoreConstants.win : ScoreConstants.loss;
-                
-                case Player.None:
-                default:
-                    if (playerOnMove == Player.BlackPlayer)
-                    {
-                        return sortingBlack.Score; //black tries to maximize
-                    }
-                    else
-                    {
-                        return sortingWhite.Score; //white tries to maximize
-                    }
+            		return sortingWhite.Score; //white tries to maximize
+                }
             }
         }
 
