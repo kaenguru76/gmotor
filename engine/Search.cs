@@ -62,16 +62,14 @@ namespace GomokuEngine
             {
                 //int evaluation = ScoreConstants.loss;
 
-                if (depth == 0)
-                {
-                    // start VCT
-                    gameBoard.VctActive = true;
-                }
+                if (depth == 0) gameBoard.VctActive = true;
 
                 int evaluation = AlphaBeta(depth, -int.MaxValue, int.MaxValue, out principalVariation);
  				if (TimeoutReached()) break;
  
                 //generate moves
+                if (depth == 0) gameBoard.VctActive = true;
+                
                 List<ABMove> possibleMoves = gameBoard.GeneratePossibleMoves();
                 if (possibleMoves.Count == 0 && depth > 0 && gameBoard.GetPlayedMoves().Count > 0) break;
 
@@ -83,17 +81,20 @@ namespace GomokuEngine
                 sInfo.vctActive = gameBoard.VctActive;
                 
 				//get principal variation
-                if (principalVariation.Count == 0 && possibleMoves.Count > 0)
-                {
-                	principalVariation.Add(possibleMoves[0].square);
-                }
+//                if (principalVariation.Count == 0 && possibleMoves.Count > 0)
+//                {
+//                	principalVariation.Add(possibleMoves[0].square);
+//                }
                 
                 sInfo.principalVariation = new List<ABMove>();
-            	foreach(int square in principalVariation)
-            	{
-            		ABMove move = new ABMove(square,gameBoard.GetPlayerOnMove(),gameBoard.GetBoardSize());
-        			sInfo.principalVariation.Add(move);
-            	}
+                if (principalVariation != null)
+                {
+	            	foreach(int square in principalVariation)
+	            	{
+	            		ABMove move = new ABMove(square,gameBoard.GetPlayerOnMove(),gameBoard.GetBoardSize());
+	        			sInfo.principalVariation.Add(move);
+	            	}
+                }
                 
                 if (sInfo.depth == 0)
                 {
@@ -149,7 +150,7 @@ namespace GomokuEngine
 
         int AlphaBeta(int depth, int alpha, int beta, out List<int> principalVariation)
         {        	
-			principalVariation = new List<int>();
+			principalVariation = null;
             int bestValue = -int.MaxValue;
             int examinedMoves = sInfo.examinedMoves;
 
@@ -160,12 +161,13 @@ namespace GomokuEngine
             	{
 	                // start VCT
     	            gameBoard.VctActive = true;
-    	            bestValue = AlphaBetaVCT(0, beta-1, beta, out principalVariation);
+    	            bestValue = AlphaBetaVCT(0, EvaluationConstants.max-1, beta, out principalVariation);
     	            //stop VCT
     	            gameBoard.VctActive = false;
                 
-    	            if (bestValue == EvaluationConstants.max) goto L1;// VCT was succesfull
+    	            if (bestValue == EvaluationConstants.max) return bestValue;// VCT was succesfull
             	}
+            	principalVariation = new List<int>();
             	bestValue = gameBoard.GetEvaluation();
 				goto L1;
             }
@@ -222,20 +224,20 @@ namespace GomokuEngine
                     bestValue = value;
                     if (value > alpha)
                     {
-                        alpha = value;
-	                    principalVariation = new List<int>(principalVariationTmp);
-	                    principalVariation.Insert(0,move);
 	                    if (value >= beta)
                         {
                             sInfo.nbCutoffs++;
                             break;
                         }
+                        alpha = value;
+	                    principalVariation = new List<int>(principalVariationTmp);
+	                    principalVariation.Insert(0,move);
                     }
                 }
             }
 
            L1:
-            if (bestValue <= alpha && principalVariation.Count == 0)  // an upper bound value
+            if (bestValue <= alpha && principalVariation == null)  // an upper bound value
             	transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.UpperBound, depth, sInfo.examinedMoves - examinedMoves);
             else if (bestValue >= beta)  // lower bound value
                 transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.LowerBound, depth, sInfo.examinedMoves - examinedMoves);
@@ -247,12 +249,16 @@ namespace GomokuEngine
 
         int AlphaBetaVCT(int depth, int alpha, int beta, out List<int> principalVariation)
         {
-			principalVariation = new List<int>();
+			principalVariation = null;
+            int bestValue = -int.MaxValue;
+            int examinedMoves = sInfo.examinedMoves;
 
 			//max depth reached or game finished
         	if (depth == -17 || gameBoard.GameFinished)
             {
-                return gameBoard.GetEvaluation();
+                bestValue = gameBoard.GetEvaluation();
+                principalVariation = new List<int>();
+                goto L1;
             }
 
         	//look into TT if this position was not evaluated already before
@@ -279,8 +285,6 @@ namespace GomokuEngine
                }
             }
 
-            int examinedMoves = sInfo.examinedMoves;
-            int bestValue = -int.MaxValue;
 			List<int> principalVariationTmp;
             
             List<int> moves = gameBoard.GeneratePossibleSquares();
@@ -288,7 +292,7 @@ namespace GomokuEngine
             {
                 gameBoard.MakeMove(move);
 
-                int value = -AlphaBetaVCT(depth - 1, -beta, -bestValue, out principalVariationTmp);
+                int value = -AlphaBetaVCT(depth - 1, -beta, -alpha, out principalVariationTmp);
 
                 gameBoard.UndoMove();
 
@@ -302,19 +306,20 @@ namespace GomokuEngine
 
                     if (value > alpha)
                     {
-                        alpha = value;
-	                    principalVariation = new List<int>(principalVariationTmp);
-	                    principalVariation.Insert(0,move);
                         if (value >= beta)
                         {
                             sInfo.nbVCTCutoffs++;
                             break;
                         }
+                        alpha = value;
+	                    principalVariation = new List<int>(principalVariationTmp);
+	                    principalVariation.Insert(0,move);
                     }
                 }
             }
-
-            if (bestValue <= alpha && principalVariation.Count == 0)  // an upper bound value
+            
+           L1:
+            if (bestValue <= alpha && principalVariation == null)  // an upper bound value
                 transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.UpperBound, depth, sInfo.examinedMoves - examinedMoves);
             else if (bestValue >= beta)  // lower bound value
                 transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.LowerBound, depth, sInfo.examinedMoves - examinedMoves);
