@@ -1,36 +1,40 @@
 ______________________________
 gmotor2012 x Yixin13
- 0) pbrain-gmotor2012.exe: time=0,00s, depth=0, nodes=0N (0,0kN/s), evaluation=3600, pv=i12/
+ 0) pbrain-gmotor2012.exe: time=0,00s, depth=1, nodes=1N (0,0kN/s), evaluation=-2920, pv=h5
  1) pbrain-Yixin13.exe: YiXin 2013 Kernal 0.2.17 P :-)
- 1) pbrain-Yixin13.exe: 19.0 | 8 | 10 | 765ms | 2.9 | 243 | 5 | -134 
- 2) pbrain-gmotor2012.exe: time=3,11s, depth=7, nodes=230kN (74,1kN/s), evaluation=-1121, pv=j13/k14/j11/j12/k11/i11/k10/
- 3) pbrain-Yixin13.exe: 24.6 | 9 | 19 | 986ms | 2.3 | 465 | 5 | -110 
- 4) pbrain-gmotor2012.exe: time=3,12s, depth=5, nodes=230kN (73,8kN/s), evaluation=-1121, pv=j11/j12/k11/i11/k10/
- 5) pbrain-Yixin13.exe: 23.4 | 9 | 21 | 848ms | 2.4 | 433 | 5 | -115 
- 6) pbrain-gmotor2012.exe: time=3,14s, depth=5, nodes=230kN (73,3kN/s), evaluation=-1121, pv=g11/k15/j14/j12/h11/
- 7) pbrain-Yixin13.exe: 17.5 | 8 | 26 | 1164ms | 3.1 | 421 | 5 | -191 
- 8) pbrain-gmotor2012.exe: time=3,12s, depth=3, nodes=230kN (73,7kN/s), evaluation=-673, pv=k10/h13/j12/
- 9) pbrain-Yixin13.exe: 18.8 | 9 | 27 | 2972ms | 2.7 | 352 | 5 | -178 
-10) pbrain-gmotor2012.exe: time=3,04s, depth=3, nodes=210kN (69,1kN/s), evaluation=-908, pv=h11/j10/j12/
-11) pbrain-Yixin13.exe: 27.3 | 9 | 26 | 1405ms | 1.9 | 396 | 5 | -222 
-12) pbrain-gmotor2012.exe: time=3,03s, depth=5, nodes=230kN (76,0kN/s), evaluation=-1568, pv=g10/f9/l10/h14/g15/
-13) pbrain-Yixin13.exe: 0.0 | 9 | 9 | 1405ms | 0.0 | 0 | 5 | -222 
-14) pbrain-gmotor2012.exe: time=3,06s, depth=7, nodes=240kN (78,5kN/s), evaluation=-1784, pv=l10/h14/g15/j14/l9/m8/
-15) pbrain-Yixin13.exe: 20.5 | 8 | 32 | 2851ms | 2.2 | 368 | 5 | -57 
-16) pbrain-gmotor2012.exe: time=0,77s, depth=7, nodes=62kN (81,3kN/s), evaluation=-2147483647, pv=f11/
-17) pbrain-Yixin13.exe: 0.0 | 8 | 8 | 2851ms | 0.0 | 0 | 5 | -57 
-18) pbrain-gmotor2012.exe: time=0,00s, depth=5, nodes=449N (0,0kN/s), evaluation=-2147483647, pv=l9/
-19) pbrain-Yixin13.exe: 0.0 | 8 | 8 | 2851ms | 0.0 | 0 | 5 | -57 
-20) pbrain-gmotor2012.exe: time=0,00s, depth=3, nodes=53N (0,0kN/s), evaluation=-2147483647, pv=e11/
-21) pbrain-Yixin13.exe: 0.0 | 8 | 8 | 2851ms | 0.0 | 0 | 5 | -57 
-22) pbrain-gmotor2012.exe: time=0,00s, depth=1, nodes=4N (0,0kN/s), evaluation=-2147483647, pv=h10/
-23) pbrain-Yixin13.exe: 5.4 | 1 | 10 | 3ms | 7.8 | 41 | 5 | 9999994 :-)
-24) pbrain-gmotor2012.exe: time=0,00s, depth=1, nodes=148N (0,0kN/s), evaluation=-2147483647, pv=k12/
-25) pbrain-Yixin13.exe: 4.1 | 1 | 6 | 3ms | 7.6 | 60 | 5 | 9999996 :-)
-26) pbrain-gmotor2012.exe: time=0,00s, depth=1, nodes=6N (0,0kN/s), evaluation=-2147483647, pv=g15/
-27) pbrain-Yixin13.exe: 3.8 | 1 | 4 | 2ms | 8.5 | 77 | 5 | 9999998 :-)
-28) pbrain-gmotor2012.exe: time=0,00s, depth=1, nodes=2N (0,0kN/s), evaluation=-2147483647, pv=l16/
-29) pbrain-Yixin13.exe: 0.0 | 1 | 1 | 2ms | 0.0 | 0 | 5 | 10000000 :-)
-30) pbrain-gmotor2012.exe: time=0,00s, depth=1, nodes=4N (0,0kN/s), evaluation=-2147483647, pv=l14/
-31) pbrain-Yixin13.exe: 0.0 | 1 | 1 | 2ms | 0.0 | 0 | 5 | 10000000 :-)
--> C:\Piskvorky\turnaj\partie\0x1-32(3).psq
+ 1) pbrain-Yixin13.exe: 20.1 | 8 | 10 | 1003ms | 2.8 | 268 | 5 | -109 
+ 2) pbrain-gmotor2012.exe: time=3,05s, depth=9, nodes=260kN (85,2kN/s), evaluation=-2276, pv=i6/j7/j5/i7/j8/h7/k7/i5/g7
+ 3) pbrain-Yixin13.exe: 19.8 | 10 | 20 | 2205ms | 2.8 | 484 | 5 | -133 
+ 4) pbrain-gmotor2012.exe: time=3,01s, depth=8, nodes=249kN (83,0kN/s), evaluation=3518, pv=i4/j8/g4/i7/f3/e2/f4/k9
+ 5) pbrain-Yixin13.exe: 21.4 | 10 | 25 | 2795ms | 2.6 | 452 | 5 | -113 
+ 6) pbrain-gmotor2012.exe: time=3,06s, depth=7, nodes=260kN (85,0kN/s), evaluation=-1918, pv=f4/j8/i7/i8/g4/h4/j3
+ 7) pbrain-Yixin13.exe: 26.0 | 9 | 27 | 1262ms | 2.1 | 436 | 5 | -85 
+ 8) pbrain-gmotor2012.exe: time=3,07s, depth=7, nodes=259kN (84,7kN/s), evaluation=-2125, pv=h7/j4/i5/i3/j5/l3/g8
+ 9) pbrain-Yixin13.exe: 22.9 | 10 | 28 | 1504ms | 2.3 | 444 | 5 | -57 
+10) pbrain-gmotor2012.exe: time=3,04s, depth=8, nodes=270kN (88,8kN/s), evaluation=2552, pv=j8/j4/j6/j3
+11) pbrain-Yixin13.exe: 26.1 | 9 | 26 | 956ms | 2.0 | 463 | 5 | -91 
+12) pbrain-gmotor2012.exe: time=3,10s, depth=9, nodes=280kN (90,3kN/s), evaluation=-1580, pv=g4/h4/f6/f3/g8/i3/f8/j2/k1
+13) pbrain-Yixin13.exe: 18.6 | 10 | 27 | 2122ms | 2.6 | 460 | 5 | -106 
+14) pbrain-gmotor2012.exe: time=3,00s, depth=8, nodes=259kN (86,5kN/s), evaluation=4135, pv=f3/e2/i3/j6/j4/k5/g9
+15) pbrain-Yixin13.exe: 0.0 | 10 | 10 | 2122ms | 0.0 | 0 | 5 | -106 
+16) pbrain-gmotor2012.exe: time=3,11s, depth=9, nodes=279kN (90,2kN/s), evaluation=-2795, pv=i3/i5/f2/f5
+17) pbrain-Yixin13.exe: 15.6 | 8 | 24 | 782ms | 3.1 | 471 | 5 | -82 
+18) pbrain-gmotor2012.exe: time=3,01s, depth=7, nodes=260kN (86,5kN/s), evaluation=-1769, pv=i5/i2/j3/k2/e4/j2/h2
+19) pbrain-Yixin13.exe: 0.0 | 8 | 8 | 782ms | 0.0 | 0 | 5 | -82 
+20) pbrain-gmotor2012.exe: time=3,04s, depth=7, nodes=270kN (88,9kN/s), evaluation=-1928, pv=g8/l5/e4/k5/c4/d4/d5
+21) pbrain-Yixin13.exe: 20.1 | 8 | 20 | 1471ms | 2.5 | 470 | 5 | -160 
+22) pbrain-gmotor2012.exe: time=3,01s, depth=7, nodes=270kN (89,8kN/s), evaluation=-1943, pv=j3/f2/g2/d5/l6/k7/l7
+23) pbrain-Yixin13.exe: 18.3 | 8 | 22 | 958ms | 2.8 | 455 | 5 | -16 
+24) pbrain-gmotor2012.exe: time=3,04s, depth=8, nodes=280kN (92,2kN/s), evaluation=3979, pv=e6/g10/k2/l1
+25) pbrain-Yixin13.exe: 20.5 | 9 | 29 | 1782ms | 2.4 | 421 | 5 | -4 
+26) pbrain-gmotor2012.exe: time=3,02s, depth=9, nodes=270kN (89,3kN/s), evaluation=-1764, pv=d5/h9/g9/g11/e7/e8/g10/c4/b5
+27) pbrain-Yixin13.exe: 30.8 | 4 | 8 | 1ms | 2.1 | 84 | 5 | 9999996 :-)
+28) pbrain-gmotor2012.exe: time=0,00s, depth=1, nodes=122N (0,0kN/s), evaluation=-1000000, pv=d8/f7/k2/l1/f8/c7/g7/b7
+29) pbrain-Yixin13.exe: 20.0 | 1 | 1 | 1ms | 1.5 | 2 | 5 | 9999997 :-)
+30) pbrain-gmotor2012.exe: time=0,00s, depth=6, nodes=413N (0,0kN/s), evaluation=-1000000, pv=l1/k2/f8/c7/g7/b7
+31) pbrain-Yixin13.exe: 0.0 | 1 | 1 | 1ms | 0.0 | 0 | 5 | 9999997 :-)
+32) pbrain-gmotor2012.exe: time=0,00s, depth=4, nodes=78N (0,0kN/s), evaluation=-1000000, pv=f8/c7/g7/b7
+33) pbrain-Yixin13.exe: 0.0 | 1 | 1 | 1ms | 0.0 | 0 | 5 | 10000000 :-)
+34) pbrain-gmotor2012.exe: time=0,00s, depth=2, nodes=6N (0,0kN/s), evaluation=-1000000, pv=b7/g7
+35) pbrain-Yixin13.exe: 0.0 | 1 | 1 | 1ms | 0.0 | 0 | 5 | 10000000 :-)
+-> C:\Piskvorky\turnaj\partie\0x1-36(3).psq

@@ -40,7 +40,7 @@ namespace GomokuEngine
             {
             	int opositeIndex = scoreTable.Length - index1 - 1;
             	
-            	int score1 = opositeIndex*opositeIndex/**opositeIndex*/;
+            	int score1 = (int)Math.Pow(opositeIndex,2);
 
 				//toggle score1 for defending moves            	
             	BothPlayerEvaluation eval = (BothPlayerEvaluation)index1;
