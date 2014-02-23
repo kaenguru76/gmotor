@@ -433,13 +433,13 @@
 			this.panelControl.Controls.Add(this.btnStop);
 			this.panelControl.Location = new System.Drawing.Point(378, 52);
 			this.panelControl.Name = "panelControl";
-			this.panelControl.Size = new System.Drawing.Size(375, 384);
+			this.panelControl.Size = new System.Drawing.Size(375, 329);
 			this.panelControl.TabIndex = 34;
 			// 
 			// checkBoxUseDictionary
 			// 
 			this.checkBoxUseDictionary.AutoSize = true;
-			this.checkBoxUseDictionary.Location = new System.Drawing.Point(118, 98);
+			this.checkBoxUseDictionary.Location = new System.Drawing.Point(72, 122);
 			this.checkBoxUseDictionary.Name = "checkBoxUseDictionary";
 			this.checkBoxUseDictionary.Size = new System.Drawing.Size(48, 17);
 			this.checkBoxUseDictionary.TabIndex = 48;
@@ -460,7 +460,7 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(115, 63);
+			this.label3.Location = new System.Drawing.Point(9, 116);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(57, 13);
 			this.label3.TabIndex = 46;
@@ -468,7 +468,7 @@
 			// 
 			// butResetTtable
 			// 
-			this.butResetTtable.Location = new System.Drawing.Point(171, 63);
+			this.butResetTtable.Location = new System.Drawing.Point(135, 99);
 			this.butResetTtable.Name = "butResetTtable";
 			this.butResetTtable.Size = new System.Drawing.Size(57, 46);
 			this.butResetTtable.TabIndex = 14;
@@ -488,7 +488,7 @@
 			// numericUpDownDfPnHash
 			// 
 			this.numericUpDownDfPnHash.DecimalPlaces = 1;
-			this.numericUpDownDfPnHash.Location = new System.Drawing.Point(118, 80);
+			this.numericUpDownDfPnHash.Location = new System.Drawing.Point(12, 130);
 			this.numericUpDownDfPnHash.Maximum = new decimal(new int[] {
 									500,
 									0,
@@ -567,10 +567,10 @@
 									this.vg2,
 									this.vg3});
 			this.listViewGame.FullRowSelect = true;
-			this.listViewGame.Location = new System.Drawing.Point(12, 115);
+			this.listViewGame.Location = new System.Drawing.Point(12, 150);
 			this.listViewGame.MultiSelect = false;
 			this.listViewGame.Name = "listViewGame";
-			this.listViewGame.Size = new System.Drawing.Size(358, 254);
+			this.listViewGame.Size = new System.Drawing.Size(358, 179);
 			this.listViewGame.TabIndex = 35;
 			this.listViewGame.UseCompatibleStateImageBehavior = false;
 			this.listViewGame.View = System.Windows.Forms.View.Details;
@@ -594,9 +594,10 @@
 			// 
 			this.listBox2.BackColor = System.Drawing.SystemColors.Control;
 			this.listBox2.FormattingEnabled = true;
-			this.listBox2.Location = new System.Drawing.Point(233, 3);
+			this.listBox2.HorizontalScrollbar = true;
+			this.listBox2.Location = new System.Drawing.Point(215, 3);
 			this.listBox2.Name = "listBox2";
-			this.listBox2.Size = new System.Drawing.Size(137, 108);
+			this.listBox2.Size = new System.Drawing.Size(155, 147);
 			this.listBox2.TabIndex = 42;
 			// 
 			// buttonBlack
@@ -632,7 +633,7 @@
 			// 
 			this.btnEvaluate.Location = new System.Drawing.Point(118, 4);
 			this.btnEvaluate.Name = "btnEvaluate";
-			this.btnEvaluate.Size = new System.Drawing.Size(110, 55);
+			this.btnEvaluate.Size = new System.Drawing.Size(91, 55);
 			this.btnEvaluate.TabIndex = 21;
 			this.btnEvaluate.Text = "&Evaluate";
 			this.btnEvaluate.UseVisualStyleBackColor = true;
@@ -642,7 +643,7 @@
 			// 
 			this.btnStop.Location = new System.Drawing.Point(125, 6);
 			this.btnStop.Name = "btnStop";
-			this.btnStop.Size = new System.Drawing.Size(102, 46);
+			this.btnStop.Size = new System.Drawing.Size(84, 46);
 			this.btnStop.TabIndex = 32;
 			this.btnStop.Text = "Stop";
 			this.btnStop.UseVisualStyleBackColor = true;

@@ -251,7 +251,11 @@ namespace GomokuEngine
                 	else
                 	{
                 		//correct evaluation is with "-" 
-                		move.value = -ttItem.value;                		
+                		move.value = -ttItem.value;      
+
+						//toggle bounds
+						if (move.valueType == TTEvaluationType.UpperBound) move.valueType = TTEvaluationType.LowerBound;
+						if (move.valueType == TTEvaluationType.LowerBound) move.valueType = TTEvaluationType.UpperBound;
                 	}
                 }
                 transpositionTable.UndoMove(square, playerOnMove);
@@ -372,29 +376,18 @@ namespace GomokuEngine
             //since negamax is used, both players are maximizing their scores
             if (gameFinished)
             {
-            	if (playerOnMove == Player.BlackPlayer)
-            	{
-            		return EvaluationConstants.min;
-            	}
-            	else
-            	{
-            		return EvaluationConstants.max;
-            	}
+            	//return minimal value because the player which is actually 
+            	//on move has lost
+            	return EvaluationConstants.min;
             }
             else
             {
             	if (playerOnMove == Player.BlackPlayer)
                 {
-            		//if (sortingBlack.IsWinner()) return ScoreConstants.max;
-            		//if (sortingBlack.IsWinner()) return ScoreConstants.min;
-            		
                 	return sortingBlack.Score; //black tries to maximize
                 }
                 else
                 {
-            		//if (sortingBlack.IsWinner()) return ScoreConstants.min;
-            		//if (sortingBlack.IsWinner()) return ScoreConstants.max;
-
             		return sortingWhite.Score; //white tries to maximize
                 }
             }
