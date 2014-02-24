@@ -84,12 +84,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BestLine.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BestLine.Designer.cs">
-      <DependentUpon>BestLine.cs</DependentUpon>
-    </Compile>
     <Compile Include="Tuning.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,10 +138,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="BestLine.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>BestLine.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Tuning.resx">
       <DependentUpon>Tuning.cs</DependentUpon>
     </EmbeddedResource>

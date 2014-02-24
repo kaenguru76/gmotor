@@ -184,7 +184,7 @@ namespace GomokuEngine
             TranspositionTableItem ttItem = transpositionTable.Lookup(gameBoard.VctPlayer);
             if (ttItem != null)
             {
-                if (ttItem.depth == depth || ttItem.value == EvaluationConstants.max)
+                if (ttItem.depth == depth/* || ttItem.value == EvaluationConstants.max*/)
                 {
                     switch (ttItem.type)
                     {
@@ -257,7 +257,7 @@ namespace GomokuEngine
             int examinedMoves = sInfo.examinedMoves;
 
 			//max depth reached or game finished
-        	if (depth == -17 || gameBoard.GameFinished)
+        	if (depth == -20 || gameBoard.GameFinished)
             {
                 bestValue = gameBoard.GetEvaluation();
                 //principalVariation = new List<int>();
@@ -268,7 +268,7 @@ namespace GomokuEngine
             TranspositionTableItem ttItem = transpositionTable.Lookup(gameBoard.VctPlayer);
             if (ttItem != null)
             {
-                if (ttItem.depth == depth || ttItem.value == EvaluationConstants.max)
+                if (ttItem.depth == depth/* || ttItem.value == EvaluationConstants.max*/)
                 {
                     switch (ttItem.type)
                     {

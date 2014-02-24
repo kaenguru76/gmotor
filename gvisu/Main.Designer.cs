@@ -51,7 +51,6 @@
 			this.mnuSimpleMode = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuAdvancedMode = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-			this.mnuShowBestLine = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuShowPossibleMoves = new System.Windows.Forms.ToolStripMenuItem();
 			this.heuristicsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.moveStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -234,7 +233,6 @@
 									this.mnuSimpleMode,
 									this.mnuAdvancedMode,
 									this.toolStripSeparator3,
-									this.mnuShowBestLine,
 									this.mnuShowPossibleMoves,
 									this.heuristicsToolStripMenuItem});
 			this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
@@ -275,14 +273,6 @@
 			// 
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
 			this.toolStripSeparator3.Size = new System.Drawing.Size(184, 6);
-			// 
-			// mnuShowBestLine
-			// 
-			this.mnuShowBestLine.Enabled = false;
-			this.mnuShowBestLine.Name = "mnuShowBestLine";
-			this.mnuShowBestLine.Size = new System.Drawing.Size(187, 22);
-			this.mnuShowBestLine.Text = "Show Best Line";
-			this.mnuShowBestLine.Click += new System.EventHandler(this.mnuShowBestLine_Click);
 			// 
 			// mnuShowPossibleMoves
 			// 
@@ -574,7 +564,6 @@
 			this.listViewGame.TabIndex = 35;
 			this.listViewGame.UseCompatibleStateImageBehavior = false;
 			this.listViewGame.View = System.Windows.Forms.View.Details;
-			this.listViewGame.SelectedIndexChanged += new System.EventHandler(this.listViewGame_SelectedIndexChanged);
 			// 
 			// vg1
 			// 
@@ -657,7 +646,6 @@
 			this.panelBoard.Name = "panelBoard";
 			this.panelBoard.Size = new System.Drawing.Size(375, 332);
 			this.panelBoard.TabIndex = 35;
-			this.panelBoard.Paint += new System.Windows.Forms.PaintEventHandler(this.panelBoard_Paint);
 			// 
 			// toolStrip1
 			// 
@@ -848,7 +836,6 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem mnuShowPossibleMoves;
-        private System.Windows.Forms.ToolStripMenuItem mnuShowBestLine;
         private System.Windows.Forms.Button butResetTtable;
 		private System.Windows.Forms.Button btnStop;
 		private System.Windows.Forms.Button buttonWhite;

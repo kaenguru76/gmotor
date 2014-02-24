@@ -27,7 +27,7 @@ namespace gvisu
 
         Conversions conversions;
         PossibleMoves possibleMoves;
-        BestLine bestLine;
+        //BestLine bestLine;
         List<ABMove> playedMoves;
 
         public Main()
@@ -58,7 +58,7 @@ namespace gvisu
             nextToolStripButton.ImageIndex = 5;
             lastToolStripButton.ImageIndex = 6;
 
-            bestLine = new BestLine();
+            //bestLine = new BestLine();
         }
 
 		void engine_NewGameE()
@@ -185,7 +185,7 @@ namespace gvisu
             numericUpDownDepth.Value = (decimal)(engine.MaxSearchDepth);
             numericUpDownDfPnHash.Value = (decimal)(engine.TranspositionTableSize / 1000000);
 
-            mnuShowBestLine.Enabled = true;
+            //mnuShowBestLine.Enabled = true;
             mnuShowPossibleMoves.Enabled = true;
             heuristicsToolStripMenuItem.Enabled = true;
         }
@@ -313,7 +313,7 @@ namespace gvisu
 				}
 			}
 
-            statusStrip1.Items[1].Text = "Evaluation = " + gameInformation.Evaluation.ToString();
+            statusStrip1.Items[1].Text = "Evaluation = " + EvaluationConstants.Score2Text(gameInformation.Evaluation);
             statusStrip1.Items[1].Visible = true;
 
         }
@@ -658,11 +658,6 @@ namespace gvisu
             }
         }
 
-        private void mnuShowBestLine_Click(object sender, EventArgs e)
-        {
-            bestLine.Show();
-        }
-
         private void butResetTtable_Click(object sender, EventArgs e)
         {
 			engine.ResetTtTable(checkBoxUseDictionary.Checked);
@@ -721,16 +716,5 @@ namespace gvisu
         {
             engine.IterativeDeepening = !checkBoxFixedDepth.Checked;
         }
-
-        private void panelBoard_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void listViewGame_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
 	}
 }

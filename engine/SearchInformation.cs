@@ -87,8 +87,15 @@ namespace GomokuEngine
 		    	}
 		        return pv;
         	}
-        }        	
+        }
 
+	public string EvaluationText
+	{
+		get
+		{
+            return EvaluationConstants.Score2Text(evaluation);
+		}
+	}
     }
 
 }

@@ -23,12 +23,14 @@ namespace GomokuEngine
 
             if (sorting.AddMovesToList(BothPlayerEvaluation.o3_attacking, moves) > 0) goto L1;
             if (sorting.AddMovesToList(BothPlayerEvaluation.c3xc3_attacking, moves) > 0) goto L1;
+            sorting.AddMovesToList(BothPlayerEvaluation.c3xo2_attacking, moves);
             sorting.AddMovesToList(BothPlayerEvaluation.c3xo1_attacking, moves);
             sorting.AddMovesToList(BothPlayerEvaluation.s3_attacking, moves);
             sorting.AddMovesToList(BothPlayerEvaluation.c3_attacking, moves);
 
             int o3_defending = sorting.AddMovesToList(BothPlayerEvaluation.o3_defending, moves);
             if (sorting.AddMovesToList(BothPlayerEvaluation.c3xc3_defending, moves) > 0) goto L1;
+            sorting.AddMovesToList(BothPlayerEvaluation.c3xo2_defending, moves);
             if (o3_defending > 1) return moves;
 
             sorting.AddMovesToList(BothPlayerEvaluation.s3_defending, moves);
@@ -115,6 +117,7 @@ L1:
 
             if (sorting.AddVCTMovesToList(BothPlayerEvaluation.o3_attacking, moves) > 0) return moves;
             if (sorting.AddVCTMovesToList(BothPlayerEvaluation.c3xc3_attacking, moves) > 0) return moves;
+            sorting.AddVCTMovesToList(BothPlayerEvaluation.c3xo2_attacking, moves);
             sorting.AddVCTMovesToList(BothPlayerEvaluation.c3xo1_attacking, moves);
             sorting.AddVCTMovesToList(BothPlayerEvaluation.s3_attacking, moves);
             sorting.AddVCTMovesToList(BothPlayerEvaluation.c3_attacking, moves);
@@ -125,6 +128,7 @@ L1:
             
             int o3_defending = sorting.AddVCTMovesToList(BothPlayerEvaluation.o3_defending, moves);
             if (sorting.AddVCTMovesToList(BothPlayerEvaluation.c3xc3_defending, moves) > 0) return moves;
+            sorting.AddVCTMovesToList(BothPlayerEvaluation.c3xo2_defending, moves);
             if (o3_defending > 1) return moves;
             
             sorting.AddVCTMovesToList(BothPlayerEvaluation.s3_defending, moves);
