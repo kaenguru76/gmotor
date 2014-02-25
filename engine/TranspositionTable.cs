@@ -19,6 +19,7 @@ namespace GomokuEngine
         public TTEvaluationType type;
         public int depth;
         public int examinedMoves;
+        public int bestMove;
 
         public TranspositionTableItem()
         {
@@ -27,6 +28,7 @@ namespace GomokuEngine
             type = TTEvaluationType.Exact;
             depth = 0;
             examinedMoves = 0;
+            bestMove = -1;
         }
 
         public override string ToString()
@@ -136,7 +138,7 @@ namespace GomokuEngine
         	}
         }
 
-		public void Store(int value, Player vctPlayer, TTEvaluationType type, int depth, int examinedMoves)
+		public void Store(int value, Player vctPlayer, TTEvaluationType type, int depth, int examinedMoves, int bestMove)
         {
             if (tableItems != 0)
             {
@@ -151,6 +153,7 @@ namespace GomokuEngine
                 tableItem.type = type;
                 tableItem.depth = depth;
                 tableItem.examinedMoves = examinedMoves;
+                tableItem.bestMove = bestMove;
 
                 //store the same data also into dictionary
                 if (useDictionary)

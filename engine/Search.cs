@@ -80,15 +80,20 @@ namespace GomokuEngine
                 sInfo.possibleMoves = new List<ABMove>(possibleMoves);
                 sInfo.vctActive = gameBoard.VctActive;
                 
-				//get principal variation
-//                if (principalVariation.Count == 0 && possibleMoves.Count > 0)
-//                {
-//                	principalVariation.Add(possibleMoves[0].square);
-//                }
+				//if principal variation is empty, then the best move should be stored in TT
+                if (principalVariation == null)
+                {
+           	    	TranspositionTableItem ttItem = transpositionTable.Lookup(gameBoard.VctPlayer);
+            		if (ttItem != null)
+            		{
+            			principalVariation = new List<int>();
+	                	principalVariation.Add(ttItem.bestMove);
+            		}
+                }
                 
-                sInfo.principalVariation = new List<ABMove>();
                 if (principalVariation != null)
                 {
+	                sInfo.principalVariation = new List<ABMove>();
 	            	foreach(int square in principalVariation)
 	            	{
 	            		ABMove move = new ABMove(square,gameBoard.GetPlayerOnMove(),gameBoard.GetBoardSize());
@@ -114,35 +119,7 @@ namespace GomokuEngine
             {
             	//toggle evaluation for white on move - due to negamax
 				sInfo.evaluation = -sInfo.evaluation;
-				
-				//and also for all possible moves
-				//foreach(ABMove move in sInfo.possibleMoves)
-				//{
-					//toggle value
-				//	move.value = -move.value;
-					//and toggle bounds
-					/*switch (move.valueType)
-					{
-						case TTEvaluationType.LowerBound:
-							move.valueType = TTEvaluationType.UpperBound;
-							break;
-						case TTEvaluationType.UpperBound:
-							move.valueType = TTEvaluationType.LowerBound;
-							break;
-					}*/
-				//}
             }
-
-            //get winner if any
-//        	switch (sInfo.evaluation)
-//        	{
-//            	case ScoreConstants.max:
-//            		sInfo.winner = Player.BlackPlayer;
-//            		break;
-//            	case ScoreConstants.min:
-//            		sInfo.winner = Player.WhitePlayer;
-//            		break;
-//        	}
                         
             //raise event with search information
             ThinkingFinished(sInfo);
@@ -152,6 +129,7 @@ namespace GomokuEngine
         {        	
         	principalVariation = null;//new List<int>();
             int bestValue = -int.MaxValue;
+            int bestMove = -1;
             int examinedMoves = sInfo.examinedMoves;
 
             //quiescence search
@@ -223,7 +201,9 @@ namespace GomokuEngine
  				
                 if (value > bestValue)
                 {
-                    bestValue = value;
+                    bestValue = value; 
+                    bestMove = move;
+                    
                     if (value > alpha)
                     {
 	                    if (value >= beta)
@@ -241,11 +221,11 @@ namespace GomokuEngine
 
            L1:
             if (bestValue <= alpha && principalVariation == null)  // an upper bound value
-            	transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.UpperBound, depth, sInfo.examinedMoves - examinedMoves);
+            	transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.UpperBound, depth, sInfo.examinedMoves - examinedMoves, bestMove);
             else if (bestValue >= beta)  // lower bound value
-                transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.LowerBound, depth, sInfo.examinedMoves - examinedMoves);
+                transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.LowerBound, depth, sInfo.examinedMoves - examinedMoves, bestMove);
             else // a true minimax value
-                transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.Exact, depth, sInfo.examinedMoves - examinedMoves);
+                transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.Exact, depth, sInfo.examinedMoves - examinedMoves, bestMove);
             
             return bestValue;
         }
@@ -254,13 +234,13 @@ namespace GomokuEngine
         {
         	principalVariation = null; //new List<int>();
             int bestValue = -int.MaxValue;
+            int bestMove = -1;
             int examinedMoves = sInfo.examinedMoves;
 
 			//max depth reached or game finished
         	if (depth == -20 || gameBoard.GameFinished)
             {
                 bestValue = gameBoard.GetEvaluation();
-                //principalVariation = new List<int>();
                 goto L1;
             }
 
@@ -306,6 +286,7 @@ namespace GomokuEngine
                 if (value > bestValue)
                 {
                     bestValue = value;
+                    bestMove = move;
 
                     if (value > alpha)
                     {
@@ -324,11 +305,11 @@ namespace GomokuEngine
             
            L1:
             if (bestValue <= alpha && principalVariation == null)  // an upper bound value
-                transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.UpperBound, depth, sInfo.examinedMoves - examinedMoves);
+                transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.UpperBound, depth, sInfo.examinedMoves - examinedMoves, bestMove);
             else if (bestValue >= beta)  // lower bound value
-                transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.LowerBound, depth, sInfo.examinedMoves - examinedMoves);
+                transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.LowerBound, depth, sInfo.examinedMoves - examinedMoves, bestMove);
             else // a true minimax value
-                transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.Exact, depth, sInfo.examinedMoves - examinedMoves);
+                transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.Exact, depth, sInfo.examinedMoves - examinedMoves, bestMove);
 
             return bestValue;
         }
