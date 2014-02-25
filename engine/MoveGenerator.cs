@@ -29,7 +29,7 @@ namespace GomokuEngine
             sorting.AddMovesToList(BothPlayerEvaluation.c3_attacking, moves);
 
             int o3_defending = sorting.AddMovesToList(BothPlayerEvaluation.o3_defending, moves);
-            if (sorting.AddMovesToList(BothPlayerEvaluation.c3xc3_defending, moves) > 0) goto L1;
+            sorting.AddMovesToList(BothPlayerEvaluation.c3xc3_defending, moves);
             sorting.AddMovesToList(BothPlayerEvaluation.c3xo2_defending, moves);
             if (o3_defending > 1) return moves;
 
@@ -127,7 +127,7 @@ L1:
             //if (sorting.Exists(BothPlayerEvaluation.s3_defending)) return moves;
             
             int o3_defending = sorting.AddVCTMovesToList(BothPlayerEvaluation.o3_defending, moves);
-            if (sorting.AddVCTMovesToList(BothPlayerEvaluation.c3xc3_defending, moves) > 0) return moves;
+            sorting.AddVCTMovesToList(BothPlayerEvaluation.c3xc3_defending, moves);
             sorting.AddVCTMovesToList(BothPlayerEvaluation.c3xo2_defending, moves);
             if (o3_defending > 1) return moves;
             

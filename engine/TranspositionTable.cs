@@ -46,6 +46,7 @@ namespace GomokuEngine
 
 		ulong zobristKey;
 		int successfulHits;
+		int successfulVCTHits;
 		int failureHits;
 
 		Random random;
@@ -110,6 +111,7 @@ namespace GomokuEngine
         		if (dictionary.TryGetValue(tmpZobristKey, out tableItem))
         		{
         			successfulHits++;
+                    if (vctPlayer != Player.None) successfulVCTHits++;
                 	return tableItem;            			
         		}
     			else
@@ -128,6 +130,7 @@ namespace GomokuEngine
                 if (tableItem.key == tmpZobristKey)
                 {
                     successfulHits++;
+                    if (vctPlayer != Player.None) successfulVCTHits++;
                     return tableItem;
                 }
                 else
@@ -179,6 +182,7 @@ namespace GomokuEngine
 			tableItems = tableSize / 30;
 
             successfulHits = 0;
+            successfulVCTHits = 0;
             failureHits = 0;
 
             items = new TranspositionTableItem[tableItems];
@@ -235,6 +239,14 @@ namespace GomokuEngine
 			get
 			{
 				return (float)100*successfulHits/(successfulHits+failureHits);
+			}
+		}
+
+		public float SuccessfulVCTHits
+		{
+			get
+			{
+				return (float)100*successfulVCTHits/successfulHits;
 			}
 		}
 	}

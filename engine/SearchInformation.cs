@@ -10,6 +10,7 @@ namespace GomokuEngine
         public int examinedMoves;
         public List<ABMove> possibleMoves;
         public float TThits;
+        public float TTVCThits;
         //public Player winner;
         public int evaluation;
         public int nbCutoffs;
@@ -18,6 +19,7 @@ namespace GomokuEngine
         public bool vctActive;
         public int depth;
         public List<ABMove> principalVariation;
+        public int deepestVctSearch;
 
         public SearchInformation()
         {
@@ -27,6 +29,7 @@ namespace GomokuEngine
 			elapsedTime = new TimeSpan(0);
 			//winner = Player.None;
             depth = 0;
+            deepestVctSearch = 0;
         }
 
         //copy constructor
@@ -43,12 +46,13 @@ namespace GomokuEngine
                 this.principalVariation = new List<ABMove>(searchInfo.principalVariation);
             }
             this.TThits = searchInfo.TThits;
-            //this.winner = searchInfo.winner;
+            this.TTVCThits = searchInfo.TTVCThits;
             this.evaluation = searchInfo.evaluation;
             this.nbCutoffs = searchInfo.nbCutoffs;
             this.nbVCTCutoffs = searchInfo.nbVCTCutoffs;
             this.vctActive = searchInfo.vctActive;
             this.depth = searchInfo.depth;
+            this.deepestVctSearch = searchInfo.deepestVctSearch;
         }
 
         public double MovesPerSecond

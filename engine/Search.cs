@@ -124,13 +124,17 @@ namespace GomokuEngine
 				sInfo.evaluation = -sInfo.evaluation;
             }
                         
+            sInfo.elapsedTime = DateTime.Now - startTime;
+            sInfo.TThits = transpositionTable.SuccessfulHits;
+            sInfo.TTVCThits = transpositionTable.SuccessfulVCTHits;
+			
             //raise event with search information
             ThinkingFinished(sInfo);
         }
 
         int AlphaBeta(int depth, int alpha, int beta, out List<int> principalVariation)
         {        	
-        	principalVariation = null;//new List<int>();
+        	principalVariation = null;
             int bestValue = -int.MaxValue;
             int bestMove = -1;
             int examinedMoves = sInfo.examinedMoves;
@@ -138,18 +142,17 @@ namespace GomokuEngine
             //quiescence search
             if (depth == 0)
             {
-            	if (beta == int.MaxValue)
-            	{
-	                // start VCT
-    	            gameBoard.VctActive = true;
-    	            bestValue = AlphaBetaVCT(0, EvaluationConstants.max-1, beta, out principalVariation);
-    	            //stop VCT
-    	            gameBoard.VctActive = false;
-                
-    	            if (bestValue == EvaluationConstants.max) return bestValue;// VCT was succesfull
-            	}
-            	//principalVariation = new List<int>();
-            	bestValue = gameBoard.GetEvaluation();
+	            // start VCT
+    	        gameBoard.VctActive = true;
+    	        bestValue = AlphaBetaVCT(0, EvaluationConstants.max-1, beta, out principalVariation);
+    	        //stop VCT
+    	        gameBoard.VctActive = false;
+        	
+    	        if (bestValue != EvaluationConstants.max)
+	            {
+	            	bestValue = gameBoard.GetEvaluation();
+	            }
+		            
 				goto L1;
             }
 
@@ -240,8 +243,10 @@ namespace GomokuEngine
             int bestMove = -1;
             int examinedMoves = sInfo.examinedMoves;
 
+            if (sInfo.deepestVctSearch > depth) sInfo.deepestVctSearch = depth;
+            
 			//max depth reached or game finished
-        	if (depth == -20 || gameBoard.GameFinished)
+        	if (depth == -17 || gameBoard.GameFinished)
             {
                 bestValue = gameBoard.GetEvaluation();
                 goto L1;
@@ -251,8 +256,8 @@ namespace GomokuEngine
             TranspositionTableItem ttItem = transpositionTable.Lookup(gameBoard.VctPlayer);
             if (ttItem != null)
             {
-                if (ttItem.depth == depth/* || ttItem.value == EvaluationConstants.max*/)
-                {
+                //if (ttItem.depth == depth/* || ttItem.value == EvaluationConstants.max*/)
+                //{
                     switch (ttItem.type)
                     {
                         case TTEvaluationType.Exact:
@@ -268,7 +273,7 @@ namespace GomokuEngine
                             if (ttItem.value < beta) beta = ttItem.value;
                             break;
                     }
-               }
+               //}
             }
 
 			List<int> principalVariationTmp;
@@ -319,15 +324,13 @@ namespace GomokuEngine
 
 		bool TimeoutReached()
         {
-	        //TimeSpan elapsedTime;
-			//float TThits;
-
 			if (!stopThinking)
             {
                 if (timeoutCounter % 10000 == 9999)
                 {
-                    sInfo.elapsedTime = DateTime.Now - startTime;;
+                    sInfo.elapsedTime = DateTime.Now - startTime;
                     sInfo.TThits = transpositionTable.SuccessfulHits;
+                    sInfo.TTVCThits = transpositionTable.SuccessfulVCTHits;
                     	
                     ThinkingProgress(sInfo);
                 }
