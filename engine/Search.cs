@@ -62,14 +62,14 @@ namespace GomokuEngine
             {
                 //int evaluation = ScoreConstants.loss;
 
-                if (depth == 0) gameBoard.VctActive = true;
+                gameBoard.VctActive = (depth > 0) ? false:true;
 
                 int evaluation = AlphaBeta(depth, -int.MaxValue, int.MaxValue, out principalVariation);
  				if (TimeoutReached()) break;
  
                 //generate moves
-                if (depth == 0) gameBoard.VctActive = true;
-                
+                gameBoard.VctActive = (depth > 0) ? false:true;
+               
                 List<ABMove> possibleMoves = gameBoard.GeneratePossibleMoves();
                 if (possibleMoves.Count == 0 && depth > 0 && gameBoard.GetPlayedMoves().Count > 0) break;
 
@@ -86,20 +86,23 @@ namespace GomokuEngine
            	    	TranspositionTableItem ttItem = transpositionTable.Lookup(gameBoard.VctPlayer);
             		if (ttItem != null)
             		{
+            			//illegal move -> research 
+            			if (ttItem.bestMove == -1) continue;
+            			
             			principalVariation = new List<int>();
 	                	principalVariation.Add(ttItem.bestMove);
             		}
                 }
                 
-                if (principalVariation != null)
-                {
+                //if (principalVariation != null)
+                //{
 	                sInfo.principalVariation = new List<ABMove>();
 	            	foreach(int square in principalVariation)
 	            	{
 	            		ABMove move = new ABMove(square,gameBoard.GetPlayerOnMove(),gameBoard.GetBoardSize());
 	        			sInfo.principalVariation.Add(move);
 	            	}
-                }
+                //}
                 
                 if (sInfo.depth == 0)
                 {
@@ -107,7 +110,7 @@ namespace GomokuEngine
                     gameBoard.VctActive = false;
                 }
 
-                if (depth > 0 && gameBoard.GetPlayedMoves().Count == 0) break; //completely first move
+                if (gameBoard.GetPlayedMoves().Count == 0) break; //completely first move
                 if ((depth > 0 && evaluation == EvaluationConstants.min) || evaluation == EvaluationConstants.max) break;
             } 
 //L1:
