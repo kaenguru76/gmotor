@@ -66,8 +66,8 @@ namespace gmotor
 
                 if (str == "ABOUT")
                 {
-                    Console.WriteLine("name=\"gmotor\", version=\"2012\", author=\"Roman Vanèura\", country=\"Czech Republic\""+
-                        ", email=\"roman.vancura@email.cz\", www=\"http://vancurovi.cz/gomoku/gomoku.html\"");
+                    Console.WriteLine("name=\"gmotor\", version=\"2014\", author=\"Roman Vanèura\", country=\"Czech Republic\""+
+                        ", email=\"roman.vancura@email.cz\"");
                     continue;
                 }
 

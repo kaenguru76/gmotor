@@ -233,6 +233,8 @@ namespace GomokuEngine
             }
 
            L1:
+            //if (bestValue < EvaluationConstants.min) bestValue = EvaluationConstants.min;
+
             if (bestValue <= alpha && principalVariation == null)  // an upper bound value
             	transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.UpperBound, depth, sInfo.examinedMoves - examinedMoves, bestMove);
             else if (bestValue >= beta)  // lower bound value
@@ -253,7 +255,7 @@ namespace GomokuEngine
             if (sInfo.deepestVctSearch > depth) sInfo.deepestVctSearch = depth;
             
 			//max depth reached or game finished
-        	if (depth == -27 || gameBoard.GameFinished)
+        	if (depth == -17 || gameBoard.GameFinished)
             {
                 bestValue = gameBoard.GetEvaluation();
                 goto L1;
@@ -319,6 +321,8 @@ namespace GomokuEngine
             }
             
            L1:
+            //if (bestValue < EvaluationConstants.min) bestValue = EvaluationConstants.min;
+            
             if (bestValue <= alpha && principalVariation == null)  // an upper bound value
                 transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.UpperBound, depth, sInfo.examinedMoves - examinedMoves, bestMove);
             else if (bestValue >= beta)  // lower bound value
