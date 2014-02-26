@@ -1,3 +1,5 @@
+//#define CHECK 
+
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -62,7 +64,7 @@ namespace GomokuEngine
             {
                 //int evaluation = ScoreConstants.loss;
 
-                gameBoard.VctActive = (depth > 0) ? false:true;
+                //gameBoard.VctActive = (depth > 0) ? false:true;
 
                 int evaluation = AlphaBeta(depth, -int.MaxValue, int.MaxValue, out principalVariation);
  				if (TimeoutReached()) break;
@@ -70,7 +72,7 @@ namespace GomokuEngine
                 //generate moves
                 gameBoard.VctActive = (depth > 0) ? false:true;
                
-                List<ABMove> possibleMoves = gameBoard.GeneratePossibleMoves();
+                List<ABMove> possibleMoves = gameBoard.GeneratePossibleMoves(gameBoard.VctPlayer);
                 if (possibleMoves.Count == 0 && depth > 0 && gameBoard.GetPlayedMoves().Count > 0) break;
 
  
@@ -197,7 +199,7 @@ namespace GomokuEngine
 			List<int> principalVariationTmp;
 	
             //do normal search
-            List<int> moves = gameBoard.GeneratePossibleSquares();
+            List<int> moves = gameBoard.GeneratePossibleSquares(Player.None);
 
             foreach (int move in moves)
             {
@@ -238,7 +240,10 @@ namespace GomokuEngine
                 transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.LowerBound, depth, sInfo.examinedMoves - examinedMoves, bestMove);
             else // a true minimax value
                 transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.Exact, depth, sInfo.examinedMoves - examinedMoves, bestMove);
-            
+
+#if CHECK            
+            System.Diagnostics.Debug.Assert(gameBoard.VctPlayer == Player.None,"Wrong value of VctPlayer");
+#endif            
             return bestValue;
         }
 
@@ -284,7 +289,7 @@ namespace GomokuEngine
 
 			List<int> principalVariationTmp;
             
-            List<int> moves = gameBoard.GeneratePossibleSquares();
+            List<int> moves = gameBoard.GeneratePossibleSquares(gameBoard.VctPlayer);
             foreach (int move in moves)
             {
                 gameBoard.MakeMove(move);
@@ -325,6 +330,10 @@ namespace GomokuEngine
             else // a true minimax value
                 transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.Exact, depth, sInfo.examinedMoves - examinedMoves, bestMove);
 
+#if CHECK            
+            System.Diagnostics.Debug.Assert(gameBoard.VctPlayer != Player.None,"Wrong value of VctPlayer");
+#endif 
+            
             return bestValue;
         }
 

@@ -220,11 +220,11 @@ namespace GomokuEngine
             }
         }
 
-        public List<ABMove> GeneratePossibleMoves()
+        public List<ABMove> GeneratePossibleMoves(Player vctPlayer)
         {
             List<ABMove> movesC = new List<ABMove>();
 
-            List<int> possibleSquares = GeneratePossibleSquares();
+            List<int> possibleSquares = GeneratePossibleSquares(vctPlayer);
             
             foreach (int square in possibleSquares)
             {
@@ -263,41 +263,26 @@ namespace GomokuEngine
             return movesC;
         }
 
-        public List<int> GeneratePossibleSquares()
+        public List<int> GeneratePossibleSquares(Player vctPlayer)
         {
             if (gameFinished == false)
             {
-                if (vct.VctActive)
+                if (playerOnMove == Player.BlackPlayer)
                 {
-                    if (playerOnMove == Player.BlackPlayer)
+                    if (vctPlayer == Player.BlackPlayer)
                     {
-                        if (vct.VctPlayer == Player.BlackPlayer)
-                        {
-                            return moveGenerator.GeneratePossibleVctMoves(sortingBlack);
-                        }
-                        else
-                        {
-                            return moveGenerator.GeneratePossibleMoves(sortingBlack);
-                        }
+                        return moveGenerator.GeneratePossibleVctMoves(sortingBlack);
                     }
                     else
                     {
-                        if (vct.VctPlayer == Player.WhitePlayer)
-                        {
-                            return moveGenerator.GeneratePossibleVctMoves(sortingWhite);
-                        }
-                        else
-                        {
-                            return moveGenerator.GeneratePossibleMoves(sortingWhite);
-                        }
+                        return moveGenerator.GeneratePossibleMoves(sortingBlack);
                     }
                 }
                 else
                 {
-                    //take all moves
-                    if (playerOnMove == Player.BlackPlayer)
+                    if (vctPlayer == Player.WhitePlayer)
                     {
-                        return moveGenerator.GeneratePossibleMoves(sortingBlack);
+                        return moveGenerator.GeneratePossibleVctMoves(sortingWhite);
                     }
                     else
                     {

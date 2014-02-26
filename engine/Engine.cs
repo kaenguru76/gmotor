@@ -320,7 +320,7 @@ namespace GomokuEngine
                 }
             }
 
-            gameInformation.possibleMoves = gameBoard.GeneratePossibleMoves();
+            gameInformation.possibleMoves = gameBoard.GeneratePossibleMoves(gameBoard.VctPlayer);
             
             gameInformation.Evaluation = (gameBoard.GetPlayerOnMove() == Player.BlackPlayer) ? gameBoard.GetEvaluation():-gameBoard.GetEvaluation();
             //gameBoard.GetEvaluationDetail(out gameInformation.BlackScore, out gameInformation.WhiteScore);
