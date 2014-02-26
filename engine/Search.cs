@@ -139,21 +139,27 @@ namespace GomokuEngine
             int bestMove = -1;
             int examinedMoves = sInfo.examinedMoves;
 
-            //quiescence search
+            //if (beta >= EvaluationConstants.max) // then VCT makes sense
+            //{
+	            // start VCT
+		        gameBoard.VctActive = true;
+		        int tmpValue = AlphaBetaVCT(depth, EvaluationConstants.max-1, EvaluationConstants.max+1, out principalVariation);
+		        //stop VCT
+		        gameBoard.VctActive = false;
+    		
+		        if (tmpValue == EvaluationConstants.max)
+		        {
+		        	bestValue = tmpValue;
+		        	goto L1;
+		        	//return tmpValue;
+		        }
+            //}
+		            
             if (depth == 0)
             {
-	            // start VCT
-    	        gameBoard.VctActive = true;
-    	        bestValue = AlphaBetaVCT(0, EvaluationConstants.max-1, beta, out principalVariation);
-    	        //stop VCT
-    	        gameBoard.VctActive = false;
-        	
-    	        if (bestValue != EvaluationConstants.max)
-	            {
-	            	bestValue = gameBoard.GetEvaluation();
-	            }
-		            
+    	        bestValue = gameBoard.GetEvaluation();
 				goto L1;
+				//return bestValue;
             }
 
             //game finished
@@ -162,6 +168,7 @@ namespace GomokuEngine
         		//principalVariation = new List<int>();
 				bestValue = gameBoard.GetEvaluation();
         		goto L1; 
+//				return bestValue;
             }
 
             //look into TT if this position was not evaluated already before          
@@ -246,7 +253,7 @@ namespace GomokuEngine
             if (sInfo.deepestVctSearch > depth) sInfo.deepestVctSearch = depth;
             
 			//max depth reached or game finished
-        	if (depth == -17 || gameBoard.GameFinished)
+        	if (depth == -27 || gameBoard.GameFinished)
             {
                 bestValue = gameBoard.GetEvaluation();
                 goto L1;

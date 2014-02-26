@@ -600,7 +600,7 @@ namespace gvisu
 
             //  show elapsed time
             listBox2.Items.Clear();
-            listBox2.Items.Add("elapsed time = " + String.Format("{0:f1}s", info.elapsedTime.TotalSeconds));
+            listBox2.Items.Add("elapsed time = " + String.Format("{0:f2}s", info.elapsedTime.TotalSeconds));
             //  show number of evaluated moves
             if (info.examinedMoves >= 2000)
             {
