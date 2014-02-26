@@ -165,7 +165,6 @@ namespace GomokuEngine
             //game finished
         	if (gameBoard.GameFinished)
             {
-        		//principalVariation = new List<int>();
 				bestValue = gameBoard.GetEvaluation();
         		goto L1; 
 //				return bestValue;
@@ -227,14 +226,12 @@ namespace GomokuEngine
                         alpha = value;
                        	principalVariation = (principalVariationTmp == null) ? new List<int>():new List<int>(principalVariationTmp);
 	                    principalVariation.Insert(0,move);
-	                    if (value == EvaluationConstants.max) break;
+	                    if (value >= EvaluationConstants.max) break;
                     }
                 }
             }
 
            L1:
-            //if (bestValue < EvaluationConstants.min) bestValue = EvaluationConstants.min;
-
             if (bestValue <= alpha && principalVariation == null)  // an upper bound value
             	transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.UpperBound, depth, sInfo.examinedMoves - examinedMoves, bestMove);
             else if (bestValue >= beta)  // lower bound value
@@ -247,7 +244,7 @@ namespace GomokuEngine
 
         int AlphaBetaVCT(int depth, int alpha, int beta, out List<int> principalVariation)
         {
-        	principalVariation = null; //new List<int>();
+        	principalVariation = null;
             int bestValue = -int.MaxValue;
             int bestMove = -1;
             int examinedMoves = sInfo.examinedMoves;
@@ -315,14 +312,12 @@ namespace GomokuEngine
                         alpha = value;
                        	principalVariation = (principalVariationTmp == null) ? new List<int>():new List<int>(principalVariationTmp);
 	                    principalVariation.Insert(0,move);
-	                    if (value == EvaluationConstants.max) break;
+	                    if (value >= EvaluationConstants.max) break;
                     }
                 }
             }
             
            L1:
-            //if (bestValue < EvaluationConstants.min) bestValue = EvaluationConstants.min;
-            
             if (bestValue <= alpha && principalVariation == null)  // an upper bound value
                 transpositionTable.Store(bestValue, gameBoard.VctPlayer, TTEvaluationType.UpperBound, depth, sInfo.examinedMoves - examinedMoves, bestMove);
             else if (bestValue >= beta)  // lower bound value
