@@ -61,7 +61,7 @@ namespace GomokuEngine
 
             //initialize onePlayerData
             onePlayerData = new FourDirectionsData[numberOfSquares];
-            uint nothing = (uint)OneDirectionEvaluation.nothing;
+            uint nothing = (uint)OneDirectionEvaluation.valueless;
             nothing = nothing | nothing << 4 | nothing << 8 | nothing << 12;
             for (int square = 0; square < numberOfSquares; square++)
             {

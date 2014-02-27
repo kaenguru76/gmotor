@@ -25,8 +25,9 @@ namespace GomokuEngine
         c1,
         o0,
         c0,
-        nothing,
-        unknown,
+        overlineAdept,
+        valueless,
+        //unknown,
     };
 
     public class OneDirectionData
@@ -58,12 +59,9 @@ namespace GomokuEngine
                 for (int direction = 0; direction < 4; direction++)
                 {
                     oneDirectionData[square][direction] = new OneDirectionData();
-
-                    //oneDirectionData[square][direction].square = square;
-                    //oneDirectionData[square][direction].direction = (Direction)direction;
                     oneDirectionData[square][direction].hash = 0xFFFFF;
-                    oneDirectionData[square][direction].evaluationBlack = OneDirectionEvaluation.nothing;
-                    oneDirectionData[square][direction].evaluationWhite = OneDirectionEvaluation.nothing;
+                    oneDirectionData[square][direction].evaluationBlack = OneDirectionEvaluation.valueless;
+                    oneDirectionData[square][direction].evaluationWhite = OneDirectionEvaluation.valueless;
                 }
             }
 
@@ -83,28 +81,44 @@ namespace GomokuEngine
 
         byte GetCategory(int pattern)
         {
-            OneDirectionEvaluation blackEvaluation = OneDirectionEvaluation.unknown;
-            OneDirectionEvaluation whiteEvaluation = OneDirectionEvaluation.unknown;
-
-            OneDirectionEvaluation tmpBlack;
-            OneDirectionEvaluation tmpWhite;
-
-            int pattern5;
-            int shift;
+        	
+            OneDirectionEvaluation blackEvaluation = OneDirectionEvaluation.valueless;
 
             //go through all fives
-            for (shift = 0; shift < 6; shift++)
+            for (int shift = 0; shift < 6; shift++)
             {
-                pattern5 = pattern & 0x3FF;
+            	int pattern5 = (pattern >> (shift << 1)) & 0x3FF; // mask 5 stones
 
-                tmpBlack = pattern5black[pattern5][shift];
-                tmpWhite = pattern5white[pattern5][shift];
-
-                if (tmpBlack < blackEvaluation) blackEvaluation = tmpBlack;
-                if (tmpWhite < whiteEvaluation) whiteEvaluation = tmpWhite;
+                OneDirectionEvaluation evaluation = pattern5black[pattern5][shift];
+                if (evaluation == OneDirectionEvaluation.overlineAdept)
+                {
+                	blackEvaluation = OneDirectionEvaluation.valueless;
+                	break;
+                }
+                
+                if (evaluation < blackEvaluation) blackEvaluation = evaluation;
 
                 //shift pattern by one stone
-                pattern >>= 2;
+                //pattern >>= 2;
+            }
+
+            OneDirectionEvaluation whiteEvaluation = OneDirectionEvaluation.valueless;
+            
+            //go through all fives
+            for (int shift = 0; shift < 6; shift++)
+            {
+                int pattern5 = (pattern >> (shift << 1)) & 0x3FF;
+
+                OneDirectionEvaluation evaluation = pattern5white[pattern5][shift];
+                if (evaluation == OneDirectionEvaluation.overlineAdept)
+                {
+                	whiteEvaluation = OneDirectionEvaluation.valueless;
+                	break;
+                }
+                if (evaluation < whiteEvaluation) whiteEvaluation = evaluation;
+
+                //shift pattern by one stone
+                //pattern >>= 2;
             }
 
             return (byte)((byte)blackEvaluation +((byte)whiteEvaluation << 4));
@@ -207,7 +221,7 @@ namespace GomokuEngine
                 }
             }
 
-            if (nbWhite > 0) return OneDirectionEvaluation.nothing;
+            if (nbWhite > 0) return OneDirectionEvaluation.valueless;
 
             switch (nbBlack)
             {
@@ -224,23 +238,14 @@ namespace GomokuEngine
 
                 case 2:
                     return OneDirectionEvaluation.c2;
-                    /*if (stones[0] == Player.None) return OneDirectionEvaluation.c2;
-                    if (stones[0] == Player.WhitePlayer) return OneDirectionEvaluation.c2;
-                    break;*/
 
                 case 1:
                     return OneDirectionEvaluation.c1;
-                    /*if (stones[0] == Player.None) return OneDirectionEvaluation.c1;
-                    if (stones[0] == Player.WhitePlayer) return OneDirectionEvaluation.c1;
-                    break;*/
 
                 case 0:
                     return OneDirectionEvaluation.c0;
-                    /*if (stones[0] == Player.None) return OneDirectionEvaluation.c0;
-                    if (stones[0] == Player.WhitePlayer) return OneDirectionEvaluation.c0;
-                    break;*/
             }
-            return OneDirectionEvaluation.nothing;
+            return OneDirectionEvaluation.valueless;
         }
 
         OneDirectionEvaluation GetShift1(Player[] stones)
@@ -264,14 +269,14 @@ namespace GomokuEngine
                 }
             }
 
-            if (nbWhite > 0) return OneDirectionEvaluation.nothing;
-
-            if (stones[0] == Player.WhitePlayer && stones[4] == Player.WhitePlayer) return OneDirectionEvaluation.nothing;
+            if (nbWhite > 0) return OneDirectionEvaluation.valueless;
+            if (stones[0] == Player.WhitePlayer && stones[4] == Player.WhitePlayer) return OneDirectionEvaluation.valueless;
+            if (stones[0] == Player.BlackPlayer && stones[4] == Player.BlackPlayer && nbBlack == 3) return OneDirectionEvaluation.overline;
+            if (stones[0] == Player.BlackPlayer && stones[4] == Player.BlackPlayer) return OneDirectionEvaluation.overlineAdept;
 
             switch (nbBlack)
             {
                 case 3:
-                    if (stones[0] == Player.BlackPlayer && stones[4] == Player.BlackPlayer) return OneDirectionEvaluation.overline;
                     if (stones[0] == Player.None && stones[4] == Player.None) return OneDirectionEvaluation.o3;
                     if (stones[0] == Player.BlackPlayer) return OneDirectionEvaluation.c4;
                     if (stones[4] == Player.BlackPlayer) return OneDirectionEvaluation.c4;
@@ -306,7 +311,7 @@ namespace GomokuEngine
                     break;
             }
 
-            return OneDirectionEvaluation.nothing;
+            return OneDirectionEvaluation.valueless;
         }
 
         OneDirectionEvaluation GetShift2(Player[] stones)
@@ -329,14 +334,14 @@ namespace GomokuEngine
                 }
             }
 
-            if (nbWhite > 0) return OneDirectionEvaluation.nothing;
-
-            if (stones[0] == Player.WhitePlayer && stones[4] == Player.WhitePlayer) return OneDirectionEvaluation.nothing;
+            if (nbWhite > 0) return OneDirectionEvaluation.valueless;
+            if (stones[0] == Player.WhitePlayer && stones[4] == Player.WhitePlayer) return OneDirectionEvaluation.valueless;
+            if (stones[0] == Player.BlackPlayer && stones[4] == Player.BlackPlayer && nbBlack == 3) return OneDirectionEvaluation.overline;
+            if (stones[0] == Player.BlackPlayer && stones[4] == Player.BlackPlayer) return OneDirectionEvaluation.overlineAdept;
 
             switch (nbBlack)
             {
                 case 3:
-                    if (stones[0] == Player.BlackPlayer && stones[4] == Player.BlackPlayer) return OneDirectionEvaluation.overline;
                     if (stones[0] == Player.None && stones[4] == Player.None) return OneDirectionEvaluation.o3;
                     if (stones[0] == Player.BlackPlayer) return OneDirectionEvaluation.c4;
                     if (stones[4] == Player.BlackPlayer) return OneDirectionEvaluation.c4;
@@ -345,8 +350,8 @@ namespace GomokuEngine
                     break;
 
                 case 2:
-                    if (stones[0] == Player.None && stones[4] == Player.None && stones[1] == Player.BlackPlayer && stones[2] == Player.BlackPlayer) return OneDirectionEvaluation.o2p;
-                    if (stones[0] == Player.None && stones[4] == Player.None && stones[2] == Player.BlackPlayer && stones[3] == Player.BlackPlayer) return OneDirectionEvaluation.o2p;
+                    if (stones[0] == Player.None && stones[4] == Player.None && stones[3] == Player.None) return OneDirectionEvaluation.o2p;
+                    if (stones[0] == Player.None && stones[4] == Player.None && stones[1] == Player.None) return OneDirectionEvaluation.o2p;
                     if (stones[0] == Player.None && stones[4] == Player.None && stones[2] == Player.None) return OneDirectionEvaluation.o2;
                     if (stones[0] == Player.BlackPlayer) return OneDirectionEvaluation.c3;
                     if (stones[4] == Player.BlackPlayer) return OneDirectionEvaluation.c3;
@@ -374,7 +379,7 @@ namespace GomokuEngine
                     break;
             }
 
-            return OneDirectionEvaluation.nothing;
+            return OneDirectionEvaluation.valueless;
         }
 
         #endregion

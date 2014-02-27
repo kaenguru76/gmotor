@@ -145,12 +145,13 @@ namespace GomokuEngine
             //{
 	            // start VCT
 		        gameBoard.VctActive = true;
-		        int tmpValue = AlphaBetaVCT(depth, EvaluationConstants.max-1, EvaluationConstants.max+1, out principalVariation);
+		        int tmpValue = AlphaBetaVCT(0, EvaluationConstants.max-1, EvaluationConstants.max+1, out principalVariation);
 		        //stop VCT
 		        gameBoard.VctActive = false;
     		
 		        if (tmpValue == EvaluationConstants.max)
 		        {
+		        	//depth = 0;
 		        	bestValue = tmpValue;
 		        	goto L1;
 		        	//return tmpValue;
@@ -267,8 +268,8 @@ namespace GomokuEngine
             TranspositionTableItem ttItem = transpositionTable.Lookup(gameBoard.VctPlayer);
             if (ttItem != null)
             {
-                //if (ttItem.depth == depth/* || ttItem.value == EvaluationConstants.max*/)
-                //{
+                if (ttItem.depth >= depth/* || ttItem.value == EvaluationConstants.max*/)
+                {
                     switch (ttItem.type)
                     {
                         case TTEvaluationType.Exact:
@@ -284,7 +285,7 @@ namespace GomokuEngine
                             if (ttItem.value < beta) beta = ttItem.value;
                             break;
                     }
-               //}
+               }
             }
 
 			List<int> principalVariationTmp;
