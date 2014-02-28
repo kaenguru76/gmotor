@@ -12,6 +12,7 @@ namespace GomokuEngine
     public enum OneDirectionEvaluation : byte
     {
         overline,
+        overlineAdept,
         o4,
         c4,
         o3,
@@ -25,7 +26,6 @@ namespace GomokuEngine
         c1,
         o0,
         c0,
-        overlineAdept,
         valueless,
         //unknown,
     };
@@ -84,41 +84,35 @@ namespace GomokuEngine
         	
             OneDirectionEvaluation blackEvaluation = OneDirectionEvaluation.valueless;
 
-            //go through all fives
+            //go through all black's fives
             for (int shift = 0; shift < 6; shift++)
             {
             	int pattern5 = (pattern >> (shift << 1)) & 0x3FF; // mask 5 stones
 
                 OneDirectionEvaluation evaluation = pattern5black[pattern5][shift];
-                if (evaluation == OneDirectionEvaluation.overlineAdept)
-                {
-                	blackEvaluation = OneDirectionEvaluation.valueless;
-                	break;
-                }
+//                if (evaluation == OneDirectionEvaluation.overlineAdept)
+//                {
+//                	blackEvaluation = OneDirectionEvaluation.valueless;
+//                	break;
+//                }
                 
                 if (evaluation < blackEvaluation) blackEvaluation = evaluation;
-
-                //shift pattern by one stone
-                //pattern >>= 2;
             }
 
             OneDirectionEvaluation whiteEvaluation = OneDirectionEvaluation.valueless;
             
-            //go through all fives
+            //go through all white's fives
             for (int shift = 0; shift < 6; shift++)
             {
                 int pattern5 = (pattern >> (shift << 1)) & 0x3FF;
 
                 OneDirectionEvaluation evaluation = pattern5white[pattern5][shift];
-                if (evaluation == OneDirectionEvaluation.overlineAdept)
-                {
-                	whiteEvaluation = OneDirectionEvaluation.valueless;
-                	break;
-                }
+//                if (evaluation == OneDirectionEvaluation.overlineAdept)
+//                {
+//                	whiteEvaluation = OneDirectionEvaluation.valueless;
+//                	break;
+//                }
                 if (evaluation < whiteEvaluation) whiteEvaluation = evaluation;
-
-                //shift pattern by one stone
-                //pattern >>= 2;
             }
 
             return (byte)((byte)blackEvaluation +((byte)whiteEvaluation << 4));

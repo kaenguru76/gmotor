@@ -1,0 +1,50 @@
+-------------------------------------
+28.2.2014  10:05 - 10:26
+Èas na tah: 3 s,   Èas na partii: 120 s
+Tolerance: 1 s,   Pamì: 300 MB
+Zahájení: ne
+Pravidlo: pøesnì pìt vyhrává
+CRC zahájení: 0
+Poèet her: 28
+-------------------------------------
+
+Yixin13
+vıhry: 4=2+2,  prohry: 0=0+0
+èas/tah: 1053 ms (max: 3.0 s),  èas/partii: 20 s
+tahù/partii: 19,  CRC: 7f473b87,   pamì: 169.42 MB
+
+Tito2010
+vıhry: 4=2+2,  prohry: 0=0+0
+èas/tah: 265 ms (max: 1.5 s),  èas/partii: 3 s
+tahù/partii: 14,  CRC: 8b105cab,   pamì: 130.96 MB
+
+pela
+vıhry: 4=2+2,  prohry: 0=0+0
+èas/tah: 565 ms (max: 3.0 s),  èas/partii: 12 s
+tahù/partii: 21,  CRC: 5425534,   pamì: 2.88 MB
+
+hewer12
+vıhry: 4=2+2,  prohry: 0=0+0
+èas/tah: 839 ms (max: 2.9 s),  èas/partii: 12 s
+tahù/partii: 14,  CRC: 4f7d0fe2,   pamì: 290.06 MB
+
+sWINe13
+vıhry: 4=2+2,  prohry: 0=0+0
+èas/tah: 1306 ms (max: 3.1 s),  èas/partii: 28 s
+tahù/partii: 21,  CRC: a2b04832,   pamì: 294.07 MB
+
+gmotor2014
+vıhry: 8=2+0+6,  prohry: 20=10+10
+èas/tah: 1949 ms (max: 4.8 s),  èas/partii: 29 s
+tahù/partii: 14,  CRC: 241fdd3d,   pamì: 33.82 MB
+
+HGarden07
+vıhry: 0=0+0,  prohry: 4=0+2+2
+èas/tah: 1607 ms (max: 4.4 s),  èas/partii: 20 s
+tahù/partii: 13,  CRC: f883b408,   pamì: 31.70 MB
+
+RenjuSolver
+vıhry: 0=0+0,  prohry: 4=0+0+4
+èas/tah: 2865 ms (max: 4.6 s),  èas/partii: 4 s
+tahù/partii: 1,  CRC: 38d6e265,   pamì: 45.21 MB
+

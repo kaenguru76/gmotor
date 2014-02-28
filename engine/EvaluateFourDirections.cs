@@ -120,7 +120,7 @@ namespace GomokuEngine
             if (nbLevels[(byte)OneDirectionEvaluation.c2] + nbLevels[(byte)OneDirectionEvaluation.o1p] + nbLevels[(byte)OneDirectionEvaluation.o1] > 2) return FourDirectionsEvaluation.tripple1;
             if (nbLevels[(byte)OneDirectionEvaluation.c2] + nbLevels[(byte)OneDirectionEvaluation.o1p] + nbLevels[(byte)OneDirectionEvaluation.o1] > 1) return FourDirectionsEvaluation.double1;
             if (nbLevels[(byte)OneDirectionEvaluation.c2] + nbLevels[(byte)OneDirectionEvaluation.o1p] > 0) return FourDirectionsEvaluation.o1p;
-            if (nbLevels[(byte)OneDirectionEvaluation.c2] + nbLevels[(byte)OneDirectionEvaluation.o1] > 0) return FourDirectionsEvaluation.o1;
+            if (nbLevels[(byte)OneDirectionEvaluation.c2] + nbLevels[(byte)OneDirectionEvaluation.o1p] + nbLevels[(byte)OneDirectionEvaluation.o1] > 0) return FourDirectionsEvaluation.o1;
 
             if (nbLevels[(byte)OneDirectionEvaluation.c1] > 0) return FourDirectionsEvaluation.c1;
 

@@ -1,0 +1,754 @@
+______________________________
+gmotor2014 x Yixin13
+ 0) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=1N (0,1kN/s), evaluation=-2920, pv=g6
+ 1) pbrain-Yixin13.exe: YiXin 2013 Kernal 0.2.17 P :-)
+ 1) pbrain-Yixin13.exe: 19.8 | 8 | 10 | 784ms | 2.9 | 254 | 5 | -127 
+ 2) pbrain-gmotor2014.exe: time=3,04s, depth=5, nodes=460kN (151,4kN/s), evaluation=-2086, pv=h7/h6/f8/f5/e8
+ 3) pbrain-Yixin13.exe: 18.8 | 10 | 21 | 2558ms | 2.8 | 420 | 5 | -157 
+ 4) pbrain-gmotor2014.exe: time=3,01s, depth=5, nodes=460kN (152,8kN/s), evaluation=-906, pv=h5/h6/i5/g5/i4
+ 5) pbrain-Yixin13.exe: 20.6 | 9 | 25 | 2971ms | 2.7 | 443 | 5 | -118 
+ 6) pbrain-gmotor2014.exe: time=3,05s, depth=4, nodes=470kN (154,2kN/s), evaluation=3432, pv=f6/f8/e8/f7
+ 7) pbrain-Yixin13.exe: 18.1 | 10 | 28 | 2860ms | 3.0 | 428 | 5 | -260 
+ 8) pbrain-gmotor2014.exe: time=3,02s, depth=6, nodes=470kN (155,4kN/s), evaluation=5579, pv=f7/e8/f8/f5/i6/g8
+ 9) pbrain-Yixin13.exe: 16.6 | 10 | 28 | 2122ms | 3.4 | 415 | 5 | -225 
+10) pbrain-gmotor2014.exe: time=3,04s, depth=5, nodes=500kN (164,6kN/s), evaluation=-491, pv=f8/f5/f9/f10/g8
+11) pbrain-Yixin13.exe: 17.9 | 9 | 26 | 2970ms | 3.0 | 423 | 5 | -225 
+12) pbrain-gmotor2014.exe: time=3,06s, depth=4, nodes=480kN (156,8kN/s), evaluation=5459, pv=i6/g8/j5/k8
+13) pbrain-Yixin13.exe: 30.3 | 9 | 28 | 1242ms | 1.8 | 440 | 5 | -250 
+14) pbrain-gmotor2014.exe: time=3,05s, depth=4, nodes=490kN (160,8kN/s), evaluation=5355, pv=j5/i4/k4/l3
+15) pbrain-Yixin13.exe: 21.2 | 8 | 24 | 802ms | 2.5 | 434 | 5 | -221 
+16) pbrain-gmotor2014.exe: time=3,05s, depth=4, nodes=500kN (163,7kN/s), evaluation=6012, pv=j7/k8/j8/j6
+17) pbrain-Yixin13.exe: 20.0 | 9 | 27 | 2971ms | 2.8 | 412 | 5 | -237 
+18) pbrain-gmotor2014.exe: time=3,03s, depth=6, nodes=500kN (165,0kN/s), evaluation=5813, pv=j8/j6/g9/e7/f9/f10
+19) pbrain-Yixin13.exe: 29.2 | 9 | 22 | 1124ms | 1.9 | 418 | 5 | -207 
+20) pbrain-gmotor2014.exe: time=3,06s, depth=5, nodes=510kN (166,6kN/s), evaluation=330, pv=g9/h10/e7/g5/k7
+21) pbrain-Yixin13.exe: 21.6 | 7 | 27 | 2970ms | 2.6 | 407 | 5 | -207 
+22) pbrain-gmotor2014.exe: time=3,05s, depth=4, nodes=510kN (167,3kN/s), evaluation=6648, pv=e7/d6/f9/f10
+23) pbrain-Yixin13.exe: 21.2 | 8 | 26 | 2311ms | 2.5 | 394 | 5 | -226 
+24) pbrain-gmotor2014.exe: time=3,01s, depth=5, nodes=510kN (169,7kN/s), evaluation=286, pv=f9/f10/e9/d9/d8
+25) pbrain-Yixin13.exe: 0.0 | 8 | 8 | 2311ms | 0.0 | 0 | 5 | -226 
+26) pbrain-gmotor2014.exe: time=3,04s, depth=4, nodes=510kN (167,9kN/s), evaluation=6257, pv=g4/f3/g5/d8
+27) pbrain-Yixin13.exe: 0.0 | 8 | 8 | 2311ms | 0.0 | 0 | 5 | -226 
+28) pbrain-gmotor2014.exe: time=3,00s, depth=5, nodes=460kN (153,3kN/s), evaluation=-528, pv=k4/l3/e9/d9/g5
+29) pbrain-Yixin13.exe: 0.0 | 8 | 8 | 2311ms | 0.0 | 0 | 5 | -226 
+30) pbrain-gmotor2014.exe: time=3,04s, depth=5, nodes=490kN (161,0kN/s), evaluation=-1649, pv=e9/d9/i9/h9/g5
+31) pbrain-Yixin13.exe: 25.6 | 9 | 24 | 1465ms | 1.9 | 415 | 5 | 37 
+32) pbrain-gmotor2014.exe: time=3,03s, depth=5, nodes=510kN (168,4kN/s), evaluation=-2080, pv=h10/i11/i9/h9/g5
+33) pbrain-Yixin13.exe: 0.0 | 9 | 9 | 1465ms | 0.0 | 0 | 5 | 37 
+34) pbrain-gmotor2014.exe: time=3,04s, depth=6, nodes=520kN (171,2kN/s), evaluation=2190, pv=i9/h9/g5/d8/d7/i5
+35) pbrain-Yixin13.exe: 0.0 | 9 | 9 | 1465ms | 0.0 | 0 | 5 | 37 
+36) pbrain-gmotor2014.exe: time=3,02s, depth=5, nodes=520kN (172,2kN/s), evaluation=-4483, pv=g5/d8/d7/i5/h4
+37) pbrain-Yixin13.exe: 21.8 | 9 | 24 | 973ms | 2.5 | 409 | 5 | 407 
+38) pbrain-gmotor2014.exe: time=3,02s, depth=6, nodes=540kN (178,7kN/s), evaluation=267, pv=g3/g2/d7/i5/i3/h4
+39) pbrain-Yixin13.exe: 0.0 | 9 | 9 | 973ms | 0.0 | 0 | 5 | 407 
+40) pbrain-gmotor2014.exe: time=3,01s, depth=6, nodes=540kN (179,3kN/s), evaluation=-758, pv=d7/k5/c7/b7/l4/l8
+41) pbrain-Yixin13.exe: 18.2 | 9 | 24 | 1732ms | 2.4 | 422 | 5 | 526 :-)
+42) pbrain-gmotor2014.exe: time=3,03s, depth=6, nodes=530kN (175,0kN/s), evaluation=-550, pv=k5/i5/c7/b7/i3/h4
+43) pbrain-Yixin13.exe: 0.0 | 9 | 9 | 1732ms | 0.0 | 0 | 5 | 526 :-)
+44) pbrain-gmotor2014.exe: time=0,01s, depth=7, nodes=1129N (141,1kN/s), evaluation=White wins, pv=i3/h4/l8
+45) pbrain-Yixin13.exe: 0.0 | 9 | 9 | 1732ms | 0.0 | 0 | 5 | 526 :-)
+46) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=1N (0,0kN/s), evaluation=White wins, pv=l8
+47) pbrain-Yixin13.exe: 0.0 | 1 | 1 | 2ms | 0.0 | 0 | 5 | 10000000 :-)
+48) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=8N (0,0kN/s), evaluation=White wins, pv=k6/k11
+49) pbrain-Yixin13.exe: 0.0 | 1 | 1 | 2ms | 0.0 | 0 | 5 | 10000000 :-)
+-> C:\Piskvorky\turnaj\partie\0x1-50(1).psq
+______________________________
+Yixin13 x gmotor2014
+ 0) pbrain-Yixin13.exe: YiXin 2013 Kernal 0.2.17 P :-)
+ 0) pbrain-Yixin13.exe: 0.0 | 0 | 0 | 0ms | 0.0 | 0 | 4 | 0 
+ 1) pbrain-gmotor2014.exe: time=3,06s, depth=5, nodes=420kN (137,1kN/s), evaluation=3640, pv=l11/l12/m13/j12/k12
+ 2) pbrain-Yixin13.exe: 21.4 | 9 | 14 | 845ms | 2.5 | 299 | 5 | 159 
+ 3) pbrain-gmotor2014.exe: time=3,06s, depth=5, nodes=430kN (140,5kN/s), evaluation=3920, pv=j10/k13/k12/j13/l13
+ 4) pbrain-Yixin13.exe: 21.5 | 9 | 19 | 1033ms | 2.6 | 440 | 5 | 164 
+ 5) pbrain-gmotor2014.exe: time=3,04s, depth=4, nodes=430kN (141,5kN/s), evaluation=-2068, pv=k12/m10/m11/n11
+ 6) pbrain-Yixin13.exe: 16.6 | 10 | 22 | 2971ms | 3.0 | 445 | 5 | 152 
+ 7) pbrain-gmotor2014.exe: time=3,05s, depth=5, nodes=440kN (144,5kN/s), evaluation=4803, pv=m11/n11/o12/o10/p9
+ 8) pbrain-Yixin13.exe: 28.8 | 10 | 24 | 2864ms | 1.9 | 435 | 5 | 167 
+ 9) pbrain-gmotor2014.exe: time=3,01s, depth=5, nodes=459kN (152,8kN/s), evaluation=3518, pv=n11/o11/o13/n12/p12
+10) pbrain-Yixin13.exe: 19.4 | 9 | 22 | 786ms | 2.8 | 437 | 5 | 215 
+11) pbrain-gmotor2014.exe: time=3,06s, depth=5, nodes=480kN (156,8kN/s), evaluation=1471, pv=n12/o13/o11/p11/n13
+12) pbrain-Yixin13.exe: 22.8 | 11 | 34 | 1433ms | 2.5 | 410 | 5 | 222 
+13) pbrain-gmotor2014.exe: time=3,00s, depth=7, nodes=490kN (163,1kN/s), evaluation=5772, pv=o11/p11/m13/p10/p13/n14/q11
+14) pbrain-Yixin13.exe: 0.0 | 11 | 11 | 1433ms | 0.0 | 0 | 5 | 222 
+15) pbrain-gmotor2014.exe: time=3,03s, depth=6, nodes=470kN (155,4kN/s), evaluation=1196, pv=m13/p10/p13/q11/l14/k15
+16) pbrain-Yixin13.exe: 17.2 | 9 | 30 | 1180ms | 3.1 | 378 | 5 | 783 :-)
+17) pbrain-gmotor2014.exe: time=1,54s, depth=7, nodes=227kN (147,8kN/s), evaluation=Black wins, pv=l14/k15/p13
+18) pbrain-Yixin13.exe: 0.0 | 9 | 9 | 1180ms | 0.0 | 0 | 5 | 783 :-)
+19) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=4N (0,0kN/s), evaluation=Black wins, pv=p9
+20) pbrain-Yixin13.exe: 23.6 | 4 | 10 | 15ms | 2.2 | 346 | 5 | 9999992 :-)
+21) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=126N (126,0kN/s), evaluation=Black wins, pv=q10/l15/m14/m15/n14/n15/o15/j15
+22) pbrain-Yixin13.exe: 4.8 | 1 | 1 | 1ms | 9.7 | 51 | 5 | 9999994 :-)
+23) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=60N (0,0kN/s), evaluation=Black wins, pv=n14/l15/m14/n15/o15/j15
+24) pbrain-Yixin13.exe: 5.2 | 1 | 4 | 2ms | 9.8 | 32 | 5 | 9999998 :-)
+25) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=12N (0,0kN/s), evaluation=Black wins, pv=m14/n15/o15/j15
+26) pbrain-Yixin13.exe: 0.0 | 1 | 1 | 1ms | 0.0 | 0 | 5 | 10000000 :-)
+27) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=8N (0,0kN/s), evaluation=Black wins, pv=i15/n15
+28) pbrain-Yixin13.exe: 0.0 | 1 | 1 | 1ms | 0.0 | 0 | 5 | 10000000 :-)
+-> C:\Piskvorky\turnaj\partie\1x0-29(1).psq
+______________________________
+gmotor2014 x Yixin13
+ 0) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=1N (0,1kN/s), evaluation=-2920, pv=k16
+ 1) pbrain-Yixin13.exe: YiXin 2013 Kernal 0.2.17 P :-)
+ 1) pbrain-Yixin13.exe: 23.5 | 9 | 13 | 943ms | 2.3 | 293 | 5 | -109 
+ 2) pbrain-gmotor2014.exe: time=3,00s, depth=6, nodes=460kN (153,2kN/s), evaluation=3850, pv=j15/l17/i16/j16/i17/i15
+ 3) pbrain-Yixin13.exe: 20.4 | 10 | 20 | 2410ms | 2.7 | 461 | 5 | -130 
+ 4) pbrain-gmotor2014.exe: time=3,02s, depth=5, nodes=470kN (155,5kN/s), evaluation=-1166, pv=j17/j16/i17/k17/i18
+ 5) pbrain-Yixin13.exe: 20.0 | 9 | 23 | 2971ms | 2.9 | 435 | 5 | -108 
+ 6) pbrain-gmotor2014.exe: time=3,00s, depth=4, nodes=460kN (153,3kN/s), evaluation=3378, pv=l16/l14/m14/l15
+ 7) pbrain-Yixin13.exe: 17.6 | 10 | 26 | 2768ms | 3.1 | 419 | 5 | -224 
+ 8) pbrain-gmotor2014.exe: time=3,04s, depth=6, nodes=480kN (157,8kN/s), evaluation=5604, pv=l15/m14/l14/l17/i16/k14
+ 9) pbrain-Yixin13.exe: 14.6 | 10 | 28 | 1303ms | 3.5 | 411 | 5 | -246 
+10) pbrain-gmotor2014.exe: time=3,05s, depth=5, nodes=490kN (160,5kN/s), evaluation=-489, pv=l14/l17/l13/l12/k14
+11) pbrain-Yixin13.exe: 28.0 | 9 | 21 | 1379ms | 2.1 | 420 | 5 | -228 
+12) pbrain-gmotor2014.exe: time=3,02s, depth=4, nodes=470kN (155,8kN/s), evaluation=5433, pv=i16/k14/n16/h15
+13) pbrain-Yixin13.exe: 16.0 | 8 | 22 | 1205ms | 3.3 | 416 | 5 | -245 
+14) pbrain-gmotor2014.exe: time=3,06s, depth=4, nodes=490kN (160,2kN/s), evaluation=5277, pv=h17/i17/h18/h14
+15) pbrain-Yixin13.exe: 26.3 | 9 | 27 | 2073ms | 2.0 | 426 | 5 | -225 
+16) pbrain-gmotor2014.exe: time=3,03s, depth=4, nodes=490kN (161,7kN/s), evaluation=6037, pv=h15/g14/h14/h16
+17) pbrain-Yixin13.exe: 20.7 | 10 | 30 | 2564ms | 2.6 | 411 | 5 | -245 
+18) pbrain-gmotor2014.exe: time=3,02s, depth=6, nodes=490kN (162,1kN/s), evaluation=5838, pv=h14/h16/k13/m15/l13/l12
+19) pbrain-Yixin13.exe: 18.9 | 9 | 29 | 2972ms | 2.8 | 411 | 5 | -230 
+20) pbrain-gmotor2014.exe: time=3,03s, depth=5, nodes=499kN (165,0kN/s), evaluation=357, pv=k13/j12/m15/k17/g15
+21) pbrain-Yixin13.exe: 20.9 | 8 | 24 | 2163ms | 2.7 | 409 | 5 | -220 
+22) pbrain-gmotor2014.exe: time=3,02s, depth=4, nodes=510kN (169,1kN/s), evaluation=6288, pv=n16/l12/m15/o17
+23) pbrain-Yixin13.exe: 22.4 | 8 | 25 | 2415ms | 2.5 | 363 | 5 | -170 
+24) pbrain-gmotor2014.exe: time=3,04s, depth=5, nodes=470kN (154,5kN/s), evaluation=316, pv=l13/l12/k18/l19/m13
+25) pbrain-Yixin13.exe: 0.0 | 8 | 8 | 2415ms | 0.0 | 0 | 5 | -170 
+26) pbrain-gmotor2014.exe: time=3,00s, depth=5, nodes=510kN (169,8kN/s), evaluation=-778, pv=g18/f19/m13/j13/g17
+27) pbrain-Yixin13.exe: 0.0 | 8 | 8 | 2415ms | 0.0 | 0 | 5 | -170 
+28) pbrain-gmotor2014.exe: time=3,01s, depth=5, nodes=510kN (169,4kN/s), evaluation=-1530, pv=k18/l19/m13/j13/g17
+29) pbrain-Yixin13.exe: 0.0 | 8 | 8 | 2415ms | 0.0 | 0 | 5 | -170 
+30) pbrain-gmotor2014.exe: time=3,03s, depth=5, nodes=510kN (168,3kN/s), evaluation=-2465, pv=g17/i17/m13/j13/g19
+31) pbrain-Yixin13.exe: 22.3 | 9 | 25 | 979ms | 2.2 | 403 | 5 | 60 
+32) pbrain-gmotor2014.exe: time=3,01s, depth=6, nodes=520kN (172,9kN/s), evaluation=3383, pv=g15/m12/f15/i15/e15/d15
+33) pbrain-Yixin13.exe: 23.7 | 9 | 26 | 1702ms | 2.2 | 405 | 5 | 101 
+34) pbrain-gmotor2014.exe: time=3,04s, depth=8, nodes=550kN (181,0kN/s), evaluation=3310, pv=f15/i15/m12/g19/h18/f16/f17/m17
+35) pbrain-Yixin13.exe: 0.0 | 9 | 9 | 1702ms | 0.0 | 0 | 5 | 101 
+36) pbrain-gmotor2014.exe: time=3,03s, depth=7, nodes=550kN (181,5kN/s), evaluation=-4306, pv=g19/g16/m12/j10/m16/o16/k11
+37) pbrain-Yixin13.exe: 0.0 | 9 | 9 | 1702ms | 0.0 | 0 | 5 | 101 
+38) pbrain-gmotor2014.exe: time=3,01s, depth=7, nodes=550kN (182,7kN/s), evaluation=-4525, pv=m12/j10/d15/e15
+39) pbrain-Yixin13.exe: 18.1 | 8 | 26 | 811ms | 2.3 | 391 | 5 | 71 
+40) pbrain-gmotor2014.exe: time=3,01s, depth=6, nodes=530kN (176,1kN/s), evaluation=2611, pv=k11/h12/d15/e15
+41) pbrain-Yixin13.exe: 19.1 | 9 | 25 | 1417ms | 2.3 | 384 | 5 | 67 
+42) pbrain-gmotor2014.exe: time=3,03s, depth=5, nodes=510kN (168,1kN/s), evaluation=-4157, pv=i12/j11/j13/j9
+43) pbrain-Yixin13.exe: 24.0 | 8 | 26 | 2062ms | 2.2 | 395 | 5 | 40 
+44) pbrain-gmotor2014.exe: time=3,03s, depth=5, nodes=510kN (168,1kN/s), evaluation=-3214, pv=j11/i11/k9/k10/m17
+45) pbrain-Yixin13.exe: 19.8 | 9 | 28 | 819ms | 2.3 | 388 | 5 | 16 
+46) pbrain-gmotor2014.exe: time=3,00s, depth=6, nodes=520kN (173,3kN/s), evaluation=3822, pv=d15/e15/o16/m16/m17/k9
+47) pbrain-Yixin13.exe: 0.0 | 9 | 9 | 819ms | 0.0 | 0 | 5 | 16 
+48) pbrain-gmotor2014.exe: time=3,05s, depth=6, nodes=540kN (176,9kN/s), evaluation=1758, pv=o16/m16/m17/k9/l8/e16
+49) pbrain-Yixin13.exe: 0.0 | 9 | 9 | 819ms | 0.0 | 0 | 5 | 16 
+50) pbrain-gmotor2014.exe: time=0,57s, depth=7, nodes=103kN (183,4kN/s), evaluation=White wins, pv=m17/k9/l8/e16/e18/d16/f16/c17/b18/c15/b14/e13/e14/g11/i13/d14/f12/b16/a17/c16/a16/c18/c19/c14
+51) pbrain-Yixin13.exe: 0.0 | 1 | 1 | 2ms | 0.0 | 0 | 5 | 10000000 :-)
+52) pbrain-gmotor2014.exe: time=0,07s, depth=5, nodes=11kN (164,2kN/s), evaluation=White wins, pv=l8/e16/e18/d16/f16
+53) pbrain-Yixin13.exe: 0.0 | 1 | 1 | 2ms | 0.0 | 0 | 5 | 10000000 :-)
+-> C:\Piskvorky\turnaj\partie\0x1-54(1).psq
+______________________________
+Yixin13 x gmotor2014
+ 0) pbrain-Yixin13.exe: YiXin 2013 Kernal 0.2.17 P :-)
+ 0) pbrain-Yixin13.exe: 0.0 | 0 | 0 | 0ms | 0.0 | 0 | 4 | 0 
+ 1) pbrain-gmotor2014.exe: time=3,01s, depth=5, nodes=420kN (139,5kN/s), evaluation=3640, pv=l11/l12/m13/j12/k12
+ 2) pbrain-Yixin13.exe: 21.4 | 9 | 14 | 846ms | 2.5 | 299 | 5 | 159 
+ 3) pbrain-gmotor2014.exe: time=3,01s, depth=5, nodes=420kN (139,8kN/s), evaluation=3920, pv=j10/k13/k12/j13/l13
+ 4) pbrain-Yixin13.exe: 21.5 | 9 | 19 | 1028ms | 2.6 | 442 | 5 | 164 
+ 5) pbrain-gmotor2014.exe: time=3,02s, depth=4, nodes=430kN (142,6kN/s), evaluation=-2068, pv=k12/m10/m11/n11
+ 6) pbrain-Yixin13.exe: 22.9 | 10 | 21 | 763ms | 2.2 | 376 | 5 | 152 
+ 7) pbrain-gmotor2014.exe: time=3,01s, depth=5, nodes=390kN (129,4kN/s), evaluation=4803, pv=m11/n11/o12/o10/p9
+ 8) pbrain-Yixin13.exe: 17.7 | 9 | 18 | 904ms | 2.9 | 446 | 5 | 199 
+ 9) pbrain-gmotor2014.exe: time=3,01s, depth=6, nodes=450kN (149,5kN/s), evaluation=-878, pv=o10/o12/p13/n12/p12/n13
+10) pbrain-Yixin13.exe: 19.9 | 9 | 25 | 2141ms | 2.6 | 457 | 5 | 262 
+11) pbrain-gmotor2014.exe: time=0,66s, depth=5, nodes=102kN (156,0kN/s), evaluation=Black wins, pv=m13
+12) pbrain-Yixin13.exe: 1.4 | 1 | 1 | 2ms | 20.5 | 23 | 5 | 9999996 :-)
+13) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=68N (68,0kN/s), evaluation=Black wins, pv=l9/n12/p12/n13/n15/n10
+14) pbrain-Yixin13.exe: 5.4 | 1 | 4 | 1ms | 7.7 | 46 | 5 | 9999998 :-)
+15) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=12N (0,0kN/s), evaluation=Black wins, pv=p12/n13/n15/n10
+16) pbrain-Yixin13.exe: 0.0 | 1 | 1 | 2ms | 0.0 | 0 | 5 | 10000000 :-)
+17) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=8N (0,0kN/s), evaluation=Black wins, pv=n10/n15
+18) pbrain-Yixin13.exe: 0.0 | 1 | 1 | 2ms | 0.0 | 0 | 5 | 10000000 :-)
+-> C:\Piskvorky\turnaj\partie\1x0-19(1).psq
+______________________________
+gmotor2014 x Tito2010
+ 0) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=1N (0,1kN/s), evaluation=-2920, pv=k15
+ 1) pbrain-Tito2010.exe: AB depth= 10 node= 91759 speed= 436128n/s
+ 2) pbrain-gmotor2014.exe: time=3,04s, depth=5, nodes=450kN (148,3kN/s), evaluation=-2086, pv=l16/l15/m14/j14/m13
+ 3) pbrain-Tito2010.exe: AB depth= 10 node= 141477 speed= 472154n/s
+ 4) pbrain-gmotor2014.exe: time=3,05s, depth=5, nodes=460kN (151,1kN/s), evaluation=-881, pv=m15/l15/m14/m16/n14
+ 5) pbrain-Tito2010.exe: AB depth= 10 node= 173217 speed= 594434n/s
+ 6) pbrain-gmotor2014.exe: time=3,02s, depth=4, nodes=460kN (152,2kN/s), evaluation=4258, pv=m13/l15/m14/m16
+ 7) pbrain-Tito2010.exe: AB depth= 10 node= 141354 speed= 648647n/s
+ 8) pbrain-gmotor2014.exe: time=3,06s, depth=4, nodes=460kN (150,6kN/s), evaluation=3394, pv=j13/l17/i14/l14
+ 9) pbrain-Tito2010.exe: AB depth= 10 node= 143890 speed= 603688n/s
+10) pbrain-gmotor2014.exe: time=3,04s, depth=5, nodes=460kN (151,3kN/s), evaluation=-2070, pv=l17/h14/g14/h16/h15
+11) pbrain-Tito2010.exe: AB depth= 10 node= 92907 speed= 649650n/s
+12) pbrain-gmotor2014.exe: time=3,04s, depth=4, nodes=480kN (157,7kN/s), evaluation=3542, pv=f14/l15/j17/m14
+14) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=1257N (157,1kN/s), evaluation=White wins, pv=g14/l13/i16/n11/m12/n13/m14/l14
+-> C:\Piskvorky\turnaj\partie\0x2-16(1).psq
+______________________________
+Tito2010 x gmotor2014
+ 1) pbrain-gmotor2014.exe: time=3,06s, depth=5, nodes=420kN (137,3kN/s), evaluation=3640, pv=k11/k12/l13/i12/j12
+ 2) pbrain-Tito2010.exe: AB depth= 10 node= 588716 speed= 453358n/s
+ 3) pbrain-gmotor2014.exe: time=3,02s, depth=5, nodes=420kN (139,2kN/s), evaluation=3920, pv=i12/j9/j10/i9/k9
+ 4) pbrain-Tito2010.exe: AB depth= 10 node= 152352 speed= 461021n/s
+ 5) pbrain-gmotor2014.exe: time=3,05s, depth=4, nodes=430kN (141,2kN/s), evaluation=-881, pv=j10/i9/k9/i8
+ 6) pbrain-Tito2010.exe: AB depth= 10 node= 125748 speed= 477979n/s
+ 7) pbrain-gmotor2014.exe: time=3,02s, depth=4, nodes=430kN (142,2kN/s), evaluation=-739, pv=h7/i9/h9/i7
+ 8) pbrain-Tito2010.exe: AB depth= 10 node= 159048 speed= 525762n/s
+ 9) pbrain-gmotor2014.exe: time=3,07s, depth=4, nodes=450kN (146,7kN/s), evaluation=-976, pv=k9/l8/i7/j8
+10) pbrain-Tito2010.exe: AB depth= 10 node= 354847 speed= 534569n/s
+11) pbrain-gmotor2014.exe: time=3,01s, depth=4, nodes=430kN (142,9kN/s), evaluation=-666, pv=g8/k7/l6/l8
+12) pbrain-Tito2010.exe: AB depth= 10 node= 100452 speed= 636957n/s
+13) pbrain-gmotor2014.exe: time=0,07s, depth=3, nodes=9kN (149,0kN/s), evaluation=Black wins, pv=i7/l6/k7/j7/j6/k8/l9/l8/m8/h8
+14) pbrain-Tito2010.exe: AB depth= 10 node= 180304 speed= 758745n/s
+15) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=3N (0,0kN/s), evaluation=Black wins, pv=k7
+16) pbrain-Tito2010.exe: AB depth= 12 node= 26709 speed= 760388n/s
+17) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=656N (131,2kN/s), evaluation=Black wins, pv=j6/k8/l9/l8/m8/h8
+19) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=84N (84,0kN/s), evaluation=Black wins, pv=l8/h5/l9/g4
+21) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=8N (0,0kN/s), evaluation=Black wins, pv=g4/l9
+-> C:\Piskvorky\turnaj\partie\2x0-23(1).psq
+______________________________
+gmotor2014 x Tito2010
+ 0) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=1N (0,1kN/s), evaluation=-2920, pv=j16
+ 1) pbrain-Tito2010.exe: AB depth= 10 node= 34838 speed= 431991n/s
+ 2) pbrain-gmotor2014.exe: time=3,02s, depth=5, nodes=430kN (142,3kN/s), evaluation=-2084, pv=k17/j17/l15/i15/l14
+ 3) pbrain-Tito2010.exe: AB depth= 10 node= 161997 speed= 418105n/s
+ 4) pbrain-gmotor2014.exe: time=3,04s, depth=5, nodes=430kN (141,3kN/s), evaluation=-1707, pv=j18/l15/l16/m15/j15
+ 5) pbrain-Tito2010.exe: AB depth= 10 node= 225638 speed= 583979n/s
+ 6) pbrain-gmotor2014.exe: time=3,04s, depth=5, nodes=480kN (157,9kN/s), evaluation=-1883, pv=l15/l16/i17/k15/h16
+ 7) pbrain-Tito2010.exe: AB depth= 10 node= 363041 speed= 520763n/s
+ 8) pbrain-gmotor2014.exe: time=3,01s, depth=5, nodes=480kN (159,5kN/s), evaluation=-2428, pv=k15/i17/i18/i14/k18
+ 9) pbrain-Tito2010.exe: AB depth= 10 node= 132796 speed= 554641n/s
+10) pbrain-gmotor2014.exe: time=3,04s, depth=5, nodes=480kN (158,0kN/s), evaluation=-2681, pv=i18/k18/i16/m16/m15
+11) pbrain-Tito2010.exe: AB depth= 10 node= 379797 speed= 509929n/s
+12) pbrain-gmotor2014.exe: time=3,05s, depth=4, nodes=510kN (167,3kN/s), evaluation=2981, pv=h17/k18/g16/f15
+13) pbrain-Tito2010.exe: AB depth= 10 node= 138366 speed= 566873n/s
+14) pbrain-gmotor2014.exe: time=3,01s, depth=4, nodes=510kN (169,3kN/s), evaluation=3066, pv=k18/h18/n15/m15
+15) pbrain-Tito2010.exe: AB depth= 12 node= 233674 speed= 536584n/s
+16) pbrain-gmotor2014.exe: time=3,02s, depth=6, nodes=500kN (165,7kN/s), evaluation=2811, pv=g18/h18/n15/m15/i16/j15
+18) pbrain-gmotor2014.exe: time=3,02s, depth=6, nodes=500kN (165,8kN/s), evaluation=2267, pv=j15/i16/m16/n15/j13/k14
+19) pbrain-Tito2010.exe: AB depth= 12 node= 214039 speed= 502244n/s
+20) pbrain-gmotor2014.exe: time=3,06s, depth=8, nodes=500kN (163,7kN/s), evaluation=1295, pv=n15/m15/m16/l17/n17/k14/n16/n14
+22) pbrain-gmotor2014.exe: time=3,02s, depth=8, nodes=500kN (165,4kN/s), evaluation=1537, pv=m16/l17/n17/o18/j13/k14/n16/n18
+23) pbrain-Tito2010.exe: AB depth= 10 node= 190735 speed= 678763n/s
+24) pbrain-gmotor2014.exe: time=3,03s, depth=7, nodes=500kN (165,2kN/s), evaluation=-4810, pv=n17/k14/n16/n18/o18/p19
+25) pbrain-Tito2010.exe: AB depth= 12 node= 405277 speed= 475893n/s
+26) pbrain-gmotor2014.exe: time=3,05s, depth=7, nodes=540kN (177,2kN/s), evaluation=-5509, pv=n16/n18/j14/f16/e15/e16/h16
+27) pbrain-Tito2010.exe: AB depth= 12 node= 318992 speed= 413370n/s
+28) pbrain-gmotor2014.exe: time=3,04s, depth=6, nodes=550kN (180,8kN/s), evaluation=227, pv=j14/f16/e15/e16/h16/o18
+29) pbrain-Tito2010.exe: AB depth= 10 node= 121117 speed= 601274n/s
+30) pbrain-gmotor2014.exe: time=3,02s, depth=7, nodes=520kN (172,3kN/s), evaluation=-9701, pv=n14/n13/o18/p19/f13/f16/j12
+32) pbrain-gmotor2014.exe: time=1,10s, depth=7, nodes=191kN (173,9kN/s), evaluation=White wins, pv=j12/j13/o18/p19/h15
+34) pbrain-gmotor2014.exe: time=0,00s, depth=3, nodes=141N (141,0kN/s), evaluation=White wins, pv=o18/p19/h15
+36) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=11N (0,0kN/s), evaluation=White wins, pv=h15
+37) pbrain-Tito2010.exe: 3...
+38) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=52N (0,0kN/s), evaluation=White wins, pv=i14/g13/g15/h13/f13/e16/f15/f16/h16/i19/j20/e15
+40) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=40N (40,0kN/s), evaluation=White wins, pv=g15/h13/f13/e16/f15/f16/h16/i19/j20/e15
+42) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=50N (0,0kN/s), evaluation=White wins, pv=f13/f16/i19/e16/h16/f15/d17/i12
+-> C:\Piskvorky\turnaj\partie\0x2-44(1).psq
+______________________________
+Tito2010 x gmotor2014
+ 1) pbrain-gmotor2014.exe: time=3,03s, depth=5, nodes=420kN (138,6kN/s), evaluation=3640, pv=k11/k12/l13/i12/j12
+ 2) pbrain-Tito2010.exe: AB depth= 10 node= 692781 speed= 452766n/s
+ 3) pbrain-gmotor2014.exe: time=3,04s, depth=5, nodes=430kN (141,3kN/s), evaluation=3920, pv=i10/j13/j12/i13/k13
+ 4) pbrain-Tito2010.exe: AB depth= 10 node= 182391 speed= 468142n/s
+ 5) pbrain-gmotor2014.exe: time=3,08s, depth=4, nodes=400kN (129,7kN/s), evaluation=-881, pv=j12/i13/k13/i14
+ 6) pbrain-Tito2010.exe: AB depth= 10 node= 130279 speed= 414456n/s
+ 7) pbrain-gmotor2014.exe: time=3,06s, depth=4, nodes=400kN (130,7kN/s), evaluation=-739, pv=h15/i13/h13/i15
+ 8) pbrain-Tito2010.exe: AB depth= 10 node= 171834 speed= 516056n/s
+ 9) pbrain-gmotor2014.exe: time=3,05s, depth=4, nodes=450kN (147,6kN/s), evaluation=-976, pv=k13/l14/i15/j14
+10) pbrain-Tito2010.exe: AB depth= 10 node= 340999 speed= 521022n/s
+11) pbrain-gmotor2014.exe: time=3,04s, depth=4, nodes=450kN (148,2kN/s), evaluation=-691, pv=i12/f13/g13/g12
+12) pbrain-Tito2010.exe: 10...
+13) pbrain-gmotor2014.exe: time=0,74s, depth=5, nodes=109kN (148,8kN/s), evaluation=Black wins, pv=f11
+14) pbrain-Tito2010.exe: 8...
+15) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=6N (0,0kN/s), evaluation=Black wins, pv=f13
+16) pbrain-Tito2010.exe: 7...
+17) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=2kN (156,6kN/s), evaluation=Black wins, pv=g11/j14/h14/j15/k16/k15/l16/j16/j17/l14/i17/l11/m10/l13/l12/m14/n15/k14
+18) pbrain-Tito2010.exe: 6...
+19) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=328N (164,0kN/s), evaluation=Black wins, pv=f14/j14/k14/j15/k16/j16/j17/i15/k17/f12
+20) pbrain-Tito2010.exe: 4...
+21) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=20N (0,0kN/s), evaluation=Black wins, pv=k14/j15/k16/j16/j17/i15/k17/f12
+22) pbrain-Tito2010.exe: 3...
+23) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=16N (16,0kN/s), evaluation=Black wins, pv=k16/j16/j17/i15/k17/f12
+25) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=12N (0,0kN/s), evaluation=Black wins, pv=j17/i15/k17/f12
+27) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=8N (0,0kN/s), evaluation=Black wins, pv=f12/k17
+-> C:\Piskvorky\turnaj\partie\2x0-29(1).psq
+______________________________
+gmotor2014 x RenjuSolver
+ 0) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=1N (0,1kN/s), evaluation=-2920, pv=p5
+ 2) pbrain-gmotor2014.exe: time=3,03s, depth=6, nodes=520kN (171,6kN/s), evaluation=4285, pv=p7/p6/q6/o8/r7/s8
+pbrain-RenjuSolver.exe: Èas vypršel
+-> C:\Piskvorky\turnaj\partie\0x3-3(1).psq
+______________________________
+RenjuSolver x gmotor2014
+ 1) pbrain-gmotor2014.exe: time=3,02s, depth=5, nodes=410kN (135,9kN/s), evaluation=3640, pv=l11/l12/m13/j12/k12
+ 3) pbrain-gmotor2014.exe: time=3,04s, depth=5, nodes=420kN (138,3kN/s), evaluation=3920, pv=j10/k13/k12/j13/l13
+pbrain-RenjuSolver.exe: Èas vypršel
+-> C:\Piskvorky\turnaj\partie\3x0-4(1).psq
+______________________________
+gmotor2014 x RenjuSolver
+ 0) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=1N (0,1kN/s), evaluation=-2920, pv=m9
+ 2) pbrain-gmotor2014.exe: time=3,05s, depth=4, nodes=430kN (140,8kN/s), evaluation=5162, pv=j9/j6/m6/p9
+pbrain-RenjuSolver.exe: Èas vypršel
+-> C:\Piskvorky\turnaj\partie\0x3-3(2).psq
+______________________________
+RenjuSolver x gmotor2014
+ 1) pbrain-gmotor2014.exe: time=3,04s, depth=5, nodes=370kN (121,6kN/s), evaluation=3640, pv=l11/l12/m13/j12/k12
+ 3) pbrain-gmotor2014.exe: time=3,03s, depth=5, nodes=420kN (138,6kN/s), evaluation=3920, pv=j10/k13/k12/j13/l13
+pbrain-RenjuSolver.exe: Èas vypršel
+-> C:\Piskvorky\turnaj\partie\3x0-4(2).psq
+______________________________
+gmotor2014 x hewer12
+ 0) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=1N (0,1kN/s), evaluation=-2920, pv=e6
+ 2) pbrain-gmotor2014.exe: time=3,03s, depth=5, nodes=530kN (175,1kN/s), evaluation=-2032, pv=f5/e5/g7/g4/h7
+ 4) pbrain-gmotor2014.exe: time=3,04s, depth=5, nodes=510kN (167,8kN/s), evaluation=-687, pv=g7/g4/h7/h4/i7
+ 6) pbrain-gmotor2014.exe: time=3,03s, depth=7, nodes=510kN (168,2kN/s), evaluation=353, pv=g4/h3/g6/g5/e4/h7/f4
+ 8) pbrain-gmotor2014.exe: time=3,03s, depth=6, nodes=520kN (171,7kN/s), evaluation=4656, pv=g6/g5/e4/h7/d3/c2
+10) pbrain-gmotor2014.exe: time=3,02s, depth=5, nodes=510kN (168,8kN/s), evaluation=-581, pv=e4/h7/d3/c2/f4
+12) pbrain-gmotor2014.exe: time=3,00s, depth=4, nodes=540kN (180,0kN/s), evaluation=3942, pv=c8/d7/d3/c2
+14) pbrain-gmotor2014.exe: time=3,06s, depth=4, nodes=540kN (176,7kN/s), evaluation=2519, pv=d8/f4/f8/e8
+16) pbrain-gmotor2014.exe: time=3,05s, depth=6, nodes=530kN (174,1kN/s), evaluation=1832, pv=h4/f4/e3/c7/d6/h8
+18) pbrain-gmotor2014.exe: time=3,04s, depth=6, nodes=530kN (174,1kN/s), evaluation=1674, pv=e3/g3/h2/c7/d6/i3
+20) pbrain-gmotor2014.exe: time=3,03s, depth=6, nodes=470kN (155,4kN/s), evaluation=1261, pv=d3/c2/c3/f3/b3/a3
+22) pbrain-gmotor2014.exe: time=3,03s, depth=5, nodes=510kN (168,1kN/s), evaluation=-6506, pv=h9/g3/d6/g8/i6
+24) pbrain-gmotor2014.exe: time=2,99s, depth=7, nodes=533kN (178,4kN/s), evaluation=White wins, pv=d6/f8/f10/g8/e10/i6/j5/i7/j8
+25) pbrain-hewer12.exe: :-)
+26) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=506N (126,5kN/s), evaluation=White wins, pv=f10/g8/e10/i6/j5/i7/j8
+27) pbrain-hewer12.exe: :-)
+28) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=1553N (172,5kN/s), evaluation=White wins, pv=i6/h8/i8/i7/j8/k5/j6/h2/i1/i3/j4/j3/k3/f3
+29) pbrain-hewer12.exe: :-)
+30) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=609N (152,2kN/s), evaluation=White wins, pv=i8/i7/j8/k5/j6/h2/i1/i3/j4/j3/k3/f3
+31) pbrain-hewer12.exe: :-)
+32) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=608N (152,0kN/s), evaluation=White wins, pv=j8/h2/i1/k5/j6/i3/j4/j3/k3/f3
+33) pbrain-hewer12.exe: :-)
+34) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=374N (187,0kN/s), evaluation=White wins, pv=j6/h2/i1/i3/j4/j3/k3/f3
+35) pbrain-hewer12.exe: :-)
+36) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=60N (60,0kN/s), evaluation=White wins, pv=j3/h2/i1/j4/l6/g1
+37) pbrain-hewer12.exe: :-))
+38) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=12N (12,0kN/s), evaluation=White wins, pv=i1/j4/l6/g1
+39) pbrain-hewer12.exe: :-))
+40) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=8N (0,0kN/s), evaluation=White wins, pv=g1/l6
+41) pbrain-hewer12.exe:    .-. 
+41) pbrain-hewer12.exe:   o   \     .-. 
+41) pbrain-hewer12.exe:       .----.'     \ 
+41) pbrain-hewer12.exe:     .'o)   / `.    o 
+41) pbrain-hewer12.exe:   /              | 
+41) pbrain-hewer12.exe:   \_)         /
+41) pbrain-hewer12.exe:     '__/   /   
+41) pbrain-hewer12.exe:      `.      |  
+41) pbrain-hewer12.exe:       |       \  
+41) pbrain-hewer12.exe:   .--/`-.     / / 
+41) pbrain-hewer12.exe: .'.-/`-. `.  .\| 
+-> C:\Piskvorky\turnaj\partie\0x4-42(1).psq
+______________________________
+hewer12 x gmotor2014
+ 1) pbrain-gmotor2014.exe: time=3,02s, depth=5, nodes=350kN (115,8kN/s), evaluation=3640, pv=l11/l12/m13/j12/k12
+ 3) pbrain-gmotor2014.exe: time=3,07s, depth=4, nodes=350kN (114,0kN/s), evaluation=-1344, pv=l10/l12/m13/k12
+ 5) pbrain-gmotor2014.exe: time=3,06s, depth=4, nodes=350kN (114,4kN/s), evaluation=-555, pv=m13/k12/m12/k10
+ 6) pbrain-hewer12.exe: :-)
+ 7) pbrain-gmotor2014.exe: time=3,01s, depth=4, nodes=340kN (113,1kN/s), evaluation=-199, pv=h8/k9/i8/j9
+ 8) pbrain-hewer12.exe: :-)
+ 9) pbrain-gmotor2014.exe: time=0,63s, depth=5, nodes=72kN (114,9kN/s), evaluation=Black wins, pv=m10
+10) pbrain-hewer12.exe: :-)
+11) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=1061N (106,1kN/s), evaluation=Black wins, pv=k10/h12/o10/n10/i11/j12/i12/m12/n12/j9/j11/l9/m9/h9
+12) pbrain-hewer12.exe: :-)
+13) pbrain-gmotor2014.exe: time=0,01s, depth=3, nodes=770N (96,2kN/s), evaluation=Black wins, pv=n10/o10/i12/m12/n12/j9/j11/l9/m9/h9
+15) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=4N (0,0kN/s), evaluation=Black wins, pv=m12
+16) pbrain-hewer12.exe: :-))
+17) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=12N (0,0kN/s), evaluation=Black wins, pv=i12/i11/g13/l8
+18) pbrain-hewer12.exe: :-))
+19) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=8N (0,0kN/s), evaluation=Black wins, pv=l8/g13
+20) pbrain-hewer12.exe:    .-. 
+20) pbrain-hewer12.exe:   o   \     .-. 
+20) pbrain-hewer12.exe:       .----.'     \ 
+20) pbrain-hewer12.exe:     .'o)   / `.    o 
+20) pbrain-hewer12.exe:   /              | 
+20) pbrain-hewer12.exe:   \_)         /
+20) pbrain-hewer12.exe:     '__/   /   
+20) pbrain-hewer12.exe:      `.      |  
+20) pbrain-hewer12.exe:       |       \  
+20) pbrain-hewer12.exe:   .--/`-.     / / 
+20) pbrain-hewer12.exe: .'.-/`-. `.  .\| 
+-> C:\Piskvorky\turnaj\partie\4x0-21(1).psq
+______________________________
+gmotor2014 x hewer12
+ 0) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=1N (0,1kN/s), evaluation=-2920, pv=i13
+ 2) pbrain-gmotor2014.exe: time=3,06s, depth=5, nodes=440kN (144,0kN/s), evaluation=-2086, pv=j12/j13/k14/k11/l14
+ 4) pbrain-gmotor2014.exe: time=3,01s, depth=4, nodes=420kN (139,7kN/s), evaluation=5096, pv=j13/j11/k11/h14
+ 6) pbrain-gmotor2014.exe: time=3,04s, depth=5, nodes=430kN (141,3kN/s), evaluation=-555, pv=h13/k13/g13/f13/h14
+ 7) pbrain-hewer12.exe: :-(
+ 8) pbrain-gmotor2014.exe: time=3,03s, depth=5, nodes=440kN (145,3kN/s), evaluation=42, pv=k11/h14/i14/g12/h15
+10) pbrain-gmotor2014.exe: time=3,06s, depth=4, nodes=450kN (147,1kN/s), evaluation=5310, pv=j14/k15/l10/m9
+12) pbrain-gmotor2014.exe: time=0,43s, depth=4, nodes=56kN (131,6kN/s), evaluation=Black wins, pv=l10/m9/l11/j15/m10/k12/l9/l12/l8/l7/k8/n11/j8/m8/i8/h8/k10/j9/n10/o10/j10
+14) pbrain-gmotor2014.exe: time=0,01s, depth=2, nodes=571N (71,4kN/s), evaluation=Black wins, pv=l11/j15
+15) pbrain-hewer12.exe: :-)
+16) pbrain-gmotor2014.exe: time=1,14s, depth=5, nodes=161kN (141,5kN/s), evaluation=White wins, pv=j15/j16/i15
+18) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=5N (0,0kN/s), evaluation=White wins, pv=i15
+19) pbrain-hewer12.exe: :-)
+20) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=10N (0,0kN/s), evaluation=White wins, pv=i11/e11/d11/f12/d10
+21) pbrain-hewer12.exe: :-)
+22) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=1134N (162,0kN/s), evaluation=White wins, pv=d11/f12/d10/e13/d14/e14/d12/d13/d9/d8/e12/f13/c13/g12/d15/i10
+23) pbrain-hewer12.exe: :-)
+24) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=1762N (160,2kN/s), evaluation=White wins, pv=d10/e13/d14/e14/d12/d13/d9/d8/e12/f13/c13/g12/d15/i10
+25) pbrain-hewer12.exe: :-)
+26) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=60N (60,0kN/s), evaluation=White wins, pv=f10/g10/e8/g12/g14/g9
+27) pbrain-hewer12.exe: :-))
+28) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=12N (12,0kN/s), evaluation=White wins, pv=e8/g12/g14/g9
+29) pbrain-hewer12.exe: :-))
+30) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=8N (0,0kN/s), evaluation=White wins, pv=g9/g14
+31) pbrain-hewer12.exe:    .-. 
+31) pbrain-hewer12.exe:   o   \     .-. 
+31) pbrain-hewer12.exe:       .----.'     \ 
+31) pbrain-hewer12.exe:     .'o)   / `.    o 
+31) pbrain-hewer12.exe:   /              | 
+31) pbrain-hewer12.exe:   \_)         /
+31) pbrain-hewer12.exe:     '__/   /   
+31) pbrain-hewer12.exe:      `.      |  
+31) pbrain-hewer12.exe:       |       \  
+31) pbrain-hewer12.exe:   .--/`-.     / / 
+31) pbrain-hewer12.exe: .'.-/`-. `.  .\| 
+-> C:\Piskvorky\turnaj\partie\0x4-32(1).psq
+______________________________
+hewer12 x gmotor2014
+ 1) pbrain-gmotor2014.exe: time=3,06s, depth=5, nodes=390kN (127,4kN/s), evaluation=3640, pv=l11/l12/m13/j12/k12
+ 3) pbrain-gmotor2014.exe: time=3,01s, depth=4, nodes=380kN (126,3kN/s), evaluation=-1344, pv=l10/l12/m13/k12
+ 5) pbrain-gmotor2014.exe: time=3,02s, depth=4, nodes=390kN (129,0kN/s), evaluation=-555, pv=m13/k12/m12/k10
+ 6) pbrain-hewer12.exe: :-)
+ 7) pbrain-gmotor2014.exe: time=3,05s, depth=4, nodes=390kN (127,9kN/s), evaluation=-199, pv=h8/k9/i8/j9
+ 8) pbrain-hewer12.exe: :-)
+ 9) pbrain-gmotor2014.exe: time=0,51s, depth=5, nodes=65kN (129,2kN/s), evaluation=Black wins, pv=m10
+10) pbrain-hewer12.exe: :-)
+11) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=1061N (132,6kN/s), evaluation=Black wins, pv=k10/h12/o10/n10/i11/j12/i12/m12/n12/j9/j11/l9/m9/h9
+12) pbrain-hewer12.exe: :-)
+13) pbrain-gmotor2014.exe: time=0,01s, depth=3, nodes=770N (128,3kN/s), evaluation=Black wins, pv=n10/o10/i12/m12/n12/j9/j11/l9/m9/h9
+15) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=4N (0,0kN/s), evaluation=Black wins, pv=m12
+16) pbrain-hewer12.exe: :-))
+17) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=12N (12,0kN/s), evaluation=Black wins, pv=i12/i11/g13/l8
+18) pbrain-hewer12.exe: :-))
+19) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=8N (8,0kN/s), evaluation=Black wins, pv=l8/g13
+20) pbrain-hewer12.exe:    .-. 
+20) pbrain-hewer12.exe:   o   \     .-. 
+20) pbrain-hewer12.exe:       .----.'     \ 
+20) pbrain-hewer12.exe:     .'o)   / `.    o 
+20) pbrain-hewer12.exe:   /              | 
+20) pbrain-hewer12.exe:   \_)         /
+20) pbrain-hewer12.exe:     '__/   /   
+20) pbrain-hewer12.exe:      `.      |  
+20) pbrain-hewer12.exe:       |       \  
+20) pbrain-hewer12.exe:   .--/`-.     / / 
+20) pbrain-hewer12.exe: .'.-/`-. `.  .\| 
+-> C:\Piskvorky\turnaj\partie\4x0-21(2).psq
+______________________________
+gmotor2014 x HGarden07
+ 0) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=1N (0,1kN/s), evaluation=-2920, pv=k13
+ 2) pbrain-gmotor2014.exe: time=3,05s, depth=5, nodes=430kN (141,1kN/s), evaluation=-2086, pv=l12/l13/j11/j14/i11
+ 4) pbrain-gmotor2014.exe: time=3,02s, depth=5, nodes=430kN (142,3kN/s), evaluation=-881, pv=m13/l13/m14/m12/n14
+ 6) pbrain-gmotor2014.exe: time=3,03s, depth=4, nodes=430kN (142,0kN/s), evaluation=4037, pv=m10/i14/m11/m12
+ 8) pbrain-gmotor2014.exe: time=3,01s, depth=4, nodes=430kN (142,8kN/s), evaluation=3704, pv=n14/k11/m11/m12
+10) pbrain-gmotor2014.exe: time=3,05s, depth=6, nodes=440kN (144,4kN/s), evaluation=4157, pv=m11/i14/h15/m12/n10/o9
+12) pbrain-gmotor2014.exe: time=0,16s, depth=6, nodes=23kN (150,3kN/s), evaluation=Black wins, pv=h15/m12/n10/o9/n13/n12/o13/l13/q13/p13/p12/m15/o11/r14/m9
+14) pbrain-gmotor2014.exe: time=0,00s, depth=0, nodes=0N (0,0kN/s), evaluation=Black wins, pv=n10
+16) pbrain-gmotor2014.exe: time=0,01s, depth=0, nodes=1986N (141,8kN/s), evaluation=Black wins, pv=m9/m12/p12/k14/l14/h14/g14/o11/m15/o13/n16/o17/j12
+18) pbrain-gmotor2014.exe: time=0,02s, depth=0, nodes=2kN (144,9kN/s), evaluation=Black wins, pv=p12/k14/l14/h14/g14/o11/m15/o13/n16/o17/j12
+20) pbrain-gmotor2014.exe: time=0,01s, depth=2, nodes=1145N (104,1kN/s), evaluation=Black wins, pv=k14/o11/o13/m15/n13/l13/n12/n11/p14/q15/l10
+22) pbrain-gmotor2014.exe: time=0,00s, depth=0, nodes=0N (0,0kN/s), evaluation=Black wins, pv=q13
+24) pbrain-gmotor2014.exe: time=0,01s, depth=0, nodes=610N (122,0kN/s), evaluation=Black wins, pv=o15/p16/p14/n16/r12/s11/q12/s12/n12/o12/o13/q15/l10
+26) pbrain-gmotor2014.exe: time=0,02s, depth=0, nodes=1015N (67,7kN/s), evaluation=Black wins, pv=p14/n16/r12/s11/q12/s12/n12/o12/o13/q15/l10
+28) pbrain-gmotor2014.exe: time=0,00s, depth=0, nodes=59N (59,0kN/s), evaluation=Black wins, pv=r12/s11/q12/s12/n12/o12/o13/q15/l10
+30) pbrain-gmotor2014.exe: time=0,01s, depth=0, nodes=599N (119,8kN/s), evaluation=Black wins, pv=m8/m7/o10/p10/l10/k10/o13/n12/m15/l16/q11
+32) pbrain-gmotor2014.exe: time=0,00s, depth=0, nodes=49N (49,0kN/s), evaluation=Black wins, pv=o13/m15/n12/q15/l10
+34) pbrain-gmotor2014.exe: time=0,00s, depth=0, nodes=5N (0,0kN/s), evaluation=Black wins, pv=m15/l16/q11
+36) pbrain-gmotor2014.exe: time=0,00s, depth=0, nodes=1N (0,0kN/s), evaluation=Black wins, pv=q11
+-> C:\Piskvorky\turnaj\partie\0x5-37(1).psq
+______________________________
+HGarden07 x gmotor2014
+ 1) pbrain-gmotor2014.exe: time=3,03s, depth=5, nodes=420kN (138,8kN/s), evaluation=3640, pv=l11/l12/m13/j12/k12
+ 3) pbrain-gmotor2014.exe: time=3,00s, depth=5, nodes=420kN (139,9kN/s), evaluation=3262, pv=k9/j10/l10/l12/i9
+ 5) pbrain-gmotor2014.exe: time=3,03s, depth=5, nodes=429kN (142,0kN/s), evaluation=3560, pv=l10/l9/j8/i7/l12
+ 7) pbrain-gmotor2014.exe: time=3,07s, depth=5, nodes=440kN (143,6kN/s), evaluation=3735, pv=i9/m11/k13/l9/m13
+ 9) pbrain-gmotor2014.exe: time=3,02s, depth=5, nodes=440kN (145,7kN/s), evaluation=3746, pv=j9/l9/i12/k8/i8
+11) pbrain-gmotor2014.exe: time=3,00s, depth=4, nodes=430kN (143,2kN/s), evaluation=-1905, pv=i10/i12/h9/g9
+13) pbrain-gmotor2014.exe: time=3,05s, depth=5, nodes=450kN (147,3kN/s), evaluation=1723, pv=h9/g9/i8/i7/j11
+15) pbrain-gmotor2014.exe: time=3,06s, depth=6, nodes=450kN (147,0kN/s), evaluation=-1632, pv=i8/i11/j11/k12/j12/g10
+17) pbrain-gmotor2014.exe: time=3,03s, depth=6, nodes=460kN (152,1kN/s), evaluation=-865, pv=j11/k12/j12/g10/g8/f7
+pbrain-HGarden07.exe: Èas vypršel
+-> C:\Piskvorky\turnaj\partie\5x0-18(1).psq
+______________________________
+gmotor2014 x HGarden07
+ 0) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=1N (0,1kN/s), evaluation=-2920, pv=k7
+ 2) pbrain-gmotor2014.exe: time=3,03s, depth=5, nodes=390kN (128,6kN/s), evaluation=-2086, pv=l6/l7/m8/m5/n8
+ 4) pbrain-gmotor2014.exe: time=3,03s, depth=5, nodes=460kN (152,0kN/s), evaluation=-881, pv=l8/l7/m8/k8/m9
+ 6) pbrain-gmotor2014.exe: time=3,04s, depth=4, nodes=460kN (151,2kN/s), evaluation=4087, pv=i8/m4/j8/k8
+ 8) pbrain-gmotor2014.exe: time=3,05s, depth=4, nodes=460kN (151,1kN/s), evaluation=3704, pv=m9/j6/j8/k8
+10) pbrain-gmotor2014.exe: time=2,35s, depth=8, nodes=367kN (156,1kN/s), evaluation=Black wins, pv=n3/n10/i5/j6/j8/k8
+12) pbrain-gmotor2014.exe: time=0,43s, depth=6, nodes=66kN (155,7kN/s), evaluation=Black wins, pv=j8/k8/i9/h10/l9/l10
+14) pbrain-gmotor2014.exe: time=0,00s, depth=0, nodes=0N (0,0kN/s), evaluation=Black wins, pv=i9
+16) pbrain-gmotor2014.exe: time=0,02s, depth=0, nodes=2kN (141,3kN/s), evaluation=Black wins, pv=h8/k8/k11/m6/m7/m3/m2/j10/n8/l10/o9/p10/k5
+18) pbrain-gmotor2014.exe: time=0,02s, depth=0, nodes=2kN (132,3kN/s), evaluation=Black wins, pv=k11/m6/m7/m3/m2/j10/n8/l10/o9/p10/k5
+20) pbrain-gmotor2014.exe: time=0,00s, depth=0, nodes=470N (156,7kN/s), evaluation=Black wins, pv=l10/m6/m7/m3/m2/j12/n8/o7/o9/p10/k5
+22) pbrain-gmotor2014.exe: time=0,03s, depth=4, nodes=3kN (159,0kN/s), evaluation=Black wins, pv=m7/m3/m2/j12/n8/o7/o9/p10/k5
+24) pbrain-gmotor2014.exe: time=0,00s, depth=0, nodes=0N (0,0kN/s), evaluation=Black wins, pv=l9
+26) pbrain-gmotor2014.exe: time=0,00s, depth=0, nodes=15N (0,0kN/s), evaluation=Black wins, pv=l11/l12/j9/k9/k10/m12/h7
+28) pbrain-gmotor2014.exe: time=0,00s, depth=0, nodes=7N (0,0kN/s), evaluation=Black wins, pv=j9/k9/k10/m12/h7
+30) pbrain-gmotor2014.exe: time=0,00s, depth=0, nodes=5N (0,0kN/s), evaluation=Black wins, pv=k10/m12/h7
+32) pbrain-gmotor2014.exe: time=0,00s, depth=0, nodes=1N (0,0kN/s), evaluation=Black wins, pv=m12
+-> C:\Piskvorky\turnaj\partie\0x5-33(1).psq
+______________________________
+HGarden07 x gmotor2014
+ 1) pbrain-gmotor2014.exe: time=3,04s, depth=5, nodes=420kN (138,0kN/s), evaluation=3640, pv=l11/l12/m13/j12/k12
+ 3) pbrain-gmotor2014.exe: time=3,00s, depth=5, nodes=420kN (140,0kN/s), evaluation=3262, pv=k9/j10/l10/l12/i9
+ 5) pbrain-gmotor2014.exe: time=3,05s, depth=5, nodes=430kN (141,1kN/s), evaluation=3560, pv=l10/l9/j8/i7/l12
+ 7) pbrain-gmotor2014.exe: time=3,07s, depth=5, nodes=440kN (143,5kN/s), evaluation=3735, pv=i9/m11/k13/l9/m13
+ 9) pbrain-gmotor2014.exe: time=3,03s, depth=5, nodes=440kN (145,1kN/s), evaluation=3746, pv=j9/l9/i12/k8/i8
+11) pbrain-gmotor2014.exe: time=3,00s, depth=4, nodes=380kN (126,6kN/s), evaluation=-1905, pv=i10/i12/h9/g9
+13) pbrain-gmotor2014.exe: time=3,04s, depth=5, nodes=440kN (144,6kN/s), evaluation=1723, pv=h9/g9/i8/i7/j11
+15) pbrain-gmotor2014.exe: time=3,01s, depth=5, nodes=450kN (149,5kN/s), evaluation=2895, pv=i8/i7/g10/j7/j11
+17) pbrain-gmotor2014.exe: time=3,01s, depth=6, nodes=450kN (149,7kN/s), evaluation=-865, pv=j11/k12/j12/g10/g8/f7
+pbrain-HGarden07.exe: Èas vypršel
+-> C:\Piskvorky\turnaj\partie\5x0-18(2).psq
+______________________________
+gmotor2014 x sWINe13
+ 0) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=1N (0,1kN/s), evaluation=-2920, pv=i7
+ 1) pbrain-sWINe13.exe: Here we go-mo-ku...XXX
+ 2) pbrain-gmotor2014.exe: time=3,05s, depth=5, nodes=440kN (144,1kN/s), evaluation=-1013, pv=k7/j6/j7/l7/k6
+ 3) pbrain-sWINe13.exe: Here we go-mo-ku...XXX
+ 3) pbrain-sWINe13.exe: -599 AB nodes: 32787 dpth: 6; tm: 2 best: 5
+ 4) pbrain-gmotor2014.exe: time=3,00s, depth=6, nodes=450kN (149,9kN/s), evaluation=4330, pv=j6/k5/i5/l8/k8/k9
+ 5) pbrain-sWINe13.exe: -648 AB nodes: 32900 dpth: 8; tm: 2 best: 3
+ 6) pbrain-gmotor2014.exe: time=3,02s, depth=6, nodes=470kN (155,6kN/s), evaluation=3877, pv=k5/h8/i8/k6/j10/l4
+ 7) pbrain-sWINe13.exe: -539 AB nodes: 22164 dpth: 8; tm: 2 best: 3
+ 8) pbrain-gmotor2014.exe: time=3,06s, depth=6, nodes=470kN (153,7kN/s), evaluation=3796, pv=i8/k6/l4/m3/j4/k4
+ 9) pbrain-sWINe13.exe: -558 AB nodes: 20022 dpth: 6; tm: 2 best: 5
+10) pbrain-gmotor2014.exe: time=3,03s, depth=4, nodes=500kN (164,9kN/s), evaluation=3796, pv=l4/m3/j4/n3
+12) pbrain-gmotor2014.exe: time=3,04s, depth=4, nodes=500kN (164,3kN/s), evaluation=3937, pv=m5/l5/n4/k3
+13) pbrain-sWINe13.exe: -532 AB nodes: 18659 dpth: 6; tm: 2 best: 1
+14) pbrain-gmotor2014.exe: time=3,05s, depth=4, nodes=520kN (170,7kN/s), evaluation=3882, pv=j4/n3/m4/k4
+15) pbrain-sWINe13.exe: -483 AB nodes: 17040 dpth: 6; tm: 2 best: 2
+16) pbrain-gmotor2014.exe: time=3,05s, depth=5, nodes=480kN (157,2kN/s), evaluation=-2328, pv=j2/m4/n3/k3/j3
+17) pbrain-sWINe13.exe: -412 AB nodes: 44335 dpth: 12; tm: 2 best: 1
+18) pbrain-gmotor2014.exe: time=3,05s, depth=6, nodes=500kN (163,8kN/s), evaluation=2774, pv=j3/j5/i4/k4/i6/h5
+20) pbrain-gmotor2014.exe: time=3,02s, depth=7, nodes=490kN (162,1kN/s), evaluation=-3557, pv=i4/k4/i6/h5/m7/i9/o7
+21) pbrain-sWINe13.exe: -433 AB nodes: 43282 dpth: 8; tm: 2 best: 1
+22) pbrain-gmotor2014.exe: time=3,03s, depth=6, nodes=490kN (161,6kN/s), evaluation=2450, pv=i6/h5/f5/i9/g6/h7
+23) pbrain-sWINe13.exe: 3 AB nodes: 53350 dpth: 6; tm: 2 best: 16
+24) pbrain-gmotor2014.exe: time=3,05s, depth=4, nodes=450kN (147,7kN/s), evaluation=2450, pv=f5/i9/g6/h7
+25) pbrain-sWINe13.exe: 29 AB nodes: 56235 dpth: 6; tm: 2 best: 23
+26) pbrain-gmotor2014.exe: time=3,02s, depth=4, nodes=460kN (152,3kN/s), evaluation=2316, pv=g6/j10/j11/i9
+27) pbrain-sWINe13.exe: 113 AB nodes: 55840 dpth: 6; tm: 2 best: 6
+28) pbrain-gmotor2014.exe: time=3,02s, depth=6, nodes=500kN (165,8kN/s), evaluation=2613, pv=h7/e4/g7/n3/m4/e7
+30) pbrain-gmotor2014.exe: time=3,05s, depth=4, nodes=510kN (167,2kN/s), evaluation=2613, pv=g7/n3/m4/e7
+31) pbrain-sWINe13.exe: 104 AB nodes: 27972 dpth: 6; tm: 2 best: 26
+32) pbrain-gmotor2014.exe: time=3,00s, depth=4, nodes=540kN (179,9kN/s), evaluation=3102, pv=g4/e7/g5/g3
+33) pbrain-sWINe13.exe: 243 AB nodes: 32950 dpth: 6; tm: 2 best: 1
+34) pbrain-gmotor2014.exe: time=3,03s, depth=8, nodes=550kN (181,5kN/s), evaluation=1915, pv=j10/i10/h9/h11/g12/n3/m4
+35) pbrain-sWINe13.exe: 277 AB nodes: 41936 dpth: 6; tm: 2 best: 1
+36) pbrain-gmotor2014.exe: time=3,03s, depth=8, nodes=550kN (181,3kN/s), evaluation=2067, pv=m4/i10/h9/h11/g12/i11/g11/i12
+37) pbrain-sWINe13.exe: 71 AB nodes: 19901 dpth: 6; tm: 2 best: 14
+38) pbrain-gmotor2014.exe: time=3,06s, depth=6, nodes=520kN (170,0kN/s), evaluation=2067, pv=h9/h11/g12/i11/g11/i12
+39) pbrain-sWINe13.exe: :-) AB nodes: 9848 dpth: 4; tm: 2 best: 15
+40) pbrain-gmotor2014.exe: time=3,02s, depth=5, nodes=550kN (182,3kN/s), evaluation=-3451, pv=k8/o3/l3/e7/e6
+42) pbrain-gmotor2014.exe: time=3,02s, depth=5, nodes=560kN (185,2kN/s), evaluation=-2784, pv=e7/f7/n9/e6/o3
+44) pbrain-gmotor2014.exe: time=3,03s, depth=4, nodes=570kN (188,3kN/s), evaluation=3591, pv=n9/e6/o8/o3
+46) pbrain-gmotor2014.exe: time=3,01s, depth=5, nodes=570kN (189,6kN/s), evaluation=-2906, pv=l3/e6/f4/h4/n5
+48) pbrain-gmotor2014.exe: time=3,05s, depth=7, nodes=570kN (187,2kN/s), evaluation=-4892, pv=q3/o4/n5/o6/j1/k2/h3
+50) pbrain-gmotor2014.exe: time=0,81s, depth=17, nodes=145kN (179,6kN/s), evaluation=White wins, pv=n5/o6/k2/j1/g3/g5/f4/h4/o5
+52) pbrain-gmotor2014.exe: time=0,03s, depth=15, nodes=5kN (205,4kN/s), evaluation=White wins, pv=k2/j1/h4/f4/g3/g5/o5
+54) pbrain-gmotor2014.exe: time=0,00s, depth=9, nodes=395N (197,5kN/s), evaluation=White wins, pv=g3/g5/f4/h4/o5
+56) pbrain-gmotor2014.exe: time=0,00s, depth=3, nodes=25N (0,0kN/s), evaluation=White wins, pv=f4/h4/o5
+58) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=3N (0,0kN/s), evaluation=White wins, pv=o5
+60) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=16N (0,0kN/s), evaluation=White wins, pv=l6/q6/p6/p5/r7/m2
+62) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=12N (0,0kN/s), evaluation=White wins, pv=p6/p5/r7/m2
+64) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=8N (0,0kN/s), evaluation=White wins, pv=m2/r7
+65) pbrain-sWINe13.exe: Thx
+-> C:\Piskvorky\turnaj\partie\0x6-66(1).psq
+______________________________
+sWINe13 x gmotor2014
+ 0) pbrain-sWINe13.exe: Here we go-mo-ku...XXX
+ 1) pbrain-gmotor2014.exe: time=3,05s, depth=5, nodes=390kN (128,1kN/s), evaluation=3640, pv=k10/k11/l12/i11/j11
+ 2) pbrain-sWINe13.exe: Here we go-mo-ku...XXX
+ 3) pbrain-gmotor2014.exe: time=3,00s, depth=4, nodes=390kN (129,8kN/s), evaluation=-1344, pv=k9/k11/l12/j11
+ 4) pbrain-sWINe13.exe: Here we go-mo-ku...XXX
+ 4) pbrain-sWINe13.exe: 0 AB nodes: 41184 dpth: 8; tm: 2 best: 1
+ 5) pbrain-gmotor2014.exe: time=3,04s, depth=4, nodes=400kN (131,4kN/s), evaluation=-555, pv=l12/j11/l11/j9
+ 6) pbrain-sWINe13.exe: 321 AB nodes: 46960 dpth: 6; tm: 2 best: 4
+ 7) pbrain-gmotor2014.exe: time=2,58s, depth=6, nodes=339kN (131,5kN/s), evaluation=Black wins, pv=h8/j9/j7/k8/j11/i10
+ 8) pbrain-sWINe13.exe: 360 AB nodes: 61047 dpth: 6; tm: 2 best: 1
+ 9) pbrain-gmotor2014.exe: time=1,42s, depth=5, nodes=189kN (133,3kN/s), evaluation=Black wins, pv=h10/j7/j9
+10) pbrain-sWINe13.exe: :-) AB nodes: 31260 dpth: 6; tm: 2 best: 5
+11) pbrain-gmotor2014.exe: time=0,05s, depth=3, nodes=7kN (133,9kN/s), evaluation=Black wins, pv=j11
+13) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=7N (0,0kN/s), evaluation=Black wins, pv=j7/l6/m5/m6
+15) pbrain-gmotor2014.exe: time=0,02s, depth=1, nodes=2kN (136,6kN/s), evaluation=Black wins, pv=m5/m6/k6/k8/l7/l8/m9/m8/n8/i8
+17) pbrain-gmotor2014.exe: time=0,02s, depth=1, nodes=2kN (145,7kN/s), evaluation=Black wins, pv=k6/k8/l7/l8/m9/m8/n8/i8
+19) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=136N (136,0kN/s), evaluation=Black wins, pv=i5/m9/n10/l10/j12/l7/l9/k8/i10/n5
+21) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=72N (36,0kN/s), evaluation=Black wins, pv=m8/l7/i10/n5
+23) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=8N (0,0kN/s), evaluation=Black wins, pv=n5/i10
+24) pbrain-sWINe13.exe: Thx
+-> C:\Piskvorky\turnaj\partie\6x0-25(1).psq
+______________________________
+gmotor2014 x sWINe13
+ 0) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=1N (0,1kN/s), evaluation=-2920, pv=h14
+ 1) pbrain-sWINe13.exe: Here we go-mo-ku...XXX
+ 2) pbrain-gmotor2014.exe: time=3,04s, depth=5, nodes=440kN (144,8kN/s), evaluation=-1013, pv=j14/i15/i14/k14/j13
+ 3) pbrain-sWINe13.exe: Here we go-mo-ku...XXX
+ 3) pbrain-sWINe13.exe: -599 AB nodes: 32553 dpth: 6; tm: 2 best: 5
+ 4) pbrain-gmotor2014.exe: time=3,03s, depth=6, nodes=450kN (148,3kN/s), evaluation=4330, pv=i15/h16/j16/g13/h13/h12
+ 5) pbrain-sWINe13.exe: -648 AB nodes: 26120 dpth: 8; tm: 2 best: 3
+ 6) pbrain-gmotor2014.exe: time=3,08s, depth=6, nodes=430kN (139,6kN/s), evaluation=3877, pv=h16/k13/j13/h15/i11/g17
+ 7) pbrain-sWINe13.exe: -539 AB nodes: 20190 dpth: 8; tm: 2 best: 1
+ 8) pbrain-gmotor2014.exe: time=3,03s, depth=5, nodes=480kN (158,3kN/s), evaluation=-2068, pv=j13/h15/g17/f18
+ 9) pbrain-sWINe13.exe: -549 AB nodes: 25689 dpth: 6; tm: 2 best: 5
+10) pbrain-gmotor2014.exe: time=3,01s, depth=3, nodes=470kN (156,2kN/s), evaluation=-1165, pv=j15/k15/k14
+11) pbrain-sWINe13.exe: -777 AB nodes: 16644 dpth: 6; tm: 2 best: 3
+12) pbrain-gmotor2014.exe: time=3,04s, depth=4, nodes=480kN (157,9kN/s), evaluation=4875, pv=i17/k14/k12/g15
+13) pbrain-sWINe13.exe: -508 AB nodes: 11829 dpth: 8; tm: 2 best: 19
+14) pbrain-gmotor2014.exe: time=3,03s, depth=4, nodes=460kN (151,9kN/s), evaluation=6168, pv=k14/g15/i12/l15
+15) pbrain-sWINe13.exe: -1097 AB nodes: 12641 dpth: 6; tm: 2 best: 3
+16) pbrain-gmotor2014.exe: time=3,02s, depth=6, nodes=460kN (152,3kN/s), evaluation=5883, pv=g17/f18/g15/f14/f15/h15
+18) pbrain-gmotor2014.exe: time=3,03s, depth=6, nodes=480kN (158,5kN/s), evaluation=5539, pv=g15/f14/f15/h15/l13/m12
+19) pbrain-sWINe13.exe: -468 AB nodes: 5568 dpth: 8; tm: 2 best: 1
+20) pbrain-gmotor2014.exe: time=3,06s, depth=6, nodes=490kN (160,0kN/s), evaluation=5195, pv=l13/m12/g16/g14/j11/j12
+21) pbrain-sWINe13.exe: -393 AB nodes: 6488 dpth: 8; tm: 2 best: 2
+22) pbrain-gmotor2014.exe: time=3,01s, depth=6, nodes=480kN (159,4kN/s), evaluation=4939, pv=g16/g14/j11/j12/k12/i10
+23) pbrain-sWINe13.exe: -292 AB nodes: 5585 dpth: 8; tm: 2 best: 1
+24) pbrain-gmotor2014.exe: time=3,01s, depth=8, nodes=510kN (169,4kN/s), evaluation=4200, pv=f15/h15/i16/f16/i11/j12/k12/m14
+26) pbrain-gmotor2014.exe: time=3,02s, depth=6, nodes=510kN (169,1kN/s), evaluation=4200, pv=i16/f16/i11/j12/k12/m14
+27) pbrain-sWINe13.exe: -524 AB nodes: 7422 dpth: 8; tm: 2 best: 12
+28) pbrain-gmotor2014.exe: time=3,06s, depth=8, nodes=490kN (160,4kN/s), evaluation=4347, pv=i10/j11/k10/f16/l14/g13/h12/g11
+29) pbrain-sWINe13.exe: -378 AB nodes: 6916 dpth: 8; tm: 2 best: 2
+30) pbrain-gmotor2014.exe: time=3,01s, depth=6, nodes=410kN (136,1kN/s), evaluation=4347, pv=k10/f16/l14/g13/h12/g11
+31) pbrain-sWINe13.exe: -196 AB nodes: 9637 dpth: 6; tm: 2 best: 4
+32) pbrain-gmotor2014.exe: time=3,05s, depth=4, nodes=500kN (164,1kN/s), evaluation=4903, pv=l14/g13/e15/g11
+33) pbrain-sWINe13.exe: :-) AB nodes: 442 dpth: 2; tm: 2 best: 4
+34) pbrain-gmotor2014.exe: time=3,03s, depth=6, nodes=500kN (164,9kN/s), evaluation=5217, pv=g11/h12/i19/i18/g13/f12
+36) pbrain-gmotor2014.exe: time=3,01s, depth=12, nodes=500kN (166,1kN/s), evaluation=1071, pv=m14/n14/j18/k19/i18/i19/g18/g19/k18/h18/g13/f12
+38) pbrain-gmotor2014.exe: time=0,54s, depth=13, nodes=99kN (183,8kN/s), evaluation=White wins, pv=i19/i18/j18/k19/g19/g18/g13/k11/l11
+40) pbrain-gmotor2014.exe: time=0,01s, depth=7, nodes=879N (146,5kN/s), evaluation=White wins, pv=g19/g18/j18/k19/g13/k11/l11
+42) pbrain-gmotor2014.exe: time=0,00s, depth=5, nodes=70N (0,0kN/s), evaluation=White wins, pv=j18/k19/g13/k11/l11
+44) pbrain-gmotor2014.exe: time=0,00s, depth=3, nodes=24N (24,0kN/s), evaluation=White wins, pv=g13/k11/l11
+46) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=3N (0,0kN/s), evaluation=White wins, pv=h9/k11/l11
+48) pbrain-gmotor2014.exe: time=3,00s, depth=12, nodes=520kN (173,2kN/s), evaluation=2511, pv=g9/g12/f12/e11/l16/k11/l11/k17/f9/l10/m9/e18
+50) pbrain-gmotor2014.exe: time=3,03s, depth=11, nodes=540kN (178,4kN/s), evaluation=-5622, pv=f12/e11/l16/k11/l11/k17/f9/l10/m9
+-> C:\Piskvorky\turnaj\partie\0x6-52(1).psq
+______________________________
+sWINe13 x gmotor2014
+ 0) pbrain-sWINe13.exe: Here we go-mo-ku...XXX
+ 1) pbrain-gmotor2014.exe: time=3,01s, depth=5, nodes=410kN (136,2kN/s), evaluation=3640, pv=k10/k11/l12/i11/j11
+ 2) pbrain-sWINe13.exe: Here we go-mo-ku...XXX
+ 3) pbrain-gmotor2014.exe: time=3,06s, depth=5, nodes=420kN (137,5kN/s), evaluation=3920, pv=i9/j12/j11/i12/k12
+ 4) pbrain-sWINe13.exe: Here we go-mo-ku...XXX
+ 4) pbrain-sWINe13.exe: -25 AB nodes: 33420 dpth: 6; tm: 2 best: 4
+ 5) pbrain-gmotor2014.exe: time=3,04s, depth=5, nodes=420kN (138,2kN/s), evaluation=3450, pv=j9/k9/h12/i8/g11
+ 6) pbrain-sWINe13.exe: -83 AB nodes: 26216 dpth: 8; tm: 2 best: 2
+ 7) pbrain-gmotor2014.exe: time=3,07s, depth=4, nodes=430kN (140,2kN/s), evaluation=-1548, pv=h12/l8/m7/l11
+ 8) pbrain-sWINe13.exe: -13 AB nodes: 30022 dpth: 8; tm: 2 best: 3
+ 9) pbrain-gmotor2014.exe: time=2,92s, depth=5, nodes=408kN (139,8kN/s), evaluation=Black wins, pv=j11/i12/l8/l12/n14/l14/l13/k13/j12/j14/i15/m11/n10/o11/n11/n12/m13/l10/o13/j8
+10) pbrain-sWINe13.exe: :-) AB nodes: 18167 dpth: 6; tm: 2 best: 3
+11) pbrain-gmotor2014.exe: time=2,25s, depth=5, nodes=321kN (143,0kN/s), evaluation=Black wins, pv=l8/l10/l12/m10/i8/n9/h7/g6/k12/m9/o9/j12/i13/n8
+13) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=16N (0,0kN/s), evaluation=Black wins, pv=n11
+15) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=1053N (131,6kN/s), evaluation=Black wins, pv=j8/l12/l13/m13/n14/m12/m14/m9/m10/j12/i13/n8
+17) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=683N (136,6kN/s), evaluation=Black wins, pv=n8/l12/l13/o9/n9/n10/k13/p8
+19) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=16N (0,0kN/s), evaluation=Black wins, pv=n9/l12/l13/n10/k13/p8
+21) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=12N (0,0kN/s), evaluation=Black wins, pv=l13/n10/k13/p8
+23) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=12N (0,0kN/s), evaluation=Black wins, pv=n14/n10/k13/p8
+25) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=12N (0,0kN/s), evaluation=Black wins, pv=m12/n10/k13/p8
+27) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=8N (0,0kN/s), evaluation=Black wins, pv=p8/k13
+28) pbrain-sWINe13.exe: Thx
+-> C:\Piskvorky\turnaj\partie\6x0-29(1).psq
+______________________________
+gmotor2014 x pela
+ 0) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=1N (0,1kN/s), evaluation=-2920, pv=l7
+ 2) pbrain-gmotor2014.exe: time=3,05s, depth=5, nodes=450kN (147,5kN/s), evaluation=-2086, pv=m8/l8/k9/k6/j9
+ 4) pbrain-gmotor2014.exe: time=3,04s, depth=4, nodes=390kN (128,2kN/s), evaluation=4210, pv=k9/k6/j9/k8
+ 6) pbrain-gmotor2014.exe: time=3,03s, depth=6, nodes=430kN (142,1kN/s), evaluation=5205, pv=k6/j5/k8/k7/m6/n5
+ 8) pbrain-gmotor2014.exe: time=3,03s, depth=5, nodes=450kN (148,3kN/s), evaluation=34, pv=k8/k7/m6/n5/l6
+10) pbrain-gmotor2014.exe: time=3,04s, depth=5, nodes=460kN (151,3kN/s), evaluation=-763, pv=m6/j9/n5/o4/l6
+12) pbrain-gmotor2014.exe: time=3,05s, depth=4, nodes=470kN (154,3kN/s), evaluation=4113, pv=n5/o4/o10/n9
+14) pbrain-gmotor2014.exe: time=3,04s, depth=4, nodes=480kN (157,8kN/s), evaluation=2696, pv=n6/j6/i5/o6
+16) pbrain-gmotor2014.exe: time=3,02s, depth=4, nodes=480kN (159,0kN/s), evaluation=2907, pv=n4/n3/n8/n7
+18) pbrain-gmotor2014.exe: time=3,05s, depth=4, nodes=490kN (160,4kN/s), evaluation=3210, pv=n3/n2/m4/o2
+20) pbrain-gmotor2014.exe: time=3,04s, depth=6, nodes=500kN (164,4kN/s), evaluation=3369, pv=m4/j7/j6/k5/j4/l5
+22) pbrain-gmotor2014.exe: time=3,05s, depth=5, nodes=530kN (173,9kN/s), evaluation=-2409, pv=j6/o2/l3/o6/o3
+24) pbrain-gmotor2014.exe: time=0,00s, depth=2, nodes=553N (138,2kN/s), evaluation=Black wins, pv=m5/l5/m3/m2/k3
+26) pbrain-gmotor2014.exe: time=0,00s, depth=0, nodes=0N (0,0kN/s), evaluation=Black wins, pv=n9
+28) pbrain-gmotor2014.exe: time=0,00s, depth=0, nodes=0N (0,0kN/s), evaluation=Black wins, pv=m3
+30) pbrain-gmotor2014.exe: time=0,19s, depth=6, nodes=33kN (180,0kN/s), evaluation=Black wins, pv=o2/l5/k3/o3
+32) pbrain-gmotor2014.exe: time=0,00s, depth=4, nodes=305N (152,5kN/s), evaluation=Black wins, pv=k3/o3
+34) pbrain-gmotor2014.exe: time=0,00s, depth=2, nodes=3N (0,0kN/s), evaluation=Black wins, pv=o3/l3
+-> C:\Piskvorky\turnaj\partie\0x7-36(1).psq
+______________________________
+pela x gmotor2014
+ 1) pbrain-gmotor2014.exe: time=3,05s, depth=5, nodes=420kN (137,9kN/s), evaluation=3640, pv=k12/k13/l14/i13/j13
+ 3) pbrain-gmotor2014.exe: time=3,02s, depth=4, nodes=420kN (138,9kN/s), evaluation=-1344, pv=k11/k13/l14/j13
+ 5) pbrain-gmotor2014.exe: time=3,04s, depth=4, nodes=430kN (141,4kN/s), evaluation=-555, pv=l14/j13/l13/j11
+ 7) pbrain-gmotor2014.exe: time=3,03s, depth=5, nodes=430kN (142,0kN/s), evaluation=5401, pv=j11/h10/g9/i10/k10
+ 9) pbrain-gmotor2014.exe: time=0,47s, depth=5, nodes=67kN (143,8kN/s), evaluation=Black wins, pv=g13
+11) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=3N (0,0kN/s), evaluation=Black wins, pv=g9
+13) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=1462N (132,9kN/s), evaluation=Black wins, pv=h9/i10/k10/g10/f10/i12/k9/k8/j9/i9/i13/i8
+15) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=880N (125,7kN/s), evaluation=Black wins, pv=g10/l10/k10/k9/l8/i7/g11/g12/g8/g7/f13/j8/m11/h6
+17) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=1120N (140,0kN/s), evaluation=Black wins, pv=h13/k9/l8/k10/l10/i12/g12/g11/i13/i9/i8/f12/e13/j8
+19) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=280N (140,0kN/s), evaluation=Black wins, pv=l8/k10/l10/i12/g12/g11/i13/i9/i8/f12/e13/j8
+21) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=134N (134,0kN/s), evaluation=Black wins, pv=l10/i12/g12/g11/i13/i9/i8/f12/e13/j8
+23) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=68N (68,0kN/s), evaluation=Black wins, pv=j9/i12/f12/i13/i14/i9
+24) pbrain-pela.exe:  I win !
+25) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=12N (12,0kN/s), evaluation=Black wins, pv=f12/i13/i14/i9
+27) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=8N (8,0kN/s), evaluation=Black wins, pv=i8/i13
+-> C:\Piskvorky\turnaj\partie\7x0-29(1).psq
+______________________________
+gmotor2014 x pela
+ 0) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=1N (0,1kN/s), evaluation=-2920, pv=l7
+ 2) pbrain-gmotor2014.exe: time=3,02s, depth=5, nodes=390kN (129,0kN/s), evaluation=-2086, pv=k6/l6/j8/j5/i8
+ 4) pbrain-gmotor2014.exe: time=3,02s, depth=4, nodes=440kN (145,9kN/s), evaluation=4210, pv=j8/j5/i8/j7
+ 6) pbrain-gmotor2014.exe: time=3,00s, depth=6, nodes=460kN (153,2kN/s), evaluation=5305, pv=j5/i4/j7/j6/l5/m4
+ 8) pbrain-gmotor2014.exe: time=3,04s, depth=6, nodes=470kN (154,7kN/s), evaluation=4805, pv=j7/j6/l5/i8/m4/n3
+10) pbrain-gmotor2014.exe: time=3,02s, depth=5, nodes=460kN (152,4kN/s), evaluation=-668, pv=l5/i8/m4/n3/k5
+12) pbrain-gmotor2014.exe: time=3,06s, depth=4, nodes=480kN (156,9kN/s), evaluation=4199, pv=n9/m8/m4/n3
+14) pbrain-gmotor2014.exe: time=3,06s, depth=4, nodes=480kN (156,9kN/s), evaluation=2948, pv=m9/i5/h4/n8
+16) pbrain-gmotor2014.exe: time=3,03s, depth=4, nodes=480kN (158,4kN/s), evaluation=2990, pv=k4/i5/m4/n3
+18) pbrain-gmotor2014.exe: time=3,05s, depth=4, nodes=510kN (167,2kN/s), evaluation=4373, pv=n7/m6/n8/m5
+20) pbrain-gmotor2014.exe: time=3,05s, depth=5, nodes=500kN (163,9kN/s), evaluation=-2043, pv=n8/m5/m7/o3/n4
+22) pbrain-gmotor2014.exe: time=3,01s, depth=6, nodes=500kN (166,2kN/s), evaluation=4257, pv=o7/p6/o6/i5/n11/n10
+24) pbrain-gmotor2014.exe: time=3,06s, depth=8, nodes=510kN (166,4kN/s), evaluation=2907, pv=o6/i5/m7/p7/h4/p5/p8/i6
+26) pbrain-gmotor2014.exe: time=3,05s, depth=5, nodes=510kN (167,3kN/s), evaluation=1215, pv=i6/l3/m7/p7
+28) pbrain-gmotor2014.exe: time=3,04s, depth=6, nodes=510kN (167,6kN/s), evaluation=5746, pv=l10/k11/k9/m11/k5/i5
+30) pbrain-gmotor2014.exe: time=3,03s, depth=6, nodes=480kN (158,5kN/s), evaluation=5159, pv=k9/m11/h6/i7/h7/g8
+32) pbrain-gmotor2014.exe: time=3,02s, depth=6, nodes=490kN (162,3kN/s), evaluation=5243, pv=k5/i5/h4/h6/n11/n10
+34) pbrain-gmotor2014.exe: time=3,03s, depth=6, nodes=530kN (174,7kN/s), evaluation=4920, pv=h4/h6/j10/m5/m7/p7
+36) pbrain-gmotor2014.exe: time=3,04s, depth=5, nodes=540kN (177,6kN/s), evaluation=-2966, pv=m7/p7/n11/n10/o9
+38) pbrain-gmotor2014.exe: time=3,03s, depth=4, nodes=540kN (178,2kN/s), evaluation=4212, pv=j10/k3/i11/l8
+40) pbrain-gmotor2014.exe: time=3,04s, depth=5, nodes=540kN (177,7kN/s), evaluation=-4098, pv=i11/l8/h12/g13/l11
+42) pbrain-gmotor2014.exe: time=3,01s, depth=6, nodes=550kN (183,0kN/s), evaluation=3198, pv=j11/j9/h12/g13/k10/i10
+44) pbrain-gmotor2014.exe: time=3,01s, depth=6, nodes=550kN (183,0kN/s), evaluation=2768, pv=h12/g13/k10/i10/h11/k3
+46) pbrain-gmotor2014.exe: time=3,00s, depth=6, nodes=529kN (176,4kN/s), evaluation=2483, pv=k10/i10/h11/k3/g11/f11
+48) pbrain-gmotor2014.exe: time=3,04s, depth=5, nodes=550kN (181,1kN/s), evaluation=-5144, pv=h11/m5/g11/f11/m10
+50) pbrain-gmotor2014.exe: time=3,02s, depth=6, nodes=530kN (175,7kN/s), evaluation=1313, pv=g7/m3/h7/g8/f7/i7
+52) pbrain-gmotor2014.exe: time=0,17s, depth=13, nodes=30kN (185,0kN/s), evaluation=White wins, pv=g11/f11/h7/g8/i7/f7/m5/n5/m10/n10/n3
+54) pbrain-gmotor2014.exe: time=0,01s, depth=11, nodes=2kN (196,6kN/s), evaluation=White wins, pv=g8/h7/g10/g9/n10/m10/o12
+56) pbrain-gmotor2014.exe: time=0,00s, depth=9, nodes=790N (197,5kN/s), evaluation=White wins, pv=g10/g9/m5/n5/m10
+58) pbrain-gmotor2014.exe: time=0,00s, depth=5, nodes=72N (0,0kN/s), evaluation=White wins, pv=m10
+60) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=80N (0,0kN/s), evaluation=White wins, pv=m5/n5
+62) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=64N (0,0kN/s), evaluation=White wins, pv=j3/n3/o3/n4/n2/o5/q7/l2
+63) pbrain-pela.exe:  I win !
+64) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=16N (0,0kN/s), evaluation=White wins, pv=j4/n4/o5/n3/n2/o3
+66) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=12N (0,0kN/s), evaluation=White wins, pv=o5/n3/n2/o3
+68) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=8N (0,0kN/s), evaluation=White wins, pv=o3/n2
+-> C:\Piskvorky\turnaj\partie\0x7-70(1).psq
+______________________________
+pela x gmotor2014
+ 1) pbrain-gmotor2014.exe: time=3,01s, depth=5, nodes=420kN (139,5kN/s), evaluation=3640, pv=l13/l14/m15/j14/k14
+ 3) pbrain-gmotor2014.exe: time=3,03s, depth=4, nodes=440kN (145,1kN/s), evaluation=-1344, pv=l14/l12/m11/k12
+ 5) pbrain-gmotor2014.exe: time=3,03s, depth=4, nodes=430kN (142,0kN/s), evaluation=-555, pv=m11/k12/m12/k14
+ 7) pbrain-gmotor2014.exe: time=3,03s, depth=5, nodes=440kN (145,4kN/s), evaluation=5401, pv=k14/i15/h16/j15/l15
+ 9) pbrain-gmotor2014.exe: time=0,41s, depth=5, nodes=61kN (150,9kN/s), evaluation=Black wins, pv=l16/j12/l15/l17/i15/h12/g11/i12/k12/g12/f12/i10/i11/h11/f13/h14/g15/h13/h15/h10
+11) pbrain-gmotor2014.exe: time=1,23s, depth=7, nodes=182kN (148,0kN/s), evaluation=Black wins, pv=h16/h12/g11/i12/l15/l17/i14/j12/k12/f12/g12/h14/g15/g13/j16/e11
+13) pbrain-gmotor2014.exe: time=0,04s, depth=5, nodes=6kN (156,1kN/s), evaluation=Black wins, pv=g11/i12/l15/l17/i14
+15) pbrain-gmotor2014.exe: time=0,00s, depth=3, nodes=28N (0,0kN/s), evaluation=Black wins, pv=l15/l17/i14
+17) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=3N (0,0kN/s), evaluation=Black wins, pv=i14
+19) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=1299N (129,9kN/s), evaluation=Black wins, pv=g12/j12/k12/h14/g15/g13/j16/e11
+21) pbrain-gmotor2014.exe: time=0,01s, depth=1, nodes=1083N (154,7kN/s), evaluation=Black wins, pv=j12/j16/j17/g13/h14/h13/j13/f13/e13/f15/m16/n17/g14/f14/f16/f11
+23) pbrain-gmotor2014.exe: time=1,45s, depth=7, nodes=227kN (157,4kN/s), evaluation=Black wins, pv=g13/h15/g15/g14/g10/g9/h13/j17/f11/e10/j16/i16/k18/f13
+25) pbrain-gmotor2014.exe: time=0,00s, depth=5, nodes=73N (73,0kN/s), evaluation=Black wins, pv=g15/g14/g10/g9/h13
+27) pbrain-gmotor2014.exe: time=0,00s, depth=3, nodes=64N (64,0kN/s), evaluation=Black wins, pv=g10/g9/h13
+29) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=11N (0,0kN/s), evaluation=Black wins, pv=h13
+31) pbrain-gmotor2014.exe: time=0,00s, depth=3, nodes=410N (136,7kN/s), evaluation=Black wins, pv=e10/f11/i16/j16/j18/j13
+33) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=6N (0,0kN/s), evaluation=Black wins, pv=j16
+35) pbrain-gmotor2014.exe: time=0,00s, depth=1, nodes=8N (0,0kN/s), evaluation=Black wins, pv=f13/k18
+-> C:\Piskvorky\turnaj\partie\7x0-37(1).psq
