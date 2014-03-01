@@ -358,7 +358,7 @@ namespace GomokuEngine
         {
             while (thinking) ;
             if (search == null) return;
-            transpositionTable.ResetTable(useDictionary);
+            transpositionTable.ResetTables(useDictionary);
         }
 
         public Player GetSymbol(int row, int column)

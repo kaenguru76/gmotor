@@ -38,12 +38,14 @@ namespace gvisu
         	this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
         	this.columnHeader6 = new System.Windows.Forms.ColumnHeader();
         	this.columnHeader7 = new System.Windows.Forms.ColumnHeader();
-        	this.buttonPlayMove = new System.Windows.Forms.Button();
-        	this.checkBoxThreat = new System.Windows.Forms.CheckBox();
         	this.columnHeader8 = new System.Windows.Forms.ColumnHeader();
         	this.columnHeader9 = new System.Windows.Forms.ColumnHeader();
         	this.columnHeader10 = new System.Windows.Forms.ColumnHeader();
         	this.columnHeader11 = new System.Windows.Forms.ColumnHeader();
+        	this.columnHeader12 = new System.Windows.Forms.ColumnHeader();
+        	this.columnHeader13 = new System.Windows.Forms.ColumnHeader();
+        	this.buttonPlayMove = new System.Windows.Forms.Button();
+        	this.checkBoxThreat = new System.Windows.Forms.CheckBox();
         	this.SuspendLayout();
         	// 
         	// listView1
@@ -61,12 +63,14 @@ namespace gvisu
         	        	        	this.columnHeader8,
         	        	        	this.columnHeader9,
         	        	        	this.columnHeader10,
-        	        	        	this.columnHeader11});
+        	        	        	this.columnHeader11,
+        	        	        	this.columnHeader12,
+        	        	        	this.columnHeader13});
         	this.listView1.FullRowSelect = true;
         	this.listView1.Location = new System.Drawing.Point(0, 0);
         	this.listView1.MultiSelect = false;
         	this.listView1.Name = "listView1";
-        	this.listView1.Size = new System.Drawing.Size(528, 208);
+        	this.listView1.Size = new System.Drawing.Size(649, 208);
         	this.listView1.TabIndex = 42;
         	this.listView1.UseCompatibleStateImageBehavior = false;
         	this.listView1.View = System.Windows.Forms.View.Details;
@@ -109,6 +113,30 @@ namespace gvisu
         	// 
         	this.columnHeader7.Text = "depth";
         	// 
+        	// columnHeader8
+        	// 
+        	this.columnHeader8.Text = "vctBlack";
+        	// 
+        	// columnHeader9
+        	// 
+        	this.columnHeader9.Text = "vctWhite";
+        	// 
+        	// columnHeader10
+        	// 
+        	this.columnHeader10.Text = "vctBlackDepth";
+        	// 
+        	// columnHeader11
+        	// 
+        	this.columnHeader11.Text = "vctWhiteDepth";
+        	// 
+        	// columnHeader12
+        	// 
+        	this.columnHeader12.Text = "vctBlackMoves";
+        	// 
+        	// columnHeader13
+        	// 
+        	this.columnHeader13.Text = "vctWhiteMoves";
+        	// 
         	// buttonPlayMove
         	// 
         	this.buttonPlayMove.Location = new System.Drawing.Point(212, 214);
@@ -131,27 +159,11 @@ namespace gvisu
         	this.checkBoxThreat.CheckedChanged += new System.EventHandler(this.checkBoxThreat_CheckedChanged);
         	this.checkBoxThreat.Click += new System.EventHandler(this.checkBoxThreat_Click);
         	// 
-        	// columnHeader8
-        	// 
-        	this.columnHeader8.Text = "vctBlack";
-        	// 
-        	// columnHeader9
-        	// 
-        	this.columnHeader9.Text = "vctWhite";
-        	// 
-        	// columnHeader10
-        	// 
-        	this.columnHeader10.Text = "vctBlackDepth";
-        	// 
-        	// columnHeader11
-        	// 
-        	this.columnHeader11.Text = "vctWhiteDepth";
-        	// 
         	// PossibleMoves
         	// 
         	this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
         	this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        	this.ClientSize = new System.Drawing.Size(528, 255);
+        	this.ClientSize = new System.Drawing.Size(650, 255);
         	this.Controls.Add(this.checkBoxThreat);
         	this.Controls.Add(this.buttonPlayMove);
         	this.Controls.Add(this.listView1);
@@ -162,6 +174,8 @@ namespace gvisu
         	this.ResumeLayout(false);
         	this.PerformLayout();
         }
+        private System.Windows.Forms.ColumnHeader columnHeader13;
+        private System.Windows.Forms.ColumnHeader columnHeader12;
         private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.ColumnHeader columnHeader9;

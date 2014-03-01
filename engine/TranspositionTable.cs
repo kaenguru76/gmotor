@@ -103,7 +103,7 @@ namespace GomokuEngine
           	dictionary = new Dictionary<ulong,TranspositionTableItem>();
 
           	useDictionary = false;
-            ResetTable(useDictionary);
+            ResetTables(useDictionary);
 		}
 		
         public TranspositionTableItem Lookup()
@@ -249,7 +249,7 @@ namespace GomokuEngine
             set{ tableSize = value;}
         }
 
-		public void ResetTable(bool useDictionary)
+		public void ResetTables(bool useDictionary)
         {
 			this.useDictionary = useDictionary;
 			
@@ -271,7 +271,7 @@ namespace GomokuEngine
             	dictionary.Clear();
         }
 		
-		public void ResetCounters()
+		public void ResetStatistics()
 		{
             successfulHits = 0;
             successfulVctHits = 0;

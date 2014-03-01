@@ -1,4 +1,4 @@
-#define CHECK 
+//#define CHECK 
 
 using System;
 using System.Collections.Generic;
@@ -9,8 +9,8 @@ namespace GomokuEngine
 {
     public enum VctStatus 
     { 
-        Proven,
         Disproven, 
+        Proven,
     }
 
     class Search   
@@ -47,7 +47,7 @@ namespace GomokuEngine
         	
             startTime = DateTime.Now;
 
-            transpositionTable.ResetCounters();
+            transpositionTable.ResetStatistics();
             //initialize counter
             timeoutCounter = 0;
             
@@ -370,9 +370,7 @@ namespace GomokuEngine
             	transpositionTable.StoreVctWhite(status, depth, sInfo.examinedMoves - examinedMoves, bestMove);
 			            	
 
-#if CHECK            
             System.Diagnostics.Debug.Assert(gameBoard.VctPlayer != Player.None,"Wrong value of VctPlayer");
-#endif 
             
             return status;
         }

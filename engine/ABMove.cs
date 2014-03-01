@@ -20,6 +20,8 @@ namespace GomokuEngine
         public VctStatus vctWhite;
         public int vctBlackDepth;
         public int vctWhiteDepth;
+        public int examinedMovesVctBlack;
+        public int examinedMovesVctWhite;
 
         int boardSize;
 
@@ -69,7 +71,8 @@ namespace GomokuEngine
 
             string[] str = { Convert.ToString(index), this.ToString() + " (" + square.ToString() + ")", time.TotalSeconds.ToString(),
                                moveType.ToString(), s2, vctPlayer.ToString(), examinedMoves.ToString(), depth.ToString(),
-                               vctBlack.ToString(), vctWhite.ToString(), vctBlackDepth.ToString(), vctWhiteDepth.ToString()};
+                               vctBlack.ToString(), vctWhite.ToString(), vctBlackDepth.ToString(), vctWhiteDepth.ToString(),
+                               examinedMovesVctBlack.ToString(), examinedMovesVctWhite.ToString()};
             return str;
         }
 

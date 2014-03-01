@@ -265,6 +265,7 @@ namespace GomokuEngine
                 {
                 	move.vctBlack = ttItemVctBlack.value;
                 	move.vctBlackDepth = ttItemVctBlack.depth;
+                	move.examinedMovesVctBlack = ttItemVctBlack.examinedMoves;
                 }
                 
                 TranspositionTableVctItem ttItemVctWhite = transpositionTable.LookupVctWhite();
@@ -272,6 +273,7 @@ namespace GomokuEngine
                 {
                 	move.vctWhite = ttItemVctWhite.value;
                 	move.vctWhiteDepth = ttItemVctWhite.depth;
+                	move.examinedMovesVctWhite = ttItemVctWhite.examinedMoves;
                 }
 
                 transpositionTable.UndoMove(square, playerOnMove);
