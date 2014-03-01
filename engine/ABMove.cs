@@ -16,8 +16,8 @@ namespace GomokuEngine
         public int depth;
         public Player vctPlayer;
         public TimeSpan time;
-        public TT_VCT_Status vctBlack;
-        public TT_VCT_Status vctWhite;
+        public VctStatus vctBlack;
+        public VctStatus vctWhite;
         public int vctBlackDepth;
         public int vctWhiteDepth;
 

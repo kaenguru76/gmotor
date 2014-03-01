@@ -636,7 +636,8 @@ namespace gvisu
                 listBox2.Items.Add("VCT cutoffs = " + String.Format("{0}", info.nbVCTCutoffs));
             }            
 
-            listBox2.Items.Add("TT hits = " + info.TThits.ToString("f1") + "%");
+            listBox2.Items.Add("TT hits = " + info.TtHits.ToString("f1") + "%");
+            listBox2.Items.Add("TT VCT hits = " + info.TtVctHits.ToString("f1") + "%");
 
             listBox2.Items.Add("deepestVCTsearch = " + info.deepestVctSearch);
         }

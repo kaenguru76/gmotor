@@ -9,13 +9,11 @@ namespace GomokuEngine
         public TimeSpan elapsedTime;
         public int examinedMoves;
         public List<ABMove> possibleMoves;
-        public float TThits;
-        //public float TTVCThits;
-        //public Player winner;
+        public float TtHits;
+        public float TtVctHits;
         public int evaluation;
         public int nbCutoffs;
         public int nbVCTCutoffs;
-        //public int reachedDepth;
         public bool vctActive;
         public int depth;
         public List<ABMove> principalVariation;
@@ -45,8 +43,8 @@ namespace GomokuEngine
             {
                 this.principalVariation = new List<ABMove>(searchInfo.principalVariation);
             }
-            this.TThits = searchInfo.TThits;
-            //this.TTVCThits = searchInfo.TTVCThits;
+            this.TtHits = searchInfo.TtHits;
+            this.TtVctHits = searchInfo.TtVctHits;
             this.evaluation = searchInfo.evaluation;
             this.nbCutoffs = searchInfo.nbCutoffs;
             this.nbVCTCutoffs = searchInfo.nbVCTCutoffs;

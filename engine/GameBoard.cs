@@ -260,14 +260,14 @@ namespace GomokuEngine
                 	}
                 }
                 
-                TranspositionTableVCTItem ttItemVctBlack = transpositionTable.LookupVctBlack();
+                TranspositionTableVctItem ttItemVctBlack = transpositionTable.LookupVctBlack();
                 if (ttItemVctBlack != null)
                 {
                 	move.vctBlack = ttItemVctBlack.value;
                 	move.vctBlackDepth = ttItemVctBlack.depth;
                 }
                 
-                TranspositionTableVCTItem ttItemVctWhite = transpositionTable.LookupVctWhite();
+                TranspositionTableVctItem ttItemVctWhite = transpositionTable.LookupVctWhite();
                 if (ttItemVctWhite != null)
                 {
                 	move.vctWhite = ttItemVctWhite.value;

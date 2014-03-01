@@ -11,12 +11,6 @@ namespace GomokuEngine
         LowerBound,
     }
 
-    public enum TT_VCT_Status 
-    { 
-        Proven,
-        Disproven, 
-    }
-
     class TranspositionTableItem
     {
         public ulong key;
@@ -42,18 +36,18 @@ namespace GomokuEngine
         }
     }
     
-    class TranspositionTableVCTItem
+    class TranspositionTableVctItem
     {
         public ulong key;
-        public TT_VCT_Status value;
+        public VctStatus value;
         public int depth;
         public int examinedMoves;
         public int bestMove;
 
-        public TranspositionTableVCTItem()
+        public TranspositionTableVctItem()
         {
             key = 0;
-            value = TT_VCT_Status.Disproven;
+            value = VctStatus.Disproven;
             depth = 0;
             examinedMoves = 0;
             bestMove = -1;
@@ -68,15 +62,15 @@ namespace GomokuEngine
     class TranspositionTable
     {
 		TranspositionTableItem[] items;
-		TranspositionTableVCTItem[] itemsVctBlack;
-		TranspositionTableVCTItem[] itemsVctWhite;
+		TranspositionTableVctItem[] itemsVctBlack;
+		TranspositionTableVctItem[] itemsVctWhite;
         int tableSize;//size of table in MB
 		int tableItems;//number of items in table
         int boardSize;
 
 		ulong zobristKey;
 		int successfulHits;
-		int successfulVCTHits;
+		int successfulVctHits;
 		int failureHits;
 		int failureVctHits;
 
@@ -151,18 +145,18 @@ namespace GomokuEngine
         	}
         }
 
-        public TranspositionTableVCTItem LookupVctBlack()
+        public TranspositionTableVctItem LookupVctBlack()
         {
             if (tableItems == 0) return null;
 
             /* get access to item */
             int index = (int)(zobristKey % (ulong)tableItems);
-            TranspositionTableVCTItem item = itemsVctBlack[index];
+            TranspositionTableVctItem item = itemsVctBlack[index];
     	
             /* key must be the same */
             if (item.key == zobristKey)
             {
-                successfulVCTHits++;
+                successfulVctHits++;
                 return item;
             }
             else
@@ -172,18 +166,18 @@ namespace GomokuEngine
             }
         }
 
-        public TranspositionTableVCTItem LookupVctWhite()
+        public TranspositionTableVctItem LookupVctWhite()
         {
             if (tableItems == 0) return null;
 
             /* get access to item */
             int index = (int)(zobristKey % (ulong)tableItems);
-            TranspositionTableVCTItem item = itemsVctWhite[index];
+            TranspositionTableVctItem item = itemsVctWhite[index];
     	
             /* key must be the same */
             if (item.key == zobristKey)
             {
-                successfulVCTHits++;
+                successfulVctHits++;
                 return item;
             }
             else
@@ -219,34 +213,34 @@ namespace GomokuEngine
             
         }
 
-		public void StoreVctBlack(TT_VCT_Status value, int depth, int examinedMoves, int bestMove)
+		public void StoreVctBlack(VctStatus value, int depth, int examinedMoves, int bestMove)
         {
             if (tableItems == 0) return;
             
           	/* get access to item */
             int index = (int)(zobristKey % (ulong)tableItems);
-            TranspositionTableVCTItem item = itemsVctBlack[index];
+            TranspositionTableVctItem item = itemsVctBlack[index];
 
             item.key = zobristKey;
             item.value = value;
             item.depth = depth;
             item.examinedMoves = examinedMoves;
-            tableItem.bestMove = bestMove;
+            item.bestMove = bestMove;
         }
 
-		public void StoreVctWhite(TT_VCT_Status value, int depth, int examinedMoves, int bestMove)
+		public void StoreVctWhite(VctStatus value, int depth, int examinedMoves, int bestMove)
         {
             if (tableItems == 0) return;
             
           	/* get access to item */
             int index = (int)(zobristKey % (ulong)tableItems);
-            TranspositionTableVCTItem item = itemsVctWhite[index];
+            TranspositionTableVctItem item = itemsVctWhite[index];
 
             item.key = zobristKey;
             item.value = value;
             item.depth = depth;
             item.examinedMoves = examinedMoves;
-            tableItem.bestMove = bestMove;
+            item.bestMove = bestMove;
         }
 
 		public int TableSize
@@ -260,27 +254,30 @@ namespace GomokuEngine
 			this.useDictionary = useDictionary;
 			
 			tableItems = tableSize / 30;
-
-            successfulHits = 0;
-            successfulVCTHits = 0;
-            failureHits = 0;
-			failureVctHits = 0;
             
             items = new TranspositionTableItem[tableItems];
-            itemsVctBlack = new TranspositionTableVCTItem[tableItems];
-            itemsVctWhite = new TranspositionTableVCTItem[tableItems];
+            itemsVctBlack = new TranspositionTableVctItem[tableItems];
+            itemsVctWhite = new TranspositionTableVctItem[tableItems];
 
             for (int index = 0; index < tableItems; index++)
             {
                 items[index] = new TranspositionTableItem();
-                itemsVctBlack[index] = new TranspositionTableVCTItem();
-                itemsVctWhite[index] = new TranspositionTableVCTItem();
+                itemsVctBlack[index] = new TranspositionTableVctItem();
+                itemsVctWhite[index] = new TranspositionTableVctItem();
             }
 
             //clear dictionary
             if (useDictionary)
             	dictionary.Clear();
         }
+		
+		public void ResetCounters()
+		{
+            successfulHits = 0;
+            successfulVctHits = 0;
+            failureHits = 0;
+			failureVctHits = 0;			
+		}
 
         /* returns 64-bit random number */
 		ulong rand64()
@@ -327,11 +324,11 @@ namespace GomokuEngine
 			}
 		}
 
-		public float SuccessfulVCTHits
+		public float SuccessfulVctHits
 		{
 			get
 			{
-				return (float)100*successfulVCTHits/(successfulVCTHits+failureVctHits);
+				return (float)100*successfulVctHits/(successfulVctHits+failureVctHits);
 			}
 		}
 	}
