@@ -12,7 +12,7 @@ namespace GomokuEngine
     public enum OneDirectionEvaluation : byte
     {
         overline,
-        overlineAdept,
+        //overlineAdept,
         o4,
         c4,
         o3,
@@ -90,12 +90,6 @@ namespace GomokuEngine
             	int pattern5 = (pattern >> (shift << 1)) & 0x3FF; // mask 5 stones
 
                 OneDirectionEvaluation evaluation = pattern5black[pattern5][shift];
-//                if (evaluation == OneDirectionEvaluation.overlineAdept)
-//                {
-//                	blackEvaluation = OneDirectionEvaluation.valueless;
-//                	break;
-//                }
-                
                 if (evaluation < blackEvaluation) blackEvaluation = evaluation;
             }
 
@@ -107,11 +101,6 @@ namespace GomokuEngine
                 int pattern5 = (pattern >> (shift << 1)) & 0x3FF;
 
                 OneDirectionEvaluation evaluation = pattern5white[pattern5][shift];
-//                if (evaluation == OneDirectionEvaluation.overlineAdept)
-//                {
-//                	whiteEvaluation = OneDirectionEvaluation.valueless;
-//                	break;
-//                }
                 if (evaluation < whiteEvaluation) whiteEvaluation = evaluation;
             }
 
@@ -266,7 +255,7 @@ namespace GomokuEngine
             if (nbWhite > 0) return OneDirectionEvaluation.valueless;
             if (stones[0] == Player.WhitePlayer && stones[4] == Player.WhitePlayer) return OneDirectionEvaluation.valueless;
             if (stones[0] == Player.BlackPlayer && stones[4] == Player.BlackPlayer && nbBlack == 3) return OneDirectionEvaluation.overline;
-            if (stones[0] == Player.BlackPlayer && stones[4] == Player.BlackPlayer) return OneDirectionEvaluation.overlineAdept;
+            //if (stones[0] == Player.BlackPlayer && stones[4] == Player.BlackPlayer) return OneDirectionEvaluation.overlineAdept;
 
             switch (nbBlack)
             {
@@ -331,7 +320,7 @@ namespace GomokuEngine
             if (nbWhite > 0) return OneDirectionEvaluation.valueless;
             if (stones[0] == Player.WhitePlayer && stones[4] == Player.WhitePlayer) return OneDirectionEvaluation.valueless;
             if (stones[0] == Player.BlackPlayer && stones[4] == Player.BlackPlayer && nbBlack == 3) return OneDirectionEvaluation.overline;
-            if (stones[0] == Player.BlackPlayer && stones[4] == Player.BlackPlayer) return OneDirectionEvaluation.overlineAdept;
+            //if (stones[0] == Player.BlackPlayer && stones[4] == Player.BlackPlayer) return OneDirectionEvaluation.overlineAdept;
 
             switch (nbBlack)
             {

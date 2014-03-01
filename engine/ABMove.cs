@@ -16,27 +16,16 @@ namespace GomokuEngine
         public int depth;
         public Player vctPlayer;
         public TimeSpan time;
+        public TT_VCT_Status vctBlack;
+        public TT_VCT_Status vctWhite;
+        public int vctBlackDepth;
+        public int vctWhiteDepth;
 
         int boardSize;
 
         public ABMove()
         {
         }
-/*
-        public ABMove(int square, Player player, int boardSize, BothPlayerEvaluation moveType, 
-            int value, TTEvaluationType valueType, int examinedMoves, int depth, Player vctPlayer, TimeSpan time)
-        {
-            this.square = square;
-            this.player = player;
-            this.boardSize = boardSize;
-            this.moveType = moveType;
-            this.value = value;
-            this.valueType = valueType;
-            this.examinedMoves = examinedMoves;
-            this.depth = depth;
-            this.vctPlayer = vctPlayer;
-            this.time = time;
-        }*/
 
         public ABMove(int square, Player player, int boardSize, TimeSpan time)
         {
@@ -79,7 +68,8 @@ namespace GomokuEngine
 
 
             string[] str = { Convert.ToString(index), this.ToString() + " (" + square.ToString() + ")", time.TotalSeconds.ToString(),
-                               moveType.ToString(), s2, vctPlayer.ToString(), examinedMoves.ToString(), depth.ToString() };
+                               moveType.ToString(), s2, vctPlayer.ToString(), examinedMoves.ToString(), depth.ToString(),
+                               vctBlack.ToString(), vctWhite.ToString(), vctBlackDepth.ToString(), vctWhiteDepth.ToString()};
             return str;
         }
 

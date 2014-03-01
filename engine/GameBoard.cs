@@ -237,7 +237,8 @@ namespace GomokuEngine
 
             	//get information from transposition table
                 transpositionTable.MakeMove(square, playerOnMove);
-                TranspositionTableItem ttItem = transpositionTable.Lookup(vct.VctPlayer);
+                
+                TranspositionTableItem ttItem = transpositionTable.Lookup();
                 if (ttItem != null)
                 {
                 	move.valueType = ttItem.type;
@@ -258,6 +259,21 @@ namespace GomokuEngine
 						if (move.valueType == TTEvaluationType.LowerBound) move.valueType = TTEvaluationType.UpperBound;
                 	}
                 }
+                
+                TranspositionTableVCTItem ttItemVctBlack = transpositionTable.LookupVctBlack();
+                if (ttItemVctBlack != null)
+                {
+                	move.vctBlack = ttItemVctBlack.value;
+                	move.vctBlackDepth = ttItemVctBlack.depth;
+                }
+                
+                TranspositionTableVCTItem ttItemVctWhite = transpositionTable.LookupVctWhite();
+                if (ttItemVctWhite != null)
+                {
+                	move.vctWhite = ttItemVctWhite.value;
+                	move.vctWhiteDepth = ttItemVctWhite.depth;
+                }
+
                 transpositionTable.UndoMove(square, playerOnMove);
             }
             return movesC;
@@ -307,9 +323,12 @@ namespace GomokuEngine
             return symbol[square];
         }
 
-        public Player GetPlayerOnMove()
+        public Player PlayerOnMove
         {
-            return playerOnMove;
+        	get
+        	{
+            	return playerOnMove;
+        	}
         }
 
         public List<ABMove> GetPlayedMoves()

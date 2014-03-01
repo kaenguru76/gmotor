@@ -10,7 +10,7 @@ namespace GomokuEngine
         public int examinedMoves;
         public List<ABMove> possibleMoves;
         public float TThits;
-        public float TTVCThits;
+        //public float TTVCThits;
         //public Player winner;
         public int evaluation;
         public int nbCutoffs;
@@ -46,7 +46,7 @@ namespace GomokuEngine
                 this.principalVariation = new List<ABMove>(searchInfo.principalVariation);
             }
             this.TThits = searchInfo.TThits;
-            this.TTVCThits = searchInfo.TTVCThits;
+            //this.TTVCThits = searchInfo.TTVCThits;
             this.evaluation = searchInfo.evaluation;
             this.nbCutoffs = searchInfo.nbCutoffs;
             this.nbVCTCutoffs = searchInfo.nbVCTCutoffs;

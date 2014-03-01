@@ -322,7 +322,7 @@ namespace GomokuEngine
 
             gameInformation.possibleMoves = gameBoard.GeneratePossibleMoves(gameBoard.VctPlayer);
             
-            gameInformation.Evaluation = (gameBoard.GetPlayerOnMove() == Player.BlackPlayer) ? gameBoard.GetEvaluation():-gameBoard.GetEvaluation();
+            gameInformation.Evaluation = (gameBoard.PlayerOnMove == Player.BlackPlayer) ? gameBoard.GetEvaluation():-gameBoard.GetEvaluation();
             //gameBoard.GetEvaluationDetail(out gameInformation.BlackScore, out gameInformation.WhiteScore);
 
             MovesChangedE(gameInformation);
@@ -341,7 +341,7 @@ namespace GomokuEngine
         {
             get
             {
-                return gameBoard.GetPlayerOnMove();
+                return gameBoard.PlayerOnMove;
             }
         }
 

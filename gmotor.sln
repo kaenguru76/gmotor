@@ -1,5 +1,7 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
+# SharpDevelop 4.4
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GomokuEngine", "engine\GomokuEngine.csproj", "{95009AF7-6264-40B1-93EA-DA0077CC5979}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gvisu", "gvisu\gvisu.csproj", "{FE937A84-99E9-4632-A847-CB398E3073A3}"
