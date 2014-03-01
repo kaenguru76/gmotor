@@ -205,18 +205,20 @@ namespace GomokuEngine
                 bool changedBlack = sortingBlack.Modify(connectedSquare.square, bothData.evaluationBlackOnMove);
                 bool changedWhite = sortingWhite.Modify(connectedSquare.square, bothData.evaluationWhiteOnMove);
 
-
-                if (changedBlack || changedWhite)
+                switch (placedSymbol)
                 {
-                    if (placedSymbol == Player.None)
-                    {
-                        vct.RemoveVct(connectedSquare.square);
-                    }
-                    else
-                    {
-                        vct.AddVct(connectedSquare.square);
-                    }
-                }     
+                	case Player.BlackPlayer:
+                		if (changedBlack) vct.AddVct(connectedSquare.square);
+						break;
+						
+                	case Player.WhitePlayer:
+                		if (changedWhite) vct.AddVct(connectedSquare.square);
+						break;
+
+                	case Player.None:
+                		vct.RemoveVct(connectedSquare.square);
+						break;
+                }
             }
         }
 

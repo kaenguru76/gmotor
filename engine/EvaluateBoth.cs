@@ -4,6 +4,7 @@ namespace GomokuEngine
 {
     public enum BothPlayerEvaluation : byte
     {
+    	overline_defending,
         four_attacking,
         four_defending,
         o3_attacking,
@@ -96,7 +97,7 @@ namespace GomokuEngine
          BothPlayerEvaluation GetBothPlayerEvaluation(FourDirectionsEvaluation attacker, FourDirectionsEvaluation defender)
         {
             if (attacker <= FourDirectionsEvaluation.overline) return BothPlayerEvaluation.forbidden;
-            if (defender <= FourDirectionsEvaluation.overline) return BothPlayerEvaluation.forbidden;
+            if (defender <= FourDirectionsEvaluation.overline) return BothPlayerEvaluation.overline_defending;
 
             if (attacker <= FourDirectionsEvaluation.four) return BothPlayerEvaluation.four_attacking;
             if (defender <= FourDirectionsEvaluation.four) return BothPlayerEvaluation.four_defending;
