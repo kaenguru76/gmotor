@@ -42,8 +42,9 @@ namespace GomokuEngine
 
     public class FourDirectionsData
     {
-        public uint eval;
+        public uint hash;
         public FourDirectionsEvaluation evaluation;
+        public bool modified;
     }
 
     /***********************************************************************
@@ -51,7 +52,7 @@ namespace GomokuEngine
      ***********************************************************************/
     class EvaluateFourDirections
     {
-        FourDirectionsEvaluation[] evaluationTable;
+        FourDirectionsEvaluation[] lookupTable;
         FourDirectionsData[] onePlayerData;
 
         public EvaluateFourDirections(int boardSize)
@@ -66,10 +67,10 @@ namespace GomokuEngine
             for (int square = 0; square < numberOfSquares; square++)
             {
                 onePlayerData[square] = new FourDirectionsData();
-                onePlayerData[square].eval = (UInt16)nothing;
+                onePlayerData[square].hash = (UInt16)nothing;
             }
 
-            evaluationTable = new FourDirectionsEvaluation[0x10000];
+            lookupTable = new FourDirectionsEvaluation[0x10000];
 
             /* initialize squareLevelArray */
             for (byte lc3 = 0; lc3 < Enum.GetValues(typeof(OneDirectionEvaluation)).Length; lc3++)
@@ -81,7 +82,7 @@ namespace GomokuEngine
                         for (byte lc0 = 0; lc0 < Enum.GetValues(typeof(OneDirectionEvaluation)).Length; lc0++)
                         {
                             int index = lc0 | lc1 << 4 | lc2 << 8 | lc3 << 12;
-                            evaluationTable[index] = GetPlayerEvaluation((OneDirectionEvaluation)lc0, (OneDirectionEvaluation)lc1,
+                            lookupTable[index] = GetPlayerEvaluation((OneDirectionEvaluation)lc0, (OneDirectionEvaluation)lc1,
                                 (OneDirectionEvaluation)lc2, (OneDirectionEvaluation)lc3);
                         }
                     }
@@ -134,20 +135,29 @@ namespace GomokuEngine
         //return black evaluation
         public FourDirectionsData Modify(int square, Direction direction, OneDirectionEvaluation directionEvaluation)
         {
-
             FourDirectionsData actualData = onePlayerData[square];
-
+            
             int shift = (int)direction << 2;
             uint mask = (uint)(0x000F << shift);
 
+            uint hash = actualData.hash; //copy of hash  
+
             /* clear bits */
-            actualData.eval &= ~mask;
+            hash &= ~mask;
             /* set bits */
-            actualData.eval |= (uint)directionEvaluation << shift;
+            hash |= (uint)directionEvaluation << shift;
 
-            actualData.evaluation = evaluationTable[actualData.eval];
-
-            return actualData;
+            if (hash != actualData.hash) //hash changed?
+            {
+            	actualData.hash = hash;
+            	actualData.evaluation = lookupTable[hash];
+            	actualData.modified = true;
+            }
+            else
+            {
+            	actualData.modified = false;
+            }
+           	return actualData;
         }
 
         public FourDirectionsEvaluation GetEvaluation(int square)

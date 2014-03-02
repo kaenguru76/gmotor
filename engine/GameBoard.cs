@@ -202,17 +202,17 @@ namespace GomokuEngine
 
                 BothData bothData = evaluateBoth.Modify(connectedSquare.square, fourDirectionsBlack.evaluation, fourDirectionsWhite.evaluation);
 
-                bool changedBlack = sortingBlack.Modify(connectedSquare.square, bothData.evaluationBlackOnMove);
-                bool changedWhite = sortingWhite.Modify(connectedSquare.square, bothData.evaluationWhiteOnMove);
+                sortingBlack.Modify(connectedSquare.square, bothData.evaluationBlackOnMove);
+                sortingWhite.Modify(connectedSquare.square, bothData.evaluationWhiteOnMove);
 
                 switch (placedSymbol)
                 {
                 	case Player.BlackPlayer:
-                		if (changedBlack) vct.AddVct(connectedSquare.square);
+                		if (fourDirectionsBlack.modified) vct.AddVct(connectedSquare.square);
 						break;
 						
                 	case Player.WhitePlayer:
-                		if (changedWhite) vct.AddVct(connectedSquare.square);
+                		if (fourDirectionsWhite.modified) vct.AddVct(connectedSquare.square);
 						break;
 
                 	case Player.None:

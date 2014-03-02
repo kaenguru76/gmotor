@@ -125,12 +125,12 @@ namespace GomokuEngine
 			firstItem[(int)newEvaluation] = square;
         }
 
-        public bool Modify(int square, BothPlayerEvaluation newEvaluation)
+        public void Modify(int square, BothPlayerEvaluation newEvaluation)
         {
             //get old evaluation
             BothPlayerEvaluation oldEvaluation = evaluation[square];
 
-            if (newEvaluation == oldEvaluation) return false;
+            //if (newEvaluation == oldEvaluation) return false;
 
             SortSquare(square, oldEvaluation, newEvaluation);
 
@@ -150,7 +150,7 @@ namespace GomokuEngine
             }
             System.Diagnostics.Debug.Assert(score == score1,"Score value is wrong!");
 #endif
-            return true;
+            //return true;
         }
 
 
