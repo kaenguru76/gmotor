@@ -205,7 +205,7 @@ namespace gmotor
             engine.VctActive = false;
             engine.MakeMove(searchInfo.principalVariation[0]);
 
-			Console.WriteLine(String.Format("MESSAGE time={0:f2}s, depth={1}, nodes={2} ({3:f1}kN/s), evaluation={4}, pv={5}",
+			Console.WriteLine(String.Format("MESSAGE time={0:f2}s, depth={1}, nodes={2} ({3:f1}kN/s), eval={4}, pv={5}",
                 searchInfo.elapsedTime.TotalMilliseconds / 1000, searchInfo.depth, 
                 (searchInfo.examinedMoves >= 2000) ? (searchInfo.examinedMoves / 1000).ToString()+"kN" : searchInfo.examinedMoves.ToString()+"N",
                 searchInfo.MovesPerSecond / 1000, EvaluationConstants.Score2Text(searchInfo.evaluation), searchInfo.PrincipalVariationText));

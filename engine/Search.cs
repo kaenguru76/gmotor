@@ -307,12 +307,20 @@ namespace GomokuEngine
            	if (vctToProve == Player.BlackPlayer)
            	{
 	            TranspositionTableVctItem ttItem = transpositionTable.LookupVctBlack();
-	            if (ttItem != null && ttItem.depth == depth) return ttItem.value;
+	            if (ttItem != null)
+	            {
+	            	if (ttItem.value == VctStatus.Proven) return VctStatus.Proven;
+	            	if (ttItem.depth >= depth) return ttItem.value;
+	            }
            	}
            	else
            	{
 	            TranspositionTableVctItem ttItem = transpositionTable.LookupVctWhite();
-	            if (ttItem != null && ttItem.depth == depth) return ttItem.value;
+	            if (ttItem != null)
+	            {
+	            	if (ttItem.value == VctStatus.Proven) return VctStatus.Proven;
+	            	if (ttItem.depth >= depth) return ttItem.value;
+	            }
            	}
 
 			List<int> principalVariationTmp;

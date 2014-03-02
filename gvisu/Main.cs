@@ -598,20 +598,13 @@ namespace gvisu
         {
             if (info == null) return;
 
-            //  show elapsed time
             listBox2.Items.Clear();
             listBox2.Items.Add("elapsed time= " + String.Format("{0:f2}s", info.elapsedTime.TotalSeconds));
-            //  show number of evaluated moves
-            listBox2.Items.Add("moves= " + info.ExaminedMovesText);
+            listBox2.Items.Add("nodes= " + info.ExaminedMovesText);
             listBox2.Items.Add("speed= " + info.MovesPerSecondText);
-            // search result
-            //listBox2.Items.Add("winner = " + info.winner.ToString());
             listBox2.Items.Add("evaluation= " +  EvaluationConstants.Score2Text(info.evaluation));
             listBox2.Items.Add("depth= " + info.depth + " (" + info.deepestVctSearch + " VCT)");
-
-
           	listBox2.Items.Add("PV= "+info.PrincipalVariationText);
-
             listBox2.Items.Add("cutoffs= " + info.CutoffsText);
             listBox2.Items.Add("TT hits= " + info.TtHits.ToString("f0") + "% (" + info.TtVctHits.ToString("f0") + "% VCT)");
         }
