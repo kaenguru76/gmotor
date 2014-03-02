@@ -277,7 +277,7 @@ namespace GomokuEngine
         {
         	principalVariation = null;
             VctStatus status = VctStatus.Disproven;
-            int examinedMoves = sInfo.examinedMoves;
+            int examinedVtcMoves = sInfo.examinedVctMoves;
             int bestMove = -1;
 
             if (sInfo.deepestVctSearch > depth) sInfo.deepestVctSearch = depth;
@@ -326,6 +326,7 @@ namespace GomokuEngine
                 gameBoard.UndoMove();
 
                 sInfo.examinedMoves++;
+                sInfo.examinedVctMoves++;
 
                 if (TimeoutReached()) return VctStatus.Disproven;
 
@@ -365,9 +366,9 @@ namespace GomokuEngine
             
            L1:
             if (vctToProve == Player.BlackPlayer)
-            	transpositionTable.StoreVctBlack(status, depth, sInfo.examinedMoves - examinedMoves, bestMove);
+            	transpositionTable.StoreVctBlack(status, depth, sInfo.examinedVctMoves - examinedVtcMoves, bestMove);
             else
-            	transpositionTable.StoreVctWhite(status, depth, sInfo.examinedMoves - examinedMoves, bestMove);
+            	transpositionTable.StoreVctWhite(status, depth, sInfo.examinedVctMoves - examinedVtcMoves, bestMove);
 			            	
 
             System.Diagnostics.Debug.Assert(gameBoard.VctPlayer != Player.None,"Wrong value of VctPlayer");

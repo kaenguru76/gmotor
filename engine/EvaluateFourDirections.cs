@@ -44,7 +44,7 @@ namespace GomokuEngine
     {
         public uint hash;
         public FourDirectionsEvaluation evaluation;
-        public bool modified;
+        //public bool modified;
     }
 
     /***********************************************************************
@@ -133,7 +133,7 @@ namespace GomokuEngine
         }
 
         //return black evaluation
-        public FourDirectionsData Modify(int square, Direction direction, OneDirectionEvaluation directionEvaluation)
+        public FourDirectionsData Modify(int square, Direction direction, OneDirectionEvaluation directionEvaluation, out bool modified)
         {
             FourDirectionsData actualData = onePlayerData[square];
             
@@ -151,11 +151,11 @@ namespace GomokuEngine
             {
             	actualData.hash = hash;
             	actualData.evaluation = lookupTable[hash];
-            	actualData.modified = true;
+            	modified = true;
             }
             else
             {
-            	actualData.modified = false;
+            	modified = false;
             }
            	return actualData;
         }

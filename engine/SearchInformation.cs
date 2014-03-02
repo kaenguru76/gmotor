@@ -8,12 +8,12 @@ namespace GomokuEngine
     {
         public TimeSpan elapsedTime;
         public int examinedMoves;
+        public int examinedVctMoves;
         public List<ABMove> possibleMoves;
         public float TtHits;
         public float TtVctHits;
         public int evaluation;
         public int nbCutoffs;
-        public int nbVCTCutoffs;
         public bool vctActive;
         public int depth;
         public List<ABMove> principalVariation;
@@ -22,10 +22,9 @@ namespace GomokuEngine
         public SearchInformation()
         {
         	nbCutoffs = 0;
-            nbVCTCutoffs = 0;
             examinedMoves = 0;
+            examinedVctMoves = 0;
 			elapsedTime = new TimeSpan(0);
-			//winner = Player.None;
             depth = 0;
             deepestVctSearch = 0;
         }
@@ -35,6 +34,7 @@ namespace GomokuEngine
         {
             this.elapsedTime = searchInfo.elapsedTime;
             this.examinedMoves = searchInfo.examinedMoves;
+            this.examinedVctMoves = searchInfo.examinedVctMoves;
             if (searchInfo.possibleMoves != null)
             {
                 this.possibleMoves = new List<ABMove>(searchInfo.possibleMoves);
@@ -47,7 +47,6 @@ namespace GomokuEngine
             this.TtVctHits = searchInfo.TtVctHits;
             this.evaluation = searchInfo.evaluation;
             this.nbCutoffs = searchInfo.nbCutoffs;
-            this.nbVCTCutoffs = searchInfo.nbVCTCutoffs;
             this.vctActive = searchInfo.vctActive;
             this.depth = searchInfo.depth;
             this.deepestVctSearch = searchInfo.deepestVctSearch;
@@ -91,13 +90,59 @@ namespace GomokuEngine
         	}
         }
 
-	public string EvaluationText
-	{
-		get
+		public string EvaluationText
 		{
-            return EvaluationConstants.Score2Text(evaluation);
+			get
+			{
+	            return EvaluationConstants.Score2Text(evaluation);
+			}
 		}
-	}
+	
+		public string ExaminedMovesText
+		{
+			get
+			{
+				float vctShare = 0;
+				if (examinedMoves > 0) vctShare = 100*examinedVctMoves / examinedMoves;				
+					
+				if (examinedMoves >= 2000)
+            	{
+                	return String.Format("{0}kN ({1:f0}%VCT)", examinedMoves / 1000, vctShare);
+            	}
+            	else
+            	{
+                	return String.Format("{0}N ({1:f0}%VCT)", examinedMoves, vctShare);
+            	}
+			}
+		}
+		
+		public string MovesPerSecondText
+		{
+			get
+			{
+				return String.Format("{0:f1}kN/s", MovesPerSecond / 1000);
+			}
+		}
+		
+		public string CutoffsText
+		{
+			get
+			{
+				string str1;
+				
+				if (nbCutoffs > 2000)
+	            {
+	                str1 = String.Format("{0}k", nbCutoffs / 1000);
+            	}
+            	else
+            	{
+                	str1 = String.Format("{0}", nbCutoffs);
+            	}
+
+            	return str1;
+			}
+		}
+	
     }
 
 }

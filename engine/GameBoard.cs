@@ -196,9 +196,11 @@ namespace GomokuEngine
 
                 OneDirectionData oneDirectionData = evaluateOneDirection.Modify(connectedSquare.square, connectedSquare.direction, connectedSquare.distance, placedSymbol, playerOnMove);
 
-                FourDirectionsData fourDirectionsBlack = evaluateFourDirectionsBlack.Modify(connectedSquare.square, connectedSquare.direction, oneDirectionData.evaluationBlack);
+                bool blackModified;
+                FourDirectionsData fourDirectionsBlack = evaluateFourDirectionsBlack.Modify(connectedSquare.square, connectedSquare.direction, oneDirectionData.evaluationBlack, out blackModified);
 
-                FourDirectionsData fourDirectionsWhite = evaluateFourDirectionsWhite.Modify(connectedSquare.square, connectedSquare.direction, oneDirectionData.evaluationWhite);
+                bool whiteModified;
+                FourDirectionsData fourDirectionsWhite = evaluateFourDirectionsWhite.Modify(connectedSquare.square, connectedSquare.direction, oneDirectionData.evaluationWhite, out whiteModified);
 
                 BothData bothData = evaluateBoth.Modify(connectedSquare.square, fourDirectionsBlack.evaluation, fourDirectionsWhite.evaluation);
 
@@ -208,11 +210,11 @@ namespace GomokuEngine
                 switch (placedSymbol)
                 {
                 	case Player.BlackPlayer:
-                		if (fourDirectionsBlack.modified) vct.AddVct(connectedSquare.square);
+                		if (blackModified) vct.AddVct(connectedSquare.square);
 						break;
 						
                 	case Player.WhitePlayer:
-                		if (fourDirectionsWhite.modified) vct.AddVct(connectedSquare.square);
+                		if (whiteModified) vct.AddVct(connectedSquare.square);
 						break;
 
                 	case Player.None:
