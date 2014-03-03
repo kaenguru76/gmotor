@@ -133,29 +133,29 @@ namespace GomokuEngine
         }
 
         //return black evaluation
-        public FourDirectionsData Modify(int square, Direction direction, OneDirectionEvaluation directionEvaluation, out bool modified)
+        public FourDirectionsData Modify(int square, Direction direction, OneDirectionEvaluation directionEvaluation, out bool changed)
         {
             FourDirectionsData actualData = onePlayerData[square];
             
             int shift = (int)direction << 2;
             uint mask = (uint)(0x000F << shift);
 
-            uint hash = actualData.hash; //copy of hash  
+            //uint hash = actualData.hash; //copy of hash  
 
             /* clear bits */
-            hash &= ~mask;
+            actualData.hash &= ~mask;
             /* set bits */
-            hash |= (uint)directionEvaluation << shift;
+            actualData.hash |= (uint)directionEvaluation << shift;
+			FourDirectionsEvaluation evaluation = lookupTable[actualData.hash];
 
-            if (hash != actualData.hash) //hash changed?
+            if (evaluation != actualData.evaluation) 
             {
-            	actualData.hash = hash;
-            	actualData.evaluation = lookupTable[hash];
-            	modified = true;
+            	actualData.evaluation = evaluation;
+            	changed = true;
             }
             else
             {
-            	modified = false;
+            	changed = false;
             }
            	return actualData;
         }

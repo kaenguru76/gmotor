@@ -196,11 +196,11 @@ namespace GomokuEngine
 
                 OneDirectionData oneDirectionData = evaluateOneDirection.Modify(connectedSquare.square, connectedSquare.direction, connectedSquare.distance, placedSymbol, playerOnMove);
 
-                bool blackModified;
-                FourDirectionsData fourDirectionsBlack = evaluateFourDirectionsBlack.Modify(connectedSquare.square, connectedSquare.direction, oneDirectionData.evaluationBlack, out blackModified);
+                bool blackChanged;
+                FourDirectionsData fourDirectionsBlack = evaluateFourDirectionsBlack.Modify(connectedSquare.square, connectedSquare.direction, oneDirectionData.evaluationBlack, out blackChanged);
 
-                bool whiteModified;
-                FourDirectionsData fourDirectionsWhite = evaluateFourDirectionsWhite.Modify(connectedSquare.square, connectedSquare.direction, oneDirectionData.evaluationWhite, out whiteModified);
+                bool whiteChanged;
+                FourDirectionsData fourDirectionsWhite = evaluateFourDirectionsWhite.Modify(connectedSquare.square, connectedSquare.direction, oneDirectionData.evaluationWhite, out whiteChanged);
 
                 BothData bothData = evaluateBoth.Modify(connectedSquare.square, fourDirectionsBlack.evaluation, fourDirectionsWhite.evaluation);
 
@@ -210,11 +210,11 @@ namespace GomokuEngine
                 switch (placedSymbol)
                 {
                 	case Player.BlackPlayer:
-                		if (blackModified) vct.AddVct(connectedSquare.square);
+                		if (blackChanged) vct.AddVct(connectedSquare.square);
 						break;
 						
                 	case Player.WhitePlayer:
-                		if (whiteModified) vct.AddVct(connectedSquare.square);
+                		if (whiteChanged) vct.AddVct(connectedSquare.square);
 						break;
 
                 	case Player.None:
@@ -291,25 +291,23 @@ namespace GomokuEngine
             {
                 if (playerOnMove == Player.BlackPlayer)
                 {
-                    if (vctPlayer == Player.BlackPlayer)
-                    {
+                	if (vctPlayer == Player.BlackPlayer)
                         return moveGenerator.GeneratePossibleVctMoves(sortingBlack);
-                    }
-                    else
-                    {
-                        return moveGenerator.GeneratePossibleMoves(sortingBlack);
-                    }
+                        
+                	if (vctPlayer == Player.WhitePlayer)
+                       	return moveGenerator.GeneratePossibleMoves(sortingBlack, true);
+
+                	return moveGenerator.GeneratePossibleMoves(sortingBlack, false);
                 }
                 else
                 {
                     if (vctPlayer == Player.WhitePlayer)
-                    {
                         return moveGenerator.GeneratePossibleVctMoves(sortingWhite);
-                    }
-                    else
-                    {
-                        return moveGenerator.GeneratePossibleMoves(sortingWhite);
-                    }
+
+                    if (vctPlayer == Player.BlackPlayer)
+                        return moveGenerator.GeneratePossibleMoves(sortingWhite, true);
+
+                    return moveGenerator.GeneratePossibleMoves(sortingWhite, false);
                 }
             }
             else

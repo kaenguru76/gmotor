@@ -124,10 +124,10 @@ namespace GomokuEngine
 
             if (defender <= FourDirectionsEvaluation.o2xo2) return BothPlayerEvaluation.o2xo2_defending;
             if (defender <= FourDirectionsEvaluation.o2xo1) return BothPlayerEvaluation.vct_defending;
+            if (attacker <= FourDirectionsEvaluation.tripple1) return BothPlayerEvaluation.tripple1_attacking;
             if (defender <= FourDirectionsEvaluation.o2p) return BothPlayerEvaluation.o2p_defending;
             if (defender <= FourDirectionsEvaluation.o2) return BothPlayerEvaluation.o2_defending;
 
-            if (attacker <= FourDirectionsEvaluation.tripple1) return BothPlayerEvaluation.tripple1_attacking;
             if (defender <= FourDirectionsEvaluation.tripple1) return BothPlayerEvaluation.tripple1_defending;
 
             if (attacker <= FourDirectionsEvaluation.double1) return BothPlayerEvaluation.double1_attacking;

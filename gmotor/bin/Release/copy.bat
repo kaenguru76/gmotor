@@ -2,4 +2,4 @@
 
 del .\..\..\..\..\turnaj\*.log
 del .\..\..\..\..\turnaj\*.pdb
-del .\..\..\..\..\turnaj\partie\*.* /q
+rem del .\..\..\..\..\turnaj\partie\*.* /q

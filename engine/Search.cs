@@ -297,7 +297,7 @@ namespace GomokuEngine
                 //return status;
             }
         	
-			if (depth == -17)
+			if (depth == -15)//-17
         	{
                 goto L1;
                 //return status;
