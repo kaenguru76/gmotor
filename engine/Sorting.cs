@@ -153,9 +153,8 @@ namespace GomokuEngine
             //return true;
         }
 
-
         /*	function adds moves to list */
-        public int AddMovesToList(BothPlayerEvaluation evaluation, List<int> moves)
+        public int AddMovesToList(BothPlayerEvaluation evaluation, List<int> moves, bool vctMoves)
         {
             //get first square
             int square = firstItem[(int)evaluation];
@@ -164,27 +163,7 @@ namespace GomokuEngine
             //loop through all squares
             while (square != -1)
             {
-                moves.Add(square);
-                addedMoves++;
-
-                //get next square
-                square = nextItem[square];
-            }
-
-            return addedMoves;
-        }
-
-        /*	function adds moves to list */
-        public int AddVCTMovesToList(BothPlayerEvaluation evaluation, List<int> moves)
-        {
-            //get first square
-            int square = firstItem[(int)evaluation];
-            int addedMoves = 0;
-
-            //loop through all squares
-            while (square != -1)
-            {
-                if (threats.CreatesVct(square))
+            	if (((vctMoves == true) && threats.CreatesVct(square))||(vctMoves == false))
                 {
                     moves.Add(square);
                     addedMoves++;

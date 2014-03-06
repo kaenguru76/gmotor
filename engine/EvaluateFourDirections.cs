@@ -13,10 +13,10 @@ namespace GomokuEngine
     
         o3,
         c3xc3,
-        s3,
         c3xo2,
         c3xc2,
         c3xo1,
+        s3,
         c3,
         
         o2xo2,
