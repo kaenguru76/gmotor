@@ -392,33 +392,14 @@ namespace GomokuEngine
             {
             	if (playerOnMove == Player.BlackPlayer)
                 {
-                	return sortingBlack.Score; //black tries to maximize
+                	return sortingBlack.Score-sortingWhite.Score; //black tries to maximize
                 }
                 else
                 {
-            		return sortingWhite.Score; //white tries to maximize
+            		return sortingWhite.Score-sortingBlack.Score; //white tries to maximize
                 }
             }
         }
-
-//        public void GetEvaluationDetail(out int blackScore, out int whiteScore)
-//        {
-//            blackScore = sortingBlack.Score;
-//            whiteScore = sortingWhite.Score;
-//        }
-
-        //public int ExaminedMoves
-        //{
-        //    get
-        //    {
-        //        return examinedMoves;
-        //    }
-        //}
-
-        //public void NewSearch()
-        //{
-        //    examinedMoves = 0;
-        //}
 
         public bool VctActive
         {
@@ -446,38 +427,6 @@ namespace GomokuEngine
                 return vct.VctPlayer;
             }
         }
-
-        //public bool TerminalNode(ref int value)
-        //{
-        //    Player evaluation = Winner();
-
-        //    if (evaluation == Player.BlackPlayer)
-        //    {
-        //        if (playerOnMove == Player.BlackPlayer)
-        //        {
-        //            value = int.MaxValue;
-        //        }
-        //        else
-        //        {
-        //            value = -int.MaxValue;
-        //        }
-        //        return true;
-        //    }
-
-        //    if (evaluation == Player.WhitePlayer)
-        //    {
-        //        if (playerOnMove == Player.WhitePlayer)
-        //        {
-        //            value = int.MaxValue;
-        //        }
-        //        else
-        //        {
-        //            value = -int.MaxValue;
-        //        }
-        //        return true;
-        //    }
-        //    return false;
-        //}
 
         public int VctLength
         {
