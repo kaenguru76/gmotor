@@ -21,34 +21,40 @@ namespace GomokuEngine
             sorting.AddMovesToList(BothPlayerEvaluation.overline_defending, moves, false);
             if (sorting.AddMovesToList(BothPlayerEvaluation.four_attacking, moves, vctAttackingMoves) > 0) goto L1;
             
-            if (vctAttackingMoves && sorting.Exists(BothPlayerEvaluation.four_defending)) goto L1;
+            if (sorting.AddMovesToList(BothPlayerEvaluation.four_defending_vct, moves, false) > 0) goto L1;
+            
+            //if (vctAttackingMoves && sorting.Exists(BothPlayerEvaluation.four_defending)) goto L1;
             
             if (sorting.AddMovesToList(BothPlayerEvaluation.four_defending, moves, false) > 0) goto L1;
 
             if (sorting.AddMovesToList(BothPlayerEvaluation.o3_attacking, moves, vctAttackingMoves) > 0) goto L1;
             if (sorting.AddMovesToList(BothPlayerEvaluation.c3xc3_attacking, moves, vctAttackingMoves) > 0) goto L1;
-            
-            sorting.AddMovesToList(BothPlayerEvaluation.c3xo2_attacking, moves, vctAttackingMoves);
+            if (sorting.AddMovesToList(BothPlayerEvaluation.c3xo2_attacking, moves, vctAttackingMoves) > 0) goto L1;
             sorting.AddMovesToList(BothPlayerEvaluation.c3xo1_attacking, moves, vctAttackingMoves);
             sorting.AddMovesToList(BothPlayerEvaluation.s3_attacking, moves, vctAttackingMoves);
-            sorting.AddMovesToList(BothPlayerEvaluation.c3_attacking, moves, vctAttackingMoves);
-
+            
+            //if (vctAttackingMoves == false)
+            //{
+            	sorting.AddMovesToList(BothPlayerEvaluation.c3_attacking, moves, vctAttackingMoves);
+            //}
+            
+            if (sorting.AddMovesToList(BothPlayerEvaluation.o3_defending_vct, moves, false) > 0 && vctAttackingMoves) goto L1;
             if (vctAttackingMoves && sorting.Exists(BothPlayerEvaluation.o3_defending)) goto L1;
 
-            sorting.AddMovesToList(BothPlayerEvaluation.o3_defending, moves, false);
+            int o3_defending = sorting.AddMovesToList(BothPlayerEvaluation.o3_defending, moves, false); 
+            if (o3_defending == 1)
+    	       	sorting.AddMovesToList(BothPlayerEvaluation.s3_defending, moves, false);
+            if (o3_defending > 0) goto L1;
 
             if (vctAttackingMoves == false)
             {
     	        sorting.AddMovesToList(BothPlayerEvaluation.c3xc3_defending, moves, false);
     	        sorting.AddMovesToList(BothPlayerEvaluation.c3xo2_defending, moves, false);
-			
-    	        sorting.AddMovesToList(BothPlayerEvaluation.s3_defending, moves, false);
-    	        //if (o3_defending > 0) return moves;
-    	        sorting.AddMovesToList(BothPlayerEvaluation.c3xo1_defending, moves, false);
+			    sorting.AddMovesToList(BothPlayerEvaluation.c3xo1_defending, moves, false);
 	            sorting.AddMovesToList(BothPlayerEvaluation.c3_defending, moves, false);
             }
 
-            if (sorting.AddMovesToList(BothPlayerEvaluation.o2xo2_attacking, moves, vctAttackingMoves) > 0) goto L1;
+            sorting.AddMovesToList(BothPlayerEvaluation.o2xo2_attacking, moves, vctAttackingMoves);
             sorting.AddMovesToList(BothPlayerEvaluation.o2xo1_attacking, moves, vctAttackingMoves);
 
             if (vctAttackingMoves) goto L1;

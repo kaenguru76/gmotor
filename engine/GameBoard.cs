@@ -392,11 +392,11 @@ namespace GomokuEngine
             {
             	if (playerOnMove == Player.BlackPlayer)
                 {
-                	return sortingBlack.Score-sortingWhite.Score; //black tries to maximize
+                	return sortingBlack.Score; //black tries to maximize
                 }
                 else
                 {
-            		return sortingWhite.Score-sortingBlack.Score; //white tries to maximize
+            		return sortingWhite.Score; //white tries to maximize
                 }
             }
         }

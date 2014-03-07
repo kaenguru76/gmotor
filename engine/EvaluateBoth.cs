@@ -6,9 +6,11 @@ namespace GomokuEngine
     {
     	overline_defending,
         four_attacking,
+        four_defending_vct,
         four_defending,
         o3_attacking,
         o3_defending,
+        o3_defending_vct,
         c3xc3_attacking,
         c3xc3_defending,
         c3xo2_attacking,
@@ -100,6 +102,7 @@ namespace GomokuEngine
             if (defender <= FourDirectionsEvaluation.overline) return BothPlayerEvaluation.overline_defending;
 
             if (attacker <= FourDirectionsEvaluation.four) return BothPlayerEvaluation.four_attacking;
+            if (defender <= FourDirectionsEvaluation.four && attacker <= FourDirectionsEvaluation.o2xo1) return BothPlayerEvaluation.four_defending_vct;
             if (defender <= FourDirectionsEvaluation.four) return BothPlayerEvaluation.four_defending;
 
             if (attacker <= FourDirectionsEvaluation.o3) return BothPlayerEvaluation.o3_attacking;
@@ -107,6 +110,7 @@ namespace GomokuEngine
             if (attacker <= FourDirectionsEvaluation.c3xo2) return BothPlayerEvaluation.c3xo2_attacking;
             if (attacker <= FourDirectionsEvaluation.c3xo1) return BothPlayerEvaluation.c3xo1_attacking;
             if (attacker <= FourDirectionsEvaluation.s3) return BothPlayerEvaluation.s3_attacking;
+            if (defender <= FourDirectionsEvaluation.o3 && attacker <= FourDirectionsEvaluation.o2xo1) return BothPlayerEvaluation.o3_defending_vct;
             if (defender <= FourDirectionsEvaluation.o3) return BothPlayerEvaluation.o3_defending;
             if (attacker <= FourDirectionsEvaluation.c3) return BothPlayerEvaluation.c3_attacking;
 
