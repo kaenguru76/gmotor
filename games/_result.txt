@@ -1,0 +1,35 @@
+-------------------------------------
+8.3.2014  22:28 - 22:39
+Èas na tah: 3 s,   Èas na partii: 120 s
+Tolerance: 1 s,   Pamì: 300 MB
+Zahájení: ne
+Pravidlo: pøesnì pìt vyhrává
+CRC zahájení: 0
+Poèet her: 16
+-------------------------------------
+
+sWINe13
+vıhry: 3=2+1,  prohry: 1=0+0+1,  chyby: 1
+èas/tah: 1509 ms (max: 3.1 s),  èas/partii: 21 s
+tahù/partii: 14,  CRC: a2b04832,   pamì: 294.19 MB
+
+Yixin13
+vıhry: 3=2+1,  prohry: 1=0+1
+èas/tah: 871 ms (max: 3.0 s),  èas/partii: 11 s
+tahù/partii: 13,  CRC: 7f473b87,   pamì: 169.39 MB
+
+Tito2010
+vıhry: 2=2+0,  prohry: 2=0+2
+èas/tah: 272 ms (max: 1.4 s),  èas/partii: 5 s
+tahù/partii: 21,  CRC: 8b105cab,   pamì: 130.95 MB
+
+hewer12
+vıhry: 2=2+0,  prohry: 2=0+2
+èas/tah: 854 ms (max: 3.0 s),  èas/partii: 11 s
+tahù/partii: 13,  CRC: 4f7d0fe2,   pamì: 290.06 MB
+
+gmotor2014
+vıhry: 6=5+0+1,  prohry: 10=2+8
+èas/tah: 1771 ms (max: 4.7 s),  èas/partii: 27 s
+tahù/partii: 15,  CRC: ae571d7d,   pamì: 61.81 MB
+

@@ -37,11 +37,11 @@ namespace GomokuEngine
             //{
             	sorting.AddMovesToList(BothPlayerEvaluation.c3_attacking, moves, vctAttackingMoves);
             //}
-            
-            if (sorting.AddMovesToList(BothPlayerEvaluation.o3_defending_vct, moves, false) > 0 && vctAttackingMoves) goto L1;
+            int o3_defending = sorting.AddMovesToList(BothPlayerEvaluation.o3_defending_vct, moves, false);
+            if (o3_defending > 0 && vctAttackingMoves) goto L1;
             if (vctAttackingMoves && sorting.Exists(BothPlayerEvaluation.o3_defending)) goto L1;
 
-            int o3_defending = sorting.AddMovesToList(BothPlayerEvaluation.o3_defending, moves, false); 
+            o3_defending += sorting.AddMovesToList(BothPlayerEvaluation.o3_defending, moves, false); 
             if (o3_defending == 1)
     	       	sorting.AddMovesToList(BothPlayerEvaluation.s3_defending, moves, false);
             if (o3_defending > 0) goto L1;
