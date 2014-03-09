@@ -92,6 +92,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="kaenguru.ico" />
+    <Content Include="ProfilingSessions\Session20140309_215403.sdps" />
+    <Content Include="ProfilingSessions\Session20140309_215632.sdps" />
     <Content Include="TODO.txt" />
   </ItemGroup>
   <ItemGroup>

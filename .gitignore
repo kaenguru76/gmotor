@@ -20,3 +20,4 @@
 *.tlog
 *TrustInfo.xml
 
+/engine/ProfilingSessions/*.sdps

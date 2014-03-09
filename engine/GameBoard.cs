@@ -292,22 +292,22 @@ namespace GomokuEngine
                 if (playerOnMove == Player.BlackPlayer)
                 {
                 	if (vctPlayer == Player.BlackPlayer)
-                        return moveGenerator.GeneratePossibleMoves(sortingBlack, true, false);
+                        return moveGenerator.GeneratePossibleMoves(sortingBlack, true);
                         
                 	if (vctPlayer == Player.WhitePlayer)
-                       	return moveGenerator.GeneratePossibleMoves(sortingBlack, false, true);
+                       	return moveGenerator.GeneratePossibleMoves(sortingBlack, false);
 
-                	return moveGenerator.GeneratePossibleMoves(sortingBlack, false, false);
+                	return moveGenerator.GeneratePossibleMoves(sortingBlack, false);
                 }
                 else
                 {
                     if (vctPlayer == Player.WhitePlayer)
-                        return moveGenerator.GeneratePossibleMoves(sortingWhite, true, false);
+                        return moveGenerator.GeneratePossibleMoves(sortingWhite, true);
 
                     if (vctPlayer == Player.BlackPlayer)
-                        return moveGenerator.GeneratePossibleMoves(sortingWhite, false, true);
+                        return moveGenerator.GeneratePossibleMoves(sortingWhite, false);
 
-                    return moveGenerator.GeneratePossibleMoves(sortingWhite, false, false);
+                    return moveGenerator.GeneratePossibleMoves(sortingWhite, false);
                 }
             }
             else

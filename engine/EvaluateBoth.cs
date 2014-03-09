@@ -99,9 +99,8 @@ namespace GomokuEngine
          BothPlayerEvaluation GetBothPlayerEvaluation(FourDirectionsEvaluation attacker, FourDirectionsEvaluation defender)
         {
             if (attacker <= FourDirectionsEvaluation.overline) return BothPlayerEvaluation.forbidden;
-            if (defender <= FourDirectionsEvaluation.overline) return BothPlayerEvaluation.overline_defending;
-
             if (attacker <= FourDirectionsEvaluation.four) return BothPlayerEvaluation.four_attacking;
+            if (defender <= FourDirectionsEvaluation.overline) return BothPlayerEvaluation.overline_defending;
             if (defender <= FourDirectionsEvaluation.four && attacker <= FourDirectionsEvaluation.o2xo1) return BothPlayerEvaluation.four_defending_vct;
             if (defender <= FourDirectionsEvaluation.four) return BothPlayerEvaluation.four_defending;
 
@@ -121,13 +120,15 @@ namespace GomokuEngine
 
             if (attacker <= FourDirectionsEvaluation.o2xo2) return BothPlayerEvaluation.o2xo2_attacking;
             if (attacker <= FourDirectionsEvaluation.o2xo1) return BothPlayerEvaluation.o2xo1_attacking;
-            if (attacker <= FourDirectionsEvaluation.o2p) return BothPlayerEvaluation.o2p_attacking;
-            if (attacker <= FourDirectionsEvaluation.o2) return BothPlayerEvaluation.o2_attacking;
 
             if (defender <= FourDirectionsEvaluation.c3) return BothPlayerEvaluation.c3_defending;
 
             if (defender <= FourDirectionsEvaluation.o2xo2) return BothPlayerEvaluation.o2xo2_defending;
             if (defender <= FourDirectionsEvaluation.o2xo1) return BothPlayerEvaluation.o2xo1_defending;
+            
+            if (attacker <= FourDirectionsEvaluation.o2p) return BothPlayerEvaluation.o2p_attacking;
+            if (attacker <= FourDirectionsEvaluation.o2) return BothPlayerEvaluation.o2_attacking;
+            
             if (attacker <= FourDirectionsEvaluation.tripple1) return BothPlayerEvaluation.tripple1_attacking;
             if (defender <= FourDirectionsEvaluation.o2p) return BothPlayerEvaluation.o2p_defending;
             if (defender <= FourDirectionsEvaluation.o2) return BothPlayerEvaluation.o2_defending;

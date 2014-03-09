@@ -14,7 +14,7 @@ namespace GomokuEngine
             this.boardSize = boardSize;
         }
 
-        public List<int> GeneratePossibleMoves(Sorting sorting, bool vctAttackingMoves, bool vctDefendingMoves)
+        public List<int> GeneratePossibleMoves(Sorting sorting, bool vctAttackingMoves)
         {
             List<int> moves = new List<int>();
 
@@ -29,7 +29,7 @@ namespace GomokuEngine
 
             if (sorting.AddMovesToList(BothPlayerEvaluation.o3_attacking, moves, vctAttackingMoves) > 0) goto L1;
             if (sorting.AddMovesToList(BothPlayerEvaluation.c3xc3_attacking, moves, vctAttackingMoves) > 0) goto L1;
-            if (sorting.AddMovesToList(BothPlayerEvaluation.c3xo2_attacking, moves, vctAttackingMoves) > 0) goto L1;
+            sorting.AddMovesToList(BothPlayerEvaluation.c3xo2_attacking, moves, vctAttackingMoves);
             sorting.AddMovesToList(BothPlayerEvaluation.c3xo1_attacking, moves, vctAttackingMoves);
             sorting.AddMovesToList(BothPlayerEvaluation.s3_attacking, moves, vctAttackingMoves);
             

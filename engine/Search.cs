@@ -170,9 +170,10 @@ namespace GomokuEngine
 	            // start VCT
 		        gameBoard.VctActive = true;
 		        VctStatus vctStatus = VCTSearch(0, gameBoard.PlayerOnMove, out principalVariation);
-
 				//stop VCT
 		        gameBoard.VctActive = false;
+		        
+    			if (TimeoutReached()) return bestValue;
     		
 		        if (vctStatus == VctStatus.Proven)
 		        {
@@ -419,7 +420,7 @@ namespace GomokuEngine
         public TimeSpan MaxThinkingTime
         {
             get { return maxThinkingTime; }
-            set { maxThinkingTime = value; }
+            set { maxThinkingTime = (value>=TimeSpan.Zero) ? value:TimeSpan.Zero;}	
         }
 
         public bool IterativeDeepening
