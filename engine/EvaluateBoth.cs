@@ -25,6 +25,7 @@ namespace GomokuEngine
         o2xo2_defending,
         o2xo1_attacking,
         o2xo1_defending,
+        double1_both,
         o2p_attacking,
         o2_attacking,
         o2p_defending,
@@ -126,18 +127,17 @@ namespace GomokuEngine
             if (defender <= FourDirectionsEvaluation.o2xo2) return BothPlayerEvaluation.o2xo2_defending;
             if (defender <= FourDirectionsEvaluation.o2xo1) return BothPlayerEvaluation.o2xo1_defending;
             
+            if (attacker <= FourDirectionsEvaluation.double1 && defender <= FourDirectionsEvaluation.double1) return BothPlayerEvaluation.double1_both;
             if (attacker <= FourDirectionsEvaluation.o2p) return BothPlayerEvaluation.o2p_attacking;
             if (attacker <= FourDirectionsEvaluation.o2) return BothPlayerEvaluation.o2_attacking;
-            
-            if (attacker <= FourDirectionsEvaluation.tripple1) return BothPlayerEvaluation.tripple1_attacking;
             if (defender <= FourDirectionsEvaluation.o2p) return BothPlayerEvaluation.o2p_defending;
             if (defender <= FourDirectionsEvaluation.o2) return BothPlayerEvaluation.o2_defending;
-
-            if (defender <= FourDirectionsEvaluation.tripple1) return BothPlayerEvaluation.tripple1_defending;
-
+            if (attacker <= FourDirectionsEvaluation.tripple1) return BothPlayerEvaluation.tripple1_attacking;
             if (attacker <= FourDirectionsEvaluation.double1) return BothPlayerEvaluation.double1_attacking;
+            
+            if (defender <= FourDirectionsEvaluation.tripple1) return BothPlayerEvaluation.tripple1_defending;
             if (defender <= FourDirectionsEvaluation.double1) return BothPlayerEvaluation.double1_defending;
-
+            
             if (attacker <= FourDirectionsEvaluation.o1 && defender <= FourDirectionsEvaluation.o1) return BothPlayerEvaluation.o1_both;
             if (attacker <= FourDirectionsEvaluation.o1p) return BothPlayerEvaluation.o1p_attacking;
             if (attacker <= FourDirectionsEvaluation.o1) return BothPlayerEvaluation.o1_attacking;

@@ -61,23 +61,25 @@ namespace GomokuEngine
 
             sorting.AddMovesToList(BothPlayerEvaluation.o2xo2_defending, moves, false);
             if (moves.Count > 10) goto L1;
-            sorting.AddMovesToList(BothPlayerEvaluation.o2p_attacking, moves, vctAttackingMoves);
-            if (moves.Count > 10) goto L1;
-            sorting.AddMovesToList(BothPlayerEvaluation.tripple1_attacking, moves, vctAttackingMoves);
-            if (moves.Count > 10) goto L1;
             sorting.AddMovesToList(BothPlayerEvaluation.o2xo1_defending, moves, false);
             if (moves.Count > 10) goto L1;
-            if (sorting.AddMovesToList(BothPlayerEvaluation.double1_attacking, moves, vctAttackingMoves) > 0) goto L1;
+            sorting.AddMovesToList(BothPlayerEvaluation.double1_both, moves, vctAttackingMoves);
+            if (moves.Count > 10) goto L1;
+            sorting.AddMovesToList(BothPlayerEvaluation.o2p_attacking, moves, vctAttackingMoves);
             if (moves.Count > 10) goto L1;
             sorting.AddMovesToList(BothPlayerEvaluation.o2_attacking, moves, vctAttackingMoves);
             if (moves.Count > 10) goto L1;
             sorting.AddMovesToList(BothPlayerEvaluation.o2p_defending, moves, false);
             if (moves.Count > 10) goto L1;
+            sorting.AddMovesToList(BothPlayerEvaluation.o2_defending, moves, false);
+            if (moves.Count > 10) goto L1;
+            sorting.AddMovesToList(BothPlayerEvaluation.tripple1_attacking, moves, vctAttackingMoves);
+            if (moves.Count > 10) goto L1;
+            if (sorting.AddMovesToList(BothPlayerEvaluation.double1_attacking, moves, vctAttackingMoves) > 0) goto L1;
+            if (moves.Count > 10) goto L1;
             sorting.AddMovesToList(BothPlayerEvaluation.tripple1_defending, moves, false);
             if (moves.Count > 10) goto L1;
             if (sorting.AddMovesToList(BothPlayerEvaluation.double1_defending, moves, false) > 0) goto L1;
-            if (moves.Count > 10) goto L1;
-            sorting.AddMovesToList(BothPlayerEvaluation.o2_defending, moves, false);
             if (moves.Count > 10) goto L1;
 
             if (sorting.AddMovesToList(BothPlayerEvaluation.o1_both, moves, vctAttackingMoves) > 0) goto L1;
