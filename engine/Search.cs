@@ -227,12 +227,13 @@ namespace GomokuEngine
 	
             //do normal search
             List<int> moves = gameBoard.GeneratePossibleSquares(Player.None);
-
+            
             foreach (int move in moves)
             {
                 gameBoard.MakeMove(move);
 
-                int value = -AlphaBeta(depth - 1, -beta, -alpha, out principalVariationTmp);
+                int value = -AlphaBeta((moves.Count>1) ? depth - 1:depth, -beta, -alpha, out principalVariationTmp);
+//                int value = -AlphaBeta(depth - 1, -beta, -alpha, out principalVariationTmp);
 
                 gameBoard.UndoMove();
                 
@@ -298,7 +299,7 @@ namespace GomokuEngine
                 //return status;
             }
         	
-			if (depth == -15)//-17
+			if (depth == -13)//-15
         	{
                 goto L1;
                 //return status;
@@ -327,12 +328,15 @@ namespace GomokuEngine
 			List<int> principalVariationTmp;
             
             List<int> moves = gameBoard.GeneratePossibleSquares(vctToProve);
+
             foreach (int move in moves)
             {
                 gameBoard.MakeMove(move);
 
-                VctStatus tmpStatus = VCTSearch(depth - 1, vctToProve, out principalVariationTmp);
-                gameBoard.UndoMove();
+                VctStatus tmpStatus = VCTSearch((moves.Count>1) ? depth - 1:depth, vctToProve, out principalVariationTmp);
+//                VctStatus tmpStatus = VCTSearch(depth - 1, vctToProve, out principalVariationTmp);
+
+				gameBoard.UndoMove();
 
                 sInfo.examinedMoves++;
                 sInfo.examinedVctMoves++;

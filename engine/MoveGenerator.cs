@@ -69,13 +69,13 @@ namespace GomokuEngine
             if (moves.Count > 10) goto L1;
             sorting.AddMovesToList(BothPlayerEvaluation.o2_attacking, moves, vctAttackingMoves);
             if (moves.Count > 10) goto L1;
-            sorting.AddMovesToList(BothPlayerEvaluation.o2p_defending, moves, false);
-            if (moves.Count > 10) goto L1;
-            sorting.AddMovesToList(BothPlayerEvaluation.o2_defending, moves, false);
-            if (moves.Count > 10) goto L1;
             sorting.AddMovesToList(BothPlayerEvaluation.tripple1_attacking, moves, vctAttackingMoves);
             if (moves.Count > 10) goto L1;
             if (sorting.AddMovesToList(BothPlayerEvaluation.double1_attacking, moves, vctAttackingMoves) > 0) goto L1;
+            if (moves.Count > 10) goto L1;
+            sorting.AddMovesToList(BothPlayerEvaluation.o2p_defending, moves, false);
+            if (moves.Count > 10) goto L1;
+            sorting.AddMovesToList(BothPlayerEvaluation.o2_defending, moves, false);
             if (moves.Count > 10) goto L1;
             sorting.AddMovesToList(BothPlayerEvaluation.tripple1_defending, moves, false);
             if (moves.Count > 10) goto L1;
