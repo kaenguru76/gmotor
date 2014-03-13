@@ -14,17 +14,17 @@ namespace GomokuEngine
             this.boardSize = boardSize;
         }
 
-        public List<int> GeneratePossibleMoves(Sorting sorting, bool vctAttackingMoves)
+        public List<int> GeneratePossibleMoves(Sorting sorting, bool vctAttackingMoves, bool vctDepth0)
         {
             List<int> moves = new List<int>();
 
             sorting.AddMovesToList(BothPlayerEvaluation.overline_defending, moves, false);
             if (sorting.AddMovesToList(BothPlayerEvaluation.four_attacking, moves, vctAttackingMoves) > 0) goto L1;
             
+            if (vctDepth0 && sorting.Exists(BothPlayerEvaluation.four_defending_vct)) goto L1;
             if (sorting.AddMovesToList(BothPlayerEvaluation.four_defending_vct, moves, false) > 0) goto L1;
             
-            //if (vctAttackingMoves && sorting.Exists(BothPlayerEvaluation.four_defending)) goto L1;
-            
+            if (vctDepth0 && sorting.Exists(BothPlayerEvaluation.four_defending)) goto L1;            
             if (sorting.AddMovesToList(BothPlayerEvaluation.four_defending, moves, false) > 0) goto L1;
 
             if (sorting.AddMovesToList(BothPlayerEvaluation.o3_attacking, moves, vctAttackingMoves) > 0) goto L1;

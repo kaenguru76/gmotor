@@ -82,7 +82,7 @@ namespace GomokuEngine
 		//dictionary remembers everythink, not like hash table        
         Dictionary<ulong,TranspositionTableItem> dictionary;
         bool useDictionary;
-
+		ulong trapKey=0;
 
 		public TranspositionTable(int boardSize)
         {
@@ -234,6 +234,9 @@ namespace GomokuEngine
             
           	/* get access to item */
             int index = (int)(zobristKey % (ulong)tableItems);
+            
+            System.Diagnostics.Debug.Assert(zobristKey != trapKey);
+            
             TranspositionTableVctItem item = itemsVctWhite[index];
 
             item.key = zobristKey;

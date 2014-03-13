@@ -224,11 +224,11 @@ namespace GomokuEngine
             }
         }
 
-        public List<ABMove> GeneratePossibleMoves(Player vctPlayer)
+        public List<ABMove> GeneratePossibleMoves(Player vctPlayer, bool vctDepth0)
         {
             List<ABMove> movesC = new List<ABMove>();
 
-            List<int> possibleSquares = GeneratePossibleSquares(vctPlayer);
+            List<int> possibleSquares = GeneratePossibleSquares(vctPlayer, vctDepth0);
             
             foreach (int square in possibleSquares)
             {
@@ -285,29 +285,29 @@ namespace GomokuEngine
             return movesC;
         }
 
-        public List<int> GeneratePossibleSquares(Player vctPlayer)
+        public List<int> GeneratePossibleSquares(Player vctPlayer, bool vctDepth0)
         {
             if (gameFinished == false)
             {
                 if (playerOnMove == Player.BlackPlayer)
                 {
                 	if (vctPlayer == Player.BlackPlayer)
-                        return moveGenerator.GeneratePossibleMoves(sortingBlack, true);
+                        return moveGenerator.GeneratePossibleMoves(sortingBlack, true, vctDepth0);
                         
                 	if (vctPlayer == Player.WhitePlayer)
-                       	return moveGenerator.GeneratePossibleMoves(sortingBlack, false);
+                       	return moveGenerator.GeneratePossibleMoves(sortingBlack, false, vctDepth0);
 
-                	return moveGenerator.GeneratePossibleMoves(sortingBlack, false);
+                	return moveGenerator.GeneratePossibleMoves(sortingBlack, false, vctDepth0);
                 }
                 else
                 {
                     if (vctPlayer == Player.WhitePlayer)
-                        return moveGenerator.GeneratePossibleMoves(sortingWhite, true);
+                        return moveGenerator.GeneratePossibleMoves(sortingWhite, true, vctDepth0);
 
                     if (vctPlayer == Player.BlackPlayer)
-                        return moveGenerator.GeneratePossibleMoves(sortingWhite, false);
+                        return moveGenerator.GeneratePossibleMoves(sortingWhite, false, vctDepth0);
 
-                    return moveGenerator.GeneratePossibleMoves(sortingWhite, false);
+                    return moveGenerator.GeneratePossibleMoves(sortingWhite, false, vctDepth0);
                 }
             }
             else
@@ -435,6 +435,13 @@ namespace GomokuEngine
                 return vct.VctLength;
             }
         }
-
+        
+        public bool VctDepth0
+        {
+            get
+            {
+                return vct.VctDepth0;
+            }
+        }
     }
 }

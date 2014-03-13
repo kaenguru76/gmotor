@@ -68,7 +68,7 @@ namespace GomokuEngine
                 //generate moves
                 gameBoard.VctActive = (depth > 0) ? false:true;
                
-                List<ABMove> possibleMoves = gameBoard.GeneratePossibleMoves(gameBoard.VctPlayer);
+                List<ABMove> possibleMoves = gameBoard.GeneratePossibleMoves(gameBoard.VctPlayer,gameBoard.VctDepth0);
                 if (possibleMoves.Count == 0 && depth > 0 && gameBoard.GetPlayedMoves().Count > 0) break;
 
  
@@ -203,7 +203,7 @@ namespace GomokuEngine
             TranspositionTableItem ttItem = transpositionTable.Lookup();
             if (ttItem != null)
             {
-                if (ttItem.depth == depth/* || ttItem.value == EvaluationConstants.max*/)
+                if (ttItem.depth == depth)
                 {
                     switch (ttItem.type)
                     {
@@ -216,7 +216,7 @@ namespace GomokuEngine
                             break;
 
                         case TTEvaluationType.UpperBound:
-                            if (ttItem.value <= alpha) return ttItem.value;; 
+                           if (ttItem.value <= alpha) return ttItem.value;; 
                             if (ttItem.value < beta) beta = ttItem.value;
                             break;
                     }
@@ -226,14 +226,14 @@ namespace GomokuEngine
 			List<int> principalVariationTmp;
 	
             //do normal search
-            List<int> moves = gameBoard.GeneratePossibleSquares(Player.None);
+            List<int> moves = gameBoard.GeneratePossibleSquares(Player.None,gameBoard.VctDepth0);
             
             foreach (int move in moves)
             {
                 gameBoard.MakeMove(move);
 
                 int value = -AlphaBeta((moves.Count>1) ? depth - 1:depth, -beta, -alpha, out principalVariationTmp);
-//                int value = -AlphaBeta(depth - 1, -beta, -alpha, out principalVariationTmp);
+     //           int value = -AlphaBeta(depth - 1, -beta, -alpha, out principalVariationTmp);
 
                 gameBoard.UndoMove();
                 
@@ -269,9 +269,9 @@ namespace GomokuEngine
             else // a true minimax value
                 transpositionTable.Store(bestValue, TTEvaluationType.Exact, depth, sInfo.examinedMoves - examinedMoves, bestMove);
 
-#if CHECK            
-            System.Diagnostics.Debug.Assert(gameBoard.VctPlayer == Player.None,"Wrong value of VctPlayer");
-#endif            
+           
+            System.Diagnostics.Debug.Assert(gameBoard.VctPlayer == Player.None);
+            
             return bestValue;
         }
 
@@ -327,7 +327,7 @@ namespace GomokuEngine
 
 			List<int> principalVariationTmp;
             
-            List<int> moves = gameBoard.GeneratePossibleSquares(vctToProve);
+            List<int> moves = gameBoard.GeneratePossibleSquares(vctToProve,gameBoard.VctDepth0);
 
             foreach (int move in moves)
             {
@@ -384,7 +384,8 @@ namespace GomokuEngine
             	transpositionTable.StoreVctWhite(status, depth, sInfo.examinedVctMoves - examinedVtcMoves, bestMove);
 			            	
 
-            System.Diagnostics.Debug.Assert(gameBoard.VctPlayer != Player.None,"Wrong value of VctPlayer");
+            System.Diagnostics.Debug.Assert(gameBoard.VctPlayer != Player.None);
+            System.Diagnostics.Debug.Assert(vctToProve != Player.None);
             
             return status;
         }

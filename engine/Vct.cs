@@ -182,9 +182,8 @@ namespace GomokuEngine
         {
             get
             {
-#if CHECK
                 Debug.Assert(vctActive == (vctPlayer == Player.None) ? false : true);
-#endif
+
                 return vctActive; 
             }
         }
@@ -197,7 +196,18 @@ namespace GomokuEngine
             }
         }
 
-#if CHECK
+        public bool VctDepth0
+        {
+            get
+            {
+            	if (vctLength == 0 && vctActive) 
+            		return true;
+            	else
+                	return false;
+            }
+        }
+
+  #if CHECK
         void CheckVCT()
         {
             if (vctLength == 0)
