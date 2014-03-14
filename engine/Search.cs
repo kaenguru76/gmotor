@@ -7,12 +7,6 @@ using System.Diagnostics;
 
 namespace GomokuEngine
 {
-    public enum VctStatus 
-    { 
-        Disproven, 
-        Proven,
-    }
-
     class Search   
     {
         public delegate void ThinkingFinishedEvent(SearchInformation info);
@@ -79,7 +73,7 @@ namespace GomokuEngine
                 sInfo.vctActive = gameBoard.VctActive;
                 
 				//if principal variation is empty, then the best move should be stored in TT
-                if (principalVariation == null)
+                /*if (principalVariation == null)
                 {
                 	if (gameBoard.PlayerOnMove == Player.BlackPlayer)
                 	{
@@ -104,7 +98,7 @@ namespace GomokuEngine
 	                			principalVariation.Add(ttItem.bestMove);	            				
 	            			}
 	            		}
-                	}
+                	}*/
                 		
 	                if (principalVariation == null)
 	                {
@@ -118,7 +112,7 @@ namespace GomokuEngine
                 			principalVariation.Add(ttItem2.bestMove);
            				}
 	                }
-            	}
+            	//}
                 
                 //if (principalVariation != null)
                 //{
@@ -152,13 +146,13 @@ namespace GomokuEngine
                         
             sInfo.elapsedTime = DateTime.Now - startTime;
             sInfo.TtHits = transpositionTable.SuccessfulHits;
-            sInfo.TtVctHits = transpositionTable.SuccessfulVctHits;
+            //sInfo.TtVctHits = transpositionTable.SuccessfulVctHits;
 			
             //raise event with search information
             ThinkingFinished(sInfo);
         }
 
-        int AlphaBeta(int depth, int alpha, int beta, out List<int> principalVariation)
+        int AlphaBeta(int depthLeft, int alpha, int beta, out List<int> principalVariation)
         {        	
         	principalVariation = null;
             int bestValue = -int.MaxValue;
@@ -169,13 +163,16 @@ namespace GomokuEngine
             //{
 	            // start VCT
 		        gameBoard.VctActive = true;
-		        VctStatus vctStatus = VCTSearch(0, gameBoard.PlayerOnMove, out principalVariation);
+		        int vctStatus = VCTSearch(0, gameBoard.PlayerOnMove, out principalVariation);
 				//stop VCT
 		        gameBoard.VctActive = false;
 		        
+		        System.Diagnostics.Debug.Assert(gameBoard.VctActive == false);
+		        System.Diagnostics.Debug.Assert(gameBoard.GainSquare == -1);
+		        
     			if (TimeoutReached()) return bestValue;
     		
-		        if (vctStatus == VctStatus.Proven)
+		        if (vctStatus == EvaluationConstants.max)
 		        {
 		        	//depth = 0;
 		        	bestValue = EvaluationConstants.max;
@@ -184,7 +181,7 @@ namespace GomokuEngine
 		        }
             //}
 		            
-            if (depth == 0)
+            if (depthLeft == 0)
             {
     	        bestValue = gameBoard.GetEvaluation();
 				goto L1;
@@ -203,7 +200,7 @@ namespace GomokuEngine
             TranspositionTableItem ttItem = transpositionTable.Lookup();
             if (ttItem != null)
             {
-                if (ttItem.depth == depth)
+                if (ttItem.depthLeft == depthLeft)
                 {
                     switch (ttItem.type)
                     {
@@ -232,7 +229,7 @@ namespace GomokuEngine
             {
                 gameBoard.MakeMove(move);
 
-                int value = -AlphaBeta((moves.Count>1) ? depth - 1:depth, -beta, -alpha, out principalVariationTmp);
+                int value = -AlphaBeta((moves.Count>1) ? depthLeft - 1:depthLeft, -beta, -alpha, out principalVariationTmp);
      //           int value = -AlphaBeta(depth - 1, -beta, -alpha, out principalVariationTmp);
 
                 gameBoard.UndoMove();
@@ -263,11 +260,11 @@ namespace GomokuEngine
 
            L1:
             if (bestValue <= alpha && principalVariation == null)  // an upper bound value
-            	transpositionTable.Store(bestValue, TTEvaluationType.UpperBound, depth, sInfo.examinedMoves - examinedMoves, bestMove);
+            	transpositionTable.Store(bestValue, TTEvaluationType.UpperBound, depthLeft, sInfo.examinedMoves - examinedMoves, bestMove);
             else if (bestValue >= beta)  // lower bound value
-                transpositionTable.Store(bestValue, TTEvaluationType.LowerBound, depth, sInfo.examinedMoves - examinedMoves, bestMove);
+                transpositionTable.Store(bestValue, TTEvaluationType.LowerBound, depthLeft, sInfo.examinedMoves - examinedMoves, bestMove);
             else // a true minimax value
-                transpositionTable.Store(bestValue, TTEvaluationType.Exact, depth, sInfo.examinedMoves - examinedMoves, bestMove);
+                transpositionTable.Store(bestValue, TTEvaluationType.Exact, depthLeft, sInfo.examinedMoves - examinedMoves, bestMove);
 
            
             System.Diagnostics.Debug.Assert(gameBoard.VctPlayer == Player.None);
@@ -275,55 +272,43 @@ namespace GomokuEngine
             return bestValue;
         }
 
-        VctStatus VCTSearch(int depth, Player vctToProve, out List<int> principalVariation)
+        int VCTSearch(int depthLeft, Player vctToProve, out List<int> principalVariation)
         {
         	principalVariation = null;
-            VctStatus status = VctStatus.Disproven;
+            int value = EvaluationConstants.min;
             int examinedVtcMoves = sInfo.examinedVctMoves;
             int bestMove = -1;
 
-            if (sInfo.deepestVctSearch > depth) sInfo.deepestVctSearch = depth;
+            if (sInfo.deepestVctSearch > depthLeft) sInfo.deepestVctSearch = depthLeft;
             
 			//max depth reached or game finished
 			if (gameBoard.GameFinished)
         	{
               	if (vctToProve == gameBoard.PlayerOnMove)
               	{
-               		status = VctStatus.Disproven;
+               		value = EvaluationConstants.min;
                 }
               	else
               	{
-               		status = VctStatus.Proven;
+               		value = EvaluationConstants.max;
                 }
                 goto L1;
                 //return status;
             }
         	
-			if (depth == -13)//-15
+			if (depthLeft == -13)//-15
         	{
                 goto L1;
                 //return status;
             }
         	
         	//look into TT if this position was not evaluated already before
-           	if (vctToProve == Player.BlackPlayer)
-           	{
-	            TranspositionTableVctItem ttItem = transpositionTable.LookupVctBlack();
-	            if (ttItem != null)
-	            {
-	            	if (ttItem.value == VctStatus.Proven) return VctStatus.Proven;
-	            	if (ttItem.depth >= depth) return ttItem.value;
-	            }
-           	}
-           	else
-           	{
-	            TranspositionTableVctItem ttItem = transpositionTable.LookupVctWhite();
-	            if (ttItem != null)
-	            {
-	            	if (ttItem.value == VctStatus.Proven) return VctStatus.Proven;
-	            	if (ttItem.depth >= depth) return ttItem.value;
-	            }
-           	}
+            TranspositionTableItem ttItem = transpositionTable.Lookup();
+            if (ttItem != null)
+            {
+            	if (ttItem.value == EvaluationConstants.max) return EvaluationConstants.max;
+            	if (ttItem.depthLeft >= depthLeft) return EvaluationConstants.min;
+            }
 
 			List<int> principalVariationTmp;
             
@@ -333,7 +318,7 @@ namespace GomokuEngine
             {
                 gameBoard.MakeMove(move);
 
-                VctStatus tmpStatus = VCTSearch((moves.Count>1) ? depth - 1:depth, vctToProve, out principalVariationTmp);
+                int tmpStatus = VCTSearch((moves.Count>1) ? depthLeft - 1:depthLeft, vctToProve, out principalVariationTmp);
 //                VctStatus tmpStatus = VCTSearch(depth - 1, vctToProve, out principalVariationTmp);
 
 				gameBoard.UndoMove();
@@ -341,13 +326,13 @@ namespace GomokuEngine
                 sInfo.examinedMoves++;
                 sInfo.examinedVctMoves++;
 
-                if (TimeoutReached()) return VctStatus.Disproven;
+                if (TimeoutReached()) return EvaluationConstants.min;
 
                 if (gameBoard.PlayerOnMove == vctToProve)
                 {
-	                if (tmpStatus == VctStatus.Proven)
+	                if (tmpStatus == EvaluationConstants.max)
     	            {
-	                	status = VctStatus.Proven;
+	                	value = EvaluationConstants.max;
 	                	bestMove = move;
     	               	principalVariation = (principalVariationTmp == null) ? new List<int>():new List<int>(principalVariationTmp);
 		                principalVariation.Insert(0,move);
@@ -356,9 +341,9 @@ namespace GomokuEngine
                 }
 	            else
                 {
-	                if (tmpStatus == VctStatus.Disproven)
+	                if (tmpStatus == EvaluationConstants.min)
     	            {
-	                	status = VctStatus.Disproven;
+	                	value = EvaluationConstants.min;
 	                	bestMove = move;
     	               	principalVariation = (principalVariationTmp == null) ? new List<int>():new List<int>(principalVariationTmp);
 		                principalVariation.Insert(0,move);
@@ -366,7 +351,7 @@ namespace GomokuEngine
     	            }
 	                else
 	                {
-	                	status = VctStatus.Proven;
+	                	value = EvaluationConstants.max;
 	                	if (bestMove == -1)
 	                	{
 	                		bestMove = move;
@@ -378,16 +363,12 @@ namespace GomokuEngine
             }
             
            L1:
-            if (vctToProve == Player.BlackPlayer)
-            	transpositionTable.StoreVctBlack(status, depth, sInfo.examinedVctMoves - examinedVtcMoves, bestMove);
-            else
-            	transpositionTable.StoreVctWhite(status, depth, sInfo.examinedVctMoves - examinedVtcMoves, bestMove);
-			            	
+           	transpositionTable.Store(value, TTEvaluationType.Exact, depthLeft, sInfo.examinedVctMoves - examinedVtcMoves, bestMove);		            	
 
             System.Diagnostics.Debug.Assert(gameBoard.VctPlayer != Player.None);
             System.Diagnostics.Debug.Assert(vctToProve != Player.None);
             
-            return status;
+            return value;
         }
 
 		bool TimeoutReached()
@@ -398,7 +379,7 @@ namespace GomokuEngine
                 {
                     sInfo.elapsedTime = DateTime.Now - startTime;
                     sInfo.TtHits = transpositionTable.SuccessfulHits;
-                    sInfo.TtVctHits = transpositionTable.SuccessfulVctHits;
+                    //sInfo.TtVctHits = transpositionTable.SuccessfulVctHits;
                     	
                     ThinkingProgress(sInfo);
                 }

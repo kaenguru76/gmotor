@@ -38,12 +38,6 @@ namespace gvisu
         	this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
         	this.columnHeader6 = new System.Windows.Forms.ColumnHeader();
         	this.columnHeader7 = new System.Windows.Forms.ColumnHeader();
-        	this.columnHeader8 = new System.Windows.Forms.ColumnHeader();
-        	this.columnHeader9 = new System.Windows.Forms.ColumnHeader();
-        	this.columnHeader10 = new System.Windows.Forms.ColumnHeader();
-        	this.columnHeader11 = new System.Windows.Forms.ColumnHeader();
-        	this.columnHeader12 = new System.Windows.Forms.ColumnHeader();
-        	this.columnHeader13 = new System.Windows.Forms.ColumnHeader();
         	this.buttonPlayMove = new System.Windows.Forms.Button();
         	this.checkBoxThreat = new System.Windows.Forms.CheckBox();
         	this.SuspendLayout();
@@ -59,13 +53,7 @@ namespace gvisu
         	        	        	this.columnHeader4,
         	        	        	this.columnHeader5,
         	        	        	this.columnHeader6,
-        	        	        	this.columnHeader7,
-        	        	        	this.columnHeader8,
-        	        	        	this.columnHeader9,
-        	        	        	this.columnHeader10,
-        	        	        	this.columnHeader11,
-        	        	        	this.columnHeader12,
-        	        	        	this.columnHeader13});
+        	        	        	this.columnHeader7});
         	this.listView1.FullRowSelect = true;
         	this.listView1.Location = new System.Drawing.Point(0, 0);
         	this.listView1.MultiSelect = false;
@@ -111,31 +99,7 @@ namespace gvisu
         	// 
         	// columnHeader7
         	// 
-        	this.columnHeader7.Text = "depth";
-        	// 
-        	// columnHeader8
-        	// 
-        	this.columnHeader8.Text = "vctBlack";
-        	// 
-        	// columnHeader9
-        	// 
-        	this.columnHeader9.Text = "vctWhite";
-        	// 
-        	// columnHeader10
-        	// 
-        	this.columnHeader10.Text = "vctBlackDepth";
-        	// 
-        	// columnHeader11
-        	// 
-        	this.columnHeader11.Text = "vctWhiteDepth";
-        	// 
-        	// columnHeader12
-        	// 
-        	this.columnHeader12.Text = "vctBlackMoves";
-        	// 
-        	// columnHeader13
-        	// 
-        	this.columnHeader13.Text = "vctWhiteMoves";
+        	this.columnHeader7.Text = "depth left";
         	// 
         	// buttonPlayMove
         	// 
@@ -152,9 +116,9 @@ namespace gvisu
         	this.checkBoxThreat.AutoSize = true;
         	this.checkBoxThreat.Location = new System.Drawing.Point(12, 214);
         	this.checkBoxThreat.Name = "checkBoxThreat";
-        	this.checkBoxThreat.Size = new System.Drawing.Size(53, 17);
+        	this.checkBoxThreat.Size = new System.Drawing.Size(47, 17);
         	this.checkBoxThreat.TabIndex = 44;
-        	this.checkBoxThreat.Text = "threat";
+        	this.checkBoxThreat.Text = "VCT";
         	this.checkBoxThreat.UseVisualStyleBackColor = true;
         	this.checkBoxThreat.CheckedChanged += new System.EventHandler(this.checkBoxThreat_CheckedChanged);
         	this.checkBoxThreat.Click += new System.EventHandler(this.checkBoxThreat_Click);
@@ -174,12 +138,6 @@ namespace gvisu
         	this.ResumeLayout(false);
         	this.PerformLayout();
         }
-        private System.Windows.Forms.ColumnHeader columnHeader13;
-        private System.Windows.Forms.ColumnHeader columnHeader12;
-        private System.Windows.Forms.ColumnHeader columnHeader11;
-        private System.Windows.Forms.ColumnHeader columnHeader10;
-        private System.Windows.Forms.ColumnHeader columnHeader9;
-        private System.Windows.Forms.ColumnHeader columnHeader8;
 
         #endregion
 

@@ -606,7 +606,7 @@ namespace gvisu
             listBox2.Items.Add("depth= " + info.depth + " (" + info.deepestVctSearch + " VCT)");
           	listBox2.Items.Add("PV= "+info.PrincipalVariationText);
             listBox2.Items.Add("cutoffs= " + info.CutoffsText);
-            listBox2.Items.Add("TT hits= " + info.TtHits.ToString("f0") + "% (" + info.TtVctHits.ToString("f0") + "% VCT)");
+            listBox2.Items.Add("TT hits= " + info.TtHits.ToString("f0") + "%");
         }
 
         void ThinkingFinished(SearchInformation info)

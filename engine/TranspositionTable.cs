@@ -16,7 +16,7 @@ namespace GomokuEngine
         public ulong key;
         public int value;
         public TTEvaluationType type;
-        public int depth;
+        public int depthLeft;
         public int examinedMoves;
         public int bestMove;
 
@@ -25,7 +25,7 @@ namespace GomokuEngine
             key = 0;
             value = 0;
             type = TTEvaluationType.Exact;
-            depth = 0;
+            depthLeft = 0;
             examinedMoves = 0;
             bestMove = -1;
         }
@@ -35,7 +35,7 @@ namespace GomokuEngine
             return key.ToString() + "," + value.ToString();
         }
     }
-    
+    /*
     class TranspositionTableVctItem
     {
         public ulong key;
@@ -57,32 +57,32 @@ namespace GomokuEngine
         {
             return key.ToString() + "," + value.ToString();
         }
-    }
+    }*/
     
     class TranspositionTable
     {
 		TranspositionTableItem[] items;
-		TranspositionTableVctItem[] itemsVctBlack;
-		TranspositionTableVctItem[] itemsVctWhite;
         int tableSize;//size of table in MB
 		int tableItems;//number of items in table
         int boardSize;
 
 		ulong zobristKey;
 		int successfulHits;
-		int successfulVctHits;
+		//int successfulVctHits;
 		int failureHits;
-		int failureVctHits;
+		//int failureVctHits;
 
 		Random random;
 
 		ulong[] hashBlackSquare;//black hash codes
 		ulong[] hashWhiteSquare;//white hash codes
+		ulong[] hashGainSquare;
 
 		//dictionary remembers everythink, not like hash table        
         Dictionary<ulong,TranspositionTableItem> dictionary;
         bool useDictionary;
-		ulong trapKey=0;
+		//ulong trapKey=0;
+		int gainSquare;
 
 		public TranspositionTable(int boardSize)
         {
@@ -93,11 +93,13 @@ namespace GomokuEngine
 
 			hashBlackSquare = new ulong[boardSize * boardSize];
 			hashWhiteSquare = new ulong[boardSize * boardSize];
+			hashGainSquare = new ulong[boardSize * boardSize];
             
 			for (int square = 0; square < boardSize * boardSize; square++)
 			{
 				hashBlackSquare[square] = rand64();
 				hashWhiteSquare[square] = rand64();
+				hashGainSquare[square] = rand64();
 			}
 
           	dictionary = new Dictionary<ulong,TranspositionTableItem>();
@@ -145,49 +147,7 @@ namespace GomokuEngine
         	}
         }
 
-        public TranspositionTableVctItem LookupVctBlack()
-        {
-            if (tableItems == 0) return null;
-
-            /* get access to item */
-            int index = (int)(zobristKey % (ulong)tableItems);
-            TranspositionTableVctItem item = itemsVctBlack[index];
-    	
-            /* key must be the same */
-            if (item.key == zobristKey)
-            {
-                successfulVctHits++;
-                return item;
-            }
-            else
-            {
-                failureVctHits++;
-                return null;
-            }
-        }
-
-        public TranspositionTableVctItem LookupVctWhite()
-        {
-            if (tableItems == 0) return null;
-
-            /* get access to item */
-            int index = (int)(zobristKey % (ulong)tableItems);
-            TranspositionTableVctItem item = itemsVctWhite[index];
-    	
-            /* key must be the same */
-            if (item.key == zobristKey)
-            {
-                successfulVctHits++;
-                return item;
-            }
-            else
-            {
-                failureVctHits++;
-                return null;
-            }
-        }
-                
-        public void Store(int value, TTEvaluationType type, int depth, int examinedMoves, int bestMove)
+        public void Store(int value, TTEvaluationType type, int depthLeft, int examinedMoves, int bestMove)
         {
             if (tableItems != 0)
             {
@@ -198,7 +158,7 @@ namespace GomokuEngine
                 tableItem.key = zobristKey;
                 tableItem.value = value;
                 tableItem.type = type;
-                tableItem.depth = depth;
+                tableItem.depthLeft = depthLeft;
                 tableItem.examinedMoves = examinedMoves;
                 tableItem.bestMove = bestMove;
 
@@ -213,39 +173,6 @@ namespace GomokuEngine
             
         }
 
-		public void StoreVctBlack(VctStatus value, int depth, int examinedMoves, int bestMove)
-        {
-            if (tableItems == 0) return;
-            
-          	/* get access to item */
-            int index = (int)(zobristKey % (ulong)tableItems);
-            TranspositionTableVctItem item = itemsVctBlack[index];
-
-            item.key = zobristKey;
-            item.value = value;
-            item.depth = depth;
-            item.examinedMoves = examinedMoves;
-            item.bestMove = bestMove;
-        }
-
-		public void StoreVctWhite(VctStatus value, int depth, int examinedMoves, int bestMove)
-        {
-            if (tableItems == 0) return;
-            
-          	/* get access to item */
-            int index = (int)(zobristKey % (ulong)tableItems);
-            
-            System.Diagnostics.Debug.Assert(zobristKey != trapKey);
-            
-            TranspositionTableVctItem item = itemsVctWhite[index];
-
-            item.key = zobristKey;
-            item.value = value;
-            item.depth = depth;
-            item.examinedMoves = examinedMoves;
-            item.bestMove = bestMove;
-        }
-
 		public int TableSize
         {
             get{ return tableSize;}
@@ -254,19 +181,16 @@ namespace GomokuEngine
 
 		public void ResetTables(bool useDictionary)
         {
+			gainSquare = -1;
 			this.useDictionary = useDictionary;
 			
 			tableItems = tableSize / 30;
             
             items = new TranspositionTableItem[tableItems];
-            itemsVctBlack = new TranspositionTableVctItem[tableItems];
-            itemsVctWhite = new TranspositionTableVctItem[tableItems];
 
             for (int index = 0; index < tableItems; index++)
             {
                 items[index] = new TranspositionTableItem();
-                itemsVctBlack[index] = new TranspositionTableVctItem();
-                itemsVctWhite[index] = new TranspositionTableVctItem();
             }
 
             //clear dictionary
@@ -277,9 +201,9 @@ namespace GomokuEngine
 		public void ResetStatistics()
 		{
             successfulHits = 0;
-            successfulVctHits = 0;
+            //successfulVctHits = 0;
             failureHits = 0;
-			failureVctHits = 0;			
+			//failureVctHits = 0;			
 		}
 
         /* returns 64-bit random number */
@@ -293,7 +217,7 @@ namespace GomokuEngine
 			return part1 ^ part2 ^ part3 ^ part4;
 		}
 
-		public void MakeMove(int square, Player player)
+		public void MakeMove(int square, Player player, int gainSquare)
 		{
 			//modify Zobrist key
 			if (player == Player.BlackPlayer)
@@ -304,9 +228,22 @@ namespace GomokuEngine
 			{
 				zobristKey ^= hashWhiteSquare[square];
 			}
+			
+			//hash gainSquare
+			if (gainSquare != this.gainSquare)
+			{
+				//unmap old
+				if (this.gainSquare != -1) 
+					zobristKey ^= hashGainSquare[this.gainSquare];
+				//map new
+				if (gainSquare != -1)
+					zobristKey ^= hashGainSquare[gainSquare];
+				//store gainSquare
+				this.gainSquare = gainSquare;
+			}
         }
 
-        public void UndoMove(int square, Player player)
+        public void UndoMove(int square, Player player, int gainSquare)
 		{
             //modify Zobrist key
             if (player == Player.BlackPlayer)
@@ -317,6 +254,19 @@ namespace GomokuEngine
             {
                 zobristKey ^= hashWhiteSquare[square];
             }
+
+            //hash gainSquare
+			if (gainSquare != this.gainSquare)
+			{
+				//unmap old 
+				if (this.gainSquare != -1)
+					zobristKey ^= hashGainSquare[this.gainSquare];
+				//map new
+				if (gainSquare != -1)
+					zobristKey ^= hashGainSquare[gainSquare];
+				//store gainSquare
+				this.gainSquare = gainSquare;
+			}
         }
 
 		public float SuccessfulHits
@@ -327,13 +277,13 @@ namespace GomokuEngine
 			}
 		}
 
-		public float SuccessfulVctHits
-		{
-			get
-			{
-				return (float)100*successfulVctHits/(successfulVctHits+failureVctHits);
-			}
-		}
+//		public float SuccessfulVctHits
+//		{
+//			get
+//			{
+//				return (float)100*successfulVctHits/(successfulVctHits+failureVctHits);
+//			}
+//		}
 	}
 
 

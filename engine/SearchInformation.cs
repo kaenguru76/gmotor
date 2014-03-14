@@ -11,7 +11,7 @@ namespace GomokuEngine
         public int examinedVctMoves;
         public List<ABMove> possibleMoves;
         public float TtHits;
-        public float TtVctHits;
+        //public float TtVctHits;
         public int evaluation;
         public int nbCutoffs;
         public bool vctActive;
@@ -44,7 +44,7 @@ namespace GomokuEngine
                 this.principalVariation = new List<ABMove>(searchInfo.principalVariation);
             }
             this.TtHits = searchInfo.TtHits;
-            this.TtVctHits = searchInfo.TtVctHits;
+            //this.TtVctHits = searchInfo.TtVctHits;
             this.evaluation = searchInfo.evaluation;
             this.nbCutoffs = searchInfo.nbCutoffs;
             this.vctActive = searchInfo.vctActive;

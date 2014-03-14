@@ -13,15 +13,9 @@ namespace GomokuEngine
         public int value;
         public TTEvaluationType valueType;
         public int examinedMoves;
-        public int depth;
+        public int depthLeft;
         public Player vctPlayer;
         public TimeSpan time;
-        public VctStatus vctBlack;
-        public VctStatus vctWhite;
-        public int vctBlackDepth;
-        public int vctWhiteDepth;
-        public int examinedMovesVctBlack;
-        public int examinedMovesVctWhite;
 
         int boardSize;
 
@@ -70,9 +64,8 @@ namespace GomokuEngine
 
 
             string[] str = { Convert.ToString(index), this.ToString() + " (" + square.ToString() + ")", time.TotalSeconds.ToString(),
-                               moveType.ToString(), s2, vctPlayer.ToString(), examinedMoves.ToString(), depth.ToString(),
-                               vctBlack.ToString(), vctWhite.ToString(), vctBlackDepth.ToString(), vctWhiteDepth.ToString(),
-                               examinedMovesVctBlack.ToString(), examinedMovesVctWhite.ToString()};
+                               moveType.ToString(), s2, vctPlayer.ToString(), examinedMoves.ToString(), depthLeft.ToString(),
+                               };
             return str;
         }
 

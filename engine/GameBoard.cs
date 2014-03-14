@@ -142,7 +142,7 @@ namespace GomokuEngine
             vct.Locked = true;
 
             //update zobrist key
-            transpositionTable.MakeMove(square, playerOnMove);
+            transpositionTable.MakeMove(square, playerOnMove, vct.GainSquare);
 
             //toggle playerOnMove
             playerOnMove = (playerOnMove == Player.BlackPlayer) ? Player.WhitePlayer : Player.BlackPlayer;
@@ -164,13 +164,13 @@ namespace GomokuEngine
             //toggle playerOnMove
             playerOnMove = (playerOnMove == Player.BlackPlayer) ? Player.WhitePlayer : Player.BlackPlayer;
 
-            if (vct.LastVctMove == square) vct.Locked = false;
+            if (vct.GainSquare == square) vct.Locked = false;
             EvaluateConnectedSquares(square, Player.None);
 
             vct.UndoMove(square);
 
             //update zobrist key
-            transpositionTable.UndoMove(square, playerOnMove);
+            transpositionTable.UndoMove(square, playerOnMove, vct.GainSquare);
 
             sortingBlack.Modify(square, backupEvaluationBlack[square]);
             sortingWhite.Modify(square, backupEvaluationWhite[square]);
@@ -240,30 +240,36 @@ namespace GomokuEngine
             	move.vctPlayer = vct.VctPlayer;
 
             	//get information from transposition table
-                transpositionTable.MakeMove(square, playerOnMove);
+            	MakeMove(square);
+                //transpositionTable.MakeMove(square, playerOnMove, vct.GainSquare);
                 
                 TranspositionTableItem ttItem = transpositionTable.Lookup();
                 if (ttItem != null)
                 {
                 	move.valueType = ttItem.type;
                 	move.examinedMoves = ttItem.examinedMoves;
-                	move.depth = ttItem.depth;
-                	if (playerOnMove == Player.WhitePlayer)
+                	move.depthLeft = ttItem.depthLeft;
+               		move.value = ttItem.value;
+                	switch (vct.VctPlayer)
                 	{
-                		//toggle evaluation for white
-                		move.value = ttItem.value;
-                	}
-                	else
-                	{
-                		//correct evaluation is with "-" 
-                		move.value = -ttItem.value;      
-
-						//toggle bounds
-						if (move.valueType == TTEvaluationType.UpperBound) move.valueType = TTEvaluationType.LowerBound;
-						if (move.valueType == TTEvaluationType.LowerBound) move.valueType = TTEvaluationType.UpperBound;
+               		case Player.None:
+	                	if (playerOnMove == Player.WhitePlayer)
+	                	{
+	                		//toggle evaluation for white 
+	                		move.value = -move.value;      
+							//toggle also bounds
+							if (move.valueType == TTEvaluationType.UpperBound) move.valueType = TTEvaluationType.LowerBound;
+							if (move.valueType == TTEvaluationType.LowerBound) move.valueType = TTEvaluationType.UpperBound;
+	                	}
+	                	break;
+	                
+	                case Player.WhitePlayer:
+	                	//toggle evaluation for white 
+	                	move.value = -move.value;    
+						break;	                		
                 	}
                 }
-                
+                /*
                 TranspositionTableVctItem ttItemVctBlack = transpositionTable.LookupVctBlack();
                 if (ttItemVctBlack != null)
                 {
@@ -278,9 +284,10 @@ namespace GomokuEngine
                 	move.vctWhite = ttItemVctWhite.value;
                 	move.vctWhiteDepth = ttItemVctWhite.depth;
                 	move.examinedMovesVctWhite = ttItemVctWhite.examinedMoves;
-                }
+                }*/
 
-                transpositionTable.UndoMove(square, playerOnMove);
+                //transpositionTable.UndoMove(square, playerOnMove, vct.GainSquare);
+                UndoMove();
             }
             return movesC;
         }
@@ -443,5 +450,12 @@ namespace GomokuEngine
                 return vct.VctDepth0;
             }
         }
-    }
+
+        public int GainSquare
+        {
+            get
+            {
+                return vct.GainSquare;
+            }
+        }    }
 }

@@ -104,7 +104,7 @@ namespace GomokuEngine
             }
         }
 
-        public int LastVctMove
+        public int GainSquare
         {
             get
             {
