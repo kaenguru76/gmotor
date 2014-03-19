@@ -122,7 +122,7 @@ namespace gvisu
 			{
 				lblRow = new Label();
 				lblRow.BackColor = System.Drawing.Color.Transparent;
-				lblRow.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+				lblRow.Font = new System.Drawing.Font(this.Font, System.Drawing.FontStyle.Regular);
 				lblRow.Name = "lblRow" + row.ToString();
 				lblRow.Size = BoardImageList.ImageSize;
 				lblRow.Top = panelBoard.Height - BoardImageList.ImageSize.Height - (row + 1) * BoardImageList.ImageSize.Height;
@@ -137,7 +137,7 @@ namespace gvisu
 			{
 				lblColumn = new Label();
 				lblColumn.BackColor = System.Drawing.Color.Transparent;
-				lblColumn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+				lblColumn.Font = new System.Drawing.Font(this.Font, System.Drawing.FontStyle.Regular);
 				lblColumn.Name = "lblColumn" + column.ToString();
 				lblColumn.Size = BoardImageList.ImageSize;
 				lblColumn.Top = panelBoard.Height - BoardImageList.ImageSize.Height;

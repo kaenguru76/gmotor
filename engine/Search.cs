@@ -52,6 +52,11 @@ namespace GomokuEngine
 
 			//iterative search or fix search?
 			int startingDepth = (iterativeDeepening) ? 0 : maxSearchDepth;
+			
+            if (gameBoard.GetPlayedMoves().Count == 0) //completely first move
+            {
+				startingDepth = 1;
+            }
 
             //start iterative deepening search
             for (int depth = startingDepth; depth <= maxSearchDepth; depth++)
@@ -106,10 +111,12 @@ namespace GomokuEngine
             			if (ttItem2 != null)
             			{
             				//illegal move -> research 
-            				if (ttItem2.bestMove == -1) continue;
-            			
+            				//if (ttItem2.bestMove == -1) continue;
+  					        //System.Diagnostics.Debug.Assert(ttItem2.bestMove != -1);
+
            					principalVariation = new List<int>();
-                			principalVariation.Add(ttItem2.bestMove);
+           					if (ttItem2.bestMove != -1)
+                				principalVariation.Add(ttItem2.bestMove);
            				}
 	                }
             	//}
@@ -130,15 +137,16 @@ namespace GomokuEngine
                     gameBoard.VctActive = false;
                 }
 
-                if (gameBoard.GetPlayedMoves().Count == 0) break; //completely first move
                 if ((depth > 0 && evaluation == EvaluationConstants.min) || evaluation == EvaluationConstants.max) break;
+	            if (gameBoard.GetPlayedMoves().Count == 0) break;//completely first move
+                if (gameBoard.VctActive) break;
             } 
 //L1:
 
             //end VCT
             gameBoard.VctActive = false;
             
-            if (gameBoard.PlayerOnMove == Player.WhitePlayer)
+            if (gameBoard.PlayerOnMove == Player.WhitePlayer || gameBoard.VctPlayer == Player.WhitePlayer)
             {
             	//toggle evaluation for white on move - due to negamax
 				sInfo.evaluation = -sInfo.evaluation;
@@ -163,21 +171,21 @@ namespace GomokuEngine
             //{
 	            // start VCT
 		        gameBoard.VctActive = true;
-		        int vctStatus = VCTSearch(0, gameBoard.PlayerOnMove, out principalVariation);
+		        int vctValue = VCTSearch(0, gameBoard.VctPlayer, out principalVariation);
 				//stop VCT
 		        gameBoard.VctActive = false;
 		        
-		        System.Diagnostics.Debug.Assert(gameBoard.VctActive == false);
-		        System.Diagnostics.Debug.Assert(gameBoard.GainSquare == -1);
+		        System.Diagnostics.Debug.Assert(gameBoard.VctActive == false || depthLeft == 0);
+		        System.Diagnostics.Debug.Assert(gameBoard.GainSquare == -1 || depthLeft == 0);
 		        
     			if (TimeoutReached()) return bestValue;
     		
-		        if (vctStatus == EvaluationConstants.max)
+		        if (vctValue == EvaluationConstants.max)
 		        {
 		        	//depth = 0;
 		        	bestValue = EvaluationConstants.max;
-		        	goto L1;
-		        	//return tmpValue;
+		        	//goto L1;
+		        	return vctValue;
 		        }
             //}
 		            
@@ -267,7 +275,7 @@ namespace GomokuEngine
                 transpositionTable.Store(bestValue, TTEvaluationType.Exact, depthLeft, sInfo.examinedMoves - examinedMoves, bestMove);
 
            
-            System.Diagnostics.Debug.Assert(gameBoard.VctPlayer == Player.None);
+            System.Diagnostics.Debug.Assert(gameBoard.VctPlayer == Player.None || depthLeft == 0);
             
             return bestValue;
         }
@@ -296,7 +304,7 @@ namespace GomokuEngine
                 //return status;
             }
         	
-			if (depthLeft == -13)//-15
+			if (depthLeft == -9)//-15
         	{
                 goto L1;
                 //return status;
@@ -320,6 +328,7 @@ namespace GomokuEngine
 
                 int tmpStatus = VCTSearch((moves.Count>1) ? depthLeft - 1:depthLeft, vctToProve, out principalVariationTmp);
 //                VctStatus tmpStatus = VCTSearch(depth - 1, vctToProve, out principalVariationTmp);
+				System.Diagnostics.Debug.Assert(tmpStatus == EvaluationConstants.min || tmpStatus == EvaluationConstants.max);
 
 				gameBoard.UndoMove();
 
@@ -351,7 +360,7 @@ namespace GomokuEngine
     	            }
 	                else
 	                {
-	                	value = EvaluationConstants.max;
+	                	value = tmpStatus;
 	                	if (bestMove == -1)
 	                	{
 	                		bestMove = move;

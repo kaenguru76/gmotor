@@ -196,6 +196,8 @@ namespace GomokuEngine
             //clear dictionary
             if (useDictionary)
             	dictionary.Clear();
+            
+            zobristKey = rand64();
         }
 		
 		public void ResetStatistics()
