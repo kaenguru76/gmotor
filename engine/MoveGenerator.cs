@@ -57,7 +57,9 @@ namespace GomokuEngine
 	            sorting.AddMovesToList(BothPlayerEvaluation.c3_defending, moves, false);
             }
 
+            if (moves.Count > 10) goto L1;
             sorting.AddMovesToList(BothPlayerEvaluation.o2xo2_attacking, moves, vctAttackingMoves);
+            if (moves.Count > 10) goto L1;
             sorting.AddMovesToList(BothPlayerEvaluation.o2xo1_attacking, moves, vctAttackingMoves);
 
             if (vctAttackingMoves) goto L1;

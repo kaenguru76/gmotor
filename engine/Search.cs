@@ -304,7 +304,7 @@ namespace GomokuEngine
                 //return status;
             }
         	
-			if (depthLeft == -9)//-15
+			if (depthLeft == -13)//-15
         	{
                 goto L1;
                 //return status;
