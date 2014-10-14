@@ -210,11 +210,11 @@ namespace GomokuEngine
                 switch (placedSymbol)
                 {
                 	case Player.BlackPlayer:
-                		if (blackChanged) vct.AddVct(connectedSquare.square);
+                		if (blackChanged && fourDirectionsBlack.evaluation <= FourDirectionsEvaluation.o2xo1) vct.AddVct(connectedSquare.square);
 						break;
 						
                 	case Player.WhitePlayer:
-                		if (whiteChanged) vct.AddVct(connectedSquare.square);
+                		if (whiteChanged && fourDirectionsWhite.evaluation <= FourDirectionsEvaluation.o2xo1) vct.AddVct(connectedSquare.square);
 						break;
 
                 	case Player.None:

@@ -46,6 +46,9 @@ namespace GomokuEngine
     	       	sorting.AddMovesToList(BothPlayerEvaluation.s3_defending, moves, false);
             if (o3_defending > 0) goto L1;
 
+            sorting.AddMovesToList(BothPlayerEvaluation.c3xc3_defending_vct, moves, vctAttackingMoves);
+            sorting.AddMovesToList(BothPlayerEvaluation.c3xo2_defending_vct, moves, vctAttackingMoves);
+            
             if (vctAttackingMoves == false)
             {
     	        sorting.AddMovesToList(BothPlayerEvaluation.c3xc3_defending, moves, false);
@@ -54,7 +57,9 @@ namespace GomokuEngine
 	            sorting.AddMovesToList(BothPlayerEvaluation.c3_defending, moves, false);
             }
 
+            if (moves.Count > 10) goto L1;
             sorting.AddMovesToList(BothPlayerEvaluation.o2xo2_attacking, moves, vctAttackingMoves);
+            if (moves.Count > 10) goto L1;
             sorting.AddMovesToList(BothPlayerEvaluation.o2xo1_attacking, moves, vctAttackingMoves);
 
             if (vctAttackingMoves) goto L1;
