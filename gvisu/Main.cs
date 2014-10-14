@@ -27,7 +27,8 @@ namespace gvisu
 
         Conversions conversions;
         PossibleMoves possibleMoves;
-        //BestLine bestLine;
+        Evaluation evaluation;
+        
         List<ABMove> playedMoves;
 
         public Main()
@@ -188,6 +189,7 @@ namespace gvisu
             //mnuShowBestLine.Enabled = true;
             mnuShowPossibleMoves.Enabled = true;
             heuristicsToolStripMenuItem.Enabled = true;
+            evaluationToolStripMenuItem.Enabled = true;
         }
 
         void engine_MovesChanged(GameInformation gameInformation)
@@ -686,5 +688,16 @@ namespace gvisu
         {
             engine.IterativeDeepening = !checkBoxFixedDepth.Checked;
         }
+		
+		void EvaluationToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			evaluation = new Evaluation();
+			evaluation.Show();
+		}
+		
+		void SettingsToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			
+		}
 	}
 }

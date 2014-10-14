@@ -161,6 +161,7 @@ namespace GomokuEngine
                 tableItem.depthLeft = depthLeft;
                 tableItem.examinedMoves = examinedMoves;
                 tableItem.bestMove = bestMove;
+                System.Diagnostics.Debug.Assert(bestMove != -1);
 
                 //store the same data also into dictionary
                 if (useDictionary)

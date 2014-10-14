@@ -53,6 +53,7 @@
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.mnuShowPossibleMoves = new System.Windows.Forms.ToolStripMenuItem();
 			this.heuristicsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.evaluationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.moveStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.firstToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.previousToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -234,10 +235,12 @@
 									this.mnuAdvancedMode,
 									this.toolStripSeparator3,
 									this.mnuShowPossibleMoves,
-									this.heuristicsToolStripMenuItem});
+									this.heuristicsToolStripMenuItem,
+									this.evaluationToolStripMenuItem});
 			this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
 			this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
 			this.settingsToolStripMenuItem.Text = "Settings";
+			this.settingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsToolStripMenuItemClick);
 			// 
 			// mnuHumanStarts
 			// 
@@ -289,6 +292,14 @@
 			this.heuristicsToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
 			this.heuristicsToolStripMenuItem.Text = "Tuning";
 			this.heuristicsToolStripMenuItem.Click += new System.EventHandler(this.heuristicsToolStripMenuItem_Click);
+			// 
+			// evaluationToolStripMenuItem
+			// 
+			this.evaluationToolStripMenuItem.Enabled = false;
+			this.evaluationToolStripMenuItem.Name = "evaluationToolStripMenuItem";
+			this.evaluationToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+			this.evaluationToolStripMenuItem.Text = "Evaluation";
+			this.evaluationToolStripMenuItem.Click += new System.EventHandler(this.EvaluationToolStripMenuItemClick);
 			// 
 			// moveStripMenuItem
 			// 
@@ -775,6 +786,7 @@
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		private System.Windows.Forms.ToolStripMenuItem evaluationToolStripMenuItem;
 		private System.Windows.Forms.CheckBox checkBoxUseDictionary;
 
 		#endregion
