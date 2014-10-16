@@ -121,7 +121,7 @@ namespace GomokuEngine
 	                sInfo.principalVariation = new List<ABMove>();
 	            	foreach(int square in principalVariation)
 	            	{
-	            		ABMove move = new ABMove(square,gameBoard.PlayerOnMove,gameBoard.GetBoardSize());
+	            		ABMove move = new ABMove(square,gameBoard.PlayerOnMove,gameBoard.BoardSize);
 	        			sInfo.principalVariation.Add(move);
 	            	}
                 }

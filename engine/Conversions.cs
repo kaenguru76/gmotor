@@ -34,10 +34,17 @@ namespace GomokuEngine
 
 		public string Complete(int square)
 		{
-			int row = square / boardSize;
-			int column = square % boardSize;
+			if (square != -1)
+			{
+				int row = square / boardSize;
+				int column = square % boardSize;
 
-			return (Column(column) + Row(row));
+				return (Column(column) + Row(row));
+			}
+			else
+			{
+				return "null";
+			}
 		}
 		
 		public string Complete(List<ABMove> moveList)

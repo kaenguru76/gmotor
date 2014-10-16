@@ -16,7 +16,8 @@ namespace GomokuEngine
         public List<ABMove> playedMoves;
         public List<ABMove> possibleMoves;
         public ABMove nextMove;
-
+		public ABMove GainSquare;
+        
         public GameInformation()
         {
         }

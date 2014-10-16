@@ -100,6 +100,7 @@
 			this.nextToolStripButton = new System.Windows.Forms.ToolStripButton();
 			this.lastToolStripButton = new System.Windows.Forms.ToolStripButton();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+			this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.statusStrip1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.panelControl.SuspendLayout();
@@ -121,11 +122,13 @@
 			// 
 			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
 									this.toolStripStatusLabel1,
-									this.toolStripStatusLabel2});
+									this.toolStripStatusLabel2,
+									this.toolStripStatusLabel3});
 			this.statusStrip1.Location = new System.Drawing.Point(0, 550);
 			this.statusStrip1.Name = "statusStrip1";
 			this.statusStrip1.Size = new System.Drawing.Size(878, 22);
 			this.statusStrip1.TabIndex = 17;
+			this.statusStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.StatusStrip1ItemClicked);
 			// 
 			// toolStripStatusLabel1
 			// 
@@ -755,6 +758,11 @@
 			this.lastToolStripButton.Text = "Goto last move";
 			this.lastToolStripButton.Click += new System.EventHandler(this.lastToolStripButton_Click);
 			// 
+			// toolStripStatusLabel3
+			// 
+			this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+			this.toolStripStatusLabel3.Size = new System.Drawing.Size(0, 17);
+			// 
 			// Main
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -786,6 +794,7 @@
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
 		private System.Windows.Forms.ToolStripMenuItem evaluationToolStripMenuItem;
 		private System.Windows.Forms.CheckBox checkBoxUseDictionary;
 

@@ -318,6 +318,8 @@ namespace gvisu
             statusStrip1.Items[1].Text = "Evaluation = " + EvaluationConstants.Score2Text(gameInformation.Evaluation);
             statusStrip1.Items[1].Visible = true;
 
+            statusStrip1.Items[2].Text = "Gain square = " + gameInformation.GainSquare;
+            statusStrip1.Items[2].Visible = true;
         }
 
 		private void picSquare_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -696,6 +698,11 @@ namespace gvisu
 		}
 		
 		void SettingsToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			
+		}
+		
+		void StatusStrip1ItemClicked(object sender, ToolStripItemClickedEventArgs e)
 		{
 			
 		}

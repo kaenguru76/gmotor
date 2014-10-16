@@ -212,7 +212,7 @@ namespace GomokuEngine
             {
                 //exit if no game
                 if (search == null) return 0;
-                return gameBoard.GetBoardSize(); 
+                return gameBoard.BoardSize; 
             }
         }
 
@@ -323,14 +323,13 @@ namespace GomokuEngine
             gameInformation.possibleMoves = gameBoard.GeneratePossibleMoves(gameBoard.VctPlayer, gameBoard.VctDepth0);
             
             gameInformation.Evaluation = (gameBoard.PlayerOnMove == Player.BlackPlayer) ? gameBoard.GetEvaluation():-gameBoard.GetEvaluation();
-            //gameBoard.GetEvaluationDetail(out gameInformation.BlackScore, out gameInformation.WhiteScore);
-
+            gameInformation.GainSquare = new ABMove(gameBoard.GainSquare,gameBoard.PlayerOnMove,gameBoard.BoardSize);
             MovesChangedE(gameInformation);
         }
 
 		public void GetSquareInfo(string notification, out SquareInfo squareInfo)
 		{
-            Conversions conversions = new Conversions(gameBoard.GetBoardSize());
+            Conversions conversions = new Conversions(gameBoard.BoardSize);
 			int square = conversions.Square(notification);
 
             gameBoard.GetSquareInfo(square, out squareInfo);
@@ -363,7 +362,7 @@ namespace GomokuEngine
 
         public Player GetSymbol(int row, int column)
 		{
-            Conversions conversions = new Conversions(gameBoard.GetBoardSize());
+            Conversions conversions = new Conversions(gameBoard.BoardSize);
             int square = conversions.RowAndColumn2Index(row, column);
             return gameBoard.GetSymbol(square);
 		}

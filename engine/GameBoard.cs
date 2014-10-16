@@ -210,11 +210,11 @@ namespace GomokuEngine
                 switch (placedSymbol)
                 {
                 	case Player.BlackPlayer:
-                		if (blackChanged && fourDirectionsBlack.evaluation <= FourDirectionsEvaluation.o2xo1) vct.AddVct(connectedSquare.square);
+                		if (blackChanged /*&& fourDirectionsBlack.evaluation <= FourDirectionsEvaluation.o2xo1*/) vct.AddVct(connectedSquare.square);
 						break;
 						
                 	case Player.WhitePlayer:
-                		if (whiteChanged && fourDirectionsWhite.evaluation <= FourDirectionsEvaluation.o2xo1) vct.AddVct(connectedSquare.square);
+                		if (whiteChanged /*&& fourDirectionsWhite.evaluation <= FourDirectionsEvaluation.o2xo1*/) vct.AddVct(connectedSquare.square);
 						break;
 
                 	case Player.None:
@@ -324,9 +324,12 @@ namespace GomokuEngine
             }
         }
 
-        public int GetBoardSize()
+        public int BoardSize
         {
-            return boardSize;
+        	get
+        	{
+            	return boardSize;
+        	}
         }
 
         public Player GetSymbol(int square)
