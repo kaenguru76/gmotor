@@ -36,7 +36,7 @@ namespace gmotor
                 String str = Console.ReadLine().ToUpper();
 
 #if DEBUG
-                Console.WriteLine("DEBUG -> " + str);
+                Console.WriteLine("DEBUG <- " + str);
 #endif
                 //  START
                 Regex rStart = new Regex(@"START\s*(\d+)");
@@ -84,11 +84,11 @@ namespace gmotor
                         engine.MakeMove(move);
 
 #if DEBUG
-                        Console.WriteLine("DEBUG oponent: " + move.ToString());
+                        Console.WriteLine("DEBUG -> oponent's move " + move.ToString());
 #endif
                         engine.MaxThinkingTime = new TimeSpan(0, 0, 0, 0, Math.Min(Math.Min(timeoutTurn, timeLeft / timePortion), timeoutMatch / movesPerGame));
 #if DEBUG
-                        Console.WriteLine("DEBUG time: " + engine.MaxThinkingTime.TotalSeconds.ToString() + "s");
+                        Console.WriteLine("DEBUG -> time limit " + engine.MaxThinkingTime.TotalSeconds.ToString() + "s");
 #endif
                         engine.StartThinking();
                     }
@@ -113,7 +113,7 @@ namespace gmotor
                         //  cti vstup
                         String str1 = Console.ReadLine().ToUpper();
 #if DEBUG
-						Console.WriteLine("DEBUG -> " + str1);
+						Console.WriteLine("DEBUG <- " + str1);
 #endif
                         //  BOARD
                         Regex rBoard = new Regex(@"(\d+),(\d+),(\d+)");
@@ -127,7 +127,7 @@ namespace gmotor
                             ABMove move = new ABMove(conversions.RowAndColumn2Index(row, column), player, engine.BoardSize, new TimeSpan());
                             engine.MakeMove(move);
 #if DEBUG
-                            Console.WriteLine("DEBUG -> " + move.ToString());
+                            Console.WriteLine("DEBUG <- " + move.ToString());
 #endif
                             continue;
                         }
@@ -190,7 +190,7 @@ namespace gmotor
         {
             Console.WriteLine("OK");
 #if DEBUG
-            Console.WriteLine("DEBUG <- Initialized");
+            Console.WriteLine("DEBUG -> Initialized");
 #endif
         }
 

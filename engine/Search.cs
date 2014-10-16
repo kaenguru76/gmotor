@@ -53,6 +53,8 @@ namespace GomokuEngine
 			//iterative search or fix search?
 			int startingDepth = (iterativeDeepening) ? 0 : maxSearchDepth;
 
+			if ((gameBoard.GetPlayedMoves().Count == 0) && (startingDepth == 0)) startingDepth = 1; //completely first move
+
             //start iterative deepening search
             for (int depth = startingDepth; depth <= maxSearchDepth; depth++)
             {
