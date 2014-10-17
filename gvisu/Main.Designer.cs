@@ -34,6 +34,7 @@
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+			this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.TopToolStripPanel = new System.Windows.Forms.ToolStripPanel();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,6 +91,7 @@
 			this.btnEvaluate = new System.Windows.Forms.Button();
 			this.btnStop = new System.Windows.Forms.Button();
 			this.panelBoard = new System.Windows.Forms.Panel();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
 			this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
 			this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -100,13 +102,13 @@
 			this.nextToolStripButton = new System.Windows.Forms.ToolStripButton();
 			this.lastToolStripButton = new System.Windows.Forms.ToolStripButton();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-			this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.statusStrip1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.panelControl.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownDfPnHash)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownDepth)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownThinkTime)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.toolStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -141,6 +143,11 @@
 			this.toolStripStatusLabel2.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
 			this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
 			this.toolStripStatusLabel2.Size = new System.Drawing.Size(4, 17);
+			// 
+			// toolStripStatusLabel3
+			// 
+			this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+			this.toolStripStatusLabel3.Size = new System.Drawing.Size(0, 17);
 			// 
 			// TopToolStripPanel
 			// 
@@ -418,6 +425,7 @@
 			// 
 			// panelControl
 			// 
+			this.panelControl.Controls.Add(this.pictureBox1);
 			this.panelControl.Controls.Add(this.checkBoxUseDictionary);
 			this.panelControl.Controls.Add(this.checkBoxFixedDepth);
 			this.panelControl.Controls.Add(this.label3);
@@ -661,6 +669,16 @@
 			this.panelBoard.Size = new System.Drawing.Size(375, 332);
 			this.panelBoard.TabIndex = 35;
 			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Location = new System.Drawing.Point(0, 235);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(151, 132);
+			this.pictureBox1.TabIndex = 0;
+			this.pictureBox1.TabStop = false;
+			this.pictureBox1.Click += new System.EventHandler(this.PictureBox1Click);
+			this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.PictureBox1Paint);
+			// 
 			// toolStrip1
 			// 
 			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -758,11 +776,6 @@
 			this.lastToolStripButton.Text = "Goto last move";
 			this.lastToolStripButton.Click += new System.EventHandler(this.lastToolStripButton_Click);
 			// 
-			// toolStripStatusLabel3
-			// 
-			this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-			this.toolStripStatusLabel3.Size = new System.Drawing.Size(0, 17);
-			// 
 			// Main
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -789,11 +802,13 @@
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownDfPnHash)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownDepth)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownThinkTime)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.toolStrip1.ResumeLayout(false);
 			this.toolStrip1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
 		private System.Windows.Forms.ToolStripMenuItem evaluationToolStripMenuItem;
 		private System.Windows.Forms.CheckBox checkBoxUseDictionary;

@@ -706,5 +706,21 @@ namespace gvisu
 		{
 			
 		}
+		
+		void PictureBox1Click(object sender, EventArgs e)
+		{
+			
+		}
+		
+		void PictureBox1Paint(object sender, PaintEventArgs e)
+		{
+			Graphics g = e.Graphics;
+			
+			var src = new Bitmap("./skins/wood.bmp");
+			
+			//Pen pen = new Pen(Color.FromArgb(255, 0, 0, 0));
+			//g.DrawLine(pen, 20, 10, 300, 100);
+			g.DrawImage(src,0,0);
+		}
 	}
 }
