@@ -90,8 +90,6 @@
 			this.lblBlack = new System.Windows.Forms.Label();
 			this.btnEvaluate = new System.Windows.Forms.Button();
 			this.btnStop = new System.Windows.Forms.Button();
-			this.panelBoard = new System.Windows.Forms.Panel();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
 			this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
 			this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -102,13 +100,13 @@
 			this.nextToolStripButton = new System.Windows.Forms.ToolStripButton();
 			this.lastToolStripButton = new System.Windows.Forms.ToolStripButton();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+			this.graphicBoard1 = new gvisu.GraphicBoard();
 			this.statusStrip1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.panelControl.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownDfPnHash)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownDepth)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownThinkTime)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.toolStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -130,7 +128,6 @@
 			this.statusStrip1.Name = "statusStrip1";
 			this.statusStrip1.Size = new System.Drawing.Size(878, 22);
 			this.statusStrip1.TabIndex = 17;
-			this.statusStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.StatusStrip1ItemClicked);
 			// 
 			// toolStripStatusLabel1
 			// 
@@ -250,7 +247,6 @@
 			this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
 			this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
 			this.settingsToolStripMenuItem.Text = "Settings";
-			this.settingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsToolStripMenuItemClick);
 			// 
 			// mnuHumanStarts
 			// 
@@ -425,7 +421,6 @@
 			// 
 			// panelControl
 			// 
-			this.panelControl.Controls.Add(this.pictureBox1);
 			this.panelControl.Controls.Add(this.checkBoxUseDictionary);
 			this.panelControl.Controls.Add(this.checkBoxFixedDepth);
 			this.panelControl.Controls.Add(this.label3);
@@ -660,25 +655,6 @@
 			this.btnStop.UseVisualStyleBackColor = true;
 			this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
 			// 
-			// panelBoard
-			// 
-			this.panelBoard.BackColor = System.Drawing.SystemColors.ControlDark;
-			this.panelBoard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.panelBoard.Location = new System.Drawing.Point(0, 49);
-			this.panelBoard.Name = "panelBoard";
-			this.panelBoard.Size = new System.Drawing.Size(375, 332);
-			this.panelBoard.TabIndex = 35;
-			// 
-			// pictureBox1
-			// 
-			this.pictureBox1.Location = new System.Drawing.Point(0, 235);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(151, 132);
-			this.pictureBox1.TabIndex = 0;
-			this.pictureBox1.TabStop = false;
-			this.pictureBox1.Click += new System.EventHandler(this.PictureBox1Click);
-			this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.PictureBox1Paint);
-			// 
 			// toolStrip1
 			// 
 			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -776,15 +752,22 @@
 			this.lastToolStripButton.Text = "Goto last move";
 			this.lastToolStripButton.Click += new System.EventHandler(this.lastToolStripButton_Click);
 			// 
+			// graphicBoard1
+			// 
+			this.graphicBoard1.Location = new System.Drawing.Point(44, 255);
+			this.graphicBoard1.Name = "graphicBoard1";
+			this.graphicBoard1.Size = new System.Drawing.Size(75, 46);
+			this.graphicBoard1.TabIndex = 38;
+			// 
 			// Main
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(878, 572);
+			this.Controls.Add(this.graphicBoard1);
 			this.Controls.Add(this.panelControl);
 			this.Controls.Add(this.toolStrip1);
 			this.Controls.Add(this.menuStrip1);
-			this.Controls.Add(this.panelBoard);
 			this.Controls.Add(this.statusStrip1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -802,13 +785,12 @@
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownDfPnHash)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownDepth)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownThinkTime)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.toolStrip1.ResumeLayout(false);
 			this.toolStrip1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
-		private System.Windows.Forms.PictureBox pictureBox1;
+		private gvisu.GraphicBoard graphicBoard1;
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
 		private System.Windows.Forms.ToolStripMenuItem evaluationToolStripMenuItem;
 		private System.Windows.Forms.CheckBox checkBoxUseDictionary;
@@ -840,7 +822,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDownDfPnHash;
         private System.Windows.Forms.NumericUpDown numericUpDownThinkTime;
         private System.Windows.Forms.Button btnEvaluate;
-        private System.Windows.Forms.Panel panelBoard;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
         private System.Windows.Forms.ToolStripPanel BottomToolStripPanel;

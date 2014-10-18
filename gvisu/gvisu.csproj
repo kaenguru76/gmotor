@@ -97,6 +97,10 @@
     <Compile Include="Evaluation.Designer.cs">
       <DependentUpon>Evaluation.cs</DependentUpon>
     </Compile>
+    <Compile Include="GraphicBoard.cs" />
+    <Compile Include="GraphicBoard.Designer.cs">
+      <DependentUpon>GraphicBoard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tuning.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +129,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Evaluation.resx">
       <DependentUpon>Evaluation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphicBoard.resx">
+      <DependentUpon>GraphicBoard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <SubType>Designer</SubType>

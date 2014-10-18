@@ -64,9 +64,9 @@ namespace gvisu
 
 		void engine_NewGameE()
         {
-			PictureBox picSquare;
-			Label lblRow;
-			Label lblColumn;
+			//PictureBox picSquare;
+			//Label lblRow;
+			//Label lblColumn;
 
             conversions = new Conversions(engine.BoardSize);
 
@@ -99,12 +99,11 @@ namespace gvisu
             SemaforImageList.Images.AddStrip(bitmaps);
             
             // resize board
-			panelBoard.Size = new Size(BoardImageList.ImageSize.Width * (engine.BoardSize + 1), BoardImageList.ImageSize.Width * (engine.BoardSize + 1));
-			panelBoard.Controls.Clear();
+			graphicBoard1.BoardSize = engine.BoardSize;
 
 			// shift control panel
-			panelControl.Left = panelBoard.Right;
-			panelControl.Height = panelBoard.Height;
+			panelControl.Left = graphicBoard1.Right;
+			panelControl.Height = graphicBoard1.Height;
 
             //resize listViews
             //listViewGame.Left = panelBoard.Right;
@@ -112,65 +111,17 @@ namespace gvisu
 
 
             // resize whole form
-			this.ClientSize = new Size(panelControl.Right, panelBoard.Bottom + statusStrip1.Height);
+			this.ClientSize = new Size(panelControl.Right, graphicBoard1.Bottom + statusStrip1.Height);
 
 
 			//set back colour
-			panelBoard.BackColor = bitmaps.GetPixel(0, 0);
+			//panelBoard.BackColor = bitmaps.GetPixel(0, 0);
 
-			//draw row legend
-			for (int row = 0; row < engine.BoardSize; row++)
-			{
-				lblRow = new Label();
-				lblRow.BackColor = System.Drawing.Color.Transparent;
-				lblRow.Font = new System.Drawing.Font(this.Font, System.Drawing.FontStyle.Regular);
-				lblRow.Name = "lblRow" + row.ToString();
-				lblRow.Size = BoardImageList.ImageSize;
-				lblRow.Top = panelBoard.Height - BoardImageList.ImageSize.Height - (row + 1) * BoardImageList.ImageSize.Height;
-				lblRow.Left = 0;
-				lblRow.Text = conversions.Row(row);
-				lblRow.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-				panelBoard.Controls.Add(lblRow);
-			}
-
-			//draw column legend
-			for (int column = 0; column < engine.BoardSize; column++)
-			{
-				lblColumn = new Label();
-				lblColumn.BackColor = System.Drawing.Color.Transparent;
-				lblColumn.Font = new System.Drawing.Font(this.Font, System.Drawing.FontStyle.Regular);
-				lblColumn.Name = "lblColumn" + column.ToString();
-				lblColumn.Size = BoardImageList.ImageSize;
-				lblColumn.Top = panelBoard.Height - BoardImageList.ImageSize.Height;
-				lblColumn.Left = (column+1) * BoardImageList.ImageSize.Width;
-				lblColumn.Text = conversions.Column(column);
-				lblColumn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-				panelBoard.Controls.Add(lblColumn);
-
-			}
 
 			//define square pictures
 			picSquares = new PictureBox[engine.BoardSize, engine.BoardSize];
 
-			//draw board
-			for (int column = 0; column < engine.BoardSize; column++)
-			{
-				for (int row = 0; row < engine.BoardSize; row++)
-				{
-					picSquare = new System.Windows.Forms.PictureBox();
-					picSquare.Image = BoardImageList.Images[0];
-					picSquare.Name = "picSquare" + conversions.Complete(row , column);
-					picSquare.Size = BoardImageList.ImageSize;
-					picSquare.Top = panelBoard.Height - BoardImageList.ImageSize.Height - (row + 1) * picSquare.Size.Height;
-					picSquare.Left = BoardImageList.ImageSize.Width + column * picSquare.Size.Height;
-					picSquare.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-					picSquare.TabStop = false;
-                    picSquare.Tag = conversions.Complete(row, column); 
-                    picSquare.MouseClick +=new MouseEventHandler(picSquare_MouseClick);
-					panelBoard.Controls.Add(picSquare);
-					picSquares[row, column] = picSquare;
-				}
-			}
+
 
 			//draw 2 symbols
 			buttonBlack.Image = BoardImageList.Images[1];
@@ -697,30 +648,8 @@ namespace gvisu
 			evaluation.Show();
 		}
 		
-		void SettingsToolStripMenuItemClick(object sender, EventArgs e)
-		{
-			
-		}
+
 		
-		void StatusStrip1ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-		{
-			
-		}
-		
-		void PictureBox1Click(object sender, EventArgs e)
-		{
-			
-		}
-		
-		void PictureBox1Paint(object sender, PaintEventArgs e)
-		{
-			Graphics g = e.Graphics;
-			
-			var src = new Bitmap("./skins/wood.bmp");
-			
-			//Pen pen = new Pen(Color.FromArgb(255, 0, 0, 0));
-			//g.DrawLine(pen, 20, 10, 300, 100);
-			g.DrawImage(src,0,0);
-		}
+
 	}
 }
