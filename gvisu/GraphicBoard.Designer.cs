@@ -43,7 +43,7 @@ namespace gvisu
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Name = "GraphicBoard";
-			this.Size = new System.Drawing.Size(275, 260);
+			this.Size = new System.Drawing.Size(191, 182);
 			this.Load += new System.EventHandler(this.GraphicBoardLoad);
 			this.Paint += new System.Windows.Forms.PaintEventHandler(this.GraphicBoardPaint);
 			this.ResumeLayout(false);

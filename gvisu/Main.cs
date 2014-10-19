@@ -99,11 +99,11 @@ namespace gvisu
             SemaforImageList.Images.AddStrip(bitmaps);
             
             // resize board
-			graphicBoard1.BoardSize = engine.BoardSize;
+//			graphicBoard1.BoardSize = engine.BoardSize;
 
 			// shift control panel
-			panelControl.Left = graphicBoard1.Right;
-			panelControl.Height = graphicBoard1.Height;
+//			panelControl.Left = graphicBoard1.Right;
+//			panelControl.Height = graphicBoard1.Height;
 
             //resize listViews
             //listViewGame.Left = panelBoard.Right;
@@ -111,7 +111,7 @@ namespace gvisu
 
 
             // resize whole form
-			this.ClientSize = new Size(panelControl.Right, graphicBoard1.Bottom + statusStrip1.Height);
+			//this.ClientSize = new Size(panelControl.Right, graphicBoard1.Bottom + statusStrip1.Height);
 
 
 			//set back colour

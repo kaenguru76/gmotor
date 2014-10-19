@@ -100,7 +100,7 @@
 			this.nextToolStripButton = new System.Windows.Forms.ToolStripButton();
 			this.lastToolStripButton = new System.Windows.Forms.ToolStripButton();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-			this.graphicBoard1 = new gvisu.GraphicBoard();
+			//this.graphicBoard1 = new gvisu.GraphicBoard();
 			this.statusStrip1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.panelControl.SuspendLayout();
@@ -752,19 +752,11 @@
 			this.lastToolStripButton.Text = "Goto last move";
 			this.lastToolStripButton.Click += new System.EventHandler(this.lastToolStripButton_Click);
 			// 
-			// graphicBoard1
-			// 
-			this.graphicBoard1.Location = new System.Drawing.Point(44, 255);
-			this.graphicBoard1.Name = "graphicBoard1";
-			this.graphicBoard1.Size = new System.Drawing.Size(75, 46);
-			this.graphicBoard1.TabIndex = 38;
-			// 
 			// Main
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(878, 572);
-			this.Controls.Add(this.graphicBoard1);
 			this.Controls.Add(this.panelControl);
 			this.Controls.Add(this.toolStrip1);
 			this.Controls.Add(this.menuStrip1);
@@ -790,7 +782,6 @@
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
-		private gvisu.GraphicBoard graphicBoard1;
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
 		private System.Windows.Forms.ToolStripMenuItem evaluationToolStripMenuItem;
 		private System.Windows.Forms.CheckBox checkBoxUseDictionary;
