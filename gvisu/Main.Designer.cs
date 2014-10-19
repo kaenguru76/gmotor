@@ -101,7 +101,6 @@
 			this.lastToolStripButton = new System.Windows.Forms.ToolStripButton();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.graphicBoard1 = new gvisu.GraphicBoard();
-			this.graphicBoard2 = new gvisu.GraphicBoard();
 			this.statusStrip1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.panelControl.SuspendLayout();
@@ -755,24 +754,17 @@
 			// 
 			// graphicBoard1
 			// 
-			this.graphicBoard1.Location = new System.Drawing.Point(0, 0);
+			this.graphicBoard1.Location = new System.Drawing.Point(96, 93);
 			this.graphicBoard1.Name = "graphicBoard1";
-			this.graphicBoard1.Size = new System.Drawing.Size(191, 182);
-			this.graphicBoard1.TabIndex = 0;
-			// 
-			// graphicBoard2
-			// 
-			this.graphicBoard2.Location = new System.Drawing.Point(81, 101);
-			this.graphicBoard2.Name = "graphicBoard2";
-			this.graphicBoard2.Size = new System.Drawing.Size(140, 163);
-			this.graphicBoard2.TabIndex = 37;
+			this.graphicBoard1.Size = new System.Drawing.Size(127, 173);
+			this.graphicBoard1.TabIndex = 37;
 			// 
 			// Main
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(878, 572);
-			this.Controls.Add(this.graphicBoard2);
+			this.Controls.Add(this.graphicBoard1);
 			this.Controls.Add(this.panelControl);
 			this.Controls.Add(this.toolStrip1);
 			this.Controls.Add(this.menuStrip1);
@@ -873,7 +865,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkBoxFixedDepth;
         private gvisu.GraphicBoard graphicBoard1;
-        private gvisu.GraphicBoard graphicBoard2;
 
 
     }
