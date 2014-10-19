@@ -17,9 +17,9 @@ namespace gvisu
 	/// </summary>
 	public partial class GraphicBoard : UserControl
 	{
-//		Bitmap stones;
-//		int boardSize;
-//		GomokuEngine.Conversions conversions;
+		Bitmap stones;
+		int boardSize;
+		GomokuEngine.Conversions conversions;
 		
 		public GraphicBoard()
 		{
@@ -35,9 +35,17 @@ namespace gvisu
 		
 		void GraphicBoardLoad(object sender, EventArgs e)
 		{
-//			string str1 = @"./skins/wood.bmp";
-//			
-//			stones = new Bitmap(str1);
+			string str1 = "./skins/wood.bmp";
+			try {
+				stones = new Bitmap(str1);				
+			}
+			catch (System.ArgumentException ex) {
+//				// if (ex.Source != null)
+				System.Diagnostics.Debug.Print(ex.ToString());
+				MessageBox.Show(str1,"File not found",MessageBoxButtons.OK);
+				//throw new System.Exception("File not found", ex);
+			}
+			//stones = new Bitmap(@"c:\Piskvorky\gmotor\gvisu\bin\Debug\skins\wood.bmp");
 		}
 		
 		void GraphicBoardPaint(object sender, PaintEventArgs e)
@@ -82,13 +90,11 @@ namespace gvisu
 //			g.DrawImage(stones,0,0);
 		}
 		
-//		public int BoardSize
-//		{
-//			set
-//			{
-//				boardSize = value;
-//				conversions = new GomokuEngine.Conversions(boardSize);
-//			}
-//		}
+		public int BoardSize {
+			set {
+				boardSize = value;
+				conversions = new GomokuEngine.Conversions(boardSize);
+			}
+		}
 	}
 }
