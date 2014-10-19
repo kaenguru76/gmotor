@@ -100,7 +100,8 @@
 			this.nextToolStripButton = new System.Windows.Forms.ToolStripButton();
 			this.lastToolStripButton = new System.Windows.Forms.ToolStripButton();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-			//this.graphicBoard1 = new gvisu.GraphicBoard();
+			this.graphicBoard1 = new gvisu.GraphicBoard();
+			this.graphicBoard2 = new gvisu.GraphicBoard();
 			this.statusStrip1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.panelControl.SuspendLayout();
@@ -121,9 +122,9 @@
 			// statusStrip1
 			// 
 			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.toolStripStatusLabel1,
-									this.toolStripStatusLabel2,
-									this.toolStripStatusLabel3});
+			this.toolStripStatusLabel1,
+			this.toolStripStatusLabel2,
+			this.toolStripStatusLabel3});
 			this.statusStrip1.Location = new System.Drawing.Point(0, 550);
 			this.statusStrip1.Name = "statusStrip1";
 			this.statusStrip1.Size = new System.Drawing.Size(878, 22);
@@ -157,10 +158,10 @@
 			// menuStrip1
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.gameToolStripMenuItem,
-									this.settingsToolStripMenuItem,
-									this.moveStripMenuItem,
-									this.helpToolStripMenuItem});
+			this.gameToolStripMenuItem,
+			this.settingsToolStripMenuItem,
+			this.moveStripMenuItem,
+			this.helpToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(878, 24);
@@ -170,13 +171,13 @@
 			// gameToolStripMenuItem
 			// 
 			this.gameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.mnuNew,
-									this.mnuOpen,
-									this.mnuSave,
-									this.mnuSaveAs,
-									this.mnuReopen,
-									this.toolStripMenuItem1,
-									this.mnuExit});
+			this.mnuNew,
+			this.mnuOpen,
+			this.mnuSave,
+			this.mnuSaveAs,
+			this.mnuReopen,
+			this.toolStripMenuItem1,
+			this.mnuExit});
 			this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
 			this.gameToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
 			this.gameToolStripMenuItem.Text = "Game";
@@ -235,15 +236,15 @@
 			// settingsToolStripMenuItem
 			// 
 			this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.mnuHumanStarts,
-									this.mnuComputerStarts,
-									this.toolStripMenuItem2,
-									this.mnuSimpleMode,
-									this.mnuAdvancedMode,
-									this.toolStripSeparator3,
-									this.mnuShowPossibleMoves,
-									this.heuristicsToolStripMenuItem,
-									this.evaluationToolStripMenuItem});
+			this.mnuHumanStarts,
+			this.mnuComputerStarts,
+			this.toolStripMenuItem2,
+			this.mnuSimpleMode,
+			this.mnuAdvancedMode,
+			this.toolStripSeparator3,
+			this.mnuShowPossibleMoves,
+			this.heuristicsToolStripMenuItem,
+			this.evaluationToolStripMenuItem});
 			this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
 			this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
 			this.settingsToolStripMenuItem.Text = "Settings";
@@ -310,14 +311,14 @@
 			// moveStripMenuItem
 			// 
 			this.moveStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.firstToolStripMenuItem,
-									this.previousToolStripMenuItem,
-									this.nextToolStripMenuItem,
-									this.lastToolStripMenuItem,
-									this.toolStripSeparator1,
-									this.selectToolStripMenuItem,
-									this.toolStripSeparator2,
-									this.InfoToolStripMenuItem});
+			this.firstToolStripMenuItem,
+			this.previousToolStripMenuItem,
+			this.nextToolStripMenuItem,
+			this.lastToolStripMenuItem,
+			this.toolStripSeparator1,
+			this.selectToolStripMenuItem,
+			this.toolStripSeparator2,
+			this.InfoToolStripMenuItem});
 			this.moveStripMenuItem.Name = "moveStripMenuItem";
 			this.moveStripMenuItem.Size = new System.Drawing.Size(49, 20);
 			this.moveStripMenuItem.Text = "Move";
@@ -387,7 +388,7 @@
 			// helpToolStripMenuItem
 			// 
 			this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.mnuAbout});
+			this.mnuAbout});
 			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
 			this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
 			this.helpToolStripMenuItem.Text = "Help";
@@ -497,36 +498,36 @@
 			this.numericUpDownDfPnHash.DecimalPlaces = 1;
 			this.numericUpDownDfPnHash.Location = new System.Drawing.Point(12, 130);
 			this.numericUpDownDfPnHash.Maximum = new decimal(new int[] {
-									500,
-									0,
-									0,
-									0});
+			500,
+			0,
+			0,
+			0});
 			this.numericUpDownDfPnHash.Name = "numericUpDownDfPnHash";
 			this.numericUpDownDfPnHash.Size = new System.Drawing.Size(47, 20);
 			this.numericUpDownDfPnHash.TabIndex = 12;
 			this.numericUpDownDfPnHash.Value = new decimal(new int[] {
-									10,
-									0,
-									0,
-									0});
+			10,
+			0,
+			0,
+			0});
 			this.numericUpDownDfPnHash.ValueChanged += new System.EventHandler(this.numericUpDownDfPnHash_ValueChanged);
 			// 
 			// numericUpDownDepth
 			// 
 			this.numericUpDownDepth.Location = new System.Drawing.Point(59, 82);
 			this.numericUpDownDepth.Maximum = new decimal(new int[] {
-									100000,
-									0,
-									0,
-									0});
+			100000,
+			0,
+			0,
+			0});
 			this.numericUpDownDepth.Name = "numericUpDownDepth";
 			this.numericUpDownDepth.Size = new System.Drawing.Size(50, 20);
 			this.numericUpDownDepth.TabIndex = 44;
 			this.numericUpDownDepth.Value = new decimal(new int[] {
-									30,
-									0,
-									0,
-									0});
+			30,
+			0,
+			0,
+			0});
 			this.numericUpDownDepth.ValueChanged += new System.EventHandler(this.numericUpDownDepth_ValueChanged);
 			// 
 			// label1
@@ -543,18 +544,18 @@
 			this.numericUpDownThinkTime.DecimalPlaces = 1;
 			this.numericUpDownThinkTime.Location = new System.Drawing.Point(59, 63);
 			this.numericUpDownThinkTime.Maximum = new decimal(new int[] {
-									100000,
-									0,
-									0,
-									0});
+			100000,
+			0,
+			0,
+			0});
 			this.numericUpDownThinkTime.Name = "numericUpDownThinkTime";
 			this.numericUpDownThinkTime.Size = new System.Drawing.Size(50, 20);
 			this.numericUpDownThinkTime.TabIndex = 12;
 			this.numericUpDownThinkTime.Value = new decimal(new int[] {
-									5,
-									0,
-									0,
-									0});
+			5,
+			0,
+			0,
+			0});
 			this.numericUpDownThinkTime.ValueChanged += new System.EventHandler(this.numericUpDownThinkTime_ValueChanged);
 			// 
 			// buttonWhite
@@ -570,9 +571,9 @@
 			// 
 			this.listViewGame.BackColor = System.Drawing.SystemColors.Control;
 			this.listViewGame.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-									this.vg1,
-									this.vg2,
-									this.vg3});
+			this.vg1,
+			this.vg2,
+			this.vg3});
 			this.listViewGame.FullRowSelect = true;
 			this.listViewGame.Location = new System.Drawing.Point(12, 150);
 			this.listViewGame.MultiSelect = false;
@@ -658,14 +659,14 @@
 			// toolStrip1
 			// 
 			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.newToolStripButton,
-									this.openToolStripButton,
-									this.saveToolStripButton,
-									this.toolStripSeparator,
-									this.firstToolStripButton,
-									this.previousToolStripButton,
-									this.nextToolStripButton,
-									this.lastToolStripButton});
+			this.newToolStripButton,
+			this.openToolStripButton,
+			this.saveToolStripButton,
+			this.toolStripSeparator,
+			this.firstToolStripButton,
+			this.previousToolStripButton,
+			this.nextToolStripButton,
+			this.lastToolStripButton});
 			this.toolStrip1.Location = new System.Drawing.Point(0, 24);
 			this.toolStrip1.Name = "toolStrip1";
 			this.toolStrip1.Size = new System.Drawing.Size(878, 25);
@@ -752,11 +753,26 @@
 			this.lastToolStripButton.Text = "Goto last move";
 			this.lastToolStripButton.Click += new System.EventHandler(this.lastToolStripButton_Click);
 			// 
+			// graphicBoard1
+			// 
+			this.graphicBoard1.Location = new System.Drawing.Point(0, 0);
+			this.graphicBoard1.Name = "graphicBoard1";
+			this.graphicBoard1.Size = new System.Drawing.Size(191, 182);
+			this.graphicBoard1.TabIndex = 0;
+			// 
+			// graphicBoard2
+			// 
+			this.graphicBoard2.Location = new System.Drawing.Point(81, 101);
+			this.graphicBoard2.Name = "graphicBoard2";
+			this.graphicBoard2.Size = new System.Drawing.Size(140, 163);
+			this.graphicBoard2.TabIndex = 37;
+			// 
 			// Main
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(878, 572);
+			this.Controls.Add(this.graphicBoard2);
 			this.Controls.Add(this.panelControl);
 			this.Controls.Add(this.toolStrip1);
 			this.Controls.Add(this.menuStrip1);
@@ -781,6 +797,7 @@
 			this.toolStrip1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
+
 		}
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
 		private System.Windows.Forms.ToolStripMenuItem evaluationToolStripMenuItem;
@@ -855,6 +872,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkBoxFixedDepth;
+        private gvisu.GraphicBoard graphicBoard1;
+        private gvisu.GraphicBoard graphicBoard2;
 
 
     }

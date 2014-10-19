@@ -7,7 +7,6 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
-using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -18,9 +17,9 @@ namespace gvisu
 	/// </summary>
 	public partial class GraphicBoard : UserControl
 	{
-		Bitmap stones;
-		int boardSize;
-		GomokuEngine.Conversions conversions;
+//		Bitmap stones;
+//		int boardSize;
+//		GomokuEngine.Conversions conversions;
 		
 		public GraphicBoard()
 		{
@@ -36,29 +35,29 @@ namespace gvisu
 		
 		void GraphicBoardLoad(object sender, EventArgs e)
 		{
-			string str1 = @"./skins/wood.bmp";
-			
-			stones = new Bitmap(str1);
+//			string str1 = @"./skins/wood.bmp";
+//			
+//			stones = new Bitmap(str1);
 		}
 		
 		void GraphicBoardPaint(object sender, PaintEventArgs e)
 		{
-			Graphics g = e.Graphics;
-			
-			//draw row legend
-			Font font = new System.Drawing.Font("Arial", 16);
-    		SolidBrush brush = new SolidBrush(System.Drawing.Color.Black);
-    		
-			for (int row = 0; row < boardSize; row++)
-			{
-				g.DrawString(conversions.Row(row), font, brush,row*10,10);
-			}
-
-			//draw column legend
-			for (int column = 0; column < boardSize; column++)
-			{
-				g.DrawString(conversions.Column(column), font, brush,10,column*10);
-			}
+//			Graphics g = e.Graphics;
+//			
+//			//draw row legend
+//			Font font = new System.Drawing.Font("Arial", 16);
+//    		SolidBrush brush = new SolidBrush(System.Drawing.Color.Black);
+//    		
+//			for (int row = 0; row < boardSize; row++)
+//			{
+//				g.DrawString(conversions.Row(row), font, brush,row*10,10);
+//			}
+//
+//			//draw column legend
+//			for (int column = 0; column < boardSize; column++)
+//			{
+//				g.DrawString(conversions.Column(column), font, brush,10,column*10);
+//			}
 
 			//draw board
 //			for (int column = 0; column < engine.BoardSize; column++)
@@ -80,16 +79,16 @@ namespace gvisu
 //				}
 //			}
 			
-			g.DrawImage(stones,0,0);
+//			g.DrawImage(stones,0,0);
 		}
 		
-		public int BoardSize
-		{
-			set
-			{
-				boardSize = value;
-				conversions = new GomokuEngine.Conversions(boardSize);
-			}
-		}
+//		public int BoardSize
+//		{
+//			set
+//			{
+//				boardSize = value;
+//				conversions = new GomokuEngine.Conversions(boardSize);
+//			}
+//		}
 	}
 }
