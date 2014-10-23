@@ -18,6 +18,8 @@ namespace gvisu
 	public partial class GraphicBoard : UserControl
 	{
 		Bitmap stones;
+		Bitmap stoneEmpty;
+		
 		int boardSize;
 		GomokuEngine.Conversions conversions;
 		
@@ -28,13 +30,14 @@ namespace gvisu
 			//
 			InitializeComponent();
 			
-			//
-			// TODO: Add constructor code after the InitializeComponent() call.
-			//
+			boardSize = 20;
 		}
 		
 		void GraphicBoardLoad(object sender, EventArgs e)
 		{
+			stones = Properties.Resources.wood;
+			stoneEmpty = stones.Clone(new Rectangle(0,0,stones.Height,stones.Height),stones.PixelFormat);
+/*
 			string str1 = "./skins/wood.bmp";
 			try {
 				stones = new Bitmap(str1);				
@@ -46,11 +49,12 @@ namespace gvisu
 				//throw new System.Exception("File not found", ex);
 			}
 			//stones = new Bitmap(@"c:\Piskvorky\gmotor\gvisu\bin\Debug\skins\wood.bmp");
+			*/
 		}
 		
 		void GraphicBoardPaint(object sender, PaintEventArgs e)
 		{
-//			Graphics g = e.Graphics;
+			Graphics g = e.Graphics;
 //			
 //			//draw row legend
 //			Font font = new System.Drawing.Font("Arial", 16);
@@ -68,10 +72,12 @@ namespace gvisu
 //			}
 
 			//draw board
-//			for (int column = 0; column < engine.BoardSize; column++)
-//			{
-//				for (int row = 0; row < engine.BoardSize; row++)
-//				{
+			for (int column = 0; column < boardSize; column++)
+			{
+				for (int row = 0; row < boardSize; row++)
+				{
+					g.DrawImage(stoneEmpty,column*stoneEmpty.Width,row*stoneEmpty.Height);
+
 //					picSquare = new System.Windows.Forms.PictureBox();
 //					picSquare.Image = BoardImageList.Images[0];
 //					picSquare.Name = "picSquare" + conversions.Complete(row , column);
@@ -84,10 +90,9 @@ namespace gvisu
 //                    picSquare.MouseClick +=new MouseEventHandler(picSquare_MouseClick);
 //					panelBoard.Controls.Add(picSquare);
 //					picSquares[row, column] = picSquare;
-//				}
-//			}
+				}
+			}
 			
-//			g.DrawImage(stones,0,0);
 		}
 		
 		public int BoardSize {

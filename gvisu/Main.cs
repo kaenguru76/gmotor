@@ -58,8 +58,7 @@ namespace gvisu
             previousToolStripButton.ImageIndex = 4;
             nextToolStripButton.ImageIndex = 5;
             lastToolStripButton.ImageIndex = 6;
-
-            //bestLine = new BestLine();
+            
         }
 
 		void engine_NewGameE()

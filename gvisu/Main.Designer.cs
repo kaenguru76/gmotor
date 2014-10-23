@@ -754,9 +754,9 @@
 			// 
 			// graphicBoard1
 			// 
-			this.graphicBoard1.Location = new System.Drawing.Point(83, 91);
+			this.graphicBoard1.Location = new System.Drawing.Point(0, 52);
 			this.graphicBoard1.Name = "graphicBoard1";
-			this.graphicBoard1.Size = new System.Drawing.Size(127, 173);
+			this.graphicBoard1.Size = new System.Drawing.Size(372, 372);
 			this.graphicBoard1.TabIndex = 37;
 			// 
 			// Main
