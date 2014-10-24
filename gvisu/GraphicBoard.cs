@@ -30,13 +30,13 @@ namespace gvisu
 			//
 			InitializeComponent();
 			
-			boardSize = 20;
+			BoardSize = 20;
 		}
 		
 		void GraphicBoardLoad(object sender, EventArgs e)
 		{
 			stones = Properties.Resources.wood;
-			stoneEmpty = stones.Clone(new Rectangle(0,0,stones.Height,stones.Height),stones.PixelFormat);
+			stoneEmpty = stones.Clone(new Rectangle(0, 0, stones.Height, stones.Height), stones.PixelFormat);
 /*
 			string str1 = "./skins/wood.bmp";
 			try {
@@ -54,30 +54,26 @@ namespace gvisu
 		
 		void GraphicBoardPaint(object sender, PaintEventArgs e)
 		{
-			Graphics g = e.Graphics;
-//			
-//			//draw row legend
-//			Font font = new System.Drawing.Font("Arial", 16);
-//    		SolidBrush brush = new SolidBrush(System.Drawing.Color.Black);
-//    		
-//			for (int row = 0; row < boardSize; row++)
-//			{
-//				g.DrawString(conversions.Row(row), font, brush,row*10,10);
-//			}
-//
-//			//draw column legend
-//			for (int column = 0; column < boardSize; column++)
-//			{
-//				g.DrawString(conversions.Column(column), font, brush,10,column*10);
-//			}
+			Graphics g = e.Graphics; //get handle
+			
+			//draw horizontal legend
+			var font = new Font(FontFamily.GenericMonospace, 12);
+			var brush = new SolidBrush(Color.Black);
+    		
+			for (int column = 0; column < boardSize; column++) {
+				g.DrawString(conversions.Column(column), font, brush, GetSquareCoordinates(-1, column + 0.2f));
+			}
+
+			//draw vertical legend
+			for (int row = 0; row < boardSize; row++) {
+				g.DrawString(conversions.Row(row), font, brush, GetSquareCoordinates(row - 0.1f, -1));
+			}
 
 			//draw board
-			for (int column = 0; column < boardSize; column++)
-			{
-				for (int row = 0; row < boardSize; row++)
-				{
-					g.DrawImage(stoneEmpty,column*stoneEmpty.Width,row*stoneEmpty.Height);
-
+			for (int column = 0; column < boardSize; column++) {
+				for (int row = 0; row < boardSize; row++) {
+					g.DrawImage(stoneEmpty, GetSquareCoordinates(row, column));
+//
 //					picSquare = new System.Windows.Forms.PictureBox();
 //					picSquare.Image = BoardImageList.Images[0];
 //					picSquare.Name = "picSquare" + conversions.Complete(row , column);
@@ -93,6 +89,12 @@ namespace gvisu
 				}
 			}
 			
+		}
+		
+		PointF GetSquareCoordinates(float row, float column)
+		{
+			var point = new PointF((column + 1) * stoneEmpty.Width, (boardSize - row - 1) * stoneEmpty.Height);
+			return point;
 		}
 		
 		public int BoardSize {

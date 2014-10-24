@@ -106,7 +106,7 @@ namespace gvisu
 
             //resize listViews
             //listViewGame.Left = panelBoard.Right;
-            listViewGame.Height = panelControl.Height - listViewGame.Top;
+//            listViewGame.Height = panelControl.Height - listViewGame.Top;
 
 
             // resize whole form

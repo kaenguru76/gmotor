@@ -69,7 +69,29 @@
 			this.RightToolStripPanel = new System.Windows.Forms.ToolStripPanel();
 			this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
 			this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
-			this.panelControl = new System.Windows.Forms.Panel();
+			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+			this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
+			this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
+			this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+			this.firstToolStripButton = new System.Windows.Forms.ToolStripButton();
+			this.previousToolStripButton = new System.Windows.Forms.ToolStripButton();
+			this.nextToolStripButton = new System.Windows.Forms.ToolStripButton();
+			this.lastToolStripButton = new System.Windows.Forms.ToolStripButton();
+			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+			this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+			this.graphicBoard1 = new gvisu.GraphicBoard();
+			this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+			this.listViewGame = new System.Windows.Forms.ListView();
+			this.vg1 = new System.Windows.Forms.ColumnHeader();
+			this.vg2 = new System.Windows.Forms.ColumnHeader();
+			this.vg3 = new System.Windows.Forms.ColumnHeader();
+			this.buttonWhite = new System.Windows.Forms.Button();
+			this.buttonBlack = new System.Windows.Forms.Button();
+			this.lblWhite = new System.Windows.Forms.Label();
+			this.lblBlack = new System.Windows.Forms.Label();
+			this.listBox2 = new System.Windows.Forms.ListBox();
 			this.checkBoxUseDictionary = new System.Windows.Forms.CheckBox();
 			this.checkBoxFixedDepth = new System.Windows.Forms.CheckBox();
 			this.label3 = new System.Windows.Forms.Label();
@@ -79,35 +101,26 @@
 			this.numericUpDownDepth = new System.Windows.Forms.NumericUpDown();
 			this.label1 = new System.Windows.Forms.Label();
 			this.numericUpDownThinkTime = new System.Windows.Forms.NumericUpDown();
-			this.buttonWhite = new System.Windows.Forms.Button();
-			this.listViewGame = new System.Windows.Forms.ListView();
-			this.vg1 = new System.Windows.Forms.ColumnHeader();
-			this.vg2 = new System.Windows.Forms.ColumnHeader();
-			this.vg3 = new System.Windows.Forms.ColumnHeader();
-			this.listBox2 = new System.Windows.Forms.ListBox();
-			this.buttonBlack = new System.Windows.Forms.Button();
-			this.lblWhite = new System.Windows.Forms.Label();
-			this.lblBlack = new System.Windows.Forms.Label();
 			this.btnEvaluate = new System.Windows.Forms.Button();
 			this.btnStop = new System.Windows.Forms.Button();
-			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-			this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
-			this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
-			this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
-			this.firstToolStripButton = new System.Windows.Forms.ToolStripButton();
-			this.previousToolStripButton = new System.Windows.Forms.ToolStripButton();
-			this.nextToolStripButton = new System.Windows.Forms.ToolStripButton();
-			this.lastToolStripButton = new System.Windows.Forms.ToolStripButton();
-			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-			this.graphicBoard1 = new gvisu.GraphicBoard();
 			this.statusStrip1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
-			this.panelControl.SuspendLayout();
+			this.toolStrip1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+			this.splitContainer2.Panel1.SuspendLayout();
+			this.splitContainer2.Panel2.SuspendLayout();
+			this.splitContainer2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+			this.splitContainer1.Panel1.SuspendLayout();
+			this.splitContainer1.Panel2.SuspendLayout();
+			this.splitContainer1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+			this.splitContainer3.Panel1.SuspendLayout();
+			this.splitContainer3.Panel2.SuspendLayout();
+			this.splitContainer3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownDfPnHash)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownDepth)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownThinkTime)).BeginInit();
-			this.toolStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// BottomToolStripPanel
@@ -124,9 +137,9 @@
 			this.toolStripStatusLabel1,
 			this.toolStripStatusLabel2,
 			this.toolStripStatusLabel3});
-			this.statusStrip1.Location = new System.Drawing.Point(0, 550);
+			this.statusStrip1.Location = new System.Drawing.Point(0, 561);
 			this.statusStrip1.Name = "statusStrip1";
-			this.statusStrip1.Size = new System.Drawing.Size(878, 22);
+			this.statusStrip1.Size = new System.Drawing.Size(457, 22);
 			this.statusStrip1.TabIndex = 17;
 			// 
 			// toolStripStatusLabel1
@@ -163,7 +176,7 @@
 			this.helpToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(878, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(457, 24);
 			this.menuStrip1.TabIndex = 0;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -417,260 +430,7 @@
 			// ContentPanel
 			// 
 			this.ContentPanel.AutoScroll = true;
-			this.ContentPanel.Size = new System.Drawing.Size(884, 502);
-			// 
-			// panelControl
-			// 
-			this.panelControl.Controls.Add(this.checkBoxUseDictionary);
-			this.panelControl.Controls.Add(this.checkBoxFixedDepth);
-			this.panelControl.Controls.Add(this.label3);
-			this.panelControl.Controls.Add(this.butResetTtable);
-			this.panelControl.Controls.Add(this.label2);
-			this.panelControl.Controls.Add(this.numericUpDownDfPnHash);
-			this.panelControl.Controls.Add(this.numericUpDownDepth);
-			this.panelControl.Controls.Add(this.label1);
-			this.panelControl.Controls.Add(this.numericUpDownThinkTime);
-			this.panelControl.Controls.Add(this.buttonWhite);
-			this.panelControl.Controls.Add(this.listViewGame);
-			this.panelControl.Controls.Add(this.listBox2);
-			this.panelControl.Controls.Add(this.buttonBlack);
-			this.panelControl.Controls.Add(this.lblWhite);
-			this.panelControl.Controls.Add(this.lblBlack);
-			this.panelControl.Controls.Add(this.btnEvaluate);
-			this.panelControl.Controls.Add(this.btnStop);
-			this.panelControl.Location = new System.Drawing.Point(378, 52);
-			this.panelControl.Name = "panelControl";
-			this.panelControl.Size = new System.Drawing.Size(375, 329);
-			this.panelControl.TabIndex = 34;
-			// 
-			// checkBoxUseDictionary
-			// 
-			this.checkBoxUseDictionary.AutoSize = true;
-			this.checkBoxUseDictionary.Location = new System.Drawing.Point(72, 122);
-			this.checkBoxUseDictionary.Name = "checkBoxUseDictionary";
-			this.checkBoxUseDictionary.Size = new System.Drawing.Size(48, 17);
-			this.checkBoxUseDictionary.TabIndex = 48;
-			this.checkBoxUseDictionary.Text = "Dict.";
-			this.checkBoxUseDictionary.UseVisualStyleBackColor = true;
-			// 
-			// checkBoxFixedDepth
-			// 
-			this.checkBoxFixedDepth.AutoSize = true;
-			this.checkBoxFixedDepth.Location = new System.Drawing.Point(12, 98);
-			this.checkBoxFixedDepth.Name = "checkBoxFixedDepth";
-			this.checkBoxFixedDepth.Size = new System.Drawing.Size(39, 17);
-			this.checkBoxFixedDepth.TabIndex = 47;
-			this.checkBoxFixedDepth.Text = "Fix";
-			this.checkBoxFixedDepth.UseVisualStyleBackColor = true;
-			this.checkBoxFixedDepth.CheckedChanged += new System.EventHandler(this.checkBoxFixedDepth_CheckedChanged);
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(9, 116);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(57, 13);
-			this.label3.TabIndex = 46;
-			this.label3.Text = "Hash [MB]";
-			// 
-			// butResetTtable
-			// 
-			this.butResetTtable.Location = new System.Drawing.Point(135, 99);
-			this.butResetTtable.Name = "butResetTtable";
-			this.butResetTtable.Size = new System.Drawing.Size(57, 46);
-			this.butResetTtable.TabIndex = 14;
-			this.butResetTtable.Text = "&Reset";
-			this.butResetTtable.UseVisualStyleBackColor = true;
-			this.butResetTtable.Click += new System.EventHandler(this.butResetTtable_Click);
-			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(9, 82);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(36, 13);
-			this.label2.TabIndex = 45;
-			this.label2.Text = "Depth";
-			// 
-			// numericUpDownDfPnHash
-			// 
-			this.numericUpDownDfPnHash.DecimalPlaces = 1;
-			this.numericUpDownDfPnHash.Location = new System.Drawing.Point(12, 130);
-			this.numericUpDownDfPnHash.Maximum = new decimal(new int[] {
-			500,
-			0,
-			0,
-			0});
-			this.numericUpDownDfPnHash.Name = "numericUpDownDfPnHash";
-			this.numericUpDownDfPnHash.Size = new System.Drawing.Size(47, 20);
-			this.numericUpDownDfPnHash.TabIndex = 12;
-			this.numericUpDownDfPnHash.Value = new decimal(new int[] {
-			10,
-			0,
-			0,
-			0});
-			this.numericUpDownDfPnHash.ValueChanged += new System.EventHandler(this.numericUpDownDfPnHash_ValueChanged);
-			// 
-			// numericUpDownDepth
-			// 
-			this.numericUpDownDepth.Location = new System.Drawing.Point(59, 82);
-			this.numericUpDownDepth.Maximum = new decimal(new int[] {
-			100000,
-			0,
-			0,
-			0});
-			this.numericUpDownDepth.Name = "numericUpDownDepth";
-			this.numericUpDownDepth.Size = new System.Drawing.Size(50, 20);
-			this.numericUpDownDepth.TabIndex = 44;
-			this.numericUpDownDepth.Value = new decimal(new int[] {
-			30,
-			0,
-			0,
-			0});
-			this.numericUpDownDepth.ValueChanged += new System.EventHandler(this.numericUpDownDepth_ValueChanged);
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(9, 65);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(44, 13);
-			this.label1.TabIndex = 43;
-			this.label1.Text = "Time [s]";
-			// 
-			// numericUpDownThinkTime
-			// 
-			this.numericUpDownThinkTime.DecimalPlaces = 1;
-			this.numericUpDownThinkTime.Location = new System.Drawing.Point(59, 63);
-			this.numericUpDownThinkTime.Maximum = new decimal(new int[] {
-			100000,
-			0,
-			0,
-			0});
-			this.numericUpDownThinkTime.Name = "numericUpDownThinkTime";
-			this.numericUpDownThinkTime.Size = new System.Drawing.Size(50, 20);
-			this.numericUpDownThinkTime.TabIndex = 12;
-			this.numericUpDownThinkTime.Value = new decimal(new int[] {
-			5,
-			0,
-			0,
-			0});
-			this.numericUpDownThinkTime.ValueChanged += new System.EventHandler(this.numericUpDownThinkTime_ValueChanged);
-			// 
-			// buttonWhite
-			// 
-			this.buttonWhite.Location = new System.Drawing.Point(12, 31);
-			this.buttonWhite.Name = "buttonWhite";
-			this.buttonWhite.Size = new System.Drawing.Size(31, 28);
-			this.buttonWhite.TabIndex = 34;
-			this.buttonWhite.UseVisualStyleBackColor = true;
-			this.buttonWhite.Click += new System.EventHandler(this.buttonWhite_Click);
-			// 
-			// listViewGame
-			// 
-			this.listViewGame.BackColor = System.Drawing.SystemColors.Control;
-			this.listViewGame.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-			this.vg1,
-			this.vg2,
-			this.vg3});
-			this.listViewGame.FullRowSelect = true;
-			this.listViewGame.Location = new System.Drawing.Point(12, 150);
-			this.listViewGame.MultiSelect = false;
-			this.listViewGame.Name = "listViewGame";
-			this.listViewGame.Size = new System.Drawing.Size(358, 179);
-			this.listViewGame.TabIndex = 35;
-			this.listViewGame.UseCompatibleStateImageBehavior = false;
-			this.listViewGame.View = System.Windows.Forms.View.Details;
-			// 
-			// vg1
-			// 
-			this.vg1.Text = "#";
-			this.vg1.Width = 25;
-			// 
-			// vg2
-			// 
-			this.vg2.Text = "move";
-			// 
-			// vg3
-			// 
-			this.vg3.Text = "time[s]";
-			this.vg3.Width = 130;
-			// 
-			// listBox2
-			// 
-			this.listBox2.BackColor = System.Drawing.SystemColors.Control;
-			this.listBox2.FormattingEnabled = true;
-			this.listBox2.HorizontalScrollbar = true;
-			this.listBox2.Location = new System.Drawing.Point(215, 3);
-			this.listBox2.Name = "listBox2";
-			this.listBox2.Size = new System.Drawing.Size(155, 147);
-			this.listBox2.TabIndex = 42;
-			// 
-			// buttonBlack
-			// 
-			this.buttonBlack.Location = new System.Drawing.Point(12, 4);
-			this.buttonBlack.Name = "buttonBlack";
-			this.buttonBlack.Size = new System.Drawing.Size(31, 28);
-			this.buttonBlack.TabIndex = 33;
-			this.buttonBlack.UseVisualStyleBackColor = true;
-			this.buttonBlack.Click += new System.EventHandler(this.buttonBlack_Click);
-			// 
-			// lblWhite
-			// 
-			this.lblWhite.AutoSize = true;
-			this.lblWhite.Location = new System.Drawing.Point(49, 39);
-			this.lblWhite.Name = "lblWhite";
-			this.lblWhite.Size = new System.Drawing.Size(35, 13);
-			this.lblWhite.TabIndex = 31;
-			this.lblWhite.Text = "White";
-			this.lblWhite.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// lblBlack
-			// 
-			this.lblBlack.AutoSize = true;
-			this.lblBlack.Location = new System.Drawing.Point(49, 12);
-			this.lblBlack.Name = "lblBlack";
-			this.lblBlack.Size = new System.Drawing.Size(34, 13);
-			this.lblBlack.TabIndex = 30;
-			this.lblBlack.Text = "Black";
-			this.lblBlack.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// btnEvaluate
-			// 
-			this.btnEvaluate.Location = new System.Drawing.Point(118, 4);
-			this.btnEvaluate.Name = "btnEvaluate";
-			this.btnEvaluate.Size = new System.Drawing.Size(91, 55);
-			this.btnEvaluate.TabIndex = 21;
-			this.btnEvaluate.Text = "&Evaluate";
-			this.btnEvaluate.UseVisualStyleBackColor = true;
-			this.btnEvaluate.Click += new System.EventHandler(this.btnEvaluate_Click);
-			// 
-			// btnStop
-			// 
-			this.btnStop.Location = new System.Drawing.Point(125, 6);
-			this.btnStop.Name = "btnStop";
-			this.btnStop.Size = new System.Drawing.Size(84, 46);
-			this.btnStop.TabIndex = 32;
-			this.btnStop.Text = "Stop";
-			this.btnStop.UseVisualStyleBackColor = true;
-			this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
-			// 
-			// toolStrip1
-			// 
-			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.newToolStripButton,
-			this.openToolStripButton,
-			this.saveToolStripButton,
-			this.toolStripSeparator,
-			this.firstToolStripButton,
-			this.previousToolStripButton,
-			this.nextToolStripButton,
-			this.lastToolStripButton});
-			this.toolStrip1.Location = new System.Drawing.Point(0, 24);
-			this.toolStrip1.Name = "toolStrip1";
-			this.toolStrip1.Size = new System.Drawing.Size(878, 25);
-			this.toolStrip1.TabIndex = 36;
-			this.toolStrip1.Text = "toolStrip1";
+			this.ContentPanel.Size = new System.Drawing.Size(500, 300);
 			// 
 			// newToolStripButton
 			// 
@@ -752,24 +512,314 @@
 			this.lastToolStripButton.Text = "Goto last move";
 			this.lastToolStripButton.Click += new System.EventHandler(this.lastToolStripButton_Click);
 			// 
+			// toolStrip1
+			// 
+			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.newToolStripButton,
+			this.openToolStripButton,
+			this.saveToolStripButton,
+			this.toolStripSeparator,
+			this.firstToolStripButton,
+			this.previousToolStripButton,
+			this.nextToolStripButton,
+			this.lastToolStripButton});
+			this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+			this.toolStrip1.Name = "toolStrip1";
+			this.toolStrip1.Size = new System.Drawing.Size(457, 25);
+			this.toolStrip1.TabIndex = 36;
+			this.toolStrip1.Text = "toolStrip1";
+			// 
+			// splitContainer2
+			// 
+			this.splitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.splitContainer2.Location = new System.Drawing.Point(0, 49);
+			this.splitContainer2.Name = "splitContainer2";
+			this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+			// 
+			// splitContainer2.Panel1
+			// 
+			this.splitContainer2.Panel1.Controls.Add(this.splitContainer1);
+			// 
+			// splitContainer2.Panel2
+			// 
+			this.splitContainer2.Panel2.Controls.Add(this.listBox2);
+			this.splitContainer2.Size = new System.Drawing.Size(457, 512);
+			this.splitContainer2.SplitterDistance = 384;
+			this.splitContainer2.TabIndex = 39;
+			// 
+			// splitContainer1
+			// 
+			this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+			this.splitContainer1.Name = "splitContainer1";
+			// 
+			// splitContainer1.Panel1
+			// 
+			this.splitContainer1.Panel1.Controls.Add(this.graphicBoard1);
+			// 
+			// splitContainer1.Panel2
+			// 
+			this.splitContainer1.Panel2.Controls.Add(this.splitContainer3);
+			this.splitContainer1.Size = new System.Drawing.Size(457, 384);
+			this.splitContainer1.SplitterDistance = 219;
+			this.splitContainer1.TabIndex = 39;
+			// 
 			// graphicBoard1
 			// 
-			this.graphicBoard1.Location = new System.Drawing.Point(0, 52);
+			this.graphicBoard1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.graphicBoard1.Location = new System.Drawing.Point(0, 0);
 			this.graphicBoard1.Name = "graphicBoard1";
-			this.graphicBoard1.Size = new System.Drawing.Size(372, 372);
-			this.graphicBoard1.TabIndex = 37;
+			this.graphicBoard1.Size = new System.Drawing.Size(217, 382);
+			this.graphicBoard1.TabIndex = 38;
+			// 
+			// splitContainer3
+			// 
+			this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+			this.splitContainer3.Name = "splitContainer3";
+			this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+			// 
+			// splitContainer3.Panel1
+			// 
+			this.splitContainer3.Panel1.Controls.Add(this.checkBoxUseDictionary);
+			this.splitContainer3.Panel1.Controls.Add(this.checkBoxFixedDepth);
+			this.splitContainer3.Panel1.Controls.Add(this.label3);
+			this.splitContainer3.Panel1.Controls.Add(this.butResetTtable);
+			this.splitContainer3.Panel1.Controls.Add(this.label2);
+			this.splitContainer3.Panel1.Controls.Add(this.numericUpDownDfPnHash);
+			this.splitContainer3.Panel1.Controls.Add(this.numericUpDownDepth);
+			this.splitContainer3.Panel1.Controls.Add(this.label1);
+			this.splitContainer3.Panel1.Controls.Add(this.numericUpDownThinkTime);
+			this.splitContainer3.Panel1.Controls.Add(this.btnEvaluate);
+			this.splitContainer3.Panel1.Controls.Add(this.btnStop);
+			this.splitContainer3.Panel1.Controls.Add(this.buttonWhite);
+			this.splitContainer3.Panel1.Controls.Add(this.buttonBlack);
+			this.splitContainer3.Panel1.Controls.Add(this.lblWhite);
+			this.splitContainer3.Panel1.Controls.Add(this.lblBlack);
+			// 
+			// splitContainer3.Panel2
+			// 
+			this.splitContainer3.Panel2.Controls.Add(this.listViewGame);
+			this.splitContainer3.Size = new System.Drawing.Size(232, 382);
+			this.splitContainer3.SplitterDistance = 209;
+			this.splitContainer3.TabIndex = 36;
+			// 
+			// listViewGame
+			// 
+			this.listViewGame.BackColor = System.Drawing.SystemColors.Control;
+			this.listViewGame.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+			this.vg1,
+			this.vg2,
+			this.vg3});
+			this.listViewGame.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.listViewGame.FullRowSelect = true;
+			this.listViewGame.Location = new System.Drawing.Point(0, 0);
+			this.listViewGame.MultiSelect = false;
+			this.listViewGame.Name = "listViewGame";
+			this.listViewGame.Size = new System.Drawing.Size(232, 169);
+			this.listViewGame.TabIndex = 36;
+			this.listViewGame.UseCompatibleStateImageBehavior = false;
+			this.listViewGame.View = System.Windows.Forms.View.Details;
+			// 
+			// vg1
+			// 
+			this.vg1.Text = "#";
+			this.vg1.Width = 25;
+			// 
+			// vg2
+			// 
+			this.vg2.Text = "move";
+			// 
+			// vg3
+			// 
+			this.vg3.Text = "time[s]";
+			this.vg3.Width = 130;
+			// 
+			// buttonWhite
+			// 
+			this.buttonWhite.Location = new System.Drawing.Point(16, 31);
+			this.buttonWhite.Name = "buttonWhite";
+			this.buttonWhite.Size = new System.Drawing.Size(31, 28);
+			this.buttonWhite.TabIndex = 38;
+			this.buttonWhite.UseVisualStyleBackColor = true;
+			// 
+			// buttonBlack
+			// 
+			this.buttonBlack.Location = new System.Drawing.Point(16, 4);
+			this.buttonBlack.Name = "buttonBlack";
+			this.buttonBlack.Size = new System.Drawing.Size(31, 28);
+			this.buttonBlack.TabIndex = 37;
+			this.buttonBlack.UseVisualStyleBackColor = true;
+			// 
+			// lblWhite
+			// 
+			this.lblWhite.AutoSize = true;
+			this.lblWhite.Location = new System.Drawing.Point(53, 39);
+			this.lblWhite.Name = "lblWhite";
+			this.lblWhite.Size = new System.Drawing.Size(35, 13);
+			this.lblWhite.TabIndex = 36;
+			this.lblWhite.Text = "White";
+			this.lblWhite.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// lblBlack
+			// 
+			this.lblBlack.AutoSize = true;
+			this.lblBlack.Location = new System.Drawing.Point(53, 12);
+			this.lblBlack.Name = "lblBlack";
+			this.lblBlack.Size = new System.Drawing.Size(34, 13);
+			this.lblBlack.TabIndex = 35;
+			this.lblBlack.Text = "Black";
+			this.lblBlack.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// listBox2
+			// 
+			this.listBox2.BackColor = System.Drawing.SystemColors.Control;
+			this.listBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.listBox2.FormattingEnabled = true;
+			this.listBox2.HorizontalScrollbar = true;
+			this.listBox2.Location = new System.Drawing.Point(0, 0);
+			this.listBox2.Name = "listBox2";
+			this.listBox2.Size = new System.Drawing.Size(455, 122);
+			this.listBox2.TabIndex = 43;
+			// 
+			// checkBoxUseDictionary
+			// 
+			this.checkBoxUseDictionary.AutoSize = true;
+			this.checkBoxUseDictionary.Location = new System.Drawing.Point(76, 133);
+			this.checkBoxUseDictionary.Name = "checkBoxUseDictionary";
+			this.checkBoxUseDictionary.Size = new System.Drawing.Size(48, 17);
+			this.checkBoxUseDictionary.TabIndex = 59;
+			this.checkBoxUseDictionary.Text = "Dict.";
+			this.checkBoxUseDictionary.UseVisualStyleBackColor = true;
+			// 
+			// checkBoxFixedDepth
+			// 
+			this.checkBoxFixedDepth.AutoSize = true;
+			this.checkBoxFixedDepth.Location = new System.Drawing.Point(16, 109);
+			this.checkBoxFixedDepth.Name = "checkBoxFixedDepth";
+			this.checkBoxFixedDepth.Size = new System.Drawing.Size(39, 17);
+			this.checkBoxFixedDepth.TabIndex = 58;
+			this.checkBoxFixedDepth.Text = "Fix";
+			this.checkBoxFixedDepth.UseVisualStyleBackColor = true;
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(13, 127);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(57, 13);
+			this.label3.TabIndex = 57;
+			this.label3.Text = "Hash [MB]";
+			// 
+			// butResetTtable
+			// 
+			this.butResetTtable.Location = new System.Drawing.Point(139, 110);
+			this.butResetTtable.Name = "butResetTtable";
+			this.butResetTtable.Size = new System.Drawing.Size(57, 46);
+			this.butResetTtable.TabIndex = 51;
+			this.butResetTtable.Text = "&Reset";
+			this.butResetTtable.UseVisualStyleBackColor = true;
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(13, 93);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(36, 13);
+			this.label2.TabIndex = 56;
+			this.label2.Text = "Depth";
+			// 
+			// numericUpDownDfPnHash
+			// 
+			this.numericUpDownDfPnHash.DecimalPlaces = 1;
+			this.numericUpDownDfPnHash.Location = new System.Drawing.Point(16, 141);
+			this.numericUpDownDfPnHash.Maximum = new decimal(new int[] {
+			500,
+			0,
+			0,
+			0});
+			this.numericUpDownDfPnHash.Name = "numericUpDownDfPnHash";
+			this.numericUpDownDfPnHash.Size = new System.Drawing.Size(47, 20);
+			this.numericUpDownDfPnHash.TabIndex = 49;
+			this.numericUpDownDfPnHash.Value = new decimal(new int[] {
+			10,
+			0,
+			0,
+			0});
+			// 
+			// numericUpDownDepth
+			// 
+			this.numericUpDownDepth.Location = new System.Drawing.Point(63, 93);
+			this.numericUpDownDepth.Maximum = new decimal(new int[] {
+			100000,
+			0,
+			0,
+			0});
+			this.numericUpDownDepth.Name = "numericUpDownDepth";
+			this.numericUpDownDepth.Size = new System.Drawing.Size(50, 20);
+			this.numericUpDownDepth.TabIndex = 55;
+			this.numericUpDownDepth.Value = new decimal(new int[] {
+			30,
+			0,
+			0,
+			0});
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(13, 76);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(44, 13);
+			this.label1.TabIndex = 54;
+			this.label1.Text = "Time [s]";
+			// 
+			// numericUpDownThinkTime
+			// 
+			this.numericUpDownThinkTime.DecimalPlaces = 1;
+			this.numericUpDownThinkTime.Location = new System.Drawing.Point(63, 74);
+			this.numericUpDownThinkTime.Maximum = new decimal(new int[] {
+			100000,
+			0,
+			0,
+			0});
+			this.numericUpDownThinkTime.Name = "numericUpDownThinkTime";
+			this.numericUpDownThinkTime.Size = new System.Drawing.Size(50, 20);
+			this.numericUpDownThinkTime.TabIndex = 50;
+			this.numericUpDownThinkTime.Value = new decimal(new int[] {
+			5,
+			0,
+			0,
+			0});
+			// 
+			// btnEvaluate
+			// 
+			this.btnEvaluate.Location = new System.Drawing.Point(107, -7);
+			this.btnEvaluate.Name = "btnEvaluate";
+			this.btnEvaluate.Size = new System.Drawing.Size(91, 55);
+			this.btnEvaluate.TabIndex = 52;
+			this.btnEvaluate.Text = "&Evaluate";
+			this.btnEvaluate.UseVisualStyleBackColor = true;
+			// 
+			// btnStop
+			// 
+			this.btnStop.Location = new System.Drawing.Point(114, -5);
+			this.btnStop.Name = "btnStop";
+			this.btnStop.Size = new System.Drawing.Size(84, 46);
+			this.btnStop.TabIndex = 53;
+			this.btnStop.Text = "Stop";
+			this.btnStop.UseVisualStyleBackColor = true;
 			// 
 			// Main
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(878, 572);
-			this.Controls.Add(this.graphicBoard1);
-			this.Controls.Add(this.panelControl);
+			this.ClientSize = new System.Drawing.Size(457, 583);
+			this.Controls.Add(this.splitContainer2);
 			this.Controls.Add(this.toolStrip1);
 			this.Controls.Add(this.menuStrip1);
 			this.Controls.Add(this.statusStrip1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MainMenuStrip = this.menuStrip1;
 			this.MaximizeBox = false;
@@ -780,13 +830,24 @@
 			this.statusStrip1.PerformLayout();
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
-			this.panelControl.ResumeLayout(false);
-			this.panelControl.PerformLayout();
+			this.toolStrip1.ResumeLayout(false);
+			this.toolStrip1.PerformLayout();
+			this.splitContainer2.Panel1.ResumeLayout(false);
+			this.splitContainer2.Panel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+			this.splitContainer2.ResumeLayout(false);
+			this.splitContainer1.Panel1.ResumeLayout(false);
+			this.splitContainer1.Panel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+			this.splitContainer1.ResumeLayout(false);
+			this.splitContainer3.Panel1.ResumeLayout(false);
+			this.splitContainer3.Panel1.PerformLayout();
+			this.splitContainer3.Panel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+			this.splitContainer3.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownDfPnHash)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownDepth)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownThinkTime)).EndInit();
-			this.toolStrip1.ResumeLayout(false);
-			this.toolStrip1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -816,7 +877,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuAdvancedMode;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuAbout;
-        private System.Windows.Forms.Panel panelControl;
         private System.Windows.Forms.Label lblWhite;
         private System.Windows.Forms.Label lblBlack;
         private System.Windows.Forms.NumericUpDown numericUpDownDfPnHash;
@@ -865,6 +925,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkBoxFixedDepth;
         private gvisu.GraphicBoard graphicBoard1;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.SplitContainer splitContainer3;
 
 
     }
