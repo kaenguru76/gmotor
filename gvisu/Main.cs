@@ -70,7 +70,7 @@ namespace gvisu
             conversions = new Conversions(engine.BoardSize);
 
             //load wood image list
-			Bitmap bitmaps = Properties.Resources.wood;
+			Bitmap bitmaps = Properties.Resources.toolbar;
 			BoardImageList = new ImageList();
 			BoardImageList.ImageSize = new Size(bitmaps.Size.Height, bitmaps.Size.Height);
 			BoardImageList.Images.AddStrip(bitmaps);

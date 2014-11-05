@@ -83,15 +83,6 @@
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.graphicBoard1 = new gvisu.GraphicBoard();
 			this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-			this.listViewGame = new System.Windows.Forms.ListView();
-			this.vg1 = new System.Windows.Forms.ColumnHeader();
-			this.vg2 = new System.Windows.Forms.ColumnHeader();
-			this.vg3 = new System.Windows.Forms.ColumnHeader();
-			this.buttonWhite = new System.Windows.Forms.Button();
-			this.buttonBlack = new System.Windows.Forms.Button();
-			this.lblWhite = new System.Windows.Forms.Label();
-			this.lblBlack = new System.Windows.Forms.Label();
-			this.listBox2 = new System.Windows.Forms.ListBox();
 			this.checkBoxUseDictionary = new System.Windows.Forms.CheckBox();
 			this.checkBoxFixedDepth = new System.Windows.Forms.CheckBox();
 			this.label3 = new System.Windows.Forms.Label();
@@ -103,6 +94,15 @@
 			this.numericUpDownThinkTime = new System.Windows.Forms.NumericUpDown();
 			this.btnEvaluate = new System.Windows.Forms.Button();
 			this.btnStop = new System.Windows.Forms.Button();
+			this.buttonWhite = new System.Windows.Forms.Button();
+			this.buttonBlack = new System.Windows.Forms.Button();
+			this.lblWhite = new System.Windows.Forms.Label();
+			this.lblBlack = new System.Windows.Forms.Label();
+			this.listViewGame = new System.Windows.Forms.ListView();
+			this.vg1 = new System.Windows.Forms.ColumnHeader();
+			this.vg2 = new System.Windows.Forms.ColumnHeader();
+			this.vg3 = new System.Windows.Forms.ColumnHeader();
+			this.listBox2 = new System.Windows.Forms.ListBox();
 			this.statusStrip1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
@@ -563,7 +563,7 @@
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.splitContainer3);
 			this.splitContainer1.Size = new System.Drawing.Size(457, 384);
-			this.splitContainer1.SplitterDistance = 219;
+			this.splitContainer1.SplitterDistance = 239;
 			this.splitContainer1.TabIndex = 39;
 			// 
 			// graphicBoard1
@@ -571,7 +571,7 @@
 			this.graphicBoard1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.graphicBoard1.Location = new System.Drawing.Point(0, 0);
 			this.graphicBoard1.Name = "graphicBoard1";
-			this.graphicBoard1.Size = new System.Drawing.Size(217, 382);
+			this.graphicBoard1.Size = new System.Drawing.Size(237, 382);
 			this.graphicBoard1.TabIndex = 38;
 			// 
 			// splitContainer3
@@ -602,87 +602,9 @@
 			// splitContainer3.Panel2
 			// 
 			this.splitContainer3.Panel2.Controls.Add(this.listViewGame);
-			this.splitContainer3.Size = new System.Drawing.Size(232, 382);
+			this.splitContainer3.Size = new System.Drawing.Size(212, 382);
 			this.splitContainer3.SplitterDistance = 209;
 			this.splitContainer3.TabIndex = 36;
-			// 
-			// listViewGame
-			// 
-			this.listViewGame.BackColor = System.Drawing.SystemColors.Control;
-			this.listViewGame.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-			this.vg1,
-			this.vg2,
-			this.vg3});
-			this.listViewGame.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.listViewGame.FullRowSelect = true;
-			this.listViewGame.Location = new System.Drawing.Point(0, 0);
-			this.listViewGame.MultiSelect = false;
-			this.listViewGame.Name = "listViewGame";
-			this.listViewGame.Size = new System.Drawing.Size(232, 169);
-			this.listViewGame.TabIndex = 36;
-			this.listViewGame.UseCompatibleStateImageBehavior = false;
-			this.listViewGame.View = System.Windows.Forms.View.Details;
-			// 
-			// vg1
-			// 
-			this.vg1.Text = "#";
-			this.vg1.Width = 25;
-			// 
-			// vg2
-			// 
-			this.vg2.Text = "move";
-			// 
-			// vg3
-			// 
-			this.vg3.Text = "time[s]";
-			this.vg3.Width = 130;
-			// 
-			// buttonWhite
-			// 
-			this.buttonWhite.Location = new System.Drawing.Point(16, 31);
-			this.buttonWhite.Name = "buttonWhite";
-			this.buttonWhite.Size = new System.Drawing.Size(31, 28);
-			this.buttonWhite.TabIndex = 38;
-			this.buttonWhite.UseVisualStyleBackColor = true;
-			// 
-			// buttonBlack
-			// 
-			this.buttonBlack.Location = new System.Drawing.Point(16, 4);
-			this.buttonBlack.Name = "buttonBlack";
-			this.buttonBlack.Size = new System.Drawing.Size(31, 28);
-			this.buttonBlack.TabIndex = 37;
-			this.buttonBlack.UseVisualStyleBackColor = true;
-			// 
-			// lblWhite
-			// 
-			this.lblWhite.AutoSize = true;
-			this.lblWhite.Location = new System.Drawing.Point(53, 39);
-			this.lblWhite.Name = "lblWhite";
-			this.lblWhite.Size = new System.Drawing.Size(35, 13);
-			this.lblWhite.TabIndex = 36;
-			this.lblWhite.Text = "White";
-			this.lblWhite.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// lblBlack
-			// 
-			this.lblBlack.AutoSize = true;
-			this.lblBlack.Location = new System.Drawing.Point(53, 12);
-			this.lblBlack.Name = "lblBlack";
-			this.lblBlack.Size = new System.Drawing.Size(34, 13);
-			this.lblBlack.TabIndex = 35;
-			this.lblBlack.Text = "Black";
-			this.lblBlack.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// listBox2
-			// 
-			this.listBox2.BackColor = System.Drawing.SystemColors.Control;
-			this.listBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.listBox2.FormattingEnabled = true;
-			this.listBox2.HorizontalScrollbar = true;
-			this.listBox2.Location = new System.Drawing.Point(0, 0);
-			this.listBox2.Name = "listBox2";
-			this.listBox2.Size = new System.Drawing.Size(455, 122);
-			this.listBox2.TabIndex = 43;
 			// 
 			// checkBoxUseDictionary
 			// 
@@ -795,7 +717,7 @@
 			// 
 			// btnEvaluate
 			// 
-			this.btnEvaluate.Location = new System.Drawing.Point(107, -7);
+			this.btnEvaluate.Location = new System.Drawing.Point(107, 0);
 			this.btnEvaluate.Name = "btnEvaluate";
 			this.btnEvaluate.Size = new System.Drawing.Size(91, 55);
 			this.btnEvaluate.TabIndex = 52;
@@ -804,12 +726,90 @@
 			// 
 			// btnStop
 			// 
-			this.btnStop.Location = new System.Drawing.Point(114, -5);
+			this.btnStop.Location = new System.Drawing.Point(114, 0);
 			this.btnStop.Name = "btnStop";
 			this.btnStop.Size = new System.Drawing.Size(84, 46);
 			this.btnStop.TabIndex = 53;
 			this.btnStop.Text = "Stop";
 			this.btnStop.UseVisualStyleBackColor = true;
+			// 
+			// buttonWhite
+			// 
+			this.buttonWhite.Location = new System.Drawing.Point(16, 31);
+			this.buttonWhite.Name = "buttonWhite";
+			this.buttonWhite.Size = new System.Drawing.Size(31, 28);
+			this.buttonWhite.TabIndex = 38;
+			this.buttonWhite.UseVisualStyleBackColor = true;
+			// 
+			// buttonBlack
+			// 
+			this.buttonBlack.Location = new System.Drawing.Point(16, 4);
+			this.buttonBlack.Name = "buttonBlack";
+			this.buttonBlack.Size = new System.Drawing.Size(31, 28);
+			this.buttonBlack.TabIndex = 37;
+			this.buttonBlack.UseVisualStyleBackColor = true;
+			// 
+			// lblWhite
+			// 
+			this.lblWhite.AutoSize = true;
+			this.lblWhite.Location = new System.Drawing.Point(53, 39);
+			this.lblWhite.Name = "lblWhite";
+			this.lblWhite.Size = new System.Drawing.Size(35, 13);
+			this.lblWhite.TabIndex = 36;
+			this.lblWhite.Text = "White";
+			this.lblWhite.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// lblBlack
+			// 
+			this.lblBlack.AutoSize = true;
+			this.lblBlack.Location = new System.Drawing.Point(53, 12);
+			this.lblBlack.Name = "lblBlack";
+			this.lblBlack.Size = new System.Drawing.Size(34, 13);
+			this.lblBlack.TabIndex = 35;
+			this.lblBlack.Text = "Black";
+			this.lblBlack.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// listViewGame
+			// 
+			this.listViewGame.BackColor = System.Drawing.SystemColors.Control;
+			this.listViewGame.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+			this.vg1,
+			this.vg2,
+			this.vg3});
+			this.listViewGame.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.listViewGame.FullRowSelect = true;
+			this.listViewGame.Location = new System.Drawing.Point(0, 0);
+			this.listViewGame.MultiSelect = false;
+			this.listViewGame.Name = "listViewGame";
+			this.listViewGame.Size = new System.Drawing.Size(212, 169);
+			this.listViewGame.TabIndex = 36;
+			this.listViewGame.UseCompatibleStateImageBehavior = false;
+			this.listViewGame.View = System.Windows.Forms.View.Details;
+			// 
+			// vg1
+			// 
+			this.vg1.Text = "#";
+			this.vg1.Width = 25;
+			// 
+			// vg2
+			// 
+			this.vg2.Text = "move";
+			// 
+			// vg3
+			// 
+			this.vg3.Text = "time[s]";
+			this.vg3.Width = 130;
+			// 
+			// listBox2
+			// 
+			this.listBox2.BackColor = System.Drawing.SystemColors.Control;
+			this.listBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.listBox2.FormattingEnabled = true;
+			this.listBox2.HorizontalScrollbar = true;
+			this.listBox2.Location = new System.Drawing.Point(0, 0);
+			this.listBox2.Name = "listBox2";
+			this.listBox2.Size = new System.Drawing.Size(455, 122);
+			this.listBox2.TabIndex = 43;
 			// 
 			// Main
 			// 

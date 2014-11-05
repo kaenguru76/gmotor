@@ -9,6 +9,8 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Reflection;
+using System.Resources;
 
 namespace gvisu
 {
@@ -35,7 +37,10 @@ namespace gvisu
 		
 		void GraphicBoardLoad(object sender, EventArgs e)
 		{
-			stones = Properties.Resources.wood;
+			//ResourceManager resources = new ResourceManager("gvisu.GraphicBoard", Assembly.GetExecutingAssembly());
+			//stones = (Bitmap)resources.GetObject("green");
+			
+			stones = Properties.Resources.green;
 			stoneEmpty = stones.Clone(new Rectangle(0, 0, stones.Height, stones.Height), stones.PixelFormat);
 /*
 			string str1 = "./skins/wood.bmp";
