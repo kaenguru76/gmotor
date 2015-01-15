@@ -8,7 +8,7 @@ namespace GomokuEngine
 	public class Conversions
 	{
         int boardSize;
-
+        
         public Conversions(int boardSize)
         {
             this.boardSize = boardSize;
@@ -17,7 +17,9 @@ namespace GomokuEngine
 		//row notification
 		public string Row (int row)
 		{
-			return (Convert.ToString(row + 1));
+			string str1 = Convert.ToString(row + 1);
+			if (row < 9) str1 = " " + str1;
+			return (str1);
 		}
 
 		//column notification

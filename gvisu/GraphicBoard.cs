@@ -62,16 +62,18 @@ namespace gvisu
 			Graphics g = e.Graphics; //get handle
 			
 			//draw horizontal legend
-			var font = new Font(FontFamily.GenericMonospace, 12);
+			var font = new Font(FontFamily.GenericSansSerif, 10);
 			var brush = new SolidBrush(Color.Black);
     		
 			for (int column = 0; column < boardSize; column++) {
-				g.DrawString(conversions.Column(column), font, brush, GetSquareCoordinates(-1, column + 0.2f));
+				PointF coord = GetSquareCoordinates(-1, column);
+				g.DrawString(conversions.Column(column), font, brush, coord.X+4, coord.Y);
 			}
 
 			//draw vertical legend
 			for (int row = 0; row < boardSize; row++) {
-				g.DrawString(conversions.Row(row), font, brush, GetSquareCoordinates(row - 0.1f, -1));
+				PointF coord = GetSquareCoordinates(row, -1);
+				g.DrawString(conversions.Row(row), font, brush, coord.X, coord.Y+1);
 			}
 
 			//draw board
@@ -96,7 +98,7 @@ namespace gvisu
 			
 		}
 		
-		PointF GetSquareCoordinates(float row, float column)
+		PointF GetSquareCoordinates(int row, int column)
 		{
 			var point = new PointF((column + 1) * stoneEmpty.Width, (boardSize - row - 1) * stoneEmpty.Height);
 			return point;

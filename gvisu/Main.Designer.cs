@@ -137,9 +137,9 @@
 			this.toolStripStatusLabel1,
 			this.toolStripStatusLabel2,
 			this.toolStripStatusLabel3});
-			this.statusStrip1.Location = new System.Drawing.Point(0, 561);
+			this.statusStrip1.Location = new System.Drawing.Point(0, 564);
 			this.statusStrip1.Name = "statusStrip1";
-			this.statusStrip1.Size = new System.Drawing.Size(457, 22);
+			this.statusStrip1.Size = new System.Drawing.Size(736, 22);
 			this.statusStrip1.TabIndex = 17;
 			// 
 			// toolStripStatusLabel1
@@ -176,7 +176,7 @@
 			this.helpToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(457, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(736, 24);
 			this.menuStrip1.TabIndex = 0;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -525,7 +525,7 @@
 			this.lastToolStripButton});
 			this.toolStrip1.Location = new System.Drawing.Point(0, 24);
 			this.toolStrip1.Name = "toolStrip1";
-			this.toolStrip1.Size = new System.Drawing.Size(457, 25);
+			this.toolStrip1.Size = new System.Drawing.Size(736, 25);
 			this.toolStrip1.TabIndex = 36;
 			this.toolStrip1.Text = "toolStrip1";
 			// 
@@ -544,8 +544,8 @@
 			// splitContainer2.Panel2
 			// 
 			this.splitContainer2.Panel2.Controls.Add(this.listBox2);
-			this.splitContainer2.Size = new System.Drawing.Size(457, 512);
-			this.splitContainer2.SplitterDistance = 384;
+			this.splitContainer2.Size = new System.Drawing.Size(736, 515);
+			this.splitContainer2.SplitterDistance = 386;
 			this.splitContainer2.TabIndex = 39;
 			// 
 			// splitContainer1
@@ -562,8 +562,8 @@
 			// splitContainer1.Panel2
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.splitContainer3);
-			this.splitContainer1.Size = new System.Drawing.Size(457, 384);
-			this.splitContainer1.SplitterDistance = 239;
+			this.splitContainer1.Size = new System.Drawing.Size(736, 386);
+			this.splitContainer1.SplitterDistance = 384;
 			this.splitContainer1.TabIndex = 39;
 			// 
 			// graphicBoard1
@@ -571,7 +571,7 @@
 			this.graphicBoard1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.graphicBoard1.Location = new System.Drawing.Point(0, 0);
 			this.graphicBoard1.Name = "graphicBoard1";
-			this.graphicBoard1.Size = new System.Drawing.Size(237, 382);
+			this.graphicBoard1.Size = new System.Drawing.Size(382, 384);
 			this.graphicBoard1.TabIndex = 38;
 			// 
 			// splitContainer3
@@ -602,8 +602,8 @@
 			// splitContainer3.Panel2
 			// 
 			this.splitContainer3.Panel2.Controls.Add(this.listViewGame);
-			this.splitContainer3.Size = new System.Drawing.Size(212, 382);
-			this.splitContainer3.SplitterDistance = 209;
+			this.splitContainer3.Size = new System.Drawing.Size(346, 384);
+			this.splitContainer3.SplitterDistance = 210;
 			this.splitContainer3.TabIndex = 36;
 			// 
 			// checkBoxUseDictionary
@@ -781,7 +781,7 @@
 			this.listViewGame.Location = new System.Drawing.Point(0, 0);
 			this.listViewGame.MultiSelect = false;
 			this.listViewGame.Name = "listViewGame";
-			this.listViewGame.Size = new System.Drawing.Size(212, 169);
+			this.listViewGame.Size = new System.Drawing.Size(346, 170);
 			this.listViewGame.TabIndex = 36;
 			this.listViewGame.UseCompatibleStateImageBehavior = false;
 			this.listViewGame.View = System.Windows.Forms.View.Details;
@@ -808,14 +808,14 @@
 			this.listBox2.HorizontalScrollbar = true;
 			this.listBox2.Location = new System.Drawing.Point(0, 0);
 			this.listBox2.Name = "listBox2";
-			this.listBox2.Size = new System.Drawing.Size(455, 122);
+			this.listBox2.Size = new System.Drawing.Size(734, 123);
 			this.listBox2.TabIndex = 43;
 			// 
 			// Main
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(457, 583);
+			this.ClientSize = new System.Drawing.Size(736, 586);
 			this.Controls.Add(this.splitContainer2);
 			this.Controls.Add(this.toolStrip1);
 			this.Controls.Add(this.menuStrip1);
