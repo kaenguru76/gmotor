@@ -46,6 +46,7 @@ namespace gvisu
 			this.Name = "GraphicBoard";
 			this.Size = new System.Drawing.Size(181, 188);
 			this.Load += new System.EventHandler(this.GraphicBoardLoad);
+			this.Click += new System.EventHandler(this.GraphicBoardClick);
 			this.Paint += new System.Windows.Forms.PaintEventHandler(this.GraphicBoardPaint);
 			this.ResumeLayout(false);
 

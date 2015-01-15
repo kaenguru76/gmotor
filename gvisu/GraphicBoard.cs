@@ -66,20 +66,18 @@ namespace gvisu
 			var brush = new SolidBrush(Color.Black);
     		
 			for (int column = 0; column < boardSize; column++) {
-				PointF coord = GetSquareCoordinates(-1, column);
-				g.DrawString(conversions.Column(column), font, brush, coord.X+4, coord.Y);
+				g.DrawString(conversions.Column(column), font, brush, GetSquareCoordinateX(column)+4, GetSquareCoordinateY(-1));
 			}
 
 			//draw vertical legend
 			for (int row = 0; row < boardSize; row++) {
-				PointF coord = GetSquareCoordinates(row, -1);
-				g.DrawString(conversions.Row(row), font, brush, coord.X, coord.Y+1);
+				g.DrawString(conversions.Row(row), font, brush, GetSquareCoordinateX(-1), GetSquareCoordinateY(row)+1);
 			}
 
 			//draw board
 			for (int column = 0; column < boardSize; column++) {
 				for (int row = 0; row < boardSize; row++) {
-					g.DrawImage(stoneEmpty, GetSquareCoordinates(row, column));
+					g.DrawImage(stoneEmpty, GetSquareCoordinateX(column), GetSquareCoordinateY(row));
 //
 //					picSquare = new System.Windows.Forms.PictureBox();
 //					picSquare.Image = BoardImageList.Images[0];
@@ -98,16 +96,45 @@ namespace gvisu
 			
 		}
 		
-		PointF GetSquareCoordinates(int row, int column)
+		int GetSquareCoordinateX(int column)
 		{
-			var point = new PointF((column + 1) * stoneEmpty.Width, (boardSize - row - 1) * stoneEmpty.Height);
-			return point;
+			return (column + 1) * stoneEmpty.Width;
+		}
+
+		int GetSquareCoordinateY(int row)
+		{
+			return (boardSize - row - 1) * stoneEmpty.Height;
 		}
 		
 		public int BoardSize {
 			set {
 				boardSize = value;
 				conversions = new GomokuEngine.Conversions(boardSize);
+			}
+		}
+		void GraphicBoardClick(object sender, EventArgs e)
+		{
+			//determine where was the click
+			MouseEventArgs me = e as MouseEventArgs;
+			int column;
+			int row;
+			
+			//determine column
+			for (column = 0; column <= boardSize; column++) {
+				int X = GetSquareCoordinateX(column);
+				if (X > me.X) {
+					column--;
+					break;
+				}
+			}
+
+			//determine row
+			for (row = -1; row <= boardSize; row++) {
+				int Y = GetSquareCoordinateY(row);
+				if (Y < me.Y) {
+					//column--;
+					break;
+				}
 			}
 		}
 	}
