@@ -12,6 +12,7 @@ using System.Reflection;
 
 using GomokuEngine;
 
+
 namespace gvisu
 {
 	public partial class Main : Form
@@ -22,8 +23,8 @@ namespace gvisu
         ImageList SemaforImageList;
         ImageList ToolbarImageList;
         PictureBox[,] picSquares;
-        Image selectedImage;
-        PictureBox selectedPictureBox;
+        //Image selectedImage;
+        //PictureBox selectedPictureBox;
 
         Conversions conversions;
         PossibleMoves possibleMoves;
@@ -272,12 +273,7 @@ namespace gvisu
             statusStrip1.Items[2].Visible = true;
         }
 
-		private void picSquare_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            SelectedPictureBox = (PictureBox)sender;
-        }
-
-        private void New()
+        void New()
 		{
             //open window with parameters for new game
 			NewGame newGame = new NewGame();
@@ -295,7 +291,7 @@ namespace gvisu
 			newGame.Close();
 		}
 		
-		private void Open()
+		void Open()
 		{
             OpenFileDialog openFileDialog = new OpenFileDialog();
             OpenFile openFile=null;
@@ -429,96 +425,55 @@ namespace gvisu
         }
 
 
-        private PictureBox SelectedPictureBox
-        {
-            get
-            {
-                return (selectedPictureBox);
-            }
-            set
-            {
-                engine.Redraw();
-
-                //select new 
-                selectedPictureBox = value;
-
-                if (value == null)
-                {
-                    selectToolStripMenuItem.Enabled = false;
-                    selectedImage = null;
-                    statusStrip1.Items[0].Visible = false;
-                    return;
-                }
-                else
-                {
-                    selectToolStripMenuItem.Enabled = true;
-                    selectedImage = value.Image;
-                    statusStrip1.Items[0].Text = "Selected position = " + value.Tag.ToString();
-                    statusStrip1.Items[0].Visible = true;
-                }
-
-                //modify bitmap - draw rectange
-                Image image = new Bitmap(value.Image);
-                Graphics g = Graphics.FromImage(image);
-                g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-                Pen redPen = new Pen(Color.Red);
-                Rectangle rect = new Rectangle(0, 0, image.Height - 1, image.Height - 1);
-                g.DrawRectangle(redPen, rect);
-
-                //and draw it back
-                selectedPictureBox.Image = image;
-            }
-        }
-
         private void InfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (SelectedPictureBox.Tag.ToString() != "")
-            {
-				string notification = selectedPictureBox.Tag.ToString();
-
-                SquareInfo squareInfo;
-
-                engine.GetSquareInfo(notification, out squareInfo);
-
-				string str = "Index = " + conversions.Square(notification);
-				str += Environment.NewLine;
-
-                str += Environment.NewLine + "symbol = " + squareInfo.symbol;
-                str += Environment.NewLine;
-
-                str += Environment.NewLine + "bothPlayerEvaluation = " + squareInfo.bothPlayerEvaluation;
-                str += Environment.NewLine;
-
-                str += Environment.NewLine + "blackPlayerEvaluation = " + squareInfo.blackPlayerEvaluation;
-                str += Environment.NewLine + "whitePlayerEvaluation = " + squareInfo.whitePlayerEvaluation;
-                str += Environment.NewLine;
-
-                str += Environment.NewLine + "vct = " + squareInfo.vct;
-                str += Environment.NewLine;
-
-                str += Environment.NewLine;
-                str += "blackEvaluation" + Environment.NewLine;
-                for (int direction = 0; direction < 4; direction++)
-                {
-                    str += (Direction)direction + ": " + squareInfo.directionData[direction].evaluationBlack.ToString() + Environment.NewLine;
-                }
-
-                str += Environment.NewLine;
-                str += "whiteEvaluation" + Environment.NewLine;
-                for (int direction = 0; direction < 4; direction++)
-                {
-                    str += (Direction)direction + ": " + squareInfo.directionData[direction].evaluationWhite.ToString() + Environment.NewLine;
-                }
-
-                str += Environment.NewLine;
-                str += "patterns" + Environment.NewLine;
-                for (int direction = 0; direction < 4; direction++)
-                {
-                    str += (Direction)direction + ": " + squareInfo.directionData[direction].hash.ToString("X5") + Environment.NewLine;
-                }
-
-                MessageBox.Show(str, "Square " + notification);              
-            }
+//            if (SelectedPictureBox.Tag.ToString() != "")
+//            {
+//				string notification = selectedPictureBox.Tag.ToString();
+//
+//                SquareInfo squareInfo;
+//
+//                engine.GetSquareInfo(notification, out squareInfo);
+//
+//				string str = "Index = " + conversions.Square(notification);
+//				str += Environment.NewLine;
+//
+//                str += Environment.NewLine + "symbol = " + squareInfo.symbol;
+//                str += Environment.NewLine;
+//
+//                str += Environment.NewLine + "bothPlayerEvaluation = " + squareInfo.bothPlayerEvaluation;
+//                str += Environment.NewLine;
+//
+//                str += Environment.NewLine + "blackPlayerEvaluation = " + squareInfo.blackPlayerEvaluation;
+//                str += Environment.NewLine + "whitePlayerEvaluation = " + squareInfo.whitePlayerEvaluation;
+//                str += Environment.NewLine;
+//
+//                str += Environment.NewLine + "vct = " + squareInfo.vct;
+//                str += Environment.NewLine;
+//
+//                str += Environment.NewLine;
+//                str += "blackEvaluation" + Environment.NewLine;
+//                for (int direction = 0; direction < 4; direction++)
+//                {
+//                    str += (Direction)direction + ": " + squareInfo.directionData[direction].evaluationBlack.ToString() + Environment.NewLine;
+//                }
+//
+//                str += Environment.NewLine;
+//                str += "whiteEvaluation" + Environment.NewLine;
+//                for (int direction = 0; direction < 4; direction++)
+//                {
+//                    str += (Direction)direction + ": " + squareInfo.directionData[direction].evaluationWhite.ToString() + Environment.NewLine;
+//                }
+//
+//                str += Environment.NewLine;
+//                str += "patterns" + Environment.NewLine;
+//                for (int direction = 0; direction < 4; direction++)
+//                {
+//                    str += (Direction)direction + ": " + squareInfo.directionData[direction].hash.ToString("X5") + Environment.NewLine;
+//                }
+//
+//                MessageBox.Show(str, "Square " + notification);              
+//            }
         }
 
         private void mnuSaveAs_Click(object sender, EventArgs e)
@@ -594,24 +549,24 @@ namespace gvisu
 
 		private void buttonBlack_Click(object sender, EventArgs e)
 		{
-            if (SelectedPictureBox.Tag.ToString() != "")
-            {
-				int square = conversions.Square(SelectedPictureBox.Tag.ToString());
-
-				ABMove move = new ABMove(square, Player.BlackPlayer, engine.BoardSize,new TimeSpan());
-                engine.MakeMove(move);
-            }
+//            if (SelectedPictureBox.Tag.ToString() != "")
+//            {
+//				int square = conversions.Square(SelectedPictureBox.Tag.ToString());
+//
+//				ABMove move = new ABMove(square, Player.BlackPlayer, engine.BoardSize,new TimeSpan());
+//                engine.MakeMove(move);
+//            }
 		}
 
 		private void buttonWhite_Click(object sender, EventArgs e)
 		{
-			if (SelectedPictureBox.Tag.ToString() != "")
-			{
-				int square = conversions.Square(SelectedPictureBox.Tag.ToString());
-
-                ABMove move = new ABMove(square, Player.WhitePlayer, engine.BoardSize, new TimeSpan());
-				engine.MakeMove(move);
-			}
+//			if (SelectedPictureBox.Tag.ToString() != "")
+//			{
+//				int square = conversions.Square(SelectedPictureBox.Tag.ToString());
+//
+//                ABMove move = new ABMove(square, Player.WhitePlayer, engine.BoardSize, new TimeSpan());
+//				engine.MakeMove(move);
+//			}
 		}
 
         private void heuristicsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -628,7 +583,7 @@ namespace gvisu
         private void numericUpDownDepth_ValueChanged(object sender, EventArgs e)
         {
             engine.MaxSearchDepth = (int)numericUpDownDepth.Value;
-            engine.Redraw();
+            //engine.Redraw();
         }
 
         private void numericUpDownDfPnHash_ValueChanged(object sender, EventArgs e)

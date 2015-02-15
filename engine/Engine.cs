@@ -119,12 +119,12 @@ namespace GomokuEngine
             MovesChanged();
         }
 
-        public void Redraw()
-        {
-            while (thinking) ;
-
-            MovesChanged();
-        }
+//        public void Redraw()
+//        {
+//            while (thinking) ;
+//
+//            MovesChanged();
+//        }
 
 		public void Redo()
 		{

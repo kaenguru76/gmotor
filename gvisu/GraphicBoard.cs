@@ -24,6 +24,8 @@ namespace gvisu
 		
 		int boardSize;
 		GomokuEngine.Conversions conversions;
+		Point selectedSquare;
+		
 		
 		public GraphicBoard()
 		{
@@ -94,8 +96,13 @@ namespace gvisu
 				}
 			}
 			
+			//draw selected square
+			var redPen = new Pen(Color.Red);
+			g.DrawRectangle(redPen, GetSquareCoordinateX(SelectedSquare.X), GetSquareCoordinateY(SelectedSquare.Y), 
+			                stoneEmpty.Width, stoneEmpty.Height);
 		}
 		
+	
 		int GetSquareCoordinateX(int column)
 		{
 			return (column + 1) * stoneEmpty.Width;
@@ -115,7 +122,7 @@ namespace gvisu
 		void GraphicBoardClick(object sender, EventArgs e)
 		{
 			//determine where was the click
-			MouseEventArgs me = e as MouseEventArgs;
+			var me = e as MouseEventArgs;
 			int column;
 			int row;
 			
@@ -132,10 +139,55 @@ namespace gvisu
 			for (row = -1; row <= boardSize; row++) {
 				int Y = GetSquareCoordinateY(row);
 				if (Y < me.Y) {
-					//column--;
 					break;
 				}
 			}
+			SelectedSquare = new Point(column, row);
 		}
+		
+		Point SelectedSquare {
+			get{
+				return selectedSquare;
+			}
+			set{
+				selectedSquare = value;
+				Refresh();
+			}		
+		}
+
+			
+//                engine.Redraw();
+//
+//                //select new 
+//                selectedPictureBox = value;
+//
+//                if (value == null)
+//                {
+//                    selectToolStripMenuItem.Enabled = false;
+//                    selectedImage = null;
+//                    statusStrip1.Items[0].Visible = false;
+//                    return;
+//                }
+//                else
+//                {
+//                    selectToolStripMenuItem.Enabled = true;
+//                    selectedImage = value.Image;
+//                    statusStrip1.Items[0].Text = "Selected position = " + value.Tag.ToString();
+//                    statusStrip1.Items[0].Visible = true;
+//                }
+//
+//                //modify bitmap - draw rectange
+//                Image image = new Bitmap(value.Image);
+//                Graphics g = Graphics.FromImage(image);
+//                g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+//                Pen redPen = new Pen(Color.Red);
+//                Rectangle rect = new Rectangle(0, 0, image.Height - 1, image.Height - 1);
+//                g.DrawRectangle(redPen, rect);
+//
+//                //and draw it back
+//                selectedPictureBox.Image = image;
+//            }
+
+
 	}
 }
