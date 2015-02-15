@@ -98,7 +98,7 @@ namespace gvisu
             
         private void PossibleMoves_Load(object sender, EventArgs e)
 		{
-            engine.Redraw();
+            //engine.Redraw();
 		}
 
 		private void buttonPlayMove_Click(object sender, EventArgs e)
