@@ -21,7 +21,7 @@ namespace gvisu
             InitializeComponent();
 			this.Resize += new EventHandler(PossibleMoves_Resize);
 			this.engine = engine;
-            engine.MovesChangedE += new Engine.MovesChangedEvent(engine_PossibleMovesChanged);
+            //engine.MovesChangedE += new Engine.MovesChangedEvent(engine_PossibleMovesChanged);
             engine.ThinkingProgress += new Engine.ThinkingProgressEvent(engine_ThinkingProgress);
             engine.ThinkingFinished += new Engine.ThinkingFinishedEvent(engine_ThinkingFinished);
         }

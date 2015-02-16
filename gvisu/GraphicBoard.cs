@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Reflection;
 using System.Resources;
+using GomokuEngine;
 
 namespace gvisu
 {
@@ -19,12 +20,15 @@ namespace gvisu
 	/// </summary>
 	public partial class GraphicBoard : UserControl
 	{
-		Bitmap stones;
+        public delegate void SquareClickedEH(BoardSquare selectedSquare, MouseEventArgs e);
+        public event SquareClickedEH SquareClicked;
+
+        Bitmap stones;
 		Bitmap stoneEmpty;
 		
 		int boardSize;
-		GomokuEngine.Conversions conversions;
-		Point selectedSquare;
+		//GomokuEngine.Conversions conversions;
+		BoardSquare selectedSquare;
 		
 		
 		public GraphicBoard()
@@ -34,7 +38,7 @@ namespace gvisu
 			//
 			InitializeComponent();
 			
-			BoardSize = 20;
+			boardSize = 20;
 		}
 		
 		void GraphicBoardLoad(object sender, EventArgs e)
@@ -66,14 +70,15 @@ namespace gvisu
 			//draw horizontal legend
 			var font = new Font(FontFamily.GenericSansSerif, 10);
 			var brush = new SolidBrush(Color.Black);
+			var bs = new BoardSquare(boardSize, 0, 0);
     		
 			for (int column = 0; column < boardSize; column++) {
-				g.DrawString(conversions.Column(column), font, brush, GetSquareCoordinateX(column)+4, GetSquareCoordinateY(-1));
+				g.DrawString(bs.ColumnToString(column), font, brush, GetSquareCoordinateX(column)+4, GetSquareCoordinateY(-1));
 			}
 
 			//draw vertical legend
 			for (int row = 0; row < boardSize; row++) {
-				g.DrawString(conversions.Row(row), font, brush, GetSquareCoordinateX(-1), GetSquareCoordinateY(row)+1);
+				g.DrawString(bs.RowToString(row), font, brush, GetSquareCoordinateX(-1), GetSquareCoordinateY(row)+1);
 			}
 
 			//draw board
@@ -97,10 +102,10 @@ namespace gvisu
 			}
 			
 			//draw selected square
-			if (!selectedSquare.IsEmpty)
+			if (selectedSquare != null)
 			{
 				var redPen = new Pen(Color.Red);
-				g.DrawRectangle(redPen, GetSquareCoordinateX(selectedSquare.X), GetSquareCoordinateY(selectedSquare.Y), 
+				g.DrawRectangle(redPen, GetSquareCoordinateX(selectedSquare.Column), GetSquareCoordinateY(selectedSquare.Row), 
 			                stoneEmpty.Width, stoneEmpty.Height);
 			}
 		}
@@ -116,12 +121,12 @@ namespace gvisu
 			return (boardSize - row - 1) * stoneEmpty.Height;
 		}
 		
-		public int BoardSize {
-			set {
-				boardSize = value;
-				conversions = new GomokuEngine.Conversions(boardSize);
-			}
-		}
+//		public int BoardSize {
+//			set {
+//				boardSize = value;
+//				conversions = new GomokuEngine.Conversions(boardSize);
+//			}
+//		}
 		void GraphicBoardClick(object sender, EventArgs e)
 		{
 			//determine where was the click
@@ -147,10 +152,16 @@ namespace gvisu
 			}
 			
 			//selectedSquare square changed
-			SelectedSquare = new Point(column, row);
+			SelectedSquare = new BoardSquare(boardSize, row, column);
+			
+			//left click => playmove
+			//if (me.Button == MouseButtons.Left)
+			//{
+				SquareClicked(SelectedSquare, me);
+			//}
 		}
 		
-		Point SelectedSquare {
+		BoardSquare SelectedSquare {
 			get{
 				return selectedSquare;
 			}

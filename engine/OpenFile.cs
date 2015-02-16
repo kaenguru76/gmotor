@@ -1,46 +1,57 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Xml;
 using System.IO;
 using System.Text.RegularExpressions;
-//using System.Xml.Serialization;
-
 
 namespace GomokuEngine
 {
 	public class OpenFile
 	{
-		string fileName;
-		public FileParameters fileParameters;
+		//string fileName;
+		//public FileParameters fileParameters;
 
-        public OpenFile(string fileName)
+        public OpenFile(string fileName, out int boardSize, out string blackPlayerName, out string whitePlayerName, 
+                         out List<BoardSquare> moveList)
 		{
-            this.fileName = fileName;
-
-            if (fileName.EndsWith(".psq"))
-            {
-                OpenPsqFile(fileName);
-            }
+			boardSize = 0;
+			blackPlayerName = "";
+			whitePlayerName = "";
+			moveList = null;
+			
+			//this.fileName = fileName;
+            string extension = Path.GetExtension(fileName);
+            
+			switch (extension) {
+				case ".psq":
+					OpenPsqFile(fileName, out boardSize, out blackPlayerName, out whitePlayerName, out moveList);
+					break;
+                
+			}
 		}
 
-		void OpenPsqFile(string fileName)
+		void OpenPsqFile(string fileName, out int boardSize, out string blackPlayerName, out string whitePlayerName, 
+                         out List<BoardSquare> moveList)
 		{
+			boardSize = 0;
+			blackPlayerName = "";
+			whitePlayerName = "";
+			moveList = null;
+			
 			//open stream
-			StreamReader file = new StreamReader(fileName);
+			var file = new StreamReader(fileName);
 
             // decode first line
             string line = file.ReadLine();
-            Regex r = new Regex(@"(\w+)\s+(\d+)x(\d+),\s*(\d+):(\d+),\s*(\d+)");
+            var r = new Regex(@"(\w+)\s+(\d+)x(\d+),\s*(\d+):(\d+),\s*(\d+)");
             Match m = r.Match(line);
             if (!m.Success) return;
             if (m.Groups[1].Value != "Piskvorky") return;
             if (m.Groups[2].Value != m.Groups[3].Value) return;
-            fileParameters.BoardSize = Convert.ToInt32(m.Groups[2].Value);
+            boardSize = Convert.ToInt32(m.Groups[2].Value);
             
             //decode move list
             r = new Regex(@"(\d+),(\d+),(\d+)");
-			fileParameters.MoveList = new List<ABMove>();
+			moveList = new List<BoardSquare>();
 			while ((line = file.ReadLine()) != null)
 			{
 				//scan line
@@ -50,22 +61,22 @@ namespace GomokuEngine
 				//exctract information
 				int row = Convert.ToInt32(m.Groups[1].Value)-1;
                 int column = Convert.ToInt32(m.Groups[2].Value)-1;
-                TimeSpan timeSpan = new TimeSpan(0, 0, 0, 0, Convert.ToInt32(m.Groups[3].Value));
+                var timeSpan = new TimeSpan(0, 0, 0, 0, Convert.ToInt32(m.Groups[3].Value));
 				//create new move
-				int square = row * fileParameters.BoardSize + column;
-				Player player = (fileParameters.MoveList.Count % 2 == 1) ? Player.WhitePlayer : Player.BlackPlayer;
-				fileParameters.MoveList.Add(new ABMove(square, player, fileParameters.BoardSize,timeSpan));
+				int square = row * boardSize + column;
+				Player player = (moveList.Count % 2 == 1) ? Player.WhitePlayer : Player.BlackPlayer;
+				moveList.Add(new BoardSquare(boardSize, square));
 			}
 
             //decode player names
             r = new Regex(@"pbrain-(\w+)\.exe");
             m = r.Match(line);
             if (!m.Success) return;
-            fileParameters.BlackPlayerName = m.Groups[1].Value;
+            blackPlayerName = m.Groups[1].Value;
             line = file.ReadLine();
             m = r.Match(line);
             if (!m.Success) return;
-            fileParameters.WhitePlayerName = m.Groups[1].Value;
+            whitePlayerName = m.Groups[1].Value;
 
 			file.Close();
 		}

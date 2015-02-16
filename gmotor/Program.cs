@@ -11,8 +11,8 @@ namespace gmotor
     class Program
     {
         static Engine engine;
-        static Conversions conversions;
-        static List<ABMove> playedMoves;
+        //static Conversions conversions;
+        //static List<ABMove> playedMoves;
         static SearchInformation searchInfo;
 
         static void Main(string[] args)
@@ -26,7 +26,7 @@ namespace gmotor
 
             engine = new Engine();
             engine.NewGameE += new Engine.NewGameEvent(engine_NewGameE);
-            engine.MovesChangedE += new Engine.MovesChangedEvent(engine_MovesChanged);
+            //engine.MovesChangedE += new Engine.MovesChangedEvent(engine_MovesChanged);
             engine.ThinkingProgress += new Engine.ThinkingProgressEvent(engine_ThinkingProgress);
             engine.ThinkingFinished += new Engine.ThinkingFinishedEvent(engine_ThinkingFinished);
 
@@ -46,10 +46,10 @@ namespace gmotor
                     int boardSize = Convert.ToInt32(match.Groups[1].Value);
                     if (boardSize >= 15 && boardSize <= 20)
                     {
-                        conversions = new Conversions(boardSize);
+                        //conversions = new Conversions(boardSize);
 
                         //say to engine, that it is new game
-                        engine.gameInformation.fileName = "gmotor" + engine.Version;
+                        engine.FileName = "gmotor" + engine.Version;
                         engine.NewGame(boardSize);
                     }
                     else
@@ -80,7 +80,7 @@ namespace gmotor
                     int column = Convert.ToInt32(match.Groups[2].Value);
                     if (row >= 0 && row <= engine.BoardSize && column >= 0 && column < engine.BoardSize)
                     {
-                        ABMove move = new ABMove(conversions.RowAndColumn2Index(row, column), engine.WhoIsOnMove, engine.BoardSize, new TimeSpan());
+                        BoardSquare move = new BoardSquare(engine.BoardSize, row, column);
                         engine.MakeMove(move);
 
 #if DEBUG
@@ -124,7 +124,7 @@ namespace gmotor
                             int column = Convert.ToInt32(match1.Groups[2].Value);
                             int who = Convert.ToInt32(match1.Groups[3].Value);
                             Player player = (who == 1) ? Player.BlackPlayer : Player.WhitePlayer;
-                            ABMove move = new ABMove(conversions.RowAndColumn2Index(row, column), player, engine.BoardSize, new TimeSpan());
+                            BoardSquare move = new BoardSquare(engine.BoardSize, row, column);
                             engine.MakeMove(move);
 #if DEBUG
                             Console.WriteLine("DEBUG <- " + move.ToString());
@@ -167,7 +167,7 @@ namespace gmotor
                 {
                     if (engine.BoardSize > 0)
                     {
-                        engine.gameInformation.fileName = "gmotor" + engine.Version;
+                        engine.FileName = "gmotor" + engine.Version;
                         engine.NewGame(engine.BoardSize);
                         continue;
                     }
@@ -181,10 +181,10 @@ namespace gmotor
         {
         }
 
-        static void engine_MovesChanged(GameInformation gameInformation)
-        {
-            playedMoves = gameInformation.playedMoves;
-        }
+//        static void engine_MovesChanged(GameInformation gameInformation)
+//        {
+//            playedMoves = gameInformation.playedMoves;
+//        }
 
         static void engine_NewGameE()
         {
@@ -203,14 +203,15 @@ namespace gmotor
         static void ThinkingFinished()
         {
             engine.VctActive = false;
-            engine.MakeMove(searchInfo.principalVariation[0]);
+            var bs = new BoardSquare(engine.BoardSize, searchInfo.principalVariation[0].Index);
+            engine.MakeMove(bs);
 
 			Console.WriteLine(String.Format("MESSAGE time={0:f2}s, depth={1}, nodes={2} ({3:f1}kN/s), eval={4}, pv={5}",
                 searchInfo.elapsedTime.TotalMilliseconds / 1000, searchInfo.depth, 
                 (searchInfo.examinedMoves >= 2000) ? (searchInfo.examinedMoves / 1000).ToString()+"kN" : searchInfo.examinedMoves.ToString()+"N",
                 searchInfo.MovesPerSecond / 1000, EvaluationConstants.Score2Text(searchInfo.evaluation), searchInfo.PrincipalVariationText));
 
-            string outputString = String.Format("{0},{1}", searchInfo.principalVariation[0].Row, searchInfo.principalVariation[0].Column);
+            string outputString = String.Format("{0},{1}", bs.Row, bs.Column);
             Console.WriteLine(outputString);
         }
     }

@@ -53,7 +53,7 @@ namespace GomokuEngine
 			//iterative search or fix search?
 			int startingDepth = (iterativeDeepening) ? 0 : maxSearchDepth;
 
-			if ((gameBoard.GetPlayedMoves().Count == 0) && (startingDepth == 0)) startingDepth = 1; //completely first move
+			if ((gameBoard.playedSquares.Count == 0) && (startingDepth == 0)) startingDepth = 1; //completely first move
 
             //start iterative deepening search
             for (int depth = startingDepth; depth <= maxSearchDepth; depth++)
@@ -65,7 +65,7 @@ namespace GomokuEngine
                 gameBoard.VctActive = (depth > 0) ? false:true;
                
                 List<ABMove> possibleMoves = gameBoard.GeneratePossibleMoves(gameBoard.VctPlayer,gameBoard.VctDepth0);
-                if (possibleMoves.Count == 0 && depth > 0 && gameBoard.GetPlayedMoves().Count > 0) break;
+                if (possibleMoves.Count == 0 && depth > 0 && gameBoard.playedSquares.Count > 0) break;
 
  
                 //depth search finished->store results
@@ -121,7 +121,7 @@ namespace GomokuEngine
 	                sInfo.principalVariation = new List<ABMove>();
 	            	foreach(int square in principalVariation)
 	            	{
-	            		ABMove move = new ABMove(square,gameBoard.PlayerOnMove,gameBoard.BoardSize);
+	            		ABMove move = new ABMove(gameBoard.BoardSize,square,gameBoard.PlayerOnMove);
 	        			sInfo.principalVariation.Add(move);
 	            	}
                 }
@@ -132,7 +132,7 @@ namespace GomokuEngine
                     gameBoard.VctActive = false;
                 }
 
-                if (gameBoard.GetPlayedMoves().Count == 0) break; //completely first move
+                if (gameBoard.playedSquares.Count == 0) break; //completely first move
                 if ((depth > 0 && evaluation == EvaluationConstants.min) || evaluation == EvaluationConstants.max) break;
             } 
 //L1:

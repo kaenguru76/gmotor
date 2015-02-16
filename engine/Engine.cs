@@ -30,11 +30,12 @@ namespace GomokuEngine
 	
     public class Engine
 	{
+		public delegate void GenericEvent();
 		public delegate void NewGameEvent();
         public event NewGameEvent NewGameE;
 
-        public delegate void MovesChangedEvent(GameInformation gameInformation);
-        public event MovesChangedEvent MovesChangedE;
+        //public delegate void MovesChangedEvent(GameInformation gameInformation);
+        //public event MovesChangedEvent MovesChangedE;
 
         public delegate void ThinkingFinishedEvent(SearchInformation info);
         public event ThinkingFinishedEvent ThinkingFinished;
@@ -48,20 +49,25 @@ namespace GomokuEngine
 		
         public GameInformation gameInformation;
         bool thinking;
+        
+        string _fileName = "New Game";
+        public event GenericEvent FileNameChanged;
+
+        string _blackPlayerName = "Black Player";
+        string _whitePlayerName = "White Player";
+        public event GenericEvent BlackPlayerNameChanged;
+        public event GenericEvent WhitePlayerNameChanged;
+
+//        List<BoardSquare> playedMoves;
 
         public Engine()
 		{
-            gameInformation = new GameInformation();
-            
-            gameInformation.fileName = "New Game";
-            gameInformation.blackPlayerName = "Black Player";
-            gameInformation.whitePlayerName = "White Player";
-            thinking = false;
         }
 
         public void NewGame(int boardSize)
         {
-            while (thinking) ;
+            //while (thinking) ;
+            
             
             //initialize all
             transpositionTable = new TranspositionTable(boardSize);
@@ -71,16 +77,18 @@ namespace GomokuEngine
             search.ThinkingProgress += new Search.ThinkingProgressEvent(search_ThinkingProgress);
 
             //copy move list
-            gameInformation.gameMoveList = new List<ABMove>();
-            gameInformation.blackPlayerName = "Black Player";
-            gameInformation.whitePlayerName = "White Player";
+            gameInformation = new GameInformation();
+            gameInformation.gameMoveList = new List<BoardSquare>();
+            //gameInformation.fileName = "New Game";
+            //gameInformation.blackPlayerName = "Black Player";
+            //gameInformation.whitePlayerName = "White Player";
 
-        	NewGameE();
+            NewGameE();
 
-            MovesChanged();
+            //MovesChanged();
         }
 
-        public void LoadGame(int boardSize, List<ABMove> moveList)
+        public void LoadGame(int boardSize, List<BoardSquare> moveList)
         {
             while (thinking) ;
 
@@ -92,31 +100,33 @@ namespace GomokuEngine
             search.ThinkingProgress += new Search.ThinkingProgressEvent(search_ThinkingProgress);
 
             //copy move list
-            gameInformation.gameMoveList = new List<ABMove>(moveList);
+            gameInformation.gameMoveList = new List<BoardSquare>(moveList);
 
             //play all moves
             for (int index = 0; index < gameInformation.gameMoveList.Count; index++)
             {
-                ABMove move = gameInformation.gameMoveList[index];
-                gameBoard.MakeABMove(move);
+                BoardSquare move = gameInformation.gameMoveList[index];
+                MakeMove(move);
             }
 
             NewGameE();
 
-            MovesChanged();
+            //MovesChanged();
         }
 
-        public void MakeMove(ABMove move)
+        public void MakeMove(BoardSquare move)
         {
-            while (thinking);
+            //while (thinking);
 
+            //get square
+            //int square = conversions.RowAndColumn2Index(row, column);
+            
 			//if square is occupied, exit
-			if (gameBoard.GetSymbol(move.square) !=  Player.None) return;
+			if (gameBoard.GetSymbol(move.Index) !=  Player.None) return;
 
-			//make move
-			gameBoard.MakeABMove(move);
+            gameBoard.MakeMove(move.Index);
 
-            MovesChanged();
+            //MovesChanged();
         }
 
 //        public void Redraw()
@@ -126,6 +136,14 @@ namespace GomokuEngine
 //            MovesChanged();
 //        }
 
+//        public BoardSquare GetLastPlayedMove()
+//        {
+//            if (playedMoves.Count > 0)
+//                return playedMoves[playedMoves.Count - 1];
+//            else
+//                return null;
+//        }
+
 		public void Redo()
 		{
             while (thinking) ;
@@ -133,23 +151,23 @@ namespace GomokuEngine
             bool movesAreEqual = true;
 
 			//check if moves are equal;
-            for (int index = 0; index < gameBoard.GetPlayedMoves().Count && index < gameInformation.gameMoveList.Count; index++)
+            for (int index = 0; index < gameBoard.playedSquares.Count && index < gameInformation.gameMoveList.Count; index++)
 			{
-                if (gameBoard.GetPlayedMoves()[index].square != gameInformation.gameMoveList[index].square)
+                if (gameBoard.playedSquares[index] != gameInformation.gameMoveList[index].Index)
 				{
 					movesAreEqual = false;
 					break;
 				}
 			}
 
-            if (movesAreEqual && gameInformation.gameMoveList.Count > gameBoard.GetPlayedMoves().Count)
+            if (movesAreEqual && gameInformation.gameMoveList.Count > gameBoard.playedSquares.Count)
 			{
-                ABMove move = gameInformation.gameMoveList[gameBoard.GetPlayedMoves().Count];
+                BoardSquare move = gameInformation.gameMoveList[gameBoard.playedSquares.Count];
 				//make move
-                gameBoard.MakeABMove(move);
+                MakeMove(move);
 			}
 
-            MovesChanged();
+            //MovesChanged();
 		}
 
 		public void RedoAll()
@@ -159,23 +177,23 @@ namespace GomokuEngine
             bool movesAreEqual = true;
 
 			//check if moves are equal;
-            for (int index = 0; index < gameBoard.GetPlayedMoves().Count && index < gameInformation.gameMoveList.Count; index++)
+            for (int index = 0; index < gameBoard.playedSquares.Count && index < gameInformation.gameMoveList.Count; index++)
 			{
-                if (gameBoard.GetPlayedMoves()[index].square != gameInformation.gameMoveList[index].square)
+                if (gameBoard.playedSquares[index] != gameInformation.gameMoveList[index].Index)
 				{
 					movesAreEqual = false;
 					break;
 				}
 			}
 
-            while (movesAreEqual && gameInformation.gameMoveList.Count > gameBoard.GetPlayedMoves().Count)
+            while (movesAreEqual && gameInformation.gameMoveList.Count > gameBoard.playedSquares.Count)
 			{
-                ABMove move = gameInformation.gameMoveList[gameBoard.GetPlayedMoves().Count];
+                BoardSquare move = gameInformation.gameMoveList[gameBoard.playedSquares.Count];
 				//make move
-                gameBoard.MakeABMove(move);
+                MakeMove(move);
 			}
 
-            MovesChanged();
+            //MovesChanged();
         }
 
 		public void Undo()
@@ -183,12 +201,12 @@ namespace GomokuEngine
             while (thinking) ;
             
             //undo one move
-            if (gameBoard.GetPlayedMoves().Count > 0)
+            if (gameBoard.playedSquares.Count > 0)
 			{
-                ABMove move = gameBoard.GetPlayedMoves()[gameBoard.GetPlayedMoves().Count - 1];
-                gameBoard.UndoABMove();
+//                ABMove move = gameBoard.GetPlayedMoves()[gameBoard.GetPlayedMoves().Count - 1];
+                gameBoard.UndoMove();
 
-                MovesChanged();
+                //MovesChanged();
             }
 		}
 
@@ -197,13 +215,13 @@ namespace GomokuEngine
             while (thinking) ;
             
             //undo all moves
-            while (gameBoard.GetPlayedMoves().Count > 0)
+            while (gameBoard.playedSquares.Count > 0)
 			{
-                ABMove move = gameBoard.GetPlayedMoves()[gameBoard.GetPlayedMoves().Count - 1];
-                gameBoard.UndoABMove();
+                //ABMove move = gameBoard.GetPlayedMoves()[gameBoard.GetPlayedMoves().Count - 1];
+                gameBoard.UndoMove();
 			}
 
-            MovesChanged();
+            //MovesChanged();
         }
 
         public int BoardSize
@@ -300,39 +318,38 @@ namespace GomokuEngine
 
         }
 
-        void MovesChanged()
-        {
-            gameInformation.playedMoves = gameBoard.GetPlayedMoves();
-
-            //determine next move
-            gameInformation.nextMove = null;
-            if (gameInformation.gameMoveList.Count > gameInformation.playedMoves.Count)
-            {
-                int index1;
-                for (index1 = 0; index1 < gameInformation.playedMoves.Count; index1++)
-                {
-                    if (gameInformation.playedMoves[index1].square != gameInformation.gameMoveList[index1].square) break;
-                }
-
-                if (index1 == gameInformation.playedMoves.Count)
-                {
-                    gameInformation.nextMove = gameInformation.gameMoveList[index1];
-                }
-            }
-
-            gameInformation.possibleMoves = gameBoard.GeneratePossibleMoves(gameBoard.VctPlayer, gameBoard.VctDepth0);
-            
-            gameInformation.Evaluation = (gameBoard.PlayerOnMove == Player.BlackPlayer) ? gameBoard.GetEvaluation():-gameBoard.GetEvaluation();
-            gameInformation.GainSquare = new ABMove(gameBoard.GainSquare,gameBoard.PlayerOnMove,gameBoard.BoardSize);
-            MovesChangedE(gameInformation);
-        }
+//        void MovesChanged()
+//        {
+//            gameInformation.playedMoves = gameBoard.GetPlayedMoves();
+//
+//            //determine next move
+//            gameInformation.nextMove = null;
+//            if (gameInformation.gameMoveList.Count > gameInformation.playedMoves.Count)
+//            {
+//                int index1;
+//                for (index1 = 0; index1 < gameInformation.playedMoves.Count; index1++)
+//                {
+//                    if (gameInformation.playedMoves[index1].square != gameInformation.gameMoveList[index1].square) break;
+//                }
+//
+//                if (index1 == gameInformation.playedMoves.Count)
+//                {
+//                    gameInformation.nextMove = gameInformation.gameMoveList[index1];
+//                }
+//            }
+//
+//            gameInformation.possibleMoves = gameBoard.GeneratePossibleMoves(gameBoard.VctPlayer, gameBoard.VctDepth0);
+//            
+//            gameInformation.Evaluation = (gameBoard.PlayerOnMove == Player.BlackPlayer) ? gameBoard.GetEvaluation():-gameBoard.GetEvaluation();
+//            gameInformation.GainSquare = new ABMove(gameBoard.GainSquare,gameBoard.PlayerOnMove,gameBoard.BoardSize);
+//            MovesChangedE(gameInformation);
+//        }
 
 		public void GetSquareInfo(string notification, out SquareInfo squareInfo)
 		{
-            Conversions conversions = new Conversions(gameBoard.BoardSize);
-			int square = conversions.Square(notification);
+			var square = new BoardSquare(gameBoard.BoardSize, notification);
 
-            gameBoard.GetSquareInfo(square, out squareInfo);
+            gameBoard.GetSquareInfo(square.Index, out squareInfo);
 		}
 		
 		//returns player who has few symbols
@@ -362,9 +379,8 @@ namespace GomokuEngine
 
         public Player GetSymbol(int row, int column)
 		{
-            Conversions conversions = new Conversions(gameBoard.BoardSize);
-            int square = conversions.RowAndColumn2Index(row, column);
-            return gameBoard.GetSymbol(square);
+            var square = new BoardSquare(gameBoard.BoardSize, row, column);
+            return gameBoard.GetSymbol(square.Index);
 		}
 
 		public void StopThinking()
@@ -390,27 +406,27 @@ namespace GomokuEngine
 
         public void SetTuningInfo(TuningInfo info)
         {
-            while (thinking) ;
-            
-            //store number of moves
-            List<ABMove> playedMoves = new List<ABMove> (gameBoard.GetPlayedMoves());
-
-            //undo all moves
-            for (int i = 0; i<playedMoves.Count; i++)
-            {
-                gameBoard.UndoABMove();
-            }
-
-
-            gameBoard.SetTuningInfo(info);
-
-            //redo all moves
-            for (int i = 0; i < playedMoves.Count; i++)
-            {
-                gameBoard.MakeABMove(playedMoves[i]);
-            }
-            
-            ResetTtTable(false);
+//            while (thinking) ;
+//            
+//            //store number of moves
+//            var playedMoves = new List<int> (gameBoard.playedSquares);
+//
+//            //undo all moves
+//            for (int i = 0; i<playedMoves.Count; i++)
+//            {
+//                gameBoard.UndoMove();
+//            }
+//
+//
+//            gameBoard.SetTuningInfo(info);
+//
+//            //redo all moves
+//            for (int i = 0; i < playedMoves.Count; i++)
+//            {
+//                gameBoard.MakeMove(playedMoves[i]);
+//            }
+//            
+//            ResetTtTable(false);
 
         }
 
@@ -419,7 +435,7 @@ namespace GomokuEngine
             set
             {
                 gameBoard.VctActive = value;
-                MovesChanged();
+                //MovesChanged();
             }
 
             get
@@ -428,12 +444,53 @@ namespace GomokuEngine
             }
         }
 
-        public bool Thinking
-        {
-            get
-            {
-                return thinking;
-            }
-        }
-    }
+		public bool Thinking {
+			get {
+				return thinking;
+			}
+		}
+        
+		public string FileName {
+			get {
+        		return _fileName;
+			}
+        	set {
+        		_fileName = value;
+        		FileNameChanged();
+        	}
+		}
+        
+		public string BlackPlayerName {
+			get {
+				return _blackPlayerName;
+			}
+			set {
+				_blackPlayerName = value;
+				BlackPlayerNameChanged();
+			}
+		}
+        
+		public string WhitePlayerName {
+			get {
+				return _whitePlayerName;
+			}
+			set {
+				_whitePlayerName = value;
+				WhitePlayerNameChanged();
+			}
+		}
+
+        public List<BoardSquare> PlayedMoves {
+			get {
+        		var list1 = new List<BoardSquare>();
+        		
+        		foreach (int element in gameBoard.playedSquares) {
+        			var bs = new BoardSquare(gameBoard.BoardSize,element);
+        			list1.Add(bs);
+        		}
+        		return list1;
+			}
+        		
+		}
+	}
 }

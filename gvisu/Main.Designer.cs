@@ -212,7 +212,6 @@
 			// 
 			// mnuSave
 			// 
-			this.mnuSave.Enabled = false;
 			this.mnuSave.Name = "mnuSave";
 			this.mnuSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
 			this.mnuSave.Size = new System.Drawing.Size(155, 22);
@@ -221,7 +220,6 @@
 			// 
 			// mnuSaveAs
 			// 
-			this.mnuSaveAs.Enabled = false;
 			this.mnuSaveAs.Name = "mnuSaveAs";
 			this.mnuSaveAs.Size = new System.Drawing.Size(155, 22);
 			this.mnuSaveAs.Text = "Save As...";
@@ -229,7 +227,6 @@
 			// 
 			// mnuReopen
 			// 
-			this.mnuReopen.Enabled = false;
 			this.mnuReopen.Name = "mnuReopen";
 			this.mnuReopen.Size = new System.Drawing.Size(155, 22);
 			this.mnuReopen.Text = "Reopen";

@@ -17,11 +17,11 @@ namespace GomokuEngine
             this.distance = distance;
         }
 
-        public override string ToString()
-        {
-            Conversions conversions = new Conversions(20);
-            return conversions.Complete(square);
-        }
+//        public override string ToString()
+//        {
+//            //Conversions conversions = new Conversions(20);
+//            //return conversions.Complete(square);
+//        }
     }
 
     class ConnectedSquares
@@ -45,13 +45,14 @@ namespace GomokuEngine
 
             #region initialize 
 
-            Conversions conversions = new Conversions(boardSize);
+            //Conversions conversions = new Conversions(boardSize);
 
             for (int row = 0; row < boardSize; row++)
             {
                 for (int column = 0; column < boardSize; column++)
                 {
-                    int square = conversions.RowAndColumn2Index(row, column);
+                	BoardSquare square = new BoardSquare(boardSize, row, column);
+                    //int square = conversions.RowAndColumn2Index(row, column);
 
                     for (Direction direction = Direction.left2right; direction <= Direction.rightdown2leftup; direction++)
                     {
@@ -82,10 +83,11 @@ namespace GomokuEngine
                             //check if square is on board
                             if (influencedRow >= 0 && influencedRow < boardSize && influencedColumn >= 0 && influencedColumn < boardSize)
                             {
-                                int influencedSquare = conversions.RowAndColumn2Index(influencedRow, influencedColumn);
+                            	BoardSquare influencedSquare = new BoardSquare(boardSize, influencedRow, influencedColumn);
+                                //int influencedSquare = conversions.RowAndColumn2Index(influencedRow, influencedColumn);
 
                                 //add to influenced squares
-                                connectedSquares[square].Add (new ConnectedSquare(influencedSquare, direction, distance < 0 ? 4 - distance : 5 - distance));
+                                connectedSquares[square.Index].Add (new ConnectedSquare(influencedSquare.Index, direction, distance < 0 ? 4 - distance : 5 - distance));
                             }
                         }
                     }

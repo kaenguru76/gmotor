@@ -5,10 +5,10 @@ using System.Text;
 
 namespace GomokuEngine
 {
-    public class ABMove
+	public class ABMove : BoardSquare
     {
-        public int square;
-        public Player player;
+        //public int square;
+        readonly Player _player;
         public BothPlayerEvaluation moveType;
         public int value;
         public TTEvaluationType valueType;
@@ -17,12 +17,19 @@ namespace GomokuEngine
         public Player vctPlayer;
         public TimeSpan time;
 
-        int boardSize;
-
+       // int boardSize;
+/*
         public ABMove()
         {
-        }
+        }*/
 
+		public ABMove(int boardSize, int index, Player player) : base(boardSize, index)
+		{
+//			_boardSize = boardSize;
+//			_index = index;
+			_player = player;
+		}
+		/*
         public ABMove(int square, Player player, int boardSize, TimeSpan time)
         {
             this.square = square;
@@ -36,13 +43,13 @@ namespace GomokuEngine
             this.square = square;
             this.player = player;
             this.boardSize = boardSize;
-        }
+        }*/
 
-        public override string ToString()
-        {
-            Conversions conversions = new Conversions(boardSize);
-            return conversions.Complete(square);
-        }
+//        public override string ToString()
+//        {
+//            Conversions conversions = new Conversions(boardSize);
+//            return conversions.Complete(square);
+//        }
 
         public string[] ToStringArray(int index)
         {
@@ -63,29 +70,29 @@ namespace GomokuEngine
             }
 
 
-            string[] str = { Convert.ToString(index), this.ToString() + " (" + square.ToString() + ")", time.TotalSeconds.ToString(),
+            string[] str = { Convert.ToString(index), this.ToString() + " (" + Index.ToString() + ")", time.TotalSeconds.ToString(),
                                moveType.ToString(), s2, vctPlayer.ToString(), examinedMoves.ToString(), depthLeft.ToString(),
                                };
             return str;
         }
 
-        public int Row
-        {
-            get
-            {
-                Conversions conversions = new Conversions(boardSize);
-                return conversions.Index2Row(square);
-            }
-        }
-
-        public int Column
-        {
-            get
-            {
-                Conversions conversions = new Conversions(boardSize);
-                return conversions.Index2Column(square);
-            }
-        }
+//        public int Row
+//        {
+//            get
+//            {
+//                Conversions conversions = new Conversions(boardSize);
+//                return conversions.Index2Row(square);
+//            }
+//        }
+//
+//        public int Column
+//        {
+//            get
+//            {
+//                Conversions conversions = new Conversions(boardSize);
+//                return conversions.Index2Column(square);
+//            }
+//        }
     }
 
 }

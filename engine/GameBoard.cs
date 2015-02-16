@@ -30,8 +30,7 @@ namespace GomokuEngine
         MoveGenerator moveGenerator;
 
         int boardSize;
-        List<int> playedSquares;
-        List<ABMove> playedMoves;
+        public List<int> playedSquares;
 
         bool gameFinished;
         int numberOfSquares;
@@ -75,7 +74,7 @@ namespace GomokuEngine
             playerOnMove = Player.BlackPlayer;
             //played moves
             playedSquares = new List<int>();
-            playedMoves = new List<ABMove>();
+            //playedMoves = new List<ABMove>();
 
             // intialize symbols
             symbol = new Player[numberOfSquares];
@@ -107,13 +106,6 @@ namespace GomokuEngine
 
         }
 
-        public void MakeABMove(ABMove move)
-        {
-            playedMoves.Add(move);
-
-            //VctActive = (move.vctPlayer == Player.None) ? false:true;
-            MakeMove(move.square);
-        }
 
         public void MakeMove(int square)
         {
@@ -148,12 +140,12 @@ namespace GomokuEngine
             playerOnMove = (playerOnMove == Player.BlackPlayer) ? Player.WhitePlayer : Player.BlackPlayer;
 
         }
-
-        public void UndoABMove()
-        {
-            UndoMove();
-            playedMoves.RemoveAt(playedMoves.Count - 1);
-        }
+//
+//        public void UndoABMove()
+//        {
+//            UndoMove();
+//            playedMoves.RemoveAt(playedMoves.Count - 1);
+//        }
 
         public void UndoMove()
         {
@@ -232,7 +224,7 @@ namespace GomokuEngine
             
             foreach (int square in possibleSquares)
             {
-            	ABMove move = new ABMove(square,playerOnMove,boardSize);
+            	ABMove move = new ABMove(boardSize, square, playerOnMove);
             	movesC.Add(move);
                 BothPlayerEvaluation bothPlayerEvaluation = (playerOnMove == Player.BlackPlayer)? sortingBlack.GetEvaluation(square):
                     sortingWhite.GetEvaluation(square);
@@ -345,18 +337,12 @@ namespace GomokuEngine
         	}
         }
 
-        public List<ABMove> GetPlayedMoves()
-        {
-            return playedMoves;
-        }
+//        public List<ABMove> GetPlayedMoves()
+//        {
+//            return playedMoves;
+//        }
 
-        public ABMove GetLastPlayedMove()
-        {
-            if (playedMoves.Count > 0)
-                return playedMoves[playedMoves.Count - 1];
-            else
-                return null;
-        }
+
 
         public bool GameFinished
         {

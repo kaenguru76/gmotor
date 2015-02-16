@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ABMove.cs" />
+    <Compile Include="BoardSquare.cs" />
     <Compile Include="EvaluateBoth.cs" />
     <Compile Include="EvaluateFourDirections.cs" />
     <Compile Include="GameInformation.cs" />

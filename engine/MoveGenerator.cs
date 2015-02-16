@@ -99,12 +99,13 @@ namespace GomokuEngine
 
             //take only central moves
             List<int> tmpList2 = new List<int>();
-            Conversions con = new Conversions(boardSize);
+            //Conversions con = new Conversions(boardSize);
             foreach (int move in tmpList)
             {
-                int row = con.Index2Row(move);
-                int col = con.Index2Column(move);
-                if (row >= 4 && row < boardSize - 4 && col >= 4 && col < boardSize - 4)
+            	var bs = new BoardSquare (boardSize, move);
+            	//int row = con.Index2Row(move);
+               // int col = con.Index2Column(move);
+                if (bs.Row >= 4 && bs.Row < boardSize - 4 && bs.Column >= 4 && bs.Column < boardSize - 4)
                 {
                     tmpList2.Add(move);
                 }
