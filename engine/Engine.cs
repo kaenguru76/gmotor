@@ -30,8 +30,8 @@ namespace GomokuEngine
 	public class Engine
 	{
 		public delegate void GenericEvent();
-		public delegate void NewGameEvent();
-		public event NewGameEvent NewGameE;
+		//public delegate void NewGameEvent();
+		public event GenericEvent BoardChanged;
 
 		//public delegate void MovesChangedEvent(GameInformation gameInformation);
 		//public event MovesChangedEvent MovesChangedE;
@@ -112,7 +112,7 @@ namespace GomokuEngine
 			WhitePlayerName = "White Player";
 			FileName = "New Game";
 
-			NewGameE();
+			BoardChanged();
 
 			//MovesChanged();
 		}
@@ -130,7 +130,7 @@ namespace GomokuEngine
 
 			gameBoard.MakeMove(move.Index);
 
-			//MovesChanged();
+			BoardChanged();
 		}
 
 		//        public void Redraw()

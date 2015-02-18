@@ -21,11 +21,11 @@ namespace gmotor
             int timeoutMatch = 60000;
             int timeoutTurn = 3000;
             int timeLeft = timeoutMatch;
-            int timePortion = 10;
-            int movesPerGame = 35;
+            const int timePortion = 10;
+            const int movesPerGame = 35;
 
             engine = new Engine();
-            engine.NewGameE += new Engine.NewGameEvent(engine_NewGameE);
+            engine.BoardChanged += engine_NewGameE;
             //engine.MovesChangedE += new Engine.MovesChangedEvent(engine_MovesChanged);
             engine.ThinkingProgress += new Engine.ThinkingProgressEvent(engine_ThinkingProgress);
             engine.ThinkingFinished += new Engine.ThinkingFinishedEvent(engine_ThinkingFinished);

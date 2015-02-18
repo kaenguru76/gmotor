@@ -31,7 +31,7 @@ namespace gvisu
 			InitializeComponent();
 
 			engine = new Engine();
-			engine.NewGameE += engine_NewGameE; 
+			engine.BoardChanged += engine_BoardChanged; 
 			//engine.MovesChangedE += new Engine.MovesChangedEvent(engine_MovesChanged);
 			engine.ThinkingFinished += engine_ThinkingFinished;
 			engine.ThinkingProgress += engine_ThinkingProgress;
@@ -86,8 +86,9 @@ namespace gvisu
             
 		}
 
-		void engine_NewGameE()
+		void engine_BoardChanged()
 		{
+			graphicBoard1.SetBoard(engine.PlayedMoves);
 			//PictureBox picSquare;
 			//Label lblRow;
 			//Label lblColumn;

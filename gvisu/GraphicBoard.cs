@@ -9,9 +9,8 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Reflection;
-using System.Resources;
 using GomokuEngine;
+using System.Collections.Generic;
 
 namespace gvisu
 {
@@ -25,11 +24,15 @@ namespace gvisu
 
         Bitmap stones;
 		Bitmap stoneEmpty;
+		Bitmap stoneBlack;
+		Bitmap stoneWhite;
 		
 		int boardSize;
 		//GomokuEngine.Conversions conversions;
 		BoardSquare selectedSquare;
 		
+		List<BoardSquare> _playedMoves;
+			
 		
 		public GraphicBoard()
 		{
@@ -47,20 +50,10 @@ namespace gvisu
 			//stones = (Bitmap)resources.GetObject("green");
 			
 			stones = Properties.Resources.green;
-			stoneEmpty = stones.Clone(new Rectangle(0, 0, stones.Height, stones.Height), stones.PixelFormat);
-/*
-			string str1 = "./skins/wood.bmp";
-			try {
-				stones = new Bitmap(str1);				
-			}
-			catch (System.ArgumentException ex) {
-//				// if (ex.Source != null)
-				System.Diagnostics.Debug.Print(ex.ToString());
-				MessageBox.Show(str1,"File not found",MessageBoxButtons.OK);
-				//throw new System.Exception("File not found", ex);
-			}
-			//stones = new Bitmap(@"c:\Piskvorky\gmotor\gvisu\bin\Debug\skins\wood.bmp");
-			*/
+			stoneEmpty = stones.Clone(new Rectangle(stones.Width*0/3, 0, stones.Height, stones.Height), stones.PixelFormat);
+			stoneBlack = stones.Clone(new Rectangle(stones.Width*1/3, 0, stones.Height, stones.Height), stones.PixelFormat);
+			stoneWhite = stones.Clone(new Rectangle(stones.Width*2/3, 0, stones.Height, stones.Height), stones.PixelFormat);
+
 		}
 		
 		void GraphicBoardPaint(object sender, PaintEventArgs e)
@@ -81,23 +74,22 @@ namespace gvisu
 				g.DrawString(bs.RowToString(row), font, brush, GetSquareCoordinateX(-1), GetSquareCoordinateY(row)+1);
 			}
 
-			//draw board
+			//draw empty board
 			for (int column = 0; column < boardSize; column++) {
 				for (int row = 0; row < boardSize; row++) {
 					g.DrawImage(stoneEmpty, GetSquareCoordinateX(column), GetSquareCoordinateY(row));
-//
-//					picSquare = new System.Windows.Forms.PictureBox();
-//					picSquare.Image = BoardImageList.Images[0];
-//					picSquare.Name = "picSquare" + conversions.Complete(row , column);
-//					picSquare.Size = BoardImageList.ImageSize;
-//					picSquare.Top = panelBoard.Height - BoardImageList.ImageSize.Height - (row + 1) * picSquare.Size.Height;
-//					picSquare.Left = BoardImageList.ImageSize.Width + column * picSquare.Size.Height;
-//					picSquare.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-//					picSquare.TabStop = false;
-//                    picSquare.Tag = conversions.Complete(row, column); 
-//                    picSquare.MouseClick +=new MouseEventHandler(picSquare_MouseClick);
-//					panelBoard.Controls.Add(picSquare);
-//					picSquares[row, column] = picSquare;
+				}
+			}
+			
+			//draw stones
+			for (int i = 0; i < _playedMoves.Count; i++) {
+				if (i % 2 == 0)
+				{
+					g.DrawImage(stoneBlack, GetSquareCoordinateX(_playedMoves[i].Column), GetSquareCoordinateY(_playedMoves[i].Row));
+				}
+				else
+				{
+					g.DrawImage(stoneWhite, GetSquareCoordinateX(_playedMoves[i].Column), GetSquareCoordinateY(_playedMoves[i].Row));
 				}
 			}
 			
@@ -168,41 +160,16 @@ namespace gvisu
 			set{
 				selectedSquare = value;
 				Refresh(); //redraw board
-			}		
+			}	
+
 		}
 
+		public void SetBoard (List<BoardSquare> playedMoves) {
+			_playedMoves = playedMoves;
+			Refresh();
+		}
 			
-//                engine.Redraw();
-//
-//                //select new 
-//                selectedPictureBox = value;
-//
-//                if (value == null)
-//                {
-//                    selectToolStripMenuItem.Enabled = false;
-//                    selectedImage = null;
-//                    statusStrip1.Items[0].Visible = false;
-//                    return;
-//                }
-//                else
-//                {
-//                    selectToolStripMenuItem.Enabled = true;
-//                    selectedImage = value.Image;
-//                    statusStrip1.Items[0].Text = "Selected position = " + value.Tag.ToString();
-//                    statusStrip1.Items[0].Visible = true;
-//                }
-//
-//                //modify bitmap - draw rectange
-//                Image image = new Bitmap(value.Image);
-//                Graphics g = Graphics.FromImage(image);
-//                g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-//                Pen redPen = new Pen(Color.Red);
-//                Rectangle rect = new Rectangle(0, 0, image.Height - 1, image.Height - 1);
-//                g.DrawRectangle(redPen, rect);
-//
-//                //and draw it back
-//                selectedPictureBox.Image = image;
-//            }
+
 
 
 	}
