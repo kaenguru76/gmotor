@@ -9,8 +9,8 @@ namespace GomokuEngine
         public int Evaluation;
         //public int BlackScore;
         //public int WhiteScore;
-        public List<BoardSquare> gameMoveList;
-        public List<BoardSquare> playedMoves;
+        //public List<BoardSquare> gameMoveList;
+        //public List<BoardSquare> playedMoves;
         public List<ABMove> possibleMoves;
         public BoardSquare nextMove;
 		public BoardSquare GainSquare;
