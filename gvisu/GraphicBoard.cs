@@ -64,7 +64,7 @@ namespace gvisu
 			var font = new Font(FontFamily.GenericSansSerif, 10);
 			var brush = new SolidBrush(Color.Black);
 			var bs = new BoardSquare(boardSize, 0, 0);
-    		
+			
 			for (int column = 0; column < boardSize; column++) {
 				g.DrawString(bs.ColumnToString(column), font, brush, GetSquareCoordinateX(column)+4, GetSquareCoordinateY(-1));
 			}
@@ -82,14 +82,16 @@ namespace gvisu
 			}
 			
 			//draw stones
-			for (int i = 0; i < _playedMoves.Count; i++) {
-				if (i % 2 == 0)
-				{
-					g.DrawImage(stoneBlack, GetSquareCoordinateX(_playedMoves[i].Column), GetSquareCoordinateY(_playedMoves[i].Row));
-				}
-				else
-				{
-					g.DrawImage(stoneWhite, GetSquareCoordinateX(_playedMoves[i].Column), GetSquareCoordinateY(_playedMoves[i].Row));
+			if (_playedMoves != null) {
+				for (int i = 0; i < _playedMoves.Count; i++) {
+					if (i % 2 == 0)
+					{
+						g.DrawImage(stoneBlack, GetSquareCoordinateX(_playedMoves[i].Column), GetSquareCoordinateY(_playedMoves[i].Row));
+					}
+					else
+					{
+						g.DrawImage(stoneWhite, GetSquareCoordinateX(_playedMoves[i].Column), GetSquareCoordinateY(_playedMoves[i].Row));
+					}
 				}
 			}
 			
