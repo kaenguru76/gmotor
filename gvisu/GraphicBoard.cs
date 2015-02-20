@@ -61,6 +61,7 @@ namespace gvisu
 			Graphics g = e.Graphics; //get handle
 			
 			//draw horizontal legend
+//			var font = new Font(FontFamily.GenericSansSerif, 10);
 			var font = new Font(FontFamily.GenericSansSerif, 10);
 			var brush = new SolidBrush(Color.Black);
 			var bs = new BoardSquare(boardSize, 0, 0);

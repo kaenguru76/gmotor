@@ -92,16 +92,13 @@
 			this.numericUpDownDepth = new System.Windows.Forms.NumericUpDown();
 			this.label1 = new System.Windows.Forms.Label();
 			this.numericUpDownThinkTime = new System.Windows.Forms.NumericUpDown();
-			this.btnEvaluate = new System.Windows.Forms.Button();
+			this.btnAnalyze = new System.Windows.Forms.Button();
 			this.btnStop = new System.Windows.Forms.Button();
 			this.buttonWhite = new System.Windows.Forms.Button();
 			this.buttonBlack = new System.Windows.Forms.Button();
 			this.lblWhite = new System.Windows.Forms.Label();
 			this.lblBlack = new System.Windows.Forms.Label();
-			this.listViewGame = new System.Windows.Forms.ListView();
-			this.vg1 = new System.Windows.Forms.ColumnHeader();
-			this.vg2 = new System.Windows.Forms.ColumnHeader();
-			this.vg3 = new System.Windows.Forms.ColumnHeader();
+			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
 			this.listBox2 = new System.Windows.Forms.ListBox();
 			this.statusStrip1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
@@ -588,16 +585,17 @@
 			this.splitContainer3.Panel1.Controls.Add(this.numericUpDownDepth);
 			this.splitContainer3.Panel1.Controls.Add(this.label1);
 			this.splitContainer3.Panel1.Controls.Add(this.numericUpDownThinkTime);
-			this.splitContainer3.Panel1.Controls.Add(this.btnEvaluate);
+			this.splitContainer3.Panel1.Controls.Add(this.btnAnalyze);
 			this.splitContainer3.Panel1.Controls.Add(this.btnStop);
 			this.splitContainer3.Panel1.Controls.Add(this.buttonWhite);
 			this.splitContainer3.Panel1.Controls.Add(this.buttonBlack);
 			this.splitContainer3.Panel1.Controls.Add(this.lblWhite);
 			this.splitContainer3.Panel1.Controls.Add(this.lblBlack);
+			this.splitContainer3.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1Paint);
 			// 
 			// splitContainer3.Panel2
 			// 
-			this.splitContainer3.Panel2.Controls.Add(this.listViewGame);
+			this.splitContainer3.Panel2.Controls.Add(this.richTextBox1);
 			this.splitContainer3.Size = new System.Drawing.Size(346, 384);
 			this.splitContainer3.SplitterDistance = 210;
 			this.splitContainer3.TabIndex = 36;
@@ -711,18 +709,19 @@
 			0,
 			0});
 			// 
-			// btnEvaluate
+			// btnAnalyze
 			// 
-			this.btnEvaluate.Location = new System.Drawing.Point(107, 0);
-			this.btnEvaluate.Name = "btnEvaluate";
-			this.btnEvaluate.Size = new System.Drawing.Size(91, 55);
-			this.btnEvaluate.TabIndex = 52;
-			this.btnEvaluate.Text = "&Evaluate";
-			this.btnEvaluate.UseVisualStyleBackColor = true;
+			this.btnAnalyze.Location = new System.Drawing.Point(181, 4);
+			this.btnAnalyze.Name = "btnAnalyze";
+			this.btnAnalyze.Size = new System.Drawing.Size(91, 55);
+			this.btnAnalyze.TabIndex = 52;
+			this.btnAnalyze.Text = "&Analyze";
+			this.btnAnalyze.UseVisualStyleBackColor = true;
+			this.btnAnalyze.Click += new System.EventHandler(this.btnAnalyze_Click);
 			// 
 			// btnStop
 			// 
-			this.btnStop.Location = new System.Drawing.Point(114, 0);
+			this.btnStop.Location = new System.Drawing.Point(181, 3);
 			this.btnStop.Name = "btnStop";
 			this.btnStop.Size = new System.Drawing.Size(84, 46);
 			this.btnStop.TabIndex = 53;
@@ -765,36 +764,17 @@
 			this.lblBlack.Text = "Black";
 			this.lblBlack.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
-			// listViewGame
+			// richTextBox1
 			// 
-			this.listViewGame.BackColor = System.Drawing.SystemColors.Control;
-			this.listViewGame.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-			this.vg1,
-			this.vg2,
-			this.vg3});
-			this.listViewGame.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.listViewGame.FullRowSelect = true;
-			this.listViewGame.Location = new System.Drawing.Point(0, 0);
-			this.listViewGame.MultiSelect = false;
-			this.listViewGame.Name = "listViewGame";
-			this.listViewGame.Size = new System.Drawing.Size(346, 170);
-			this.listViewGame.TabIndex = 36;
-			this.listViewGame.UseCompatibleStateImageBehavior = false;
-			this.listViewGame.View = System.Windows.Forms.View.Details;
-			// 
-			// vg1
-			// 
-			this.vg1.Text = "#";
-			this.vg1.Width = 25;
-			// 
-			// vg2
-			// 
-			this.vg2.Text = "move";
-			// 
-			// vg3
-			// 
-			this.vg3.Text = "time[s]";
-			this.vg3.Width = 130;
+			this.richTextBox1.BackColor = System.Drawing.SystemColors.Control;
+			this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.richTextBox1.Location = new System.Drawing.Point(0, 0);
+			this.richTextBox1.Name = "richTextBox1";
+			this.richTextBox1.Size = new System.Drawing.Size(346, 170);
+			this.richTextBox1.TabIndex = 0;
+			this.richTextBox1.Text = "";
 			// 
 			// listBox2
 			// 
@@ -877,7 +857,7 @@
         private System.Windows.Forms.Label lblBlack;
         private System.Windows.Forms.NumericUpDown numericUpDownDfPnHash;
         private System.Windows.Forms.NumericUpDown numericUpDownThinkTime;
-        private System.Windows.Forms.Button btnEvaluate;
+        private System.Windows.Forms.Button btnAnalyze;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
         private System.Windows.Forms.ToolStripPanel BottomToolStripPanel;
@@ -901,10 +881,6 @@
         private System.Windows.Forms.ToolStripMenuItem selectToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.ToolStripMenuItem InfoToolStripMenuItem;
-        private System.Windows.Forms.ListView listViewGame;
-        private System.Windows.Forms.ColumnHeader vg1;
-        private System.Windows.Forms.ColumnHeader vg2;
-        private System.Windows.Forms.ColumnHeader vg3;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
@@ -924,6 +900,7 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.RichTextBox richTextBox1;
 
 
     }

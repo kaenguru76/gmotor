@@ -88,7 +88,20 @@ namespace gvisu
 
 		void engine_BoardChanged()
 		{
-			graphicBoard1.SetBoard(engine.PlayedMoves);
+			List<BoardSquare> playedMoves = engine.PlayedMoves;
+			
+			graphicBoard1.SetBoard(playedMoves);
+			
+			for (int i = 0; i < playedMoves.Count; i++) {
+				string str1 = Convert.ToString(i/2 + 1) + ". ";
+				str1 += playedMoves[i].ToString();
+				if (++i < playedMoves.Count) {
+					str1 += " " + playedMoves[i].ToString();
+				}
+				str1 += " ";
+				richTextBox1.AppendText(str1);
+			}
+				
 			//PictureBox picSquare;
 			//Label lblRow;
 			//Label lblColumn;
@@ -406,9 +419,9 @@ namespace gvisu
 
 		}
 
-		private void btnEvaluate_Click(object sender, EventArgs e)
+		private void btnAnalyze_Click(object sender, EventArgs e)
 		{
-			btnEvaluate.Visible = false;
+			btnAnalyze.Visible = false;
 			engine.StartThinking();
 		}
 
@@ -540,7 +553,7 @@ namespace gvisu
 
 		void ThinkingFinished(SearchInformation info)
 		{
-			btnEvaluate.Visible = true;
+			btnAnalyze.Visible = true;
 			ThinkingProgress(info);
 		}
 
@@ -618,6 +631,11 @@ namespace gvisu
 			evaluation = new Evaluation();
 			evaluation.Show();
 		}
+		void Panel1Paint(object sender, PaintEventArgs e)
+		{
+	
+		}
+
 		
 
 		
