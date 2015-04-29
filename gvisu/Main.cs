@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
+using System.Text;
 
 using GomokuEngine;
 
@@ -92,16 +93,24 @@ namespace gvisu
 			
 			graphicBoard1.SetBoard(playedMoves);
 			
+			var sb1 = new StringBuilder(@"{\rtf1\ansi");
+			
+			//richTextBox1.Rtf = @"{\rtf1\ansi this word is \b bold \b0 }";
+			
 			for (int i = 0; i < playedMoves.Count; i++) {
-				string str1 = Convert.ToString(i/2 + 1) + ". ";
-				str1 += playedMoves[i].ToString();
+				sb1.Append(@" \b " + Convert.ToString(i/2 + 1) + @". \b0 ");
+				sb1.Append(playedMoves[i].ToString());
 				if (++i < playedMoves.Count) {
-					str1 += " " + playedMoves[i].ToString();
+					sb1.Append(" " + playedMoves[i].ToString());
 				}
-				str1 += " ";
-				richTextBox1.AppendText(str1);
+				//sb1.Append(" ");
 			}
+			//richTextBox1.AppendText(sb1.ToString());
+			sb1.Append(@"}");
+			richTextBox1.Rtf = sb1.ToString();
 				
+
+			
 			//PictureBox picSquare;
 			//Label lblRow;
 			//Label lblColumn;
@@ -634,6 +643,14 @@ namespace gvisu
 		void Panel1Paint(object sender, PaintEventArgs e)
 		{
 	
+		}
+		void RichTextBox1Click(object sender, EventArgs e)
+		{
+			//richTextBox1.Select(10, 10);
+			richTextBox1.SelectionStart = 10;
+			richTextBox1.SelectionLength = 10;
+			richTextBox1.SelectionBackColor= Color.Yellow;
+			//richTextBox1.Select(0, 0);
 		}
 
 		
