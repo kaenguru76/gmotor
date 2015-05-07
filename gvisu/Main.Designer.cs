@@ -770,13 +770,14 @@
 			this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.richTextBox1.HideSelection = false;
 			this.richTextBox1.Location = new System.Drawing.Point(0, 0);
 			this.richTextBox1.Name = "richTextBox1";
+			this.richTextBox1.ReadOnly = true;
 			this.richTextBox1.Size = new System.Drawing.Size(346, 170);
 			this.richTextBox1.TabIndex = 0;
 			this.richTextBox1.Text = "";
 			this.richTextBox1.Click += new System.EventHandler(this.RichTextBox1Click);
+			this.richTextBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.RichTextBox1MouseDown);
 			// 
 			// listBox2
 			// 

@@ -87,27 +87,30 @@ namespace gvisu
             
 		}
 
+		void RefreshRichTextBox(List<BoardSquare> playedMoves, int highlightMove)
+		{
+			var sb1 = new StringBuilder(@"{\rtf1\ansi{\colortbl;\red255\green255\blue0;}");
+			
+			for (int i = 0; i < playedMoves.Count; i++) {
+				if (i==highlightMove) sb1.Append(@" \highlight1 ");
+				sb1.Append(@" \b " + Convert.ToString(i/2 + 1) + @". \b0 ");
+				sb1.Append(playedMoves[i].ToString());
+				if (i==highlightMove) sb1.Append(@" \highlight0 ");
+				if (++i < playedMoves.Count) {
+					sb1.Append(" " + playedMoves[i].ToString());
+				}
+			}
+			sb1.Append(@"}");	
+			richTextBox1.Rtf = sb1.ToString();
+		}
+		
 		void engine_BoardChanged()
 		{
 			List<BoardSquare> playedMoves = engine.PlayedMoves;
 			
 			graphicBoard1.SetBoard(playedMoves);
 			
-			var sb1 = new StringBuilder(@"{\rtf1\ansi");
-			
-			//richTextBox1.Rtf = @"{\rtf1\ansi this word is \b bold \b0 }";
-			
-			for (int i = 0; i < playedMoves.Count; i++) {
-				sb1.Append(@" \b " + Convert.ToString(i/2 + 1) + @". \b0 ");
-				sb1.Append(playedMoves[i].ToString());
-				if (++i < playedMoves.Count) {
-					sb1.Append(" " + playedMoves[i].ToString());
-				}
-				//sb1.Append(" ");
-			}
-			//richTextBox1.AppendText(sb1.ToString());
-			sb1.Append(@"}");
-			richTextBox1.Rtf = sb1.ToString();
+			RefreshRichTextBox(playedMoves,0);
 				
 
 			
@@ -647,10 +650,20 @@ namespace gvisu
 		void RichTextBox1Click(object sender, EventArgs e)
 		{
 			//richTextBox1.Select(10, 10);
-			richTextBox1.SelectionStart = 10;
-			richTextBox1.SelectionLength = 10;
-			richTextBox1.SelectionBackColor= Color.Yellow;
+			//richTextBox1.SelectionStart = 10;
+			//richTextBox1.SelectionLength = 10;
+			//richTextBox1.SelectionBackColor= Color.Yellow;
+			//richTextBox1.SelectionLength = 0;
+			//richTextBox1.SelectionProtected = true;
 			//richTextBox1.Select(0, 0);
+			//richTextBox1.SelectionColor = Color.Yellow;
+		}
+		void RichTextBox1MouseDown(object sender, MouseEventArgs e)
+		{
+			if (e.Button == MouseButtons.Left)
+            {
+ 				int positionToSearch = richTextBox1.GetCharIndexFromPosition(new Point(e.X, e.Y));
+			}
 		}
 
 		
