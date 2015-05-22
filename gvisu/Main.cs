@@ -87,17 +87,31 @@ namespace gvisu
             
 		}
 
+		void AppendVisibleChars(StringBuilder sb1, string str1, ref int visibleChars)
+		{
+			sb1.Append(str1);
+			visibleChars += str1.Length;
+		}
+		                        
+		int[] moveEndsAt;
+		
 		void RefreshRichTextBox(List<BoardSquare> playedMoves, int highlightMove)
 		{
 			var sb1 = new StringBuilder(@"{\rtf1\ansi{\colortbl;\red255\green255\blue0;}");
+			int visibleChars = 0;
+			moveEndsAt = new int[playedMoves.Count];
 			
 			for (int i = 0; i < playedMoves.Count; i++) {
 				if (i==highlightMove) sb1.Append(@" \highlight1 ");
-				sb1.Append(@" \b " + Convert.ToString(i/2 + 1) + @". \b0 ");
-				sb1.Append(playedMoves[i].ToString());
+				sb1.Append(@" \b ");
+				AppendVisibleChars(sb1, Convert.ToString(i/2 + 1) + @".", ref visibleChars);
+				sb1.Append(@" \b0 ");
+				AppendVisibleChars(sb1, playedMoves[i].ToString(), ref visibleChars);
 				if (i==highlightMove) sb1.Append(@" \highlight0 ");
+				moveEndsAt[i] = visibleChars;
 				if (++i < playedMoves.Count) {
-					sb1.Append(" " + playedMoves[i].ToString());
+					AppendVisibleChars(sb1, " " + playedMoves[i].ToString(), ref visibleChars);
+					moveEndsAt[i] = visibleChars;
 				}
 			}
 			sb1.Append(@"}");	
@@ -663,6 +677,13 @@ namespace gvisu
 			if (e.Button == MouseButtons.Left)
             {
  				int positionToSearch = richTextBox1.GetCharIndexFromPosition(new Point(e.X, e.Y));
+ 				for(int move = 0; move < moveEndsAt.Length; move++){
+ 					if (positionToSearch < moveEndsAt[move]){
+ 						RefreshRichTextBox(engine.PlayedMoves, move);
+ 						break;
+ 					}
+ 				}
+ 					
 			}
 		}
 
