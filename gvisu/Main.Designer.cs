@@ -98,7 +98,7 @@
 			this.buttonBlack = new System.Windows.Forms.Button();
 			this.lblWhite = new System.Windows.Forms.Label();
 			this.lblBlack = new System.Windows.Forms.Label();
-			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+			this.moveList1 = new gvisu.MoveList();
 			this.listBox2 = new System.Windows.Forms.ListBox();
 			this.statusStrip1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
@@ -591,11 +591,10 @@
 			this.splitContainer3.Panel1.Controls.Add(this.buttonBlack);
 			this.splitContainer3.Panel1.Controls.Add(this.lblWhite);
 			this.splitContainer3.Panel1.Controls.Add(this.lblBlack);
-			this.splitContainer3.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1Paint);
 			// 
 			// splitContainer3.Panel2
 			// 
-			this.splitContainer3.Panel2.Controls.Add(this.richTextBox1);
+			this.splitContainer3.Panel2.Controls.Add(this.moveList1);
 			this.splitContainer3.Size = new System.Drawing.Size(346, 384);
 			this.splitContainer3.SplitterDistance = 210;
 			this.splitContainer3.TabIndex = 36;
@@ -764,20 +763,14 @@
 			this.lblBlack.Text = "Black";
 			this.lblBlack.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
-			// richTextBox1
+			// moveList1
 			// 
-			this.richTextBox1.BackColor = System.Drawing.SystemColors.Control;
-			this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.richTextBox1.Location = new System.Drawing.Point(0, 0);
-			this.richTextBox1.Name = "richTextBox1";
-			this.richTextBox1.ReadOnly = true;
-			this.richTextBox1.Size = new System.Drawing.Size(346, 170);
-			this.richTextBox1.TabIndex = 0;
-			this.richTextBox1.Text = "";
-			this.richTextBox1.Click += new System.EventHandler(this.RichTextBox1Click);
-			this.richTextBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.RichTextBox1MouseDown);
+			this.moveList1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.moveList1.Location = new System.Drawing.Point(0, 0);
+			this.moveList1.Name = "moveList1";
+			this.moveList1.Size = new System.Drawing.Size(346, 170);
+			this.moveList1.TabIndex = 39;
+			this.moveList1.Text = "";
 			// 
 			// listBox2
 			// 
@@ -903,7 +896,7 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.SplitContainer splitContainer3;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private gvisu.MoveList moveList1;
 
 
     }

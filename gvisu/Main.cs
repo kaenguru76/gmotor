@@ -87,44 +87,13 @@ namespace gvisu
             
 		}
 
-		void AppendVisibleChars(StringBuilder sb1, string str1, ref int visibleChars)
-		{
-			sb1.Append(str1);
-			visibleChars += str1.Length;
-		}
-		                        
-		int[] moveEndsAt;
-		
-		void RefreshRichTextBox(List<BoardSquare> playedMoves, int highlightMove)
-		{
-			var sb1 = new StringBuilder(@"{\rtf1\ansi{\colortbl;\red255\green255\blue0;}");
-			int visibleChars = 0;
-			moveEndsAt = new int[playedMoves.Count];
-			
-			for (int i = 0; i < playedMoves.Count; i++) {
-				if (i==highlightMove) sb1.Append(@" \highlight1 ");
-				sb1.Append(@" \b ");
-				AppendVisibleChars(sb1, Convert.ToString(i/2 + 1) + @".", ref visibleChars);
-				sb1.Append(@" \b0 ");
-				AppendVisibleChars(sb1, playedMoves[i].ToString(), ref visibleChars);
-				if (i==highlightMove) sb1.Append(@" \highlight0 ");
-				moveEndsAt[i] = visibleChars;
-				if (++i < playedMoves.Count) {
-					AppendVisibleChars(sb1, " " + playedMoves[i].ToString(), ref visibleChars);
-					moveEndsAt[i] = visibleChars;
-				}
-			}
-			sb1.Append(@"}");	
-			richTextBox1.Rtf = sb1.ToString();
-		}
-		
 		void engine_BoardChanged()
 		{
 			List<BoardSquare> playedMoves = engine.PlayedMoves;
 			
 			graphicBoard1.SetBoard(playedMoves);
 			
-			RefreshRichTextBox(playedMoves,0);
+			moveList1.SetMoves(playedMoves);
 				
 
 			
@@ -657,39 +626,7 @@ namespace gvisu
 			evaluation = new Evaluation();
 			evaluation.Show();
 		}
-		void Panel1Paint(object sender, PaintEventArgs e)
-		{
-	
-		}
-		void RichTextBox1Click(object sender, EventArgs e)
-		{
-			//richTextBox1.Select(10, 10);
-			//richTextBox1.SelectionStart = 10;
-			//richTextBox1.SelectionLength = 10;
-			//richTextBox1.SelectionBackColor= Color.Yellow;
-			//richTextBox1.SelectionLength = 0;
-			//richTextBox1.SelectionProtected = true;
-			//richTextBox1.Select(0, 0);
-			//richTextBox1.SelectionColor = Color.Yellow;
-		}
-		void RichTextBox1MouseDown(object sender, MouseEventArgs e)
-		{
-			if (e.Button == MouseButtons.Left)
-            {
- 				int positionToSearch = richTextBox1.GetCharIndexFromPosition(new Point(e.X, e.Y));
- 				for(int move = 0; move < moveEndsAt.Length; move++){
- 					if (positionToSearch < moveEndsAt[move]){
- 						RefreshRichTextBox(engine.PlayedMoves, move);
- 						break;
- 					}
- 				}
- 					
-			}
-		}
 
-		
-
-		
 
 	}
 }

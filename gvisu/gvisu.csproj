@@ -107,6 +107,10 @@
     <Compile Include="GraphicBoard.Designer.cs">
       <DependentUpon>GraphicBoard.cs</DependentUpon>
     </Compile>
+    <Compile Include="MoveList.cs" />
+    <Compile Include="MoveList.Designer.cs">
+      <DependentUpon>MoveList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <DependentUpon>Resources.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -146,6 +150,9 @@
     <EmbeddedResource Include="Main.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MoveList.resx">
+      <DependentUpon>MoveList.Designer.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
